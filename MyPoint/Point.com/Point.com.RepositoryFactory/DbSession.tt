@@ -1,0 +1,149 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ output extension="cs" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ Assembly name="$(SolutionDir)Point.com.Library\Point.com.Model.dll" #>
+ 
+<#
+
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+
+string inputFile = @"..\Point.com.Template4\DataModel.edmx";
+
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = code.VsNamespaceSuggestion();
+
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+#>
+
+<#
+	  Assembly assembly = Assembly.GetAssembly(typeof(Point.com.Model.ModelBase));
+            var types = assembly.GetTypes();
+            HashSet<string> dbNameSet = null;
+            Dictionary<string,string> entityNames = null;
+            if (types != null && types.Count() > 0)
+            {
+                dbNameSet = new HashSet<string>();
+                entityNames = new Dictionary<string, string>();
+
+                foreach (var type in types)
+                {
+                    if (type.IsSubclassOf(typeof(Point.com.Model.ModelBase)))
+                    {
+                        var attributeType = typeof(Point.com.Model.RepositoryAttribute);
+                        string dbName = new Point.com.Model.DataMode().DefaultDbName;
+                        if (type.IsDefined(attributeType, false))
+                        {
+                            var attrs = type.GetCustomAttributes(attributeType, false);
+                            if (attrs.Count() > 0)
+                            {
+                                var attr = attrs.FirstOrDefault();
+                                Point.com.Model.RepositoryAttribute repositoryAttribute = (Point.com.Model.RepositoryAttribute)attr;
+                                if (repositoryAttribute != null && !string.IsNullOrEmpty(repositoryAttribute.DbName))
+                                {
+                                    dbName = repositoryAttribute.DbName;
+                                }
+                            }
+                        }
+                        dbNameSet.Add(dbName);
+                        entityNames.Add(type.Name,dbName);
+
+                    }
+                }
+            }
+#>
+using System;
+using Point.com.IRepository;
+using Point.com.Repository;
+namespace Point.com.RepositoryFactory
+{
+    public partial class DbSession : IDbSession
+    {
+	<#
+	 if (dbNameSet != null && dbNameSet.Count > 0)
+        {
+            foreach (string dbName in dbNameSet)
+            {#>
+				private readonly string _dbConnectionString<#=dbName#>= Configurator.DbConnectionString;
+
+				public virtual string DbConnectionString<#=dbName#>
+				{
+					get { return _dbConnectionString<#=dbName#>; }
+				}
+				
+				
+
+				protected I<#=dbName#> _<#=dbName#>;
+				public virtual I<#=dbName#> <#=dbName#>
+				{
+					get
+					{
+						if (null == _<#=dbName#>)
+						{
+							_<#=dbName#> = new <#=dbName#>(DbConnectionString<#=dbName#>);
+						}
+						return _<#=dbName#>;
+					}
+				}
+            <#}
+        }
+	#>
+	}
+
+	<#
+		if (dbNameSet != null && dbNameSet.Count > 0)
+        {
+            foreach (string dbName in dbNameSet)
+            {#>
+				public partial class <#=dbName#> :DbSingleSession{
+
+					private readonly IUnitOfWork _unitOfWork;//= new UnitOfWork(_dbConnectionString);
+					public <#=dbName#>(string dbConnectionString)
+					{
+						_unitOfWork = new UnitOfWork(dbConnectionString);
+					}
+					 public override IUnitOfWork UnitOfWork
+					{
+						get { return _unitOfWork; }
+					}
+				}
+            <#}
+        }
+	#>
+
+	<#
+		 if (entityNames != null && entityNames.Count > 0)
+            {
+                foreach (var entityNameKvp in entityNames)
+                {
+					var entityName=entityNameKvp.Key;
+				#>
+                  public partial class <#=entityNameKvp.Value#>:I<#=entityNameKvp.Value#>
+				  {					
+					private I<#=entityName#>Repository _<#=entityName#>Repository;
+					public virtual string <#=entityName#>TableName{
+						get{
+							return "<#=entityName#>";
+						}
+					}
+					public I<#=entityName#>Repository <#=entityName#>Repository
+					{
+						get
+						{
+							if (null == _<#=entityName#>Repository)
+							{
+								_<#=entityName#>Repository = new <#=entityName#>Repository(this._unitOfWork,<#=entityName#>TableName);
+							}
+							return _<#=entityName#>Repository;
+						}
+					}
+				  }  
+                <#}
+            }
+	#>
+}
+
+

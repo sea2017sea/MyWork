@@ -1,0 +1,12 @@
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Assembler\bin\Release\Point.com.Assembler.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Assembler\bin\Release\Point.com.Assembler.pdb
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Assembler\bin\Release\EmitMapper.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.csprojResolveAssemblyReference.cache
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.pdb
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Assembler\bin\Release\Point.com.Assembler.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Assembler\bin\Release\Point.com.Assembler.pdb
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Assembler\bin\Release\EmitMapper.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.csprojResolveAssemblyReference.cache
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.pdb

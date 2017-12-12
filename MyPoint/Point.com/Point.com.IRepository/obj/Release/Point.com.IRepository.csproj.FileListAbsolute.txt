@@ -1,0 +1,14 @@
+E:\2012-10-29李海涛\工作\Point.com\Point.com.IRepository\bin\Release\Point.com.IRepository.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.IRepository\bin\Release\Point.com.IRepository.pdb
+E:\2012-10-29李海涛\工作\Point.com\Point.com.IRepository\bin\Release\Point.com.Model.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.IRepository\bin\Release\Point.com.Model.pdb
+E:\2012-10-29李海涛\工作\Point.com\Point.com.IRepository\obj\Release\Point.com.IRepository.csprojResolveAssemblyReference.cache
+E:\2012-10-29李海涛\工作\Point.com\Point.com.IRepository\obj\Release\Point.com.IRepository.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.IRepository\obj\Release\Point.com.IRepository.pdb
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.IRepository\bin\Release\Point.com.IRepository.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.IRepository\bin\Release\Point.com.IRepository.pdb
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.IRepository\bin\Release\Point.com.Model.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.IRepository\bin\Release\Point.com.Model.pdb
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.IRepository\obj\Release\Point.com.IRepository.csprojResolveAssemblyReference.cache
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.IRepository\obj\Release\Point.com.IRepository.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.IRepository\obj\Release\Point.com.IRepository.pdb

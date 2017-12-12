@@ -1,0 +1,14 @@
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Common\bin\Release\Point.com.Common.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Common\bin\Release\Point.com.Common.pdb
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Common\bin\Release\ServiceStack.Text.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Common\bin\Release\ServiceStack.Text.xml
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.csprojResolveAssemblyReference.cache
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.dll
+E:\2012-10-29李海涛\工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.pdb
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\bin\Release\Point.com.Common.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\bin\Release\Point.com.Common.pdb
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\bin\Release\ServiceStack.Text.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\bin\Release\ServiceStack.Text.xml
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.csprojResolveAssemblyReference.cache
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.dll
+E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.pdb

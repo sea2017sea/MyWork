@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13E95164-8A2E-4138-9165-46906AE9C905}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Point.com.UnitTest</RootNamespace>
+    <AssemblyName>Point.com.UnitTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\Point.com.Library\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EmitMapper">
+      <HintPath>..\Point.com.Library\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Point.com.Library\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching">
+      <HintPath>..\Point.com.Library\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Assembler">
+      <HintPath>..\Point.com.Library\Point.com.Assembler.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Caching">
+      <HintPath>..\Point.com.Library\Point.com.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Common">
+      <HintPath>..\Point.com.Library\Point.com.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Facade">
+      <HintPath>..\Point.com.Library\Point.com.Facade.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.IRepository">
+      <HintPath>..\Point.com.Library\Point.com.IRepository.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Logging">
+      <HintPath>..\Point.com.Library\Point.com.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Model">
+      <HintPath>..\Point.com.Library\Point.com.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Repository">
+      <HintPath>..\Point.com.Library\Point.com.Repository.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.RepositoryFactory">
+      <HintPath>..\Point.com.Library\Point.com.RepositoryFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.ServiceContainer">
+      <HintPath>..\Point.com.Library\Point.com.ServiceContainer.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.ServiceImplement">
+      <HintPath>..\Point.com.Library\Point.com.ServiceImplement.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.ServiceInterface">
+      <HintPath>..\Point.com.Library\Point.com.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.ServiceModel">
+      <HintPath>..\Point.com.Library\Point.com.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Point.com.Template4">
+      <HintPath>..\Point.com.Library\Point.com.Template4.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\Point.com.Library\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\Point.com.Library\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\Point.com.Library\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\Point.com.Library\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\Point.com.Library\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\Point.com.Library\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.Sqlite">
+      <HintPath>..\Point.com.Library\ServiceStack.OrmLite.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\Point.com.Library\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\Point.com.Library\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\Point.com.Library\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\Point.com.Library\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
