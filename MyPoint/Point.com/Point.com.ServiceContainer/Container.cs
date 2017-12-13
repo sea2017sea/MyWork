@@ -30,6 +30,9 @@ namespace Point.com.ServiceContainer
 
             //微信支付
             container.Register<ForWxPayImpl, IForWxPay>(new ForWxPayImpl());
+
+            //自媒体
+            container.Register<ForSelfMediaImpl, IForSelfMedia>(new ForSelfMediaImpl());
         }
     }
 }

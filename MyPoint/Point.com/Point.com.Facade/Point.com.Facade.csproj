@@ -85,6 +85,7 @@
     <Compile Include="ForBaseService.cs" />
     <Compile Include="ForInforService.cs" />
     <Compile Include="ForJiGuangPushService.cs" />
+    <Compile Include="ForSelfMediaService.cs" />
     <Compile Include="ForWxPay\ForWxPayService.cs" />
     <Compile Include="MemberDepService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

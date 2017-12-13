@@ -86,6 +86,14 @@ namespace Point.com.ServiceInterface
         Ptcp<string> MemberWithdrawals(int userid);
 
         /// <summary>
+        /// 提现 2017-12-11改版新的提现接口
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="amount">提现金额</param>
+        /// <returns></returns>
+        Ptcp<string> MemberWithdrawalsTwo(int userid, decimal amount);
+
+        /// <summary>
         /// 保存极光推送的会员ID
         /// </summary>
         /// <param name="userid"></param>

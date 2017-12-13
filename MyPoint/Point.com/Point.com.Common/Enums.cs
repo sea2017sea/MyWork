@@ -118,6 +118,7 @@ namespace Point.com.Common
             Sell = 8,            //转入抵用金
             TiXian = 16,         //提现
             ExcGoods = 32,       //兑换商品(兑换抵扣劵)
+            ReadArticle = 64,    //阅读文章，扣减低佣金
         }
 
         /// <summary>

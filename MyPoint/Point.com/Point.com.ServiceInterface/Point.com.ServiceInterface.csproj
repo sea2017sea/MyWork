@@ -53,6 +53,7 @@
     <Compile Include="IForJiGuangPush.cs" />
     <Compile Include="IForWxPay.cs" />
     <Compile Include="IMemberDep.cs" />
+    <Compile Include="IForSelfMedia.cs" />
     <Compile Include="ISms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

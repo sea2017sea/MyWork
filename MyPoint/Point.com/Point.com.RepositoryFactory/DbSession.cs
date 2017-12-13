@@ -652,6 +652,86 @@ namespace Point.com.RepositoryFactory
 				  }  
                                   public partial class MLT:IMLT
 				  {					
+					private IT_SelfMediaArticleRepository _T_SelfMediaArticleRepository;
+					public virtual string T_SelfMediaArticleTableName{
+						get{
+							return "T_SelfMediaArticle";
+						}
+					}
+					public IT_SelfMediaArticleRepository T_SelfMediaArticleRepository
+					{
+						get
+						{
+							if (null == _T_SelfMediaArticleRepository)
+							{
+								_T_SelfMediaArticleRepository = new T_SelfMediaArticleRepository(this._unitOfWork,T_SelfMediaArticleTableName);
+							}
+							return _T_SelfMediaArticleRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IT_SelfMediaAuthorRepository _T_SelfMediaAuthorRepository;
+					public virtual string T_SelfMediaAuthorTableName{
+						get{
+							return "T_SelfMediaAuthor";
+						}
+					}
+					public IT_SelfMediaAuthorRepository T_SelfMediaAuthorRepository
+					{
+						get
+						{
+							if (null == _T_SelfMediaAuthorRepository)
+							{
+								_T_SelfMediaAuthorRepository = new T_SelfMediaAuthorRepository(this._unitOfWork,T_SelfMediaAuthorTableName);
+							}
+							return _T_SelfMediaAuthorRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IT_SelfMediaFollowRecordRepository _T_SelfMediaFollowRecordRepository;
+					public virtual string T_SelfMediaFollowRecordTableName{
+						get{
+							return "T_SelfMediaFollowRecord";
+						}
+					}
+					public IT_SelfMediaFollowRecordRepository T_SelfMediaFollowRecordRepository
+					{
+						get
+						{
+							if (null == _T_SelfMediaFollowRecordRepository)
+							{
+								_T_SelfMediaFollowRecordRepository = new T_SelfMediaFollowRecordRepository(this._unitOfWork,T_SelfMediaFollowRecordTableName);
+							}
+							return _T_SelfMediaFollowRecordRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IT_SelfMediaPayRecordRepository _T_SelfMediaPayRecordRepository;
+					public virtual string T_SelfMediaPayRecordTableName{
+						get{
+							return "T_SelfMediaPayRecord";
+						}
+					}
+					public IT_SelfMediaPayRecordRepository T_SelfMediaPayRecordRepository
+					{
+						get
+						{
+							if (null == _T_SelfMediaPayRecordRepository)
+							{
+								_T_SelfMediaPayRecordRepository = new T_SelfMediaPayRecordRepository(this._unitOfWork,T_SelfMediaPayRecordTableName);
+							}
+							return _T_SelfMediaPayRecordRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
 					private IT_ShareAnswerRecordRepository _T_ShareAnswerRecordRepository;
 					public virtual string T_ShareAnswerRecordTableName{
 						get{

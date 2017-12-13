@@ -131,10 +131,20 @@ namespace Point.com.ServiceModel
     public class MemberWithdrawalsReq
     {
         public int UserId { get; set; }                     //会员ID
-        //public string OpenidWxOpen { get; set; }            //微信开发平台的标示ID，如果没有绑定微信，则此值必传
     }
 
     public class MemberWithdrawalsRes : BaseResponse
+    {
+
+    }
+
+    public class MemberWithdrawalsTwoReq
+    {
+        public int UserId { get; set; }                     //会员ID
+        public decimal Amount { get; set; }                 //提现金额 是经过 Score / 100 换算之后的金额
+    }
+
+    public class MemberWithdrawalsTwoRes : BaseResponse
     {
 
     }

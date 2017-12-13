@@ -50,6 +50,7 @@
     <Compile Include="ForBase.cs" />
     <Compile Include="ForInfor.cs" />
     <Compile Include="ForJiGuangPush.cs" />
+    <Compile Include="ForSelfMedia.cs" />
     <Compile Include="ForWxPay.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="MemberDep.cs" />

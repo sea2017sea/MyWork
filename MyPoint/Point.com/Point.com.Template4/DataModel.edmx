@@ -40,6 +40,10 @@
           <EntitySet Name="T_Member" EntityType="MYZJ_MLTModel.Store.T_Member" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_OperationLog" EntityType="MYZJ_MLTModel.Store.T_OperationLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_Recharge" EntityType="MYZJ_MLTModel.Store.T_Recharge" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_SelfMediaArticle" EntityType="MYZJ_MLTModel.Store.T_SelfMediaArticle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_SelfMediaAuthor" EntityType="MYZJ_MLTModel.Store.T_SelfMediaAuthor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_SelfMediaFollowRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaFollowRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_SelfMediaPayRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaPayRecord" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_ShareAnswerRecord" EntityType="MYZJ_MLTModel.Store.T_ShareAnswerRecord" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_ShareRegister" EntityType="MYZJ_MLTModel.Store.T_ShareRegister" store:Type="Tables" store:Schema="dbo" store:Name="T_ShareRegister">
             <DefiningQuery>SELECT 
@@ -360,7 +364,7 @@
           <Property Name="RegProvince" Type="int" />
           <Property Name="RegCity" Type="int" />
           <Property Name="RegArea" Type="int" />
-          <Property Name="Birthday" Type="datetime" Nullable="false" />
+          <Property Name="Birthday" Type="datetime" />
           <Property Name="InforType" Type="int" Nullable="false" />
           <Property Name="Account" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="AccountWithdrawn" Type="decimal" Nullable="false" Scale="2" />
@@ -403,6 +407,64 @@
           <Property Name="PayTime" Type="datetime" />
           <Property Name="PayState" Type="int" Nullable="false" />
           <Property Name="IsUse" Type="int" Nullable="false" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SelfMediaArticle">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StrInforType" Type="varchar" Nullable="false" MaxLength="512" />
+          <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+          <Property Name="HeadPic" Type="varchar(max)" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Subtitle" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="ReadScore" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="IsHot" Type="bit" Nullable="false" />
+          <Property Name="ShowMode" Type="int" Nullable="false" />
+          <Property Name="IsShowIndex" Type="int" Nullable="false" />
+          <Property Name="SortId" Type="int" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SelfMediaAuthor">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Portrait" Type="nvarchar(max)" />
+          <Property Name="Describe" Type="nvarchar" MaxLength="256" />
+          <Property Name="Score" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SelfMediaFollowRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+          <Property Name="IsFollow" Type="bit" Nullable="false" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SelfMediaPayRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+          <Property Name="ArticleSysNo" Type="int" Nullable="false" />
+          <Property Name="PayScore" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -517,7 +579,6 @@
           <EntitySet Name="Crm_ClickExchange" EntityType="MYZJ_MLTModel.Crm_ClickExchange" />
           <EntitySet Name="Crm_DataAnalysis" EntityType="MYZJ_MLTModel.Crm_DataAnalysis" />
           <EntitySet Name="Crm_FinanceItem" EntityType="MYZJ_MLTModel.Crm_FinanceItem" />
-          <EntitySet Name="Crm_Interactive" EntityType="MYZJ_MLTModel.Crm_Interactive" />
           <EntitySet Name="Crm_Problem" EntityType="MYZJ_MLTModel.Crm_Problem" />
           <EntitySet Name="Crm_Push" EntityType="MYZJ_MLTModel.Crm_Push" />
           <EntitySet Name="Crm_User" EntityType="MYZJ_MLTModel.Crm_User" />
@@ -543,6 +604,11 @@
           <EntitySet Name="T_ShopGoods" EntityType="MYZJ_MLTModel.T_ShopGoods" />
           <EntitySet Name="T_InforConfigure" EntityType="MYZJ_MLTModel.T_InforConfigure" />
           <EntitySet Name="T_OperationLog" EntityType="MYZJ_MLTModel.T_OperationLog" />
+          <EntitySet Name="T_SelfMediaAuthor" EntityType="MYZJ_MLTModel.T_SelfMediaAuthor" />
+          <EntitySet Name="T_SelfMediaFollowRecord" EntityType="MYZJ_MLTModel.T_SelfMediaFollowRecord" />
+          <EntitySet Name="T_SelfMediaPayRecord" EntityType="MYZJ_MLTModel.T_SelfMediaPayRecord" />
+          <EntitySet Name="T_SelfMediaArticle" EntityType="MYZJ_MLTModel.T_SelfMediaArticle" />
+          <EntitySet Name="Crm_Interactive" EntityType="MYZJ_MLTModel.Crm_Interactive" />
           </EntityContainer>
         <EntityType Name="Base_Deliver">
           <Key>
@@ -689,22 +755,6 @@
           <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
           <Property Type="DateTime" Name="ModifyTime" Precision="3" />
           <Property Type="Boolean" Name="IsEnable" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Crm_Interactive">
-          <Key>
-            <PropertyRef Name="SysNo" />
-          </Key>
-          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="ProblemSysNo" Nullable="false" />
-          <Property Type="String" Name="Label" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="InteractiveName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="DataValue" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Proportion" />
-          <Property Type="String" Name="Remark" MaxLength="512" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
-          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
-          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
-          <Property Type="Int32" Name="Number" Nullable="false" />
         </EntityType>
         <EntityType Name="Crm_Problem">
           <Key>
@@ -939,7 +989,7 @@
           <Property Type="Int32" Name="RegProvince" />
           <Property Type="Int32" Name="RegCity" />
           <Property Type="Int32" Name="RegArea" />
-          <Property Type="DateTime" Name="Birthday" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="Birthday" Precision="3" />
           <Property Type="Int32" Name="InforType" Nullable="false" />
           <Property Type="Decimal" Name="Account" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="AccountWithdrawn" Nullable="false" Precision="18" Scale="2" />
@@ -1109,6 +1159,78 @@
           <Property Type="String" Name="DeviceCode" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="T_SelfMediaAuthor">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Portrait" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Describe" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Score" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SelfMediaFollowRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="AuthorSysNo" Nullable="false" />
+          <Property Type="Boolean" Name="IsFollow" Nullable="false" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SelfMediaPayRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="AuthorSysNo" Nullable="false" />
+          <Property Type="Int32" Name="ArticleSysNo" Nullable="false" />
+          <Property Type="Decimal" Name="PayScore" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_SelfMediaArticle">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StrInforType" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="AuthorSysNo" Nullable="false" />
+          <Property Type="String" Name="HeadPic" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Subtitle" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Content" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ReadScore" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="IsHot" Nullable="false" />
+          <Property Type="Int32" Name="ShowMode" Nullable="false" />
+          <Property Type="Int32" Name="IsShowIndex" Nullable="false" />
+          <Property Type="Int32" Name="SortId" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Crm_Interactive">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProblemSysNo" Nullable="false" />
+          <Property Type="String" Name="InteractiveName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Number" Nullable="false" />
+          <Property Type="Decimal" Name="Proportion" Precision="18" Scale="2" />
+          <Property Type="String" Name="Remark" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1159,21 +1281,6 @@
                 <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
                 <ScalarProperty Name="GoodsPic" ColumnName="GoodsPic" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Crm_Interactive">
-            <EntityTypeMapping TypeName="MYZJ_MLTModel.Crm_Interactive">
-              <MappingFragment StoreEntitySet="Crm_Interactive">
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
-                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Proportion" ColumnName="Proportion" />
-                <ScalarProperty Name="InteractiveName" ColumnName="InteractiveName" />
-                <ScalarProperty Name="ProblemSysNo" ColumnName="ProblemSysNo" />
                 <ScalarProperty Name="SysNo" ColumnName="SysNo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1572,6 +1679,83 @@
                 <ScalarProperty Name="SourceTypeSysNo" ColumnName="SourceTypeSysNo" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="OperType" ColumnName="OperType" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SelfMediaAuthor">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaAuthor">
+              <MappingFragment StoreEntitySet="T_SelfMediaAuthor">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Describe" ColumnName="Describe" />
+                <ScalarProperty Name="Portrait" ColumnName="Portrait" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SelfMediaFollowRecord">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaFollowRecord">
+              <MappingFragment StoreEntitySet="T_SelfMediaFollowRecord">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="IsFollow" ColumnName="IsFollow" />
+                <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SelfMediaPayRecord">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaPayRecord">
+              <MappingFragment StoreEntitySet="T_SelfMediaPayRecord">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="PayScore" ColumnName="PayScore" />
+                <ScalarProperty Name="ArticleSysNo" ColumnName="ArticleSysNo" />
+                <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SelfMediaArticle">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaArticle">
+              <MappingFragment StoreEntitySet="T_SelfMediaArticle">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="IsShowIndex" ColumnName="IsShowIndex" />
+                <ScalarProperty Name="ShowMode" ColumnName="ShowMode" />
+                <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+                <ScalarProperty Name="ReadScore" ColumnName="ReadScore" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HeadPic" ColumnName="HeadPic" />
+                <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+                <ScalarProperty Name="StrInforType" ColumnName="StrInforType" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Crm_Interactive">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.Crm_Interactive">
+              <MappingFragment StoreEntitySet="Crm_Interactive">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Proportion" ColumnName="Proportion" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="InteractiveName" ColumnName="InteractiveName" />
+                <ScalarProperty Name="ProblemSysNo" ColumnName="ProblemSysNo" />
                 <ScalarProperty Name="SysNo" ColumnName="SysNo" />
               </MappingFragment>
             </EntityTypeMapping>

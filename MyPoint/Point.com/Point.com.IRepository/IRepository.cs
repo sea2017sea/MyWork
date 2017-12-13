@@ -113,6 +113,22 @@ namespace Point.com.IRepository
     {        
     }
 	
+	public partial interface IT_SelfMediaArticleRepository  : IBaseRepository<T_SelfMediaArticle>
+    {        
+    }
+	
+	public partial interface IT_SelfMediaAuthorRepository  : IBaseRepository<T_SelfMediaAuthor>
+    {        
+    }
+	
+	public partial interface IT_SelfMediaFollowRecordRepository  : IBaseRepository<T_SelfMediaFollowRecord>
+    {        
+    }
+	
+	public partial interface IT_SelfMediaPayRecordRepository  : IBaseRepository<T_SelfMediaPayRecord>
+    {        
+    }
+	
 	public partial interface IT_ShareAnswerRecordRepository  : IBaseRepository<T_ShareAnswerRecord>
     {        
     }

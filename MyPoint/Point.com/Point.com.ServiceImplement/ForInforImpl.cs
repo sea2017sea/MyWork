@@ -17,7 +17,7 @@ namespace Point.com.ServiceImplement
         private static ForBaseImpl fb = new ForBaseImpl();
 
         /// <summary>
-        /// 获取首页的数据 1个小时的缓存
+        /// 获取首页的数据
         /// 如果是题目类型，则需要去掉当前会员已经回答过的题了
         /// </summary>
         /// <param name="req"></param>
@@ -30,6 +30,19 @@ namespace Point.com.ServiceImplement
             {
                 ptcp.DoResult = "请求数据非法";
                 return ptcp;
+            }
+
+            if (req.UserId > 0)
+            {
+                var memberInfo = DbSession.MLT.T_MemberRepository.QueryBy(new T_Member()
+                {
+                    SysNo = req.UserId
+                }).FirstOrDefault();
+
+                if (memberInfo.IsNotNull() && memberInfo.SysNo > 0)
+                {
+                    req.InfoType = memberInfo.InforType.GetValueOrDefault();
+                }
             }
 
             string jsonParam = JsonConvert.SerializeObject(req);
@@ -51,15 +64,6 @@ namespace Point.com.ServiceImplement
                 req.PageSize = 10;
             }
 
-            //var cacheKey = string.Format("{0}.QueryHomePage.{1}.{2}", GetType().Name,req.InfoType,req.PageIndex);
-
-            //var cacheAll = string.Format("{0}.QueryHomePage.{1}", GetType().Name, req.InfoType);
-            //List<T_InforConfigure> orgAllDatas = CacheClientSession.LocalCacheClient.Get(cacheAll, () =>
-            //    {
-            //        string sql = string.Format(@"SELECT * FROM T_InforConfigure WHERE (StrInforType LIKE '%[0]%' OR StrInforType LIKE '%[{0}]%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY IntSort DESC", req.InfoType);
-            //        return DbSession.MLT.ExecuteSql<T_InforConfigure>(sql).ToList();
-            //    }, new TimeSpan(0, 1, 0));
-
             List<T_InforConfigure> sortList = new List<T_InforConfigure>();
             var cacheAll = string.Format("{0}.QueryHomePage.{1}.{2}", GetType().Name, req.InfoType,req.UserId);
 
@@ -69,7 +73,7 @@ namespace Point.com.ServiceImplement
             {
                 sortList = new List<T_InforConfigure>();
 
-                string sql = string.Format(@"SELECT * FROM T_InforConfigure WHERE (StrInforType LIKE '%[0]%' OR StrInforType LIKE '%[{0}]%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY IntSort DESC",req.InfoType);
+                string sql = string.Format(@"SELECT TOP 500 * FROM T_InforConfigure WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY IntSort DESC",req.InfoType);
                 List<T_InforConfigure> orgAllDatas = DbSession.MLT.ExecuteSql<T_InforConfigure>(sql).ToList();
                 if (orgAllDatas.IsNull() || !orgAllDatas.IsHasRow())
                 {
@@ -85,10 +89,7 @@ namespace Point.com.ServiceImplement
                 List<T_InforConfigure> orgSubs = new List<T_InforConfigure>();
                 if (req.UserId > 0)
                 {
-                    string sqlSub =
-                        string.Format(
-                            @"SELECT * FROM T_Subject sb INNER JOIN T_AnswerRecord sr ON sr.SubSysNo = sb.SysNo WHERE sr.UserId = {0} AND sb.InforSysNo > 0 AND sb.IsEnable = 1 AND sr.IsEnable = 1",
-                            req.UserId);
+                    string sqlSub = string.Format(@"SELECT * FROM T_Subject sb INNER JOIN T_AnswerRecord sr ON sr.SubSysNo = sb.SysNo WHERE sr.UserId = {0} AND sb.InforSysNo > 0 AND sb.IsEnable = 1 AND sr.IsEnable = 1",req.UserId);
 
                     var subDatas = DbSession.MLT.ExecuteSql<T_Subject>(sqlSub).ToList();
                     if (subDatas.IsNotNull() && subDatas.IsHasRow())
@@ -120,6 +121,25 @@ namespace Point.com.ServiceImplement
                 {
                     //当前会员未登录
                     orgNotSubs.AddRange(orgAllDatas);
+                }
+
+                //获取自媒体数据
+                string sqlArt = string.Format(@"SELECT TOP 500 * FROM T_SelfMediaArticle WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY SortId DESC", req.InfoType);
+                var articleList = DbSession.MLT.ExecuteSql<T_SelfMediaArticle>(sqlArt).ToList();
+                List<T_InforConfigure> infoArtList = null;
+                if (articleList.IsNotNull() && articleList.IsHasRow())
+                {
+                    //将 T_SelfMediaArticle 转换为 T_InforConfigure
+                    infoArtList = new List<T_InforConfigure>();
+                    var auths = AllAuthorInfo();
+                    foreach (var sel in articleList)
+                    {
+                        var infoArt = TableTInforConfigure(sel,auths);
+                        if (infoArt.IsNotNull())
+                        {
+                            infoArtList.Add(infoArt);
+                        }
+                    }
                 }
 
                 #endregion
@@ -155,6 +175,7 @@ namespace Point.com.ServiceImplement
                 int newsCount = 0;
                 int shopCount = 0;
                 int devCount = 0;
+                int artCount = 0;
 
                 if (newsList.IsNotNull() && newsList.IsHasRow())
                 {
@@ -171,6 +192,11 @@ namespace Point.com.ServiceImplement
                     devCount = advList.Count;
                 }
 
+                if (infoArtList.IsNotNull() && infoArtList.IsHasRow())
+                {
+                    artCount = infoArtList.Count;
+                }
+
                 int forIndex = newsCount;
                 if (forIndex < shopCount)
                 {
@@ -182,100 +208,532 @@ namespace Point.com.ServiceImplement
                     forIndex = devCount;
                 }
 
+                if (forIndex < artCount)
+                {
+                    forIndex = artCount;
+                }
+
                 int newsIndex = 0;
                 int shopIndex = 0;
                 int devIndex = 0;
+                int artIndex = 0;
 
-                if (newsList.IsNotNull() && newsList.IsHasRow())
+                #region 新逻辑  展示顺序 数量可配置
+
+                //1新闻  2店铺  3答题  4文章
+                int one = Configurator.One;
+                int two = Configurator.Two;
+                int three = Configurator.Three;
+                int frour = Configurator.Frour;
+
+                int oneCount = Configurator.OneCount;
+                int twoCount = Configurator.TwoCount;
+                int threeCount = Configurator.ThreeCount;
+                int frourCount = Configurator.FrourCount;
+
+                for (int i = 0; i < forIndex; i++)
                 {
-                    #region
+                    #region 展示第一位
 
-                    int fiveNewsIndex = 0;
-                    foreach (var newL in newsList)
+                    switch (one)
                     {
-                        if (fiveNewsIndex < 5)
-                        {
-                            sortList.Add(newL);
-                            fiveNewsIndex = fiveNewsIndex + 1;
-                        }
-                        else
-                        {
-                            if (advList.IsNotNull() && advList.IsHasRow())
-                            {
-                                if (advList.Count > devIndex)
-                                {
-                                    sortList.Add(advList[devIndex]);
-                                    devIndex = devIndex + 1;
-                                }
-                            }
+                        case 1:
 
-                            if (shopList.IsNotNull() && shopList.IsHasRow())
-                            {
-                                if (shopList.Count > shopIndex)
-                                {
-                                    sortList.Add(shopList[shopIndex]);
-                                    shopIndex = shopIndex + 1;
-                                }
-                            }
+                            #region 新闻
 
-                            fiveNewsIndex = 0;
-                        }
-
-                        newsIndex = newsIndex + 1;
-                        if (newsIndex >= newsList.Count)
-                        {
-                            for (int i = 0; i < forIndex; i++)
+                            if (oneCount > 0 && newsCount > newsIndex)
                             {
-                                if (advList.IsNotNull() && advList.IsHasRow())
+                                for (int j = 0; j < oneCount; j++)
                                 {
-                                    if (advList.Count > devIndex)
+                                    if (newsCount > newsIndex)
                                     {
-                                        sortList.Add(advList[devIndex]);
-                                        devIndex = devIndex + 1;
+                                        sortList.Add(newsList[newsIndex]);
+                                        newsIndex = newsIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
                                     }
                                 }
+                            }
 
-                                if (shopList.IsNotNull() && shopList.IsHasRow())
+                            #endregion
+
+                            break;
+                        case 2:
+
+                            #region 店铺
+
+                            if (twoCount > 0 && shopCount > shopIndex)
+                            {
+                                for (int j = 0; j < twoCount; j++)
                                 {
-                                    if (shopList.Count > shopIndex)
+                                    if (shopCount > shopIndex)
                                     {
                                         sortList.Add(shopList[shopIndex]);
                                         shopIndex = shopIndex + 1;
                                     }
+                                    else
+                                    {
+                                        break;
+                                    }
                                 }
                             }
-                        }
+
+                            #endregion
+
+                            break;
+                        case 3:
+
+                            #region 答题
+
+                            if (threeCount > 0 && devCount > devIndex)
+                            {
+                                for (int j = 0; j < threeCount; j++)
+                                {
+                                    if (devCount > devIndex)
+                                    {
+                                        sortList.Add(advList[devIndex]);
+                                        devIndex = devIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 4:
+
+                            #region 答题
+
+                            if (frourCount > 0 && artCount > artIndex)
+                            {
+                                for (int j = 0; j < frourCount; j++)
+                                {
+                                    if (artCount > artIndex)
+                                    {
+                                        sortList.Add(infoArtList[artIndex]);
+                                        artIndex = artIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
                     }
 
                     #endregion
-                }
-                else
-                {
-                    #region
 
-                    for (int i = 0; i < forIndex; i++)
+                    #region 展示第二位
+
+                    switch (two)
                     {
-                        if (advList.IsNotNull() && advList.IsHasRow())
-                        {
-                            if (advList.Count > devIndex)
-                            {
-                                sortList.Add(advList[devIndex]);
-                                devIndex = devIndex + 1;
-                            }
-                        }
+                        case 1:
 
-                        if (shopList.IsNotNull() && shopList.IsHasRow())
-                        {
-                            if (shopList.Count > shopIndex)
+                            #region 新闻
+
+                            if (oneCount > 0 && newsCount > newsIndex)
                             {
-                                sortList.Add(shopList[shopIndex]);
-                                shopIndex = shopIndex + 1;
+                                for (int j = 0; j < oneCount; j++)
+                                {
+                                    if (newsCount > newsIndex)
+                                    {
+                                        sortList.Add(newsList[newsIndex]);
+                                        newsIndex = newsIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
                             }
-                        }
+
+                            #endregion
+
+                            break;
+                        case 2:
+
+                            #region 店铺
+
+                            if (twoCount > 0 && shopCount > shopIndex)
+                            {
+                                for (int j = 0; j < twoCount; j++)
+                                {
+                                    if (shopCount > shopIndex)
+                                    {
+                                        sortList.Add(shopList[shopIndex]);
+                                        shopIndex = shopIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 3:
+
+                            #region 答题
+
+                            if (threeCount > 0 && devCount > devIndex)
+                            {
+                                for (int j = 0; j < threeCount; j++)
+                                {
+                                    if (devCount > devIndex)
+                                    {
+                                        sortList.Add(advList[devIndex]);
+                                        devIndex = devIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 4:
+
+                            #region 答题
+
+                            if (frourCount > 0 && artCount > artIndex)
+                            {
+                                for (int j = 0; j < frourCount; j++)
+                                {
+                                    if (artCount > artIndex)
+                                    {
+                                        sortList.Add(infoArtList[artIndex]);
+                                        artIndex = artIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                    }
+
+                    #endregion
+
+                    #region 展示第三位
+
+                    switch (three)
+                    {
+                        case 1:
+
+                            #region 新闻
+
+                            if (oneCount > 0 && newsCount > newsIndex)
+                            {
+                                for (int j = 0; j < oneCount; j++)
+                                {
+                                    if (newsCount > newsIndex)
+                                    {
+                                        sortList.Add(newsList[newsIndex]);
+                                        newsIndex = newsIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 2:
+
+                            #region 店铺
+
+                            if (twoCount > 0 && shopCount > shopIndex)
+                            {
+                                for (int j = 0; j < twoCount; j++)
+                                {
+                                    if (shopCount > shopIndex)
+                                    {
+                                        sortList.Add(shopList[shopIndex]);
+                                        shopIndex = shopIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 3:
+
+                            #region 答题
+
+                            if (threeCount > 0 && devCount > devIndex)
+                            {
+                                for (int j = 0; j < threeCount; j++)
+                                {
+                                    if (devCount > devIndex)
+                                    {
+                                        sortList.Add(advList[devIndex]);
+                                        devIndex = devIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 4:
+
+                            #region 答题
+
+                            if (frourCount > 0 && artCount > artIndex)
+                            {
+                                for (int j = 0; j < frourCount; j++)
+                                {
+                                    if (artCount > artIndex)
+                                    {
+                                        sortList.Add(infoArtList[artIndex]);
+                                        artIndex = artIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                    }
+
+                    #endregion
+
+                    #region 展示第四位
+
+                    switch (frour)
+                    {
+                        case 1:
+
+                            #region 新闻
+
+                            if (oneCount > 0 && newsCount > newsIndex)
+                            {
+                                for (int j = 0; j < oneCount; j++)
+                                {
+                                    if (newsCount > newsIndex)
+                                    {
+                                        sortList.Add(newsList[newsIndex]);
+                                        newsIndex = newsIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 2:
+
+                            #region 店铺
+
+                            if (twoCount > 0 && shopCount > shopIndex)
+                            {
+                                for (int j = 0; j < twoCount; j++)
+                                {
+                                    if (shopCount > shopIndex)
+                                    {
+                                        sortList.Add(shopList[shopIndex]);
+                                        shopIndex = shopIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 3:
+
+                            #region 答题
+
+                            if (threeCount > 0 && devCount > devIndex)
+                            {
+                                for (int j = 0; j < threeCount; j++)
+                                {
+                                    if (devCount > devIndex)
+                                    {
+                                        sortList.Add(advList[devIndex]);
+                                        devIndex = devIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
+                        case 4:
+
+                            #region 答题
+
+                            if (frourCount > 0 && artCount > artIndex)
+                            {
+                                for (int j = 0; j < frourCount; j++)
+                                {
+                                    if (artCount > artIndex)
+                                    {
+                                        sortList.Add(infoArtList[artIndex]);
+                                        artIndex = artIndex + 1;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            #endregion
+
+                            break;
                     }
 
                     #endregion
                 }
+
+                #endregion 
+
+                #region 老的代码  不要了
+
+                //if (newsList.IsNotNull() && newsList.IsHasRow())
+                //{
+                //    #region
+
+                //    int fiveNewsIndex = 0;
+                //    foreach (var newL in newsList)
+                //    {
+                //        if (fiveNewsIndex < 5)
+                //        {
+                //            sortList.Add(newL);
+                //            fiveNewsIndex = fiveNewsIndex + 1;
+                //        }
+                //        else
+                //        {
+                //            if (advList.IsNotNull() && advList.IsHasRow())
+                //            {
+                //                if (advList.Count > devIndex)
+                //                {
+                //                    sortList.Add(advList[devIndex]);
+                //                    devIndex = devIndex + 1;
+                //                }
+                //            }
+
+                //            if (shopList.IsNotNull() && shopList.IsHasRow())
+                //            {
+                //                if (shopList.Count > shopIndex)
+                //                {
+                //                    sortList.Add(shopList[shopIndex]);
+                //                    shopIndex = shopIndex + 1;
+                //                }
+                //            }
+
+                //            fiveNewsIndex = 0;
+                //        }
+
+                //        newsIndex = newsIndex + 1;
+                //        if (newsIndex >= newsList.Count)
+                //        {
+                //            #region
+
+                //            for (int i = 0; i < forIndex; i++)
+                //            {
+                //                if (advList.IsNotNull() && advList.IsHasRow())
+                //                {
+                //                    if (advList.Count > devIndex)
+                //                    {
+                //                        sortList.Add(advList[devIndex]);
+                //                        devIndex = devIndex + 1;
+                //                    }
+                //                }
+
+                //                if (shopList.IsNotNull() && shopList.IsHasRow())
+                //                {
+                //                    if (shopList.Count > shopIndex)
+                //                    {
+                //                        sortList.Add(shopList[shopIndex]);
+                //                        shopIndex = shopIndex + 1;
+                //                    }
+                //                }
+                //            }
+
+                //            #endregion
+                //        }
+                //    }
+
+                //    #endregion
+                //}
+                //else
+                //{
+                //    #region
+
+                //    for (int i = 0; i < forIndex; i++)
+                //    {
+                //        if (advList.IsNotNull() && advList.IsHasRow())
+                //        {
+                //            if (advList.Count > devIndex)
+                //            {
+                //                sortList.Add(advList[devIndex]);
+                //                devIndex = devIndex + 1;
+                //            }
+                //        }
+
+                //        if (shopList.IsNotNull() && shopList.IsHasRow())
+                //        {
+                //            if (shopList.Count > shopIndex)
+                //            {
+                //                sortList.Add(shopList[shopIndex]);
+                //                shopIndex = shopIndex + 1;
+                //            }
+                //        }
+                //    }
+
+                //    #endregion
+                //}
+
+                #endregion
 
                 #endregion
 
@@ -2245,7 +2703,7 @@ namespace Point.com.ServiceImplement
 
             if (favs.IsNull() || !favs.IsHasRow())
             {
-                ptcp.DoResult = "没有推荐数据";
+                ptcp.DoResult = "没有推荐内容";
                 return ptcp;
             }
             string strInforSysNo = "";
@@ -2375,6 +2833,64 @@ namespace Point.com.ServiceImplement
             }
 
             return ptcp;
+        }
+
+        /// <summary>
+        /// T_SelfMediaArticle 转换为 T_InforConfigure
+        /// </summary>
+        /// <param name="art"></param>
+        /// <returns></returns>
+        private static T_InforConfigure TableTInforConfigure(T_SelfMediaArticle art,List<T_SelfMediaAuthor> authors)
+        {
+            if (art.IsNotNull())
+            {
+                T_InforConfigure infor = new T_InforConfigure();
+                infor.SysNo = art.SysNo;
+                infor.DataType = 8;
+                infor.StrInforType = art.StrInforType;
+                infor.HeadPic = art.HeadPic;
+
+                infor.InforName = art.Title;
+                infor.InforRemark = art.Subtitle;
+
+                infor.InforDesc = "";
+                if (authors.IsNotNull() && authors.IsHasRow())
+                {
+                    var auth = authors.Where(c => c.SysNo == art.AuthorSysNo).FirstOrDefault();
+                    if (auth.IsNotNull())
+                    {
+                        infor.InforDesc = auth.AuthorName;   //作者
+                    }
+                }
+
+                infor.ShowMode = art.ShowMode;
+                infor.IsShowIndex = art.IsShowIndex;
+                infor.IntSort = art.SortId;
+
+                infor.RowCeateDate = art.RowCeateDate;
+                infor.SourceDateTime = art.RowCeateDate;
+
+                return infor;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        
+        private List<T_SelfMediaAuthor> AllAuthorInfo()
+        {
+            string cachKey = string.Format("{0}.AllAuthorInfo", GetType().Name);
+
+            List<T_SelfMediaAuthor> authors = CacheClientSession.LocalCacheClient.Get(cachKey, () =>
+                {
+                    return DbSession.MLT.T_SelfMediaAuthorRepository.QueryBy(new T_SelfMediaAuthor()
+                        {
+                            IsEnable = true
+                        }).ToList();
+                }, new TimeSpan(1, 0, 0));
+
+            return authors;
         }
     }
 }

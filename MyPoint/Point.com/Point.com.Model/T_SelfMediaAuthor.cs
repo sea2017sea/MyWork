@@ -13,14 +13,13 @@ namespace Point.com.Model
     using System.Collections.Generic;
     
     [Serializable]
-    			public partial class Crm_Interactive:ModelBase
+    			public partial class T_SelfMediaAuthor:ModelBase
     {
         public Nullable<int> SysNo { get; set; }
-        public Nullable<int> ProblemSysNo { get; set; }
-        public string InteractiveName { get; set; }
-        public Nullable<int> Number { get; set; }
-        public Nullable<decimal> Proportion { get; set; }
-        public string Remark { get; set; }
+        public string AuthorName { get; set; }
+        public string Portrait { get; set; }
+        public string Describe { get; set; }
+        public Nullable<decimal> Score { get; set; }
         public Nullable<System.DateTime> RowCeateDate { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }
         public Nullable<bool> IsEnable { get; set; }

@@ -106,6 +106,7 @@
     <Compile Include="ForJiGuang\Preconditions.cs" />
     <Compile Include="ForJiGuang\PushClient.cs" />
     <Compile Include="ForJiGuang\ReportClient.cs" />
+    <Compile Include="ForSelfMediaImpl.cs" />
     <Compile Include="ForWxPay\ForWxPayImpl.cs" />
     <Compile Include="ForWxPay\HttpService.cs" />
     <Compile Include="ForWxPay\WxPayData.cs" />

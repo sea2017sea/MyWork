@@ -87,6 +87,7 @@
     <Compile Include="M_ForBase.cs" />
     <Compile Include="M_ForInfor.cs" />
     <Compile Include="M_ForJiGuangPush.cs" />
+    <Compile Include="M_ForSelfMedia.cs" />
     <Compile Include="M_ForWxPay.cs" />
     <Compile Include="M_MemberDep.cs" />
     <Compile Include="M_Sms.cs" />
@@ -137,6 +138,18 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="T_Recharge.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SelfMediaArticle.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SelfMediaAuthor.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SelfMediaFollowRecord.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SelfMediaPayRecord.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="T_ShareAnswerRecord.cs">

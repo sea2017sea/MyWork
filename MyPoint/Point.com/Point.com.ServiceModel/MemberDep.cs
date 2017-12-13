@@ -69,14 +69,17 @@ namespace Point.com.ServiceModel
 
         public string MobileModel { get; set; }                   //手机型号  安卓给的是手机型号；IOS可能给的手机屏幕尺寸，也可能手机型号
 
-        public Nullable<decimal> Account { get; set; }                  //账户总的现金   
-        public string StrAccount { get; set; }                          //账户总的现金   
-        public Nullable<decimal> AccountWithdrawn { get; set; }         //账号提现总现金
-        public string StrAccountWithdrawn { get; set; }                 //账号提现总现金
-        public Nullable<decimal> Score { get; set; }                    //账户总的抵用金金额
-        public string StrScore { get; set; }                            //账户总的抵用金金额
-        public Nullable<decimal> ScoreWithdrawn { get; set; }           //账户申请提现抵用金金额
-        public string StrScoreWithdrawn { get; set; }                   //账户申请提现抵用金金额
+
+        public Nullable<decimal> Account { get; set; }                  //账户总的现金    2017-12-09改版确认不要了     
+        public string StrAccount { get; set; }                          //账户总的现金    2017-12-09改版确认不要了    
+        public Nullable<decimal> AccountWithdrawn { get; set; }         //账号提现总现金  2017-12-09改版确认不要了    
+        public string StrAccountWithdrawn { get; set; }                 //账号提现总现金  2017-12-09改版确认不要了    
+        public Nullable<decimal> ScoreWithdrawn { get; set; }           //账户累积提现低用金金额，单位：元  未转化为RMBd的金额
+        public string StrScoreWithdrawn { get; set; }                   //账户累积提现低用金金额，单位：元  未转化为RMBd的金额
+
+
+        public Nullable<decimal> Score { get; set; }                    //账户总的可用抵用金金额，单位：元  未转化为RMBd的金额
+        public string StrScore { get; set; }                            //账户总的可用抵用金金额，单位：元  未转化为RMBd的金额
 
 
         //public string JpushId { get; set; }                           //推送数据标识  不要了

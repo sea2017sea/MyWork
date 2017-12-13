@@ -31,13 +31,13 @@ namespace Point.com.ServiceModel
     public class HomePageData
     {
         public int SysNo { get; set; }               //主键，自增长
-        public int DataType { get; set; }            //信息类型  1 咨询、新闻   2 导购咨询(店铺)   4广告咨询（答题 ）
+        public int DataType { get; set; }            //信息类型   1 咨询、新闻   2 导购咨询(店铺)   4广告咨询（答题 ） 8 自媒体文章
         //public string StrInforType { get; set; }     //推送类型 0 所有  1 30岁以上男  2 30岁以下男  4 30岁以上女   8 30岁以下女，格式：[1],[2],[3]
-        public string InforName { get; set; }        //信息标题
-        public string InforRemark { get; set; }      //信息的备注信息，自己填写，如：区域
-        public string InforDesc { get; set; }         //信息描述
+        public string InforName { get; set; }        //信息标题  DataType=8时是 文章标题
+        public string InforRemark { get; set; }      //信息的备注信息，自己填写，如：区域   DataType=8时是 文章副标题
+        public string InforDesc { get; set; }         //信息描述   DataType=8时是文章的作者
         public string LogoIcon { get; set; }          //logo图标，店铺的logo
-        public string HeadPic { get; set; }           //头图(左右、横排都是这个头图)
+        public string HeadPic { get; set; }           //头图(左右、横排都是这个头图)  DataType=8时是文章的图片
         public string CoverPic { get; set; }          //封面图片
         public string ShopPic { get; set; }          //店铺列表图片地址
         public string PushPic { get; set; }          //推送页面图片地址
@@ -49,8 +49,8 @@ namespace Point.com.ServiceModel
         public string LinkUrl { get; set; }           //跳转链接地址
         public int IntSort { get; set; }              //排序，数值越大越靠前     
 
-        public DateTime SourceDateTime { get; set; }    //来源时间
-        public string StrSourceDateTime { get; set; }  //来源时间
+        public DateTime SourceDateTime { get; set; }    //来源时间    DataType=8时是文章的时间
+        public string StrSourceDateTime { get; set; }  //来源时间     DataType=8时是文章的时间
     }
 
     public class CheckFavoritesReq

@@ -62,7 +62,7 @@ namespace Point.com.Model
 
     public class M_AddAccountRecordReq
     {
-        //交易类型  1 回答问题（参与互动）    2 邀请好友（分享好友）  4 购买积分  8 出售积分 16 现金提现
+        //交易类型  1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵扣劵)   64 阅读文章付费
         public int TranType { get; set; }
         public int UserId { get; set; }         //会员ID
         public decimal TranNum { get; set; }    //交易的抵佣金金额

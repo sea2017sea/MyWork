@@ -281,7 +281,7 @@ namespace Point.com.ServiceImplement
             {
                 case (int) Enums.TranType.Partic:
                     //参与互动
-                    tRecord.PlusReduce = 1;
+                    tRecord.PlusReduce = 1;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
                     tRecord.TranName = "参与互动";
                     tRecord.TranNum = req.TranNum;
@@ -308,7 +308,7 @@ namespace Point.com.ServiceImplement
                     break;
                 case (int) Enums.TranType.Share:
                     //邀请好友，分享好友
-                    tRecord.PlusReduce = 1;
+                    tRecord.PlusReduce = 1;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
                     tRecord.TranName = "邀请好友";
                     tRecord.TranNum = req.TranNum;
@@ -331,7 +331,7 @@ namespace Point.com.ServiceImplement
                     break;
                 case (int) Enums.TranType.PurchaseScore:
                     //转出积分
-                    tRecord.PlusReduce = 2;
+                    tRecord.PlusReduce = 2;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
                     tRecord.TranName = string.Format("转出{0}", Enums.ScoreName);
                     tRecord.TranNum = req.TranNum;
@@ -372,7 +372,7 @@ namespace Point.com.ServiceImplement
                     break;
                 case (int) Enums.TranType.Sell:
                     //转入积分
-                    tRecord.PlusReduce = 1;
+                    tRecord.PlusReduce = 1;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
                     tRecord.TranName = string.Format("转入{0}", Enums.ScoreName);
                     tRecord.TranNum = req.TranNum;
@@ -395,7 +395,7 @@ namespace Point.com.ServiceImplement
                     break;
                 case (int) Enums.TranType.TiXian:
                     //提现
-                    tRecord.PlusReduce = 2;
+                    tRecord.PlusReduce = 2;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
                     tRecord.TranName = "提现";
                     tRecord.TranNum = -req.TranNum;
@@ -422,7 +422,7 @@ namespace Point.com.ServiceImplement
                     break;
                 case (int) Enums.TranType.ExcGoods:
                     //兑换抵扣劵
-                    tRecord.PlusReduce = 2;
+                    tRecord.PlusReduce = 2;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
                     tRecord.TranName = "兑换抵扣劵";
                     tRecord.TranNum = -req.TranNum;
@@ -455,6 +455,29 @@ namespace Point.com.ServiceImplement
                     {
                         Score = scoreDb,
                         ScoreWithdrawn = scoreWithdrawnDb,
+                        ModifyTime = dtNow
+                    }, new T_Member() { SysNo = req.UserId });
+
+                    #endregion
+
+                    break;
+                case (int)Enums.TranType.ReadArticle:
+                    //付费，阅读文章
+                    tRecord.PlusReduce = 2;    //交易获取或者使用 1增加 2 使用（减）
+                    tRecord.Company = Enums.Rmb;
+                    tRecord.TranName = "阅读文章";
+                    tRecord.TranNum = req.TranNum;
+
+                    sendPush.MsgTitle = string.Format("阅读文章{0}扣除", Enums.ScoreName);
+                    sendPush.MsgAlert = string.Format("阅读文章，扣除{0}{1}元。", Enums.ScoreName, req.TranNum);
+                    sendPush.MsgContent = string.Format("阅读文章{0}扣除", Enums.ScoreName);
+
+                    #region 更新账户积分信息
+
+                    //更新账户积分信息
+                    DbSession.MLT.T_MemberRepository.Update(new T_Member()
+                    {
+                        Score = (memberInfo.Score - req.TranNum),
                         ModifyTime = dtNow
                     }, new T_Member() { SysNo = req.UserId });
 
@@ -821,6 +844,95 @@ namespace Point.com.ServiceImplement
         }
 
         /// <summary>
+        /// 提现 2017-12-11改版新的提现接口
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="amount">提现金额</param>
+        /// <returns></returns>
+        public Ptcp<string> MemberWithdrawalsTwo(int userid, decimal amount)
+        {
+            var ptcp = new Ptcp<string>();
+
+            if (userid <= 0)
+            {
+                ptcp.DoResult = "会员ID错误";
+                return ptcp;
+            }
+
+            if (amount < 1)
+            {
+                ptcp.DoResult = "提现金额不能小于1元";
+                return ptcp;
+            }
+
+            //获取会员信息
+            var memberInfo = DbSession.MLT.T_MemberRepository.QueryBy(new T_Member()
+            {
+                SysNo = userid
+            }).FirstOrDefault();
+            if (memberInfo.IsNull() || memberInfo.SysNo <= 0)
+            {
+                ptcp.DoResult = "会员ID错误";
+                return ptcp;
+            }
+
+            //低佣金转为金额 
+            decimal scoreRmb = memberInfo.Score.GetValueOrDefault()/100;
+            if (scoreRmb < 1)
+            {
+                ptcp.DoResult = "账户金额小于1元，不能提现";
+                return ptcp;
+            }
+
+            if (amount > scoreRmb)
+            {
+                ptcp.DoResult = string.Format("账户金额不足，可提现金额{0}元",scoreRmb);
+                return ptcp;
+            }
+
+            if (string.IsNullOrEmpty(memberInfo.OpenidWxOpen))
+            {
+                ptcp.DoResult = "微信账号未关联，无法提现";
+                return ptcp;
+            }
+
+            DateTime dtNow = DateTime.Now;
+            //持久化数据
+            //更新会员主表提现记录
+            DbSession.MLT.T_MemberRepository.Update(new T_Member()
+                {
+                    Score = memberInfo.Score - (amount * 100),               //账户剩余低佣金
+                    ScoreWithdrawn = memberInfo.ScoreWithdrawn + (amount * 100),   //累计提现金额
+                    ModifyTime = dtNow
+                }, new T_Member() { SysNo = userid });
+            
+            //保存提交记录
+            DbSession.MLT.T_WithdrawalsRepository.Add(new T_Withdrawals()
+                {
+                    UserId = userid,
+                    OpenidWxOpen = memberInfo.OpenidWxOpen,
+                    WithdrawalsMoney = amount,
+                    WithdrawalsState = (int)Enums.WithdrawalsState.Untreated,
+                    RowCeateDate = dtNow,
+                    IsEnable = true
+                });
+
+            //保存账户流水交易
+            AddAccountRecord(new M_AddAccountRecordReq()
+            {
+                TranType = (int)Enums.TranType.TiXian,
+                TranNum = amount,
+                UserId = userid,
+                InRemarks = ""
+            });
+
+            DbSession.MLT.SaveChange();
+            ptcp.DoFlag = PtcpState.Success;
+            ptcp.DoResult = "现金将在24小时通过微信红包发放，尽请查收";
+            return ptcp;
+        }
+
+        /// <summary>
         /// 提现
         /// </summary>
         /// <param name="userid"></param>
@@ -867,17 +979,17 @@ namespace Point.com.ServiceImplement
             //        AccountWithdrawn = memberInfo.Account,
             //        ModifyTime = dtNow
             //    },new T_Member(){SysNo = userid});
-            
+
             //保存提交记录
             DbSession.MLT.T_WithdrawalsRepository.Add(new T_Withdrawals()
-                {
-                    UserId = userid,
-                    OpenidWxOpen = memberInfo.OpenidWxOpen,
-                    WithdrawalsMoney = memberInfo.Account,
-                    WithdrawalsState = (int)Enums.WithdrawalsState.Untreated,
-                    RowCeateDate = dtNow,
-                    IsEnable = true
-                });
+            {
+                UserId = userid,
+                OpenidWxOpen = memberInfo.OpenidWxOpen,
+                WithdrawalsMoney = memberInfo.Account,
+                WithdrawalsState = (int)Enums.WithdrawalsState.Untreated,
+                RowCeateDate = dtNow,
+                IsEnable = true
+            });
 
             //保存账户流水交易
             AddAccountRecord(new M_AddAccountRecordReq()

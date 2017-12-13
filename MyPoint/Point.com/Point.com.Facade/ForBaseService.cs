@@ -375,6 +375,33 @@ namespace Point.com.Facade
         }
 
         /// <summary>
+        /// 提现
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public MemberWithdrawalsTwoRes Any(MemberWithdrawalsTwoReq req)
+        {
+            var res = new MemberWithdrawalsTwoRes();
+
+            try
+            {
+                var ptcp = ServiceImpl.MemberWithdrawalsTwo(req.UserId, req.Amount);
+                if (ptcp.DoFlag == PtcpState.Success)
+                {
+                    res.DoFlag = (int)PtcpState.Success;
+                }
+                res.DoResult = ptcp.DoResult;
+            }
+            catch (Exception ex)
+            {
+                res.DoResult = "系统繁忙，请稍后再试";
+            }
+
+            return res;
+        }
+
+
+        /// <summary>
         /// 保存极光推送的会员ID
         /// </summary>
         /// <param name="req"></param>
