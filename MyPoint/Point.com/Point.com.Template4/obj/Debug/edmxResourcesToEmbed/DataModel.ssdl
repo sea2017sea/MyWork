@@ -35,6 +35,10 @@
     <EntitySet Name="T_Member" EntityType="MYZJ_MLTModel.Store.T_Member" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_OperationLog" EntityType="MYZJ_MLTModel.Store.T_OperationLog" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_Recharge" EntityType="MYZJ_MLTModel.Store.T_Recharge" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaArticle" EntityType="MYZJ_MLTModel.Store.T_SelfMediaArticle" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaAuthor" EntityType="MYZJ_MLTModel.Store.T_SelfMediaAuthor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaFollowRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaFollowRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaPayRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaPayRecord" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_ShareAnswerRecord" EntityType="MYZJ_MLTModel.Store.T_ShareAnswerRecord" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_ShareRegister" EntityType="MYZJ_MLTModel.Store.T_ShareRegister" store:Type="Tables" store:Schema="dbo" store:Name="T_ShareRegister">
       <DefiningQuery>SELECT 
@@ -355,7 +359,7 @@
     <Property Name="RegProvince" Type="int" />
     <Property Name="RegCity" Type="int" />
     <Property Name="RegArea" Type="int" />
-    <Property Name="Birthday" Type="datetime" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" />
     <Property Name="InforType" Type="int" Nullable="false" />
     <Property Name="Account" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="AccountWithdrawn" Type="decimal" Nullable="false" Scale="2" />
@@ -398,6 +402,64 @@
     <Property Name="PayTime" Type="datetime" />
     <Property Name="PayState" Type="int" Nullable="false" />
     <Property Name="IsUse" Type="int" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaArticle">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StrInforType" Type="varchar" Nullable="false" MaxLength="512" />
+    <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+    <Property Name="HeadPic" Type="varchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Subtitle" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="ReadScore" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="IsHot" Type="bit" Nullable="false" />
+    <Property Name="ShowMode" Type="int" Nullable="false" />
+    <Property Name="IsShowIndex" Type="int" Nullable="false" />
+    <Property Name="SortId" Type="int" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaAuthor">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorName" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Portrait" Type="nvarchar(max)" />
+    <Property Name="Describe" Type="nvarchar" MaxLength="256" />
+    <Property Name="Score" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaFollowRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+    <Property Name="IsFollow" Type="bit" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaPayRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+    <Property Name="ArticleSysNo" Type="int" Nullable="false" />
+    <Property Name="PayScore" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />

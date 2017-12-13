@@ -49,21 +49,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Crm_Interactive">
-      <EntityTypeMapping TypeName="MYZJ_MLTModel.Crm_Interactive">
-        <MappingFragment StoreEntitySet="Crm_Interactive">
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
-          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="Proportion" ColumnName="Proportion" />
-          <ScalarProperty Name="InteractiveName" ColumnName="InteractiveName" />
-          <ScalarProperty Name="ProblemSysNo" ColumnName="ProblemSysNo" />
-          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Crm_Problem">
       <EntityTypeMapping TypeName="MYZJ_MLTModel.Crm_Problem">
         <MappingFragment StoreEntitySet="Crm_Problem">
@@ -458,6 +443,83 @@
           <ScalarProperty Name="SourceTypeSysNo" ColumnName="SourceTypeSysNo" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="OperType" ColumnName="OperType" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SelfMediaAuthor">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaAuthor">
+        <MappingFragment StoreEntitySet="T_SelfMediaAuthor">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Describe" ColumnName="Describe" />
+          <ScalarProperty Name="Portrait" ColumnName="Portrait" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SelfMediaFollowRecord">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaFollowRecord">
+        <MappingFragment StoreEntitySet="T_SelfMediaFollowRecord">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="IsFollow" ColumnName="IsFollow" />
+          <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SelfMediaPayRecord">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaPayRecord">
+        <MappingFragment StoreEntitySet="T_SelfMediaPayRecord">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="PayScore" ColumnName="PayScore" />
+          <ScalarProperty Name="ArticleSysNo" ColumnName="ArticleSysNo" />
+          <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SelfMediaArticle">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaArticle">
+        <MappingFragment StoreEntitySet="T_SelfMediaArticle">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="IsShowIndex" ColumnName="IsShowIndex" />
+          <ScalarProperty Name="ShowMode" ColumnName="ShowMode" />
+          <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+          <ScalarProperty Name="ReadScore" ColumnName="ReadScore" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="HeadPic" ColumnName="HeadPic" />
+          <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+          <ScalarProperty Name="StrInforType" ColumnName="StrInforType" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Crm_Interactive">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.Crm_Interactive">
+        <MappingFragment StoreEntitySet="Crm_Interactive">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Proportion" ColumnName="Proportion" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="InteractiveName" ColumnName="InteractiveName" />
+          <ScalarProperty Name="ProblemSysNo" ColumnName="ProblemSysNo" />
           <ScalarProperty Name="SysNo" ColumnName="SysNo" />
         </MappingFragment>
       </EntityTypeMapping>

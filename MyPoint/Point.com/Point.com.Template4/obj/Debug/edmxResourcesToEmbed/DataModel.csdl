@@ -8,7 +8,6 @@
     <EntitySet Name="Crm_ClickExchange" EntityType="MYZJ_MLTModel.Crm_ClickExchange" />
     <EntitySet Name="Crm_DataAnalysis" EntityType="MYZJ_MLTModel.Crm_DataAnalysis" />
     <EntitySet Name="Crm_FinanceItem" EntityType="MYZJ_MLTModel.Crm_FinanceItem" />
-    <EntitySet Name="Crm_Interactive" EntityType="MYZJ_MLTModel.Crm_Interactive" />
     <EntitySet Name="Crm_Problem" EntityType="MYZJ_MLTModel.Crm_Problem" />
     <EntitySet Name="Crm_Push" EntityType="MYZJ_MLTModel.Crm_Push" />
     <EntitySet Name="Crm_User" EntityType="MYZJ_MLTModel.Crm_User" />
@@ -34,6 +33,11 @@
     <EntitySet Name="T_ShopGoods" EntityType="MYZJ_MLTModel.T_ShopGoods" />
     <EntitySet Name="T_InforConfigure" EntityType="MYZJ_MLTModel.T_InforConfigure" />
     <EntitySet Name="T_OperationLog" EntityType="MYZJ_MLTModel.T_OperationLog" />
+    <EntitySet Name="T_SelfMediaAuthor" EntityType="MYZJ_MLTModel.T_SelfMediaAuthor" />
+    <EntitySet Name="T_SelfMediaFollowRecord" EntityType="MYZJ_MLTModel.T_SelfMediaFollowRecord" />
+    <EntitySet Name="T_SelfMediaPayRecord" EntityType="MYZJ_MLTModel.T_SelfMediaPayRecord" />
+    <EntitySet Name="T_SelfMediaArticle" EntityType="MYZJ_MLTModel.T_SelfMediaArticle" />
+    <EntitySet Name="Crm_Interactive" EntityType="MYZJ_MLTModel.Crm_Interactive" />
   </EntityContainer>
   <EntityType Name="Base_Deliver">
     <Key>
@@ -180,22 +184,6 @@
     <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Crm_Interactive">
-    <Key>
-      <PropertyRef Name="SysNo" />
-    </Key>
-    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="ProblemSysNo" Nullable="false" />
-    <Property Type="String" Name="Label" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="InteractiveName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="DataValue" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Proportion" />
-    <Property Type="String" Name="Remark" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
-    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
-    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
-    <Property Type="Int32" Name="Number" Nullable="false" />
   </EntityType>
   <EntityType Name="Crm_Problem">
     <Key>
@@ -430,7 +418,7 @@
     <Property Type="Int32" Name="RegProvince" />
     <Property Type="Int32" Name="RegCity" />
     <Property Type="Int32" Name="RegArea" />
-    <Property Type="DateTime" Name="Birthday" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="Birthday" Precision="3" />
     <Property Type="Int32" Name="InforType" Nullable="false" />
     <Property Type="Decimal" Name="Account" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="AccountWithdrawn" Nullable="false" Precision="18" Scale="2" />
@@ -599,5 +587,77 @@
     <Property Type="String" Name="ClientIp" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="DeviceCode" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaAuthor">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Portrait" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Describe" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Score" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaFollowRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="AuthorSysNo" Nullable="false" />
+    <Property Type="Boolean" Name="IsFollow" Nullable="false" />
+    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaPayRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="AuthorSysNo" Nullable="false" />
+    <Property Type="Int32" Name="ArticleSysNo" Nullable="false" />
+    <Property Type="Decimal" Name="PayScore" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaArticle">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="StrInforType" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="AuthorSysNo" Nullable="false" />
+    <Property Type="String" Name="HeadPic" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Subtitle" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Content" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="ReadScore" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsHot" Nullable="false" />
+    <Property Type="Int32" Name="ShowMode" Nullable="false" />
+    <Property Type="Int32" Name="IsShowIndex" Nullable="false" />
+    <Property Type="Int32" Name="SortId" />
+    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Crm_Interactive">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ProblemSysNo" Nullable="false" />
+    <Property Type="String" Name="InteractiveName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Number" Nullable="false" />
+    <Property Type="Decimal" Name="Proportion" Precision="18" Scale="2" />
+    <Property Type="String" Name="Remark" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
 </Schema>

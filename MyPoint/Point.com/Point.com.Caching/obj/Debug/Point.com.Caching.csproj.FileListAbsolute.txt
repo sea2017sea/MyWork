@@ -28,8 +28,8 @@ E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Library\Point.com.Cachin
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.dll
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.pdb
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojResolveAssemblyReference.cache
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Library\Point.com.Caching.dll
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Library\Point.com.Caching.pdb
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojResolveAssemblyReference.cache
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.dll
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Caching.dll
+D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Caching.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.dll
+D:\李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojResolveAssemblyReference.cache

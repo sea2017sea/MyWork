@@ -21,8 +21,7 @@ E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Library\Point.com.Common
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.csprojResolveAssemblyReference.cache
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Library\Point.com.Common.dll
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Library\Point.com.Common.pdb
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.csprojResolveAssemblyReference.cache
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Common.dll
+D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Common.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
+D:\李海涛\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb

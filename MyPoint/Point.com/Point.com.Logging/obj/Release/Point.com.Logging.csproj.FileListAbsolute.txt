@@ -16,3 +16,12 @@ E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\Serv
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.csprojResolveAssemblyReference.cache
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.dll
 E:\2012-10-29李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\Point.com.Logging.dll
+D:\李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\Point.com.Logging.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\Point.com.Common.dll
+D:\李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\ServiceStack.Text.dll
+D:\李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\Point.com.Common.pdb
+D:\李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\ServiceStack.Text.xml
+D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.csprojResolveAssemblyReference.cache
+D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.dll
+D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.pdb

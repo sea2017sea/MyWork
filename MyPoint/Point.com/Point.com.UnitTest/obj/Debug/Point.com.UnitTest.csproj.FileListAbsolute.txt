@@ -166,6 +166,6 @@ F:\练习复制框架\Point.com\Point.com.UnitTest\bin\Debug\ServiceStack.Redis.
 F:\练习复制框架\Point.com\Point.com.UnitTest\bin\Debug\ServiceStack.Text.xml
 F:\练习复制框架\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.dll
 F:\练习复制框架\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.pdb
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.csprojResolveAssemblyReference.cache
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.dll
-E:\2017-12-04李海涛\工作学习\母婴之家(2012-10-29李海涛)\我的工作\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.pdb
+E:\mygit\MyPoint\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.csprojResolveAssemblyReference.cache
+E:\mygit\MyPoint\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.dll
+E:\mygit\MyPoint\Point.com\Point.com.UnitTest\obj\Debug\Point.com.UnitTest.pdb
