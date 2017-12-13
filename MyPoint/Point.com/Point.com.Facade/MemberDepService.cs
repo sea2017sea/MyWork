@@ -365,5 +365,31 @@ namespace Point.com.Facade
 
             return res;
         }
+
+        /// <summary>
+        /// 修改会员性别
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public UpdateMemberSexRes Any(UpdateMemberSexReq req)
+        {
+            var res = new UpdateMemberSexRes();
+
+            try
+            {
+                var ptcp = ServiceImpl.UpdateMemberSex(req.UserId,req.Sex);
+                if (ptcp.DoFlag == PtcpState.Success)
+                {
+                    res.DoFlag = (int)PtcpState.Success;
+                }
+                res.DoResult = ptcp.DoResult;
+            }
+            catch (Exception ex)
+            {
+                res.DoResult = "系统繁忙，请稍后再试";
+            }
+
+            return res;
+        }
     }
 }

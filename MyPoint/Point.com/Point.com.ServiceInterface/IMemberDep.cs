@@ -53,7 +53,7 @@ namespace Point.com.ServiceInterface
         /// <param name="mobile"></param>
         /// <returns></returns>
         Ptcp<string> QueryMemberInfoByMobile(string mobile);
-
+        
         /// <summary>
         /// 检查会员是否存在
         /// </summary>
@@ -94,5 +94,13 @@ namespace Point.com.ServiceInterface
         /// <param name="req"></param>
         /// <returns></returns>
         Ptcp<string> UpdateMembereNickName(M_UpdateMembereNickNameReq req);
+
+        /// <summary>
+        /// 修改会员性别
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="sex"></param>
+        /// <returns></returns>
+        Ptcp<string> UpdateMemberSex(int userid, int sex);
     }
 }

@@ -93,7 +93,7 @@ namespace Point.com.ServiceImplement
                     SourceTypeSysNo = req.SourceTypeSysNo
                 });
 
-                //更新最后一次登录的实际
+                //更新最后一次登录的时间
                 DbSession.MLT.T_MemberRepository.Update(new T_Member()
                     {
                         LastLoginTime = DateTime.Now
@@ -771,6 +771,41 @@ namespace Point.com.ServiceImplement
 
             ptcp.DoFlag = PtcpState.Success;
             ptcp.DoResult = "修改昵称成功";
+            return ptcp;
+        }
+
+        /// <summary>
+        /// 修改会员性别
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="sex"></param>
+        /// <returns></returns>
+        public Ptcp<string> UpdateMemberSex(int userid, int sex)
+        {
+            var ptcp = new Ptcp<string>();
+
+            if (userid <= 0)
+            {
+                ptcp.DoResult = "会员ID错误";
+                return ptcp;
+            }
+
+            if (sex != (int)Enums.Sex.men && sex != (int)Enums.Sex.women)
+            {
+                ptcp.DoResult = "请选择性别";
+                return ptcp;
+            }
+
+            DbSession.MLT.T_MemberRepository.Update(new T_Member() {
+                Sex = sex,
+                ModifyTime = DateTime.Now
+            },new T_Member() {
+                SysNo = userid
+            });
+            DbSession.MLT.SaveChange();
+
+            ptcp.DoFlag = PtcpState.Success;
+            ptcp.DoResult = "修改成功";
             return ptcp;
         }
 

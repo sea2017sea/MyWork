@@ -213,4 +213,14 @@ namespace Point.com.ServiceModel
     {
 
     }
+
+    public class UpdateMemberSexReq
+    {
+        public int UserId { get; set; }              //会员ID
+        public int Sex { get; set; }                        //性别 ，0 保密  1 男 2女
+    }
+
+        public class UpdateMemberSexRes : BaseResponse
+    {
+    }
 }
