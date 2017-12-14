@@ -1,0 +1,531 @@
+
+服务api地址：        http://api.point-server.com/
+crm管理后台地址：    http://crm.point-server.com/
+wap地址：            http://wap.point-server.com/
+图片服务地址：       http://img.point-server.com/
+wap地址：            http://wap.point-server.com/
+服务说明txt文档：    http://img.point-server.com/service.txt
+
+
+
+
+2017-12-13
+55、根据文章ID查询文章信息 h5专门使用，APP不需要管此服务 不需要付费可直接阅读
+http://api.point-server.com/json/metadata?op=QueryArticleReadByIdReq
+请求参数：
+    public class QueryArticleReadByIdReq
+    {
+        public int ArticleSysNo { get; set; }         //文章ID,必传
+    }
+
+返回参数：
+    与  49  QueryArticleByIdReq  服务一样
+
+
+56、获取首页的红点数量
+http://api.point-server.com/json/metadata?op=QueryHomePageRedDotReq
+请求参数：
+    public class QueryHomePageRedDotReq
+    {
+        public int UserId { get; set; }                     //会员ID
+    }
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+    public class QueryHomePageRedDotRes : BaseResponse
+    {
+        public int RedCount { get; set; }                  //红点数量、未读文章的数量，> 0 UI则需要展示 
+    }
+
+57、修改会员性别
+http://api.point-server.com/json/metadata?op=UpdateMemberSexReq
+请求参数：
+    public class QueryHomePageRedDotReq
+    {
+        public int UserId { get; set; }              //会员ID
+        public int Sex { get; set; }                 //性别 ，0 保密  1 男 2女
+    }
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+
+
+
+
+2017-12-09
+49、根据文章ID查询文章信息,用于从首页点击进入阅读文章页面，根据返回数据前端判断是否可以直接阅读或者需要遮罩付费
+http://api.point-server.com/json/metadata?op=QueryArticleByIdReq
+请求参数：
+    public class QueryArticleByIdReq
+    {
+        public int UserId { get; set; }               //会员ID，如是已登录状态，则必须传，否则给 0
+        public int ArticleSysNo { get; set; }         //文章ID,必传
+    }
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+ public class QueryArticleByIdRes : BaseResponse
+    {
+        public ArticleEntity ArticleEntity { get; set; }     //文章信息
+        public AuthorEntity AuthorEntity { get; set; }       //作者信息
+    }
+
+    public class ArticleEntity
+    {
+        public bool IsRead { get; set; }               //是否可以阅读 true 可以、已付费, false 不可以、未付费
+        public decimal ReadScore { get; set; }         //读取所需要的积分
+
+        public int SysNo { get; set; }                 //文章ID
+        public string HeadPic { get; set; }            //头图(左右、横排都是这个头图)
+        public string Title { get; set; }              //文章标题
+        public string Subtitle { get; set; }           //文章副标题
+        public string Content { get; set; }            //文章内容
+
+        public DateTime RowCeateDate { get; set; }     //文章创建时间
+        public string StrRowCeateDate { get; set; }     //文章创建时间
+
+        public int SortId { get; set; }                //排序，数值越大越靠前
+    }
+
+    public class AuthorEntity
+    {
+        public bool IsFollow { get; set; }             //是否已关注 true 关注, false 未关注
+        public int HotArticleCount { get; set; }       //热门文章数量 
+
+        public int NotReadCount { get; set; }          //未读文章数量 用于我的关注里面        
+        public string StrNotReadCount { get; set; }    //未读文章数量 用于我的关注里面 >9 显示 9+
+        public string Title { get; set; }              //文章标题       用于我的关注里面
+
+        public int AuthorSysNo { get; set; }           //作者ID
+        public string AuthorName { get; set; }         //作者名称
+        public string Portrait { get; set; }           //作者头像
+        public string Describe { get; set; }           //作者描述信息，如：专注互联网行业资深编辑 
+    }
+
+50、查询作者下面所有的文章信息
+2017-12-12 修正：添加分页功能
+http://api.point-server.com/json/metadata?op=QueryAuthorArticleReq
+请求参数：
+    public class QueryAuthorArticleReq
+    {
+        public int UserId { get; set; }               //会员ID，如是已登录状态，则必须传，否则给 0
+        public int AuthorSysNo { get; set; }           //作者ID
+
+        public int PageIndex { get; set; }   //第几页
+        public int PageSize { get; set; }    //每页大小
+    }
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+   public class QueryAuthorArticleRes : BaseResponse
+    {
+        public AuthorEntity AuthorEntity { get; set; }       //作者信息     类的属性字段，查看服务49的注释
+        public List<ArticleEntity> ArticleEntities { get; set; }     //文章信息  类的属性字段，查看服务49的注释
+
+        public int Total { get; set; }                                 //总的数据条数
+    } 
+
+51、我的关注列表
+http://api.point-server.com/json/metadata?op=QueryMyFollowReq
+请求参数：
+    public class QueryMyFollowReq
+    {
+        public int UserId { get; set; }                //会员ID
+    }
+
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+    public class QueryMyFollowRes : BaseResponse
+    {
+        public List<AuthorEntity> AuthorEntities { get; set; }   //作者信息   类的属性字段，查看服务49的注释
+    }
+
+
+52、关注/取消关注
+http://api.point-server.com/json/metadata?op=SetFollowReq
+请求参数：
+    public class SetFollowReq
+    {
+        public int UserId { get; set; }                //会员ID
+        public int AuthorSysNo { get; set; }           //作者ID
+        public bool IsFollow { get; set; }             //true 关注     false 取消关注
+    }
+
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+
+53、付费阅读
+http://api.point-server.com/json/metadata?op=PayReadReq
+请求参数：
+    public class PayReadReq
+    {
+        public int UserId { get; set; }                     //会员ID
+        public int ArticleSysNo { get; set; }               //文章ID
+    }
+
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+
+54、提现(需要使用新的接口，原来的接口等正式上线之后会作废)  开发完成
+http://api.point-server.com/json/metadata?op=MemberWithdrawalsTwoReq
+请求参数：
+    public class MemberWithdrawalsTwoReq
+    {
+        public int UserId { get; set; }                     //会员ID
+        public decimal Amount { get; set; }                 //提现金额 是经过 Score / 100 换算之后的金额
+    }
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+
+服务变更记录：
+
+6、根据会员ID查询会员信息（为了使线上的APP能正常使用，服务字段暂时返回，待上线之后取消）  开发完成
+http://api.point-server.com/json/metadata?op=QueryMemberInfoReq
+2017-08-21 修正：去掉返回参数  JpushId 推送数据标识 和 OpenidWxMp 微信公众号平台标识 
+2017-12-09 修正：去掉以下6个返回参数
+  public Nullable<decimal> Account { get; set; }                  //账户总的现金    2017-12-09改版确认不要了     
+  public string StrAccount { get; set; }                          //账户总的现金    2017-12-09改版确认不要了    
+  public Nullable<decimal> AccountWithdrawn { get; set; }         //账号提现总现金  2017-12-09改版确认不要了    
+  public string StrAccountWithdrawn { get; set; }                 //账号提现总现金  2017-12-09改版确认不要了    
+
+  public Nullable<decimal> ScoreWithdrawn { get; set; }           //账户累积提现低用金金额，单位：元  未转化为RMBd的金额
+  public string StrScoreWithdrawn { get; set; }                   //账户累积提现低用金金额，单位：元  未转化为RMBd的金额
+
+
+1、登录服务  开发完成
+http://api.point-server.com/json/metadata?op=MemberLoginReq
+2017-12-09 修正：去掉以下6个返回参数
+  public Nullable<decimal> Account { get; set; }                  //账户总的现金    2017-12-09改版确认不要了     
+  public string StrAccount { get; set; }                          //账户总的现金    2017-12-09改版确认不要了    
+  public Nullable<decimal> AccountWithdrawn { get; set; }         //账号提现总现金  2017-12-09改版确认不要了    
+  public string StrAccountWithdrawn { get; set; }                 //账号提现总现金  2017-12-09改版确认不要了    
+
+  public Nullable<decimal> ScoreWithdrawn { get; set; }           //账户累积提现低用金金额，单位：元  未转化为RMBd的金额
+  public string StrScoreWithdrawn { get; set; }                   //账户累积提现低用金金额，单位：元  未转化为RMBd的金额
+
+18、获取首页数据  开发完成
+2017-08-30 修正：新增 UserId 会员ID参数
+2017-12-10 修正：请求参数和返回参数都没有新增和删除，但是字段的含义有变化
+public int DataType { get; set; }  //信息类型   1 咨询、新闻   2 导购咨询(店铺)   4广告咨询（答题 ）  8 自媒体文章
+public string InforName { get; set; }        //信息标题  DataType=8时是 文章标题
+public string InforRemark { get; set; }      //信息的备注信息，自己填写，如：区域   DataType=8时是 文章副标题
+public string HeadPic { get; set; }           //头图(左右、横排都是这个头图)  DataType=8时是文章的图
+public string InforDesc { get; set; }         //信息描述   DataType=8时是文章的作者
+public DateTime SourceDateTime { get; set; }    //来源时间    DataType=8时是文章的时间
+public string StrSourceDateTime { get; set; }  //来源时间     DataType=8时是文章的时间
+
+http://api.point-server.com/json/metadata?op=QueryHomePageReq
+
+========================================================================================================
+
+
+
+
+
+
+
+2017-07-27
+
+1、登录服务  开发完成
+http://api.point-server.com/json/metadata?op=MemberLoginReq
+
+2、注册服务  开发完成
+2017-09-08 修正：请求参数去掉分享key ShareKey
+http://api.point-server.com/json/metadata?op=MemberRegisterReq
+
+3、保存操作日志  开发完成
+2017-10-21 修正：新增字段 IdentityId 标识ID，只有OperType 为2 4 8时才有ID，为1没有；为2 4 是 T_InforConfigure 表的 SysNo；为 8 时是 T_ShopGoods 表的 SysNo
+http://api.point-server.com/json/metadata?op=AddOperationLogReq
+
+4、发送短信验证码  开发完成
+   包含注册、密码找回发送短信验证，参数短信类型不同
+http://api.point-server.com/json/metadata?op=SendSmsReq
+
+5、检查会员是否存在  开发完成
+http://api.point-server.com/json/metadata?op=CheckMemberIsExistReq
+
+6、根据会员ID查询会员信息  开发完成
+2017-08-21 修正：去掉返回参数  JpushId 推送数据标识 和 OpenidWxMp 微信公众号平台标识 
+http://api.point-server.com/json/metadata?op=QueryMemberInfoReq
+
+7、查询所有的区域信息  开发完成
+http://api.point-server.com/json/metadata?op=QueryRegionInfoReq
+
+
+
+2017-07-28
+
+8、查询所有的区域信息-处理好三级联动  开发完成
+http://api.point-server.com/json/metadata?op=QueryRegionThreeReq
+
+9、修改会员头像  开发完成
+http://api.point-server.com/json/metadata?op=UpdateMemberHeadReq
+
+10、修改会员昵称  开发完成
+http://api.point-server.com/json/metadata?op=UpdateMembereNickNameReq
+
+11、修改密码，忘记密码  开发完成
+http://api.point-server.com/json/metadata?op=ForgotPassWordReq
+
+12、保存客户手机上面其他的APP信息  开发完成
+http://api.point-server.com/json/metadata?op=AddAppReq
+
+
+
+2017-07-31
+
+13、上传图片服务（图片服务器部署等）  开发完成
+http://api.point-server.com/json/metadata?op=AppImgUploadReq
+
+14、查询获取所有的分类信息  开发完成
+http://api.point-server.com/json/metadata?op=QueryCategoryReq
+
+15、查询会员账号交易流水  开发完成
+http://api.point-server.com/json/metadata?op=QueryAccountRecordReq
+
+16、保存会员账号交易流水  开发完成
+http://api.point-server.com/json/metadata?op=AddAccountRecordReq
+
+
+
+2017-08-01
+
+17、清空缓存服务  开发完成
+http://api.point-server.com/json/metadata?op=LocalCacheAllReq
+
+
+==========================================================================================================================================================
+
+18、获取首页数据  开发完成
+2017-08-30 修正：新增 UserId 会员ID参数
+http://api.point-server.com/json/metadata?op=QueryHomePageReq
+请求参数：
+
+        public int UserId { get; set; }      //会员ID，如果已经注册并且登录，则必须传递，如果存在会员ID则会影响到返回的数据
+
+        public int InfoType { get; set; }  //资讯类型  1 30岁以上男  2 30岁以下男  4 30岁以上女   8 30岁以下女
+        public int PageIndex { get; set; }  //第几页
+        public int PageSize { get; set; }   //每页大小
+
+
+返回参数：
+
+        //首页的数据集合
+        public List<HomePageData> PageDatas { get; set; }
+
+        //总的数据条数
+        public int Total { get; set; }
+
+public class HomePageData
+    {
+        public int SysNo { get; set; }               //主键，自增长
+        public int DataType { get; set; }            //信息类型  1 咨询、新闻   2 导购咨询(店铺)   4广告咨询（答题 ）
+        public string StrInforType { get; set; }     //推送类型 0 所有  1 30岁以上男  2 30岁以下男  4 30岁以上女   8 30岁以下女，格式：[1],[2],[3]
+        public string InforName { get; set; }        //信息标题
+        public string InforRemark { get; set; }      //信息的备注信息，自己填写，如：区域
+        public string InforDesc { get; set; }         //信息描述
+        public string LogoIcon { get; set; }          //logo图标，店铺的logo
+        public string HeadPic { get; set; }           //头图(左右、横排都是这个头图)
+        public string CoverPic { get; set; }          //封面图片
+        public string VideoUrl { get; set; }          //视频地址
+        public int CateId { get; set; }              //店铺的分类ID，只有 InforType 为 2 时，必填
+        public int ShowMode { get; set; }            //展示方式 0 横排展示 1 左右展示
+        public string InforSource { get; set; }       //来源
+        public string LinkUrl { get; set; }           //跳转链接地址
+        public int IntSort { get; set; }              //排序，数值越大越靠前     
+
+        public DateTime SourceDateTime { get; set; }    //来源时间
+        public string StrSourceDateTime { get; set; }  //来源时间
+    }
+
+================================================================================================================================================================
+
+19、添加收藏（只能咨询、新闻才能添加收藏）  开发完成
+http://api.point-server.com/json/metadata?op=AddFavoritesReq
+
+20、获取收藏数据  开发完成
+http://api.point-server.com/json/metadata?op=QueryFavoritesReq
+
+21、查询账户中心推荐数据  开发完成
+http://api.point-server.com/json/metadata?op=QueryAccountRecommendReq
+
+22、获取兑换、个人账户中心未读取消息数量（显示小红点）  开发完成
+http://api.point-server.com/json/metadata?op=QueryNoReadInfoReq
+
+
+
+2017-08-03
+
+23、根据分类ID查询店铺列表信息  开发完成
+http://api.point-server.com/json/metadata?op=QueryShopReq
+
+24、根据店铺ID查询店铺信息  开发完成
+http://api.point-server.com/json/metadata?op=QueryShopInfoReq
+
+25、根据店铺ID，获取店铺下面所有的商品信息  开发完成
+2017-09-23 新增商品返回链接地址：
+public string GoodsOutLink { get; set; }            //商品链接地址 如果有值则说明可以点击商品，到这个链接去
+http://api.point-server.com/json/metadata?op=QueryShopGoodsReq
+
+26、根据广告(答题)咨询ID获取所有的题目信息  开发完成
+    PS:获取当前广告下面所有的题目，一次性返回，需要前端自己处理首道题（根据 InforSysNo == 当前请求的广告的ID 判断），然后根据答案的 ChildrenSubSysNo 拉取答案对于的题目和答案，如果获取不到
+则说明没有题目了，这个时候需要调用“AddAnswerRecordReq”服务，保存答题的记录，每一道题的档案都需要记录
+http://api.point-server.com/json/metadata?op=QuerySubjectReq
+
+27、保存答题答案，获得奖励金  开发完成
+http://api.point-server.com/json/metadata?op=AddAnswerRecordReq
+
+
+2017-08-04
+
+28、兑换抵扣劵  开发完成
+http://api.point-server.com/json/metadata?op=ExcCouponReq
+
+29、我的抵扣劵列表  开发完成
+说明：点击列表上面的数据，展示抵扣劵明细的时候，也是从这个服务获取数据，但是不是再次调用这个服务，而且从列表上面获取数据，
+抵扣劵明细的数据在列表已经全部返回了
+http://api.point-server.com/json/metadata?op=QueryMyCouponReq
+
+30、保存充值记录并返回充值成功标识  开发完成 (此服务作废，不要对接)
+http://api.point-server.com/json/metadata?op=AddRechargeReq
+
+
+2017-08-06
+
+31、更新微信openid  开发完成
+接口提现的时候，如果没有绑定微信ID，则需要给当前会员绑定微信ID
+2017-08-21 修正：去掉 OpenidWxMp 微信公众号的标示ID 请求参数  
+http://api.point-server.com/json/metadata?op=UpdateWxOpenidReq
+
+32、积分转让  开发完成
+http://api.point-server.com/json/metadata?op=ScoreTurnReq
+
+33、提现  开发完成
+http://api.point-server.com/json/metadata?op=MemberWithdrawalsReq
+
+
+2017-08-07
+
+32、获取参与答题的会员记录(头像、数量)  开发完成
+http://api.point-server.com/json/metadata?op=SubjectParticipateReq
+
+
+2017-08-08
+
+33、发起支付，预下单，构建订单数据  开发完成
+http://api.point-server.com/json/metadata?op=CreatePaymentReq
+
+34、支付回调，更新订单状态  开发完成
+http://api.point-server.com/json/metadata?op=UpdatePayStateReq
+
+35、答题完毕推荐商品  开发完成
+2017-08-21 修正：去掉原会员ID UserId 请求参数，新增请求参数 RootSubSysNo 根题，第一道题的ID，必传；后台调整逻辑为，如果没有根据答案ID配置推荐商品，则默认去广告上面配置的店铺的ID下面的所有商品
+
+2017-09-23 新增商品返回链接地址：
+public string GoodsOutLink { get; set; }            //商品链接地址 如果有值则说明可以点击商品，到这个链接去
+http://api.point-server.com/json/metadata?op=QuerySubjectRecommendReq
+
+
+
+2017-08-09
+
+36、保存极光推送的会员ID  开发完成
+http://api.point-server.com/json/metadata?op=AddJiGuangPushReq
+
+
+
+2017-08-10
+
+37、账户积分、提现变动推送极光提现  开发完成
+http://api.point-server.com/json/metadata?op=SendPushReq
+
+38、账户积分、提现变动推送极光提现  开发完成
+    当账户积分、操作提现等流水性变动时，由 保存账号交易流水服务 AddAccountRecordReq 出发完成功能
+
+
+2017-08-11
+
+39、后台服务构建统一下单 预支付交易会话标识，返回请求报文前段发起微信支付
+    对应服务为：http://api.point-server.com/json/metadata?op=CreatePaymentReq
+
+
+
+2017-08-14
+
+40、微信支付回调，异步通知    开发完成
+APP前端不需要，不用管，给后端用的
+http://api.point-server.com/json/metadata?op=WxAsyncNotifyReq
+
+
+2017-08-15
+
+41、查询订单支付状态    开发完成
+http://api.point-server.com/json/metadata?op=QueryPayStateReq
+
+
+2017-08-29
+
+42、更新会员中心数据为已读状态，一次性全部更新掉所有的未读消息
+使用场景，当点击进入账户页面的时候，调用次服务更新掉消息的状态为已读，同时前端页面需要处理掉红点（有红点的话）
+http://api.point-server.com/json/metadata?op=UpdateAccountRecordPushReq
+
+
+
+
+2017-09-03
+
+43、检查是否已经收藏了  开发完成
+说明：此服务的返回结果与其他服务有点不一样，此服务 CheckRes 的结果值包含（1 已经收藏过了    0 未收藏   -1 请求参数会员ID必须传   
+-2 检查的收藏类型错误   -4 检查收藏的资讯ID错误    -8 程序出错），具体可参看 DoResult 的返回信息，也就是说检查的结果只有为 1 或者 0 时，才
+表示当前资讯是否已经收藏，其它的值都需要前端根据业务逻辑自行处理
+http://api.point-server.com/json/metadata?op=CheckFavoritesReq
+
+
+2017-09-08
+
+44、根据手机号码判断、查询会员信息（提供给 h5 分享页面使用）    开发完成
+说明：如果输入的手机号码存在 才会返回 会员ID，否则不返回，也就是
+      DoFlag = 1 时，手机号码存在，此时 DoResult 里面是会员ID；否则 DoFlag = -1，不存在
+http://api.point-server.com/json/metadata?op=QueryMemberInfoByMobileReq
+
+
+45、分享保存答题答案，获得奖励金（提供给 h5 分享页面使用）    开发完成
+http://api.point-server.com/json/metadata?op=AddShareAnswerRecordReq
+
+
+
+2017-09-09
+
+46、根据广告(答题)咨询ID获取所有的题目信息（会员没有注册的情况下使用 提供给 h5 分享页面使用）    开发完成
+http://api.point-server.com/json/metadata?op=QueryShareSubjectReq
+
+
+2017-09-21
+
+47、取消收藏服务    开发完成
+http://api.point-server.com/json/metadata?op=CancelFavoritesReq
+
+
+2017-09-24
+48、根据抵扣劵ID获取抵扣劵信息、店铺名称、图标    开发完成
+http://api.point-server.com/json/metadata?op=QueryCouponInfoReq
+
