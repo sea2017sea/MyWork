@@ -33,3 +33,8 @@ D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Caching.pdb
 D:\李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.dll
 D:\李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.pdb
 D:\李海涛\我的工作\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojResolveAssemblyReference.cache
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Caching.dll
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Caching.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojResolveAssemblyReference.cache
+E:\mygit\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.dll
+E:\mygit\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.pdb

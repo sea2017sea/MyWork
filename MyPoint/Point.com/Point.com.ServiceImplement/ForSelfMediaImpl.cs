@@ -505,6 +505,7 @@ namespace Point.com.ServiceImplement
                     IsFollow = true,
                     IsEnable = true
                 });
+                DbSession.MLT.SaveChange();
 
                 //关注
                 DbSession.MLT.T_SelfMediaFollowRecordRepository.Add(new T_SelfMediaFollowRecord()
@@ -534,6 +535,7 @@ namespace Point.com.ServiceImplement
             }
 
             DbSession.MLT.SaveChange();
+
             ptcp.DoFlag = PtcpState.Success;
             ptcp.DoResult = "操作成功";
 
