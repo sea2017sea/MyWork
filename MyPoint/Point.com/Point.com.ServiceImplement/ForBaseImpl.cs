@@ -883,10 +883,17 @@ namespace Point.com.ServiceImplement
                 ptcp.DoResult = "账户金额小于1元，不能提现";
                 return ptcp;
             }
-
+            
             if (amount > scoreRmb)
             {
                 ptcp.DoResult = string.Format("账户金额不足，可提现金额{0}元",scoreRmb);
+                return ptcp;
+            }
+
+            //当前账户配置的最低提现额度
+            if (amount < memberInfo.MinWithdrawals)
+            {
+                ptcp.DoResult = string.Format("您的账户提现额度最低{0}元起", memberInfo.MinWithdrawals);
                 return ptcp;
             }
 

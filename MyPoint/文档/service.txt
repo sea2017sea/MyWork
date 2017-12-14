@@ -9,6 +9,22 @@ wap地址：            http://wap.point-server.com/
 
 
 
+
+2017-12-14
+1、登录服务
+返回参数新增：
+        public decimal MinWithdrawals { get; set; }         //最小提现金额起始值，默认为：1.00元 包含
+http://api.point-server.com/json/metadata?op=MemberLoginReq
+
+
+6、根据会员ID查询会员信息
+http://api.point-server.com/json/metadata?op=QueryMemberInfoReq
+返回参数新增：
+        public decimal MinWithdrawals { get; set; }         //最小提现金额起始值，默认为：1.00元 包含
+
+
+
+
 2017-12-13
 55、根据文章ID查询文章信息 h5专门使用，APP不需要管此服务 不需要付费可直接阅读
 http://api.point-server.com/json/metadata?op=QueryArticleReadByIdReq

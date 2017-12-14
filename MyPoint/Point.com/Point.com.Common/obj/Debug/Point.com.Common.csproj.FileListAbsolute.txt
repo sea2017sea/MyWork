@@ -25,3 +25,7 @@ D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Common.dll
 D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Common.pdb
 D:\李海涛\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
 D:\李海涛\我的工作\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Common.dll
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Common.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
+E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb

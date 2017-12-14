@@ -36,6 +36,7 @@ namespace Point.com.Model
         public string DeviceCode { get; set; }
         public string MobileModel { get; set; }
         public string ClientIp { get; set; }
+        public Nullable<decimal> MinWithdrawals { get; set; }
         public Nullable<System.DateTime> RowCeateDate { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }
         public byte[] Timestamp { get; set; }

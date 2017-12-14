@@ -260,36 +260,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="T_Member">
-      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_Member">
-        <MappingFragment StoreEntitySet="T_Member">
-          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
-          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
-          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
-          <ScalarProperty Name="ClientIp" ColumnName="ClientIp" />
-          <ScalarProperty Name="MobileModel" ColumnName="MobileModel" />
-          <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
-          <ScalarProperty Name="SourceTypeSysNo" ColumnName="SourceTypeSysNo" />
-          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
-          <ScalarProperty Name="OpenidWxOpen" ColumnName="OpenidWxOpen" />
-          <ScalarProperty Name="ScoreWithdrawn" ColumnName="ScoreWithdrawn" />
-          <ScalarProperty Name="Score" ColumnName="Score" />
-          <ScalarProperty Name="AccountWithdrawn" ColumnName="AccountWithdrawn" />
-          <ScalarProperty Name="Account" ColumnName="Account" />
-          <ScalarProperty Name="InforType" ColumnName="InforType" />
-          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-          <ScalarProperty Name="RegArea" ColumnName="RegArea" />
-          <ScalarProperty Name="RegCity" ColumnName="RegCity" />
-          <ScalarProperty Name="RegProvince" ColumnName="RegProvince" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="NickName" ColumnName="NickName" />
-          <ScalarProperty Name="MemPassWord" ColumnName="MemPassWord" />
-          <ScalarProperty Name="Portrait" ColumnName="Portrait" />
-          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="T_Recharge">
       <EntityTypeMapping TypeName="MYZJ_MLTModel.T_Recharge">
         <MappingFragment StoreEntitySet="T_Recharge">
@@ -520,6 +490,37 @@
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="InteractiveName" ColumnName="InteractiveName" />
           <ScalarProperty Name="ProblemSysNo" ColumnName="ProblemSysNo" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Member">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_Member">
+        <MappingFragment StoreEntitySet="T_Member">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="MinWithdrawals" ColumnName="MinWithdrawals" />
+          <ScalarProperty Name="ClientIp" ColumnName="ClientIp" />
+          <ScalarProperty Name="MobileModel" ColumnName="MobileModel" />
+          <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
+          <ScalarProperty Name="SourceTypeSysNo" ColumnName="SourceTypeSysNo" />
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="OpenidWxOpen" ColumnName="OpenidWxOpen" />
+          <ScalarProperty Name="ScoreWithdrawn" ColumnName="ScoreWithdrawn" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="AccountWithdrawn" ColumnName="AccountWithdrawn" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="InforType" ColumnName="InforType" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="RegArea" ColumnName="RegArea" />
+          <ScalarProperty Name="RegCity" ColumnName="RegCity" />
+          <ScalarProperty Name="RegProvince" ColumnName="RegProvince" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="MemPassWord" ColumnName="MemPassWord" />
+          <ScalarProperty Name="Portrait" ColumnName="Portrait" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
           <ScalarProperty Name="SysNo" ColumnName="SysNo" />
         </MappingFragment>
       </EntityTypeMapping>

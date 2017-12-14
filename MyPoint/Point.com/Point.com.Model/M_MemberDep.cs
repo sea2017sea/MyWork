@@ -78,6 +78,8 @@ namespace Point.com.Model
         public string MemPassWord { get; set; }             //会员密码
         public string NickName { get; set; }                //会员昵称
 
+        public decimal MinWithdrawals { get; set; }         //最小提现金额起始值，默认为：1.00元
+
         public int Sex { get; set; }                        //性别 ，0 保密  1 男 2女
         public string StrSex { get; set; }                  // string 类型性别 ，0 保密  1 男 2女
 

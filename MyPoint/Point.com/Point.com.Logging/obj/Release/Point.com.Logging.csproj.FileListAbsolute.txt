@@ -25,3 +25,12 @@ D:\李海涛\我的工作\Point.com\Point.com.Logging\bin\Release\ServiceStack.T
 D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.csprojResolveAssemblyReference.cache
 D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.dll
 D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Logging.dll
+E:\mygit\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Logging.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Common.dll
+E:\mygit\MyPoint\Point.com\Point.com.Logging\bin\Release\ServiceStack.Text.dll
+E:\mygit\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Common.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Logging\bin\Release\ServiceStack.Text.xml
+E:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.csprojResolveAssemblyReference.cache
+E:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.dll
+E:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.pdb

@@ -420,22 +420,6 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<T_Member> T_Member
-        {
-            get
-            {
-                if ((_T_Member == null))
-                {
-                    _T_Member = base.CreateObjectSet<T_Member>("T_Member");
-                }
-                return _T_Member;
-            }
-        }
-        private ObjectSet<T_Member> _T_Member;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<T_Recharge> T_Recharge
         {
             get
@@ -656,6 +640,22 @@ namespace Point.com.Template4
             }
         }
         private ObjectSet<Crm_Interactive> _Crm_Interactive;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<T_Member> T_Member
+        {
+            get
+            {
+                if ((_T_Member == null))
+                {
+                    _T_Member = base.CreateObjectSet<T_Member>("T_Member");
+                }
+                return _T_Member;
+            }
+        }
+        private ObjectSet<T_Member> _T_Member;
 
         #endregion
 
@@ -838,14 +838,6 @@ namespace Point.com.Template4
         }
     
         /// <summary>
-        /// 用于向 T_Member EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToT_Member(T_Member t_Member)
-        {
-            base.AddObject("T_Member", t_Member);
-        }
-    
-        /// <summary>
         /// 用于向 T_Recharge EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddToT_Recharge(T_Recharge t_Recharge)
@@ -955,6 +947,14 @@ namespace Point.com.Template4
         public void AddToCrm_Interactive(Crm_Interactive crm_Interactive)
         {
             base.AddObject("Crm_Interactive", crm_Interactive);
+        }
+    
+        /// <summary>
+        /// 用于向 T_Member EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToT_Member(T_Member t_Member)
+        {
+            base.AddObject("T_Member", t_Member);
         }
 
         #endregion
@@ -9453,6 +9453,30 @@ namespace Point.com.Template4
         private global::System.String _ClientIp;
         partial void OnClientIpChanging(global::System.String value);
         partial void OnClientIpChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> MinWithdrawals
+        {
+            get
+            {
+                return _MinWithdrawals;
+            }
+            set
+            {
+                OnMinWithdrawalsChanging(value);
+                ReportPropertyChanging("MinWithdrawals");
+                _MinWithdrawals = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MinWithdrawals");
+                OnMinWithdrawalsChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _MinWithdrawals;
+        partial void OnMinWithdrawalsChanging(Nullable<global::System.Decimal> value);
+        partial void OnMinWithdrawalsChanged();
     
         /// <summary>
         /// 没有元数据文档可用。

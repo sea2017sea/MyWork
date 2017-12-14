@@ -7591,6 +7591,11 @@ public partial class T_MemberRepository : BaseRepository<T_Member>, IT_MemberRep
 			list.Add(addFunc("ClientIp",model.ClientIp.ToString()));
 		}
 
+						if(model.MinWithdrawals!=null) 
+		{
+			list.Add(addFunc("MinWithdrawals",model.MinWithdrawals.ToString()));
+		}
+
 						if(model.RowCeateDate!=null) 
 		{
 			list.Add(addFunc("RowCeateDate",model.RowCeateDate.ToString()));
@@ -7744,6 +7749,12 @@ public partial class T_MemberRepository : BaseRepository<T_Member>, IT_MemberRep
 						if(model.ClientIp!=null) 
 		{
 			list.Add(string.Format("{1}='{0}'",model.ClientIp.ToString(),addFunc("[ClientIp]")));
+		}
+					
+
+						if(model.MinWithdrawals!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.MinWithdrawals.ToString(),addFunc("[MinWithdrawals]")));
 		}
 					
 

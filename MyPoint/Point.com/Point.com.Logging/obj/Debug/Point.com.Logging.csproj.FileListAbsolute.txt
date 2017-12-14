@@ -28,3 +28,8 @@ D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Logging.pdb
 D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.csprojResolveAssemblyReference.cache
 D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.dll
 D:\李海涛\我的工作\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Logging.dll
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Logging.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.csprojResolveAssemblyReference.cache
+E:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.dll
+E:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.pdb

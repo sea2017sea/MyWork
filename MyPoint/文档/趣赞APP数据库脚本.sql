@@ -29,6 +29,7 @@ SourceTypeSysNo INT NOT NULL,                                                   
 DeviceCode  VARCHAR(256) NOT NULL,                                             --设备码  默认值：-1，IOS如果获取不到设备码，会给 0
 MobileModel  VARCHAR(1024)  NULL,                                                  --手机型号  安卓给的是手机型号；IOS可能给的手机屏幕尺寸，也可能手机型号
 ClientIp VARCHAR(512) NOT NULL,                                                    --注册IP  默认值：127.0.0.1
+MinWithdrawals DECIMAL(18,2) NOT NULL DEFAULT 1,                                --最小提现额度  默认为：1.00 元，包含
 RowCeateDate DATETIME NOT NULL,                                                 --创建时间
 ModifyTime DATETIME NULL,                                                              --修改时间
 timestamp TIMESTAMP NOT NULL,                                                     --时间戳

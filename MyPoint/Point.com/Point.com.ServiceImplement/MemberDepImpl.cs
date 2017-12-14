@@ -320,7 +320,7 @@ namespace Point.com.ServiceImplement
             if (req.Birthday != null)
             {
                 sql = string.Format(
-                        @"INSERT INTO T_Member (Mobile,Portrait,MemPassWord,NickName,Sex,RegProvince,RegCity,RegArea,Birthday,InforType,Account,AccountWithdrawn,Score,ScoreWithdrawn,OpenidWxOpen,LastLoginTime,SourceTypeSysNo,DeviceCode,MobileModel,ClientIp,RowCeateDate,ModifyTime,timestamp) OUTPUT INSERTED.SysNo VALUES ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},'{8}',{9},0,0,0,0,NULL,'{10}',{11},'{12}','{13}','{14}','{15}',NULL,DEFAULT)",
+                        @"INSERT INTO T_Member (Mobile,Portrait,MemPassWord,NickName,Sex,RegProvince,RegCity,RegArea,Birthday,InforType,Account,AccountWithdrawn,Score,ScoreWithdrawn,OpenidWxOpen,LastLoginTime,SourceTypeSysNo,DeviceCode,MobileModel,ClientIp,MinWithdrawals,RowCeateDate,ModifyTime,timestamp) OUTPUT INSERTED.SysNo VALUES ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},'{8}',{9},0,0,0,0,NULL,'{10}',{11},'{12}','{13}','{14}',1,'{15}',NULL,DEFAULT)",
                         req.Mobile, req.Portrait, EncryptionExt.MD5Encrypt(req.MemPassWord.Trim(), 16), req.NickName,
                         req.Sex, req.RegProvince, req.RegCity, req.RegArea, req.Birthday, inforType, dtNow,
                         req.SourceTypeSysNo, req.DeviceCode, req.MobileModel, req.ClientIp, dtNow);
@@ -328,7 +328,7 @@ namespace Point.com.ServiceImplement
             else
             {
                 sql = string.Format(
-                        @"INSERT INTO T_Member (Mobile,Portrait,MemPassWord,NickName,Sex,RegProvince,RegCity,RegArea,Birthday,InforType,Account,AccountWithdrawn,Score,ScoreWithdrawn,OpenidWxOpen,LastLoginTime,SourceTypeSysNo,DeviceCode,MobileModel,ClientIp,RowCeateDate,ModifyTime,timestamp) OUTPUT INSERTED.SysNo VALUES ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},NULL,{8},0,0,0,0,NULL,'{9}',{10},'{11}','{12}','{13}','{14}',NULL,DEFAULT)",
+                        @"INSERT INTO T_Member (Mobile,Portrait,MemPassWord,NickName,Sex,RegProvince,RegCity,RegArea,Birthday,InforType,Account,AccountWithdrawn,Score,ScoreWithdrawn,OpenidWxOpen,LastLoginTime,SourceTypeSysNo,DeviceCode,MobileModel,ClientIp,MinWithdrawals,RowCeateDate,ModifyTime,timestamp) OUTPUT INSERTED.SysNo VALUES ('{0}','{1}','{2}','{3}',{4},{5},{6},{7},NULL,{8},0,0,0,0,NULL,'{9}',{10},'{11}','{12}','{13}',1,'{14}',NULL,DEFAULT)",
                         req.Mobile, req.Portrait, EncryptionExt.MD5Encrypt(req.MemPassWord.Trim(), 16), req.NickName,
                         req.Sex, req.RegProvince, req.RegCity, req.RegArea, inforType, dtNow,
                         req.SourceTypeSysNo, req.DeviceCode, req.MobileModel, req.ClientIp, dtNow);
@@ -975,6 +975,12 @@ namespace Point.com.ServiceImplement
 
             memberEntity.Sex = member.Sex.GetValueOrDefault();
             memberEntity.StrSex = pm.TableSex(memberEntity.Sex);
+
+            memberEntity.MinWithdrawals = member.MinWithdrawals.GetValueOrDefault();
+            if (memberEntity.MinWithdrawals <= 0)
+            {
+                memberEntity.MinWithdrawals = 1;
+            }
 
             memberEntity.Birthday = member.Birthday;
             if (memberEntity.Birthday != null)
