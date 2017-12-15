@@ -38,7 +38,7 @@ namespace Point.com.ServiceImplement
         }
 
         /// <summary>
-        /// 抵扣劵状态  0 有效  1 无效  2 已使用
+        /// 抵用劵状态  0 有效  1 无效  2 已使用
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
@@ -127,7 +127,7 @@ namespace Point.com.ServiceImplement
         {
             string str = "http://img.point-server.com/default/default0.png";
 
-            // 1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵扣劵)
+            // 1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵用劵)
             switch (tranType)
             {
                 case 1:

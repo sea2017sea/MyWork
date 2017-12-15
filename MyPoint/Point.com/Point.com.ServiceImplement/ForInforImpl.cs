@@ -834,7 +834,7 @@ namespace Point.com.ServiceImplement
                         string sqlShopGoods = string.Format(@"SELECT * FROM T_ShopGoods WHERE ShopSysNo IN ({0}) AND IsEnable = 1",strShopIds);
                         var shopGoodsInfos = DbSession.MLT.ExecuteSql<T_ShopGoods>(sqlShopGoods).ToList();
 
-                        //根据商品信息拉取抵扣卷的信息
+                        //根据商品信息拉取抵用抵用的信息
                         string sqlCoupons = string.Format(@"SELECT * FROM T_CouponInfo WHERE ShopSysNo IN ({0}) AND IsEnable = 1", strShopIds);
                         var couponInfos = DbSession.MLT.ExecuteSql<T_CouponInfo>(sqlCoupons).ToList();
 
@@ -961,7 +961,7 @@ namespace Point.com.ServiceImplement
                 string sqlShopGoods = string.Format(@"SELECT * FROM T_ShopGoods WHERE ShopSysNo = {0} AND IsEnable = 1", shopId);
                 var shopGoodsInfos = DbSession.MLT.ExecuteSql<T_ShopGoods>(sqlShopGoods).ToList();
 
-                //根据商品信息拉取抵扣卷的信息
+                //根据商品信息拉取抵用抵用的信息
                 string sqlCoupons = string.Format(@"SELECT * FROM T_CouponInfo WHERE ShopSysNo = {0} AND IsEnable = 1", shopId);
                 var couponInfos = DbSession.MLT.ExecuteSql<T_CouponInfo>(sqlCoupons).ToList();
 
@@ -1941,7 +1941,7 @@ namespace Point.com.ServiceImplement
         }
 
         /// <summary>
-        /// 兑换抵扣劵
+        /// 兑换抵用劵
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -2002,7 +2002,7 @@ namespace Point.com.ServiceImplement
                 return ptcp;
             }
 
-            //获取抵扣劵的信息
+            //获取抵用劵的信息
             var couponInfo = DbSession.MLT.T_CouponInfoRepository.QueryBy(new T_CouponInfo()
                 {
                     SysNo = goodsInfo.ExcCouponSysNo,
@@ -2010,7 +2010,7 @@ namespace Point.com.ServiceImplement
                 }).FirstOrDefault();
             if (couponInfo.IsNull() || couponInfo.SysNo <= 0)
             {
-                ptcp.DoResult = "获取抵扣劵信息失败";
+                ptcp.DoResult = "获取抵用劵信息失败";
                 return ptcp;
             }
 
@@ -2132,7 +2132,7 @@ namespace Point.com.ServiceImplement
                     }, new T_Recharge() {SysNo = recSys});
             }
 
-            //更新抵扣劵数量
+            //更新抵用劵数量
             DbSession.MLT.T_ShopGoodsRepository.Update(new T_ShopGoods()
                 {
                     UseCouponCount = goodsInfo.UseCouponCount + 1,
@@ -2214,7 +2214,7 @@ namespace Point.com.ServiceImplement
         }
 
         /// <summary>
-        /// 根据抵扣劵ID获取抵扣劵信息、店铺名称、图标
+        /// 根据抵用劵ID获取抵用劵信息、店铺名称、图标
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -2230,11 +2230,11 @@ namespace Point.com.ServiceImplement
 
             if (req.ExcCouponSysNo <= 0)
             {
-                ptcp.DoResult = "抵扣劵ID不能为空";
+                ptcp.DoResult = "抵用劵ID不能为空";
                 return ptcp;
             }
 
-            //获取抵扣劵的信息
+            //获取抵用劵的信息
             var couponInfo = DbSession.MLT.T_CouponInfoRepository.QueryBy(new T_CouponInfo()
             {
                 SysNo = req.ExcCouponSysNo,
@@ -2242,7 +2242,7 @@ namespace Point.com.ServiceImplement
             }).FirstOrDefault();
             if (couponInfo.IsNull() || couponInfo.SysNo <= 0)
             {
-                ptcp.DoResult = "获取抵扣劵信息失败";
+                ptcp.DoResult = "获取抵用劵信息失败";
                 return ptcp;
             }
 
@@ -2288,7 +2288,7 @@ namespace Point.com.ServiceImplement
         }
 
         /// <summary>
-        /// 我的抵扣劵列表
+        /// 我的抵用劵列表
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -2331,7 +2331,7 @@ namespace Point.com.ServiceImplement
             var excRecords = DbSession.MLT.ExecuteSql<T_CouponExcRecord>(sql).ToList();
             if (excRecords.IsNull() || !excRecords.IsHasRow())
             {
-                ptcp.DoResult = "没有数据";
+                ptcp.DoResult = "没有抵用劵";
                 return ptcp;
             }
             int total = DbSession.MLT.ExecuteSql<int>(sqlCount).FirstOrDefault();
@@ -2352,7 +2352,7 @@ namespace Point.com.ServiceImplement
             var couponInfos = DbSession.MLT.ExecuteSql<T_CouponInfo>(sqlCoupon).ToList();
             if (couponInfos.IsNull() || !couponInfos.IsHasRow())
             {
-                ptcp.DoResult = "获取抵扣劵信息失败";
+                ptcp.DoResult = "获取抵用劵信息失败";
                 return ptcp;
             }
 
@@ -2672,7 +2672,7 @@ namespace Point.com.ServiceImplement
 
             if (req.IsNull())
             {
-                ptcp.DoResult = "请求数据非法";
+                ptcp.DoResult = "请求非法";
                 return ptcp;
             }
 

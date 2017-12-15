@@ -162,7 +162,7 @@ ShopPic VARCHAR(max) NULL,                                               --µêÆÌÁ
 PushPic VARCHAR(max) NULL,                                               --ÍÆËÍÒ³ÃæÍ¼Æ¬µØÖ·
 VideoUrl VARCHAR(Max)  NULL,                                             --ÊÓÆµµØÖ·
 CateId int NULL,                                                         --µêÆÌµÄ·ÖÀàID£¬Ö»ÓÐ InforType Îª 2 Ê±£¬±ØÌî
-ShopSysNo int NULL,                                                      --µêÆÌµÄID£¬Ö»ÓÐ InforType Îª 4 Ê±£¬±ØÌî£¬¶ÔÓ¦µ±Ç°±í InforType = 2 Ê±µÄµêÆÌID£¬ÓÃÓÚ´ðÌâÍê±ÏÖ®ºóµÄÍÆ¼öÉÌÆ·
+ShopSysNo int NULL,                                                      --µêÆÌµÄID£¬Ö»ÓÐ InforType Îª 4 Ê±£¬±ØÌî£¬¶ÔÓ¦µ±Ç°±í InforType = 2 Ê±µÄµêÆÌID£¬ÓÃÓÚ´ðÌâÍê±ÏÖ®ºóµÄÍÆ¼öÉÌÆ·    InforType = 1 µÄÊ±ºò£¬ÌîÐ´´ËÖµ£¬±íÊ¾µ±Ç°¹ã¸æÌø×Ô¼ºµÄµêÆÌ 
 ShowMode int NOT NULL,                                                   --Õ¹Ê¾·½Ê½  0 ºáÅÅÕ¹Ê¾£¨µêÆÌ£© 1 ºáÅÅÕ¹Ê¾£¨¹ã¸æ£¬´ðÌâ£©  2 ×óÓÒÕ¹Ê¾
 InforSource NVARCHAR(1024) NOT NULL,                                     --À´Ô´£¬¹ÜÀíÔ±ÊÖ¶¯ÌîÐ´£¬Èç£ºÐÂÀË¡¢ÌÚÑ¶
 LinkUrl VARCHAR(max) NULL,                                               --Ìø×ªÁ´½ÓµØÖ·
@@ -467,6 +467,20 @@ ModifyTime DATETIME NULL,                                      --ÐÞ¸ÄÊ±¼ä
 IsEnable BIT NOT NULL                                          --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
 )
 go
+
+--Ê×Ò³ºìµã¼ÇÂ¼±í
+CREATE TABLE T_SelfMediaRedDotRecord
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                           --¹Ø×¢¼ÇÂ¼ID£¬×ÔÔö³¤£¬Ö÷¼ü£¬Î¨Ò»
+UserId int NOT NULL,                                           --»áÔ±ID
+AuthorSysNo int NOT NULL,                                      --×÷ÕßID£¬¶ÔÓ¦ T_SelfMediaAuthor µÄ sysno
+ArticleSysNo int NOT NULL,                                     --ÎÄÕÂID£¬¶ÔÓ¦ T_SelfMediaArticle µÄ sysno
+RowCeateDate DATETIME NOT NULL,                                --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                      --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                          --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
+
 
 --´´½¨¹Ø×¢¼ÇÂ¼±í
 CREATE TABLE T_SelfMediaFollowRecord

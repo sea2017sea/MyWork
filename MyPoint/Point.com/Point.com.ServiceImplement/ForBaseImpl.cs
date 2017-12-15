@@ -421,15 +421,15 @@ namespace Point.com.ServiceImplement
 
                     break;
                 case (int) Enums.TranType.ExcGoods:
-                    //兑换抵扣劵
+                    //兑换抵用劵
                     tRecord.PlusReduce = 2;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
-                    tRecord.TranName = "兑换抵扣劵";
+                    tRecord.TranName = "兑换抵用劵";
                     tRecord.TranNum = -req.TranNum;
 
-                    sendPush.MsgTitle = "兑换抵扣劵";
+                    sendPush.MsgTitle = "兑换抵用劵";
                     sendPush.MsgAlert = string.Format("恭喜您成功兑换抵用劵，扣除{1}{0}元。", Enums.ScoreName, req.TranNum);
-                    sendPush.MsgContent = "兑换抵扣劵";
+                    sendPush.MsgContent = "兑换抵用劵";
 
                       #region 更新账户积分信息
 
@@ -466,7 +466,7 @@ namespace Point.com.ServiceImplement
                     tRecord.PlusReduce = 2;    //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
                     tRecord.TranName = "阅读文章";
-                    tRecord.TranNum = req.TranNum;
+                    tRecord.TranNum = -req.TranNum;
 
                     sendPush.MsgTitle = string.Format("阅读文章{0}扣除", Enums.ScoreName);
                     sendPush.MsgAlert = string.Format("阅读文章，扣除{0}{1}元。", Enums.ScoreName, req.TranNum);
@@ -562,7 +562,7 @@ namespace Point.com.ServiceImplement
                 return ptcp;
             }
 
-            //获取抵扣劵的新
+            //获取抵用劵的新
             var couponInfo = DbSession.MLT.T_CouponInfoRepository.QueryBy(new T_CouponInfo()
                 {
                     SysNo = goodsInfo.ExcCouponSysNo,
@@ -570,7 +570,7 @@ namespace Point.com.ServiceImplement
                 }).FirstOrDefault();
             if (couponInfo.IsNull() || couponInfo.SysNo <= 0)
             {
-                ptcp.DoResult = "当前抵扣劵不存在，请重试";
+                ptcp.DoResult = "当前抵用劵不存在，请重试";
                 return ptcp;
             }
 
@@ -947,6 +947,9 @@ namespace Point.com.ServiceImplement
         public Ptcp<string> MemberWithdrawals(int userid)
         {
             var ptcp = new Ptcp<string>();
+            
+            //ptcp.DoResult = "请升级APP版本";
+            //return ptcp;
 
             if (userid <= 0)
             {

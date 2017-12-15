@@ -129,6 +129,10 @@ namespace Point.com.IRepository
     {        
     }
 	
+	public partial interface IT_SelfMediaRedDotRecordRepository  : IBaseRepository<T_SelfMediaRedDotRecord>
+    {        
+    }
+	
 	public partial interface IT_ShareAnswerRecordRepository  : IBaseRepository<T_ShareAnswerRecord>
     {        
     }

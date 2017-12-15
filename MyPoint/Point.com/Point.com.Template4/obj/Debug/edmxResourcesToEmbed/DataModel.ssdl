@@ -406,6 +406,18 @@
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="T_SelfMediaRedDotRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+    <Property Name="ArticleSysNo" Type="int" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="T_ShareAnswerRecord">
     <Key>
       <PropertyRef Name="SysNo" />
@@ -529,6 +541,7 @@
     <EntitySet Name="T_SelfMediaAuthor" EntityType="Self.T_SelfMediaAuthor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_SelfMediaFollowRecord" EntityType="Self.T_SelfMediaFollowRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_SelfMediaPayRecord" EntityType="Self.T_SelfMediaPayRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="Self.T_SelfMediaRedDotRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_ShareAnswerRecord" EntityType="Self.T_ShareAnswerRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_ShopGoods" EntityType="Self.T_ShopGoods" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_Sms" EntityType="Self.T_Sms" Schema="dbo" store:Type="Tables" />

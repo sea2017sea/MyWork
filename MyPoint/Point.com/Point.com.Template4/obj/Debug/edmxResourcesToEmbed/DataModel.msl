@@ -525,5 +525,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="T_SelfMediaRedDotRecord">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaRedDotRecord">
+        <MappingFragment StoreEntitySet="T_SelfMediaRedDotRecord">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="ArticleSysNo" ColumnName="ArticleSysNo" />
+          <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

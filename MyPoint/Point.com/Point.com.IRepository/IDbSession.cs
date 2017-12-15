@@ -151,6 +151,10 @@ namespace Point.com.IRepository
 				  }  
                                   public partial interface IMLT
 				  {	
+					IT_SelfMediaRedDotRecordRepository T_SelfMediaRedDotRecordRepository{get;}
+				  }  
+                                  public partial interface IMLT
+				  {	
 					IT_ShareAnswerRecordRepository T_ShareAnswerRecordRepository{get;}
 				  }  
                                   public partial interface IMLT

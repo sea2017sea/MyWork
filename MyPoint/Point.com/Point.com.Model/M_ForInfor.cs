@@ -134,14 +134,14 @@ namespace Point.com.Model
         public string GoodsLabelOne { get; set; }               //商品标签   如：是否新品 0 不是  1 是
         public string GoodsLabelTwo { get; set; }               //商品标签   如：是否新品 0 不是  1 是
         
-        public int ExcCouponSysNo { get; set; }             //兑换抵扣劵ID，获取到抵扣卷的金额，对应 T_CouponInfo 表的SysNo
-        public decimal ExcAmount { get; set; }              //抵扣金额
-        public string StrExcAmount { get; set; }            //抵扣金额
-        public int CouponCount { get; set; }                //抵扣劵数量
-        public int UseCouponCount { get; set; }             //抵扣劵使用数量
-        public int OverCouponCount { get; set; }            //抵扣劵剩余数量
+        public int ExcCouponSysNo { get; set; }             //兑换抵用劵ID，获取到抵用抵用的金额，对应 T_CouponInfo 表的SysNo
+        public decimal ExcAmount { get; set; }              //抵用金额
+        public string StrExcAmount { get; set; }            //抵用金额
+        public int CouponCount { get; set; }                //抵用劵数量
+        public int UseCouponCount { get; set; }             //抵用劵使用数量
+        public int OverCouponCount { get; set; }            //抵用劵剩余数量
 
-        public M_ExcCouponInfo ExcCoupon { get; set; }      //抵扣劵详细信息
+        public M_ExcCouponInfo ExcCoupon { get; set; }      //抵用劵详细信息
     }
 
     public class M_ShopInfo
@@ -253,12 +253,12 @@ namespace Point.com.Model
 
     public class M_QueryCouponInfoReq
     {
-        public int ExcCouponSysNo { get; set; }      //抵扣劵ID
+        public int ExcCouponSysNo { get; set; }      //抵用劵ID
     }
 
     public class M_QueryCouponInfoRes
     {
-        public M_ExcCouponInfo ExcCoupon { get; set; }   //抵扣劵信息
+        public M_ExcCouponInfo ExcCoupon { get; set; }   //抵用劵信息
     }
 
     public class M_ExcCouponInfo
@@ -301,7 +301,7 @@ namespace Point.com.Model
     public class M_QueryMyCouponRes
     {
         public int Total { get; set; }          //总的数据条数
-        public List<M_ExcCouponInfo> ExcCoupons { get; set; }    //抵扣劵列表
+        public List<M_ExcCouponInfo> ExcCoupons { get; set; }    //抵用劵列表
     }
 
     public class M_SubjectParticipateRes

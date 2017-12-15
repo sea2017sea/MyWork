@@ -411,6 +411,18 @@
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="IsEnable" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="T_SelfMediaRedDotRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+          <Property Name="ArticleSysNo" Type="int" Nullable="false" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="T_ShareAnswerRecord">
           <Key>
             <PropertyRef Name="SysNo" />
@@ -534,6 +546,7 @@
           <EntitySet Name="T_SelfMediaAuthor" EntityType="Self.T_SelfMediaAuthor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_SelfMediaFollowRecord" EntityType="Self.T_SelfMediaFollowRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_SelfMediaPayRecord" EntityType="Self.T_SelfMediaPayRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="Self.T_SelfMediaRedDotRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_ShareAnswerRecord" EntityType="Self.T_ShareAnswerRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_ShopGoods" EntityType="Self.T_ShopGoods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_Sms" EntityType="Self.T_Sms" Schema="dbo" store:Type="Tables" />
@@ -608,6 +621,7 @@ FROM [dbo].[T_ShareRegister] AS [T_ShareRegister]</DefiningQuery>
           <EntitySet Name="T_SelfMediaArticle" EntityType="MYZJ_MLTModel.T_SelfMediaArticle" />
           <EntitySet Name="Crm_Interactive" EntityType="MYZJ_MLTModel.Crm_Interactive" />
           <EntitySet Name="T_Member" EntityType="MYZJ_MLTModel.T_Member" />
+          <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="MYZJ_MLTModel.T_SelfMediaRedDotRecord" />
           </EntityContainer>
         <EntityType Name="Base_Deliver">
           <Key>
@@ -1231,6 +1245,18 @@ FROM [dbo].[T_ShareRegister] AS [T_ShareRegister]</DefiningQuery>
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
           <Property Name="timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
+        <EntityType Name="T_SelfMediaRedDotRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorSysNo" Type="Int32" Nullable="false" />
+          <Property Name="ArticleSysNo" Type="Int32" Nullable="false" />
+          <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1757,6 +1783,19 @@ FROM [dbo].[T_ShareRegister] AS [T_ShareRegister]</DefiningQuery>
                 <ScalarProperty Name="MemPassWord" ColumnName="MemPassWord" />
                 <ScalarProperty Name="Portrait" ColumnName="Portrait" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_SelfMediaRedDotRecord">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.T_SelfMediaRedDotRecord">
+              <MappingFragment StoreEntitySet="T_SelfMediaRedDotRecord">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="ArticleSysNo" ColumnName="ArticleSysNo" />
+                <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="SysNo" ColumnName="SysNo" />
               </MappingFragment>
             </EntityTypeMapping>

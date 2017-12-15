@@ -77,7 +77,7 @@ namespace Point.com.ServiceModel
     public class AccountRecordEntity
     {
         public string TranName { get; set; }                     //交易类型名称
-        public int TranType { get; set; }                        //交易类型  1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵扣劵)
+        public int TranType { get; set; }                        //交易类型  1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵用劵)
         public string PicUrl { get; set; }                       //图标地址
         public int PlusReduce { get; set; }                      //交易获取或者使用 1增加 2 使用（减）
 
@@ -114,7 +114,7 @@ namespace Point.com.ServiceModel
 
     public class AddRechargeRes : BaseResponse
     {
-        public int RechargeSysNo { get; set; }   //充值成功的ID，兑换抵扣劵余额不足时需要此ID
+        public int RechargeSysNo { get; set; }   //充值成功的ID，兑换抵用劵余额不足时需要此ID
     }
 
     public class ScoreTurnReq

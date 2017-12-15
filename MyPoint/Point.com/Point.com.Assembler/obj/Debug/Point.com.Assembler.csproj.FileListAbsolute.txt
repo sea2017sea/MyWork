@@ -24,3 +24,7 @@ D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Assembler.dll
 D:\李海涛\我的工作\Point.com\Point.com.Library\Point.com.Assembler.pdb
 D:\李海涛\我的工作\Point.com\Point.com.Assembler\obj\Debug\Point.com.Assembler.dll
 D:\李海涛\我的工作\Point.com\Point.com.Assembler\obj\Debug\Point.com.Assembler.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Assembler.dll
+E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Assembler.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\obj\Debug\Point.com.Assembler.dll
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\obj\Debug\Point.com.Assembler.pdb

@@ -695,11 +695,27 @@ namespace Point.com.ServiceImplement
                 return ptcp;
             }
 
-            //取的支付记录
-            string sqlPay = string.Format("SELECT * FROM dbo.T_SelfMediaPayRecord WHERE UserId = {0} AND AuthorSysNo IN ({1}) AND IsEnable = 1", req.UserId, strAuthorSysNos);
-            var payInfoList = DbSession.MLT.ExecuteSql<T_SelfMediaPayRecord>(sqlPay).ToList();
-            if (payInfoList.IsNull() || !payInfoList.IsHasRow())
+            DateTime dtNow = DateTime.Now;
+            //取的读取记录
+            string sqlRead = string.Format("SELECT * FROM dbo.T_SelfMediaRedDotRecord WHERE UserId = {0} AND AuthorSysNo IN ({1}) AND IsEnable = 1", req.UserId, strAuthorSysNos);
+            var readList = DbSession.MLT.ExecuteSql<T_SelfMediaRedDotRecord>(sqlRead).ToList();
+            if (readList.IsNull() || !readList.IsHasRow())
             {
+                foreach (var art in articleInfoList)
+                {
+                    //添加记录
+                    DbSession.MLT.T_SelfMediaRedDotRecordRepository.Add(new T_SelfMediaRedDotRecord()
+                    {
+                        UserId = req.UserId,
+                        AuthorSysNo = art.AuthorSysNo,
+                        ArticleSysNo = art.SysNo,
+                        RowCeateDate = dtNow,
+                        ModifyTime = dtNow,
+                        IsEnable = true
+                    });
+                }
+                DbSession.MLT.SaveChange();
+
                 ptcp.ReturnValue = new M_QueryHomePageRedDotRes();
                 ptcp.ReturnValue.RedCount = articleInfoList.Count;
                 ptcp.DoFlag = PtcpState.Success;
@@ -707,11 +723,31 @@ namespace Point.com.ServiceImplement
                 return ptcp;
             }
 
-            int redCount = articleInfoList.Count - payInfoList.Count;
+            int redCount = articleInfoList.Count - readList.Count;
             if (redCount < 0)
             {
                 redCount = 0;
             }
+
+            foreach (var art in articleInfoList)
+            {
+                if (!readList.Any(c => c.UserId == req.UserId && c.AuthorSysNo == art.AuthorSysNo &&
+                                       c.ArticleSysNo == art.SysNo))
+                {
+                    //添加记录
+                    DbSession.MLT.T_SelfMediaRedDotRecordRepository.Add(new T_SelfMediaRedDotRecord()
+                    {
+                        UserId = req.UserId,
+                        AuthorSysNo = art.AuthorSysNo,
+                        ArticleSysNo = art.SysNo,
+                        RowCeateDate = dtNow,
+                        ModifyTime = dtNow,
+                        IsEnable = true
+                    });
+                }
+            }
+            DbSession.MLT.SaveChange();
+
 
             ptcp.ReturnValue = new M_QueryHomePageRedDotRes();
             ptcp.ReturnValue.RedCount = redCount;

@@ -204,14 +204,14 @@ namespace Point.com.ServiceModel
         public string GoodsLabelOne { get; set; }               //商品标签   如：是否新品 0 不是  1 是
         public string GoodsLabelTwo { get; set; }               //商品标签   如：是否新品 0 不是  1 是
 
-        public int ExcCouponSysNo { get; set; }             //兑换抵扣劵ID，获取到抵扣卷的金额，对应 T_CouponInfo 表的SysNo
-        public decimal ExcAmount { get; set; }              //抵扣金额
-        public string StrExcAmount { get; set; }            //抵扣金额
-        public int CouponCount { get; set; }                //抵扣劵数量
-        public int UseCouponCount { get; set; }             //抵扣劵使用数量
-        public int OverCouponCount { get; set; }            //抵扣劵剩余数量
+        public int ExcCouponSysNo { get; set; }             //兑换抵用劵ID，获取到抵用抵用的金额，对应 T_CouponInfo 表的SysNo
+        public decimal ExcAmount { get; set; }              //抵用金额
+        public string StrExcAmount { get; set; }            //抵用金额
+        public int CouponCount { get; set; }                //抵用劵数量
+        public int UseCouponCount { get; set; }             //抵用劵使用数量
+        public int OverCouponCount { get; set; }            //抵用劵剩余数量
 
-        public ExcCouponInfo ExcCoupon { get; set; }      //抵扣劵详细信息
+        public ExcCouponInfo ExcCoupon { get; set; }      //抵用劵详细信息
     }
 
     public class ShopInfo
@@ -367,12 +367,12 @@ namespace Point.com.ServiceModel
 
     public class QueryCouponInfoReq
     {
-        public int ExcCouponSysNo { get; set; }      //抵扣劵ID
+        public int ExcCouponSysNo { get; set; }      //抵用劵ID
     }
 
     public class QueryCouponInfoRes : BaseResponse
     {
-        public ExcCouponInfo ExcCoupon { get; set; }   //抵扣劵信息
+        public ExcCouponInfo ExcCoupon { get; set; }   //抵用劵信息
     }
 
     public class ExcCouponInfo
@@ -408,7 +408,7 @@ namespace Point.com.ServiceModel
     public class QueryMyCouponRes : BaseResponse
     {
         public int Total { get; set; }          //总的数据条数
-        public List<ExcCouponInfo> ExcCoupons { get; set; }    //抵扣劵列表
+        public List<ExcCouponInfo> ExcCoupons { get; set; }    //抵用劵列表
     }
 
     public class QueryShareTitleReq

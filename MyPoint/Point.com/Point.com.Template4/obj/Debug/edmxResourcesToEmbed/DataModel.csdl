@@ -38,6 +38,7 @@
     <EntitySet Name="T_SelfMediaArticle" EntityType="MYZJ_MLTModel.T_SelfMediaArticle" />
     <EntitySet Name="Crm_Interactive" EntityType="MYZJ_MLTModel.Crm_Interactive" />
     <EntitySet Name="T_Member" EntityType="MYZJ_MLTModel.T_Member" />
+    <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="MYZJ_MLTModel.T_SelfMediaRedDotRecord" />
   </EntityContainer>
   <EntityType Name="Base_Deliver">
     <Key>
@@ -660,5 +661,17 @@
     <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifyTime" Type="DateTime" Precision="3" />
     <Property Name="timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaRedDotRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="AuthorSysNo" Type="Int32" Nullable="false" />
+    <Property Name="ArticleSysNo" Type="Int32" Nullable="false" />
+    <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

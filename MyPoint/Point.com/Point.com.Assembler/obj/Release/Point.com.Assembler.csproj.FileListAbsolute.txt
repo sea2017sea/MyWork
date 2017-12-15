@@ -16,3 +16,9 @@ D:\李海涛\我的工作\Point.com\Point.com.Assembler\bin\Release\EmitMapper.d
 D:\李海涛\我的工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.csprojResolveAssemblyReference.cache
 D:\李海涛\我的工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.dll
 D:\李海涛\我的工作\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\bin\Release\Point.com.Assembler.dll
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\bin\Release\Point.com.Assembler.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\bin\Release\EmitMapper.dll
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.csprojResolveAssemblyReference.cache
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.dll
+E:\mygit\MyPoint\Point.com\Point.com.Assembler\obj\Release\Point.com.Assembler.pdb

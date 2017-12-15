@@ -363,7 +363,7 @@ namespace Point.com.Facade
         }
 
         /// <summary>
-        /// 兑换抵扣劵
+        /// 兑换抵用劵
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -395,7 +395,7 @@ namespace Point.com.Facade
         }
 
         /// <summary>
-        ///  根据抵扣劵ID获取抵扣劵信息、店铺名称、图标
+        ///  根据抵用劵ID获取抵用劵信息、店铺名称、图标
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -427,7 +427,7 @@ namespace Point.com.Facade
         }
 
         /// <summary>
-        /// 我的抵扣劵列表
+        /// 我的抵用劵列表
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>

@@ -19,3 +19,10 @@ D:\李海涛\我的工作\Point.com\Point.com.Common\bin\Release\ServiceStack.Te
 D:\李海涛\我的工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.csprojResolveAssemblyReference.cache
 D:\李海涛\我的工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.dll
 D:\李海涛\我的工作\Point.com\Point.com.Common\obj\Release\Point.com.Common.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Common\bin\Release\Point.com.Common.dll
+E:\mygit\MyPoint\Point.com\Point.com.Common\bin\Release\Point.com.Common.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Common\bin\Release\ServiceStack.Text.dll
+E:\mygit\MyPoint\Point.com\Point.com.Common\bin\Release\ServiceStack.Text.xml
+E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Release\Point.com.Common.csprojResolveAssemblyReference.cache
+E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Release\Point.com.Common.dll
+E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Release\Point.com.Common.pdb

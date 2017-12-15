@@ -117,12 +117,12 @@ namespace Point.com.Common
             PurchaseScore = 4,   //转出抵用金
             Sell = 8,            //转入抵用金
             TiXian = 16,         //提现
-            ExcGoods = 32,       //兑换商品(兑换抵扣劵)
+            ExcGoods = 32,       //兑换商品(兑换抵用劵)
             ReadArticle = 64,    //阅读文章，扣减低佣金
         }
 
         /// <summary>
-        /// 抵扣劵类型
+        /// 抵用劵类型
         /// </summary>
         public enum CouponType
         {
@@ -163,7 +163,7 @@ namespace Point.com.Common
         }
 
         /// <summary>
-        /// 抵扣劵状态  0 有效  1 无效  2 已使用
+        /// 抵用劵状态  0 有效  1 无效  2 已使用
         /// </summary>
         public enum CouponState
         {
