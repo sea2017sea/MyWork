@@ -275,45 +275,51 @@ namespace Point.com.ServiceImplement
             DateTime dtNow = DateTime.Now;
 
             //计算资讯类型
-            int inforType = 100;
-            if (req.Birthday != null)
-            {
-                #region
+            //2017-12-16调整为根据性别计算  0 没有选择性别  1 男  2 女
+            int inforType = req.Sex;
 
-                DateTime birthdy = Convert.ToDateTime(req.Birthday);
-                int year = birthdy.Year;
-                int yearNow = dtNow.Year;
+            #region 老的计算逻辑  不要了
 
-                int ageMem = yearNow - year;
-                if (ageMem > 30)
-                {
-                    if (req.Sex == (int) Enums.Sex.men)
-                    {
-                        //30岁以上男
-                        inforType = (int) Enums.InforType.Man30Up;
-                    }
-                    else
-                    {
-                        //30岁以下男
-                        inforType = (int)Enums.InforType.Man30Lower;
-                    }
-                }
-                else
-                {
-                    if (req.Sex == (int)Enums.Sex.women)
-                    {
-                        //30岁以上女
-                        inforType = (int)Enums.InforType.Woman30Up;
-                    }
-                    else
-                    {
-                        //30岁以下女
-                        inforType = (int)Enums.InforType.Woman30Lower;
-                    }
-                }
+            //if (req.Birthday != null)
+            //{
+            //    #region
 
-                #endregion
-            }
+            //    DateTime birthdy = Convert.ToDateTime(req.Birthday);
+            //    int year = birthdy.Year;
+            //    int yearNow = dtNow.Year;
+
+            //    int ageMem = yearNow - year;
+            //    if (ageMem > 30)
+            //    {
+            //        if (req.Sex == (int) Enums.Sex.men)
+            //        {
+            //            //30岁以上男
+            //            inforType = (int) Enums.InforType.Man30Up;
+            //        }
+            //        else
+            //        {
+            //            //30岁以下男
+            //            inforType = (int)Enums.InforType.Man30Lower;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (req.Sex == (int)Enums.Sex.women)
+            //        {
+            //            //30岁以上女
+            //            inforType = (int)Enums.InforType.Woman30Up;
+            //        }
+            //        else
+            //        {
+            //            //30岁以下女
+            //            inforType = (int)Enums.InforType.Woman30Lower;
+            //        }
+            //    }
+
+            //    #endregion
+            //}
+
+            #endregion
 
             string sql = "";
 
@@ -798,6 +804,7 @@ namespace Point.com.ServiceImplement
 
             DbSession.MLT.T_MemberRepository.Update(new T_Member() {
                 Sex = sex,
+                InforType = sex,
                 ModifyTime = DateTime.Now
             },new T_Member() {
                 SysNo = userid

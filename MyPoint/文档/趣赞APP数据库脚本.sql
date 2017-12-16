@@ -16,7 +16,7 @@ RegProvince INT NULL,                                                           
 RegCity INT NULL,                                                                               --注册市ID  默认值（不填写）：0
 RegArea INT NULL,                                                                              --注册区县ID  默认值（不填写）：0
 Birthday DATETIME NOT NULL,                                                           --会员生日 默认值（不填写）：null
-InforType INT NOT NULL,                                                                    --资讯类型  1 30岁以上男  2 30岁以下男  4 30岁以上女   8 30岁以下女  100 没有填写生日的类型
+InforType INT NOT NULL,                                                                    --资讯类型  1 30岁以上男  2 30岁以下男  4 30岁以上女   8 30岁以下女  100 没有填写生日的类型      2017-12-16调整为 0 没有选择性别  1 男  2 女
 Account DECIMAL(18, 2) NOT NULL,                                                   --账户总的可用现金，单位：元     2017-12-09改版确认不要了    
 AccountWithdrawn DECIMAL(18, 2) NOT NULL,                                          --账号累积提现总现金，单位：元   2017-12-09改版确认不要了    
 Score DECIMAL(18, 2) NOT NULL,                                                       --账户总的可用抵用金金额，单位：元  未转化为RMBd的金额

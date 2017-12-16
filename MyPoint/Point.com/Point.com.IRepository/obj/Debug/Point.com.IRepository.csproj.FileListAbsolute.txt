@@ -38,3 +38,8 @@ E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.IRepository.pdb
 E:\mygit\MyPoint\Point.com\Point.com.IRepository\obj\Debug\Point.com.IRepository.csprojResolveAssemblyReference.cache
 E:\mygit\MyPoint\Point.com\Point.com.IRepository\obj\Debug\Point.com.IRepository.dll
 E:\mygit\MyPoint\Point.com\Point.com.IRepository\obj\Debug\Point.com.IRepository.pdb
+D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.IRepository.dll
+D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.IRepository.pdb
+D:\mygit\MyPoint\Point.com\Point.com.IRepository\obj\Debug\Point.com.IRepository.csprojResolveAssemblyReference.cache
+D:\mygit\MyPoint\Point.com\Point.com.IRepository\obj\Debug\Point.com.IRepository.dll
+D:\mygit\MyPoint\Point.com\Point.com.IRepository\obj\Debug\Point.com.IRepository.pdb

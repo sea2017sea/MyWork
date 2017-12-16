@@ -610,7 +610,8 @@ namespace Point.com.ServiceImplement
 
             if (member.Score < article.ReadScore)
             {
-                ptcp.DoResult = string.Format("抵用金不足，账户抵用金{0}元，阅读当前文章需要{1}元抵用金", member.Score, article.ReadScore);
+                //ptcp.DoResult = string.Format("抵用金不足，账户抵用金{0}元，阅读当前文章需要{1}元抵用金", member.Score, article.ReadScore);
+                ptcp.DoResult = "抵用金不足";
                 return ptcp;
             }
 

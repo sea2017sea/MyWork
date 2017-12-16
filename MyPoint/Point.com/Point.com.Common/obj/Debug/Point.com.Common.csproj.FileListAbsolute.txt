@@ -29,3 +29,7 @@ E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Common.dll
 E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Common.pdb
 E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
 E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb
+D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Common.dll
+D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Common.pdb
+D:\mygit\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
+D:\mygit\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb

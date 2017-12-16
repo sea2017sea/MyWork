@@ -861,7 +861,8 @@ namespace Point.com.ServiceImplement
 
             if (amount < 1)
             {
-                ptcp.DoResult = "提现金额不能小于1元";
+                //ptcp.DoResult = "提现金额不能小于1元";
+                ptcp.DoResult = "提现金额不足";
                 return ptcp;
             }
 
@@ -880,20 +881,23 @@ namespace Point.com.ServiceImplement
             decimal scoreRmb = memberInfo.Score.GetValueOrDefault()/100;
             if (scoreRmb < 1)
             {
-                ptcp.DoResult = "账户金额小于1元，不能提现";
+                //ptcp.DoResult = "账户金额小于1元，不能提现";
+                ptcp.DoResult = "提现金额不足";
                 return ptcp;
             }
             
             if (amount > scoreRmb)
             {
-                ptcp.DoResult = string.Format("账户金额不足，可提现金额{0}元",scoreRmb);
+                //ptcp.DoResult = string.Format("账户金额不足，可提现金额{0}元", scoreRmb);
+                ptcp.DoResult = "账户金额不足";
                 return ptcp;
             }
 
             //当前账户配置的最低提现额度
             if (amount < memberInfo.MinWithdrawals)
             {
-                ptcp.DoResult = string.Format("您的账户提现额度最低{0}元起", memberInfo.MinWithdrawals);
+                //ptcp.DoResult = string.Format("您的账户提现额度最低{0}元起", memberInfo.MinWithdrawals);
+                ptcp.DoResult = "提现金额不足";
                 return ptcp;
             }
 

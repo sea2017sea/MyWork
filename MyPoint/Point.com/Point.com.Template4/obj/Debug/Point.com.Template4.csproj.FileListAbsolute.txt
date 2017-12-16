@@ -43,3 +43,9 @@ E:\mygit\MyPoint\Point.com\Point.com.Template4\bin\Debug\Point.com.Template4.pdb
 E:\mygit\MyPoint\Point.com\Point.com.Template4\obj\Debug\Point.com.Template4.csprojResolveAssemblyReference.cache
 E:\mygit\MyPoint\Point.com\Point.com.Template4\obj\Debug\Point.com.Template4.dll
 E:\mygit\MyPoint\Point.com\Point.com.Template4\obj\Debug\Point.com.Template4.pdb
+D:\mygit\MyPoint\Point.com\Point.com.Template4\bin\Debug\Point.com.Template4.dll.config
+D:\mygit\MyPoint\Point.com\Point.com.Template4\bin\Debug\Point.com.Template4.dll
+D:\mygit\MyPoint\Point.com\Point.com.Template4\bin\Debug\Point.com.Template4.pdb
+D:\mygit\MyPoint\Point.com\Point.com.Template4\obj\Debug\Point.com.Template4.csprojResolveAssemblyReference.cache
+D:\mygit\MyPoint\Point.com\Point.com.Template4\obj\Debug\Point.com.Template4.dll
+D:\mygit\MyPoint\Point.com\Point.com.Template4\obj\Debug\Point.com.Template4.pdb

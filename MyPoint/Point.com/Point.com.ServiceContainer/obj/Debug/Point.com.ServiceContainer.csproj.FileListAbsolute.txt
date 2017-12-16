@@ -38,3 +38,8 @@ E:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceContainer.pdb
 E:\mygit\MyPoint\Point.com\Point.com.ServiceContainer\obj\Debug\Point.com.ServiceContainer.csprojResolveAssemblyReference.cache
 E:\mygit\MyPoint\Point.com\Point.com.ServiceContainer\obj\Debug\Point.com.ServiceContainer.dll
 E:\mygit\MyPoint\Point.com\Point.com.ServiceContainer\obj\Debug\Point.com.ServiceContainer.pdb
+D:\mygit\MyPoint\Point.com\Point.com.ServiceContainer\obj\Debug\Point.com.ServiceContainer.csprojResolveAssemblyReference.cache
+D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceContainer.dll
+D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceContainer.pdb
+D:\mygit\MyPoint\Point.com\Point.com.ServiceContainer\obj\Debug\Point.com.ServiceContainer.dll
+D:\mygit\MyPoint\Point.com\Point.com.ServiceContainer\obj\Debug\Point.com.ServiceContainer.pdb
