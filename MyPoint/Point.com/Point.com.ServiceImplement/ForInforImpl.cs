@@ -73,7 +73,7 @@ namespace Point.com.ServiceImplement
             {
                 sortList = new List<T_InforConfigure>();
 
-                string sql = string.Format(@"SELECT TOP 500 * FROM T_InforConfigure WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY IntSort DESC",req.InfoType);
+                string sql = string.Format(@"SELECT * FROM T_InforConfigure WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY IntSort DESC",req.InfoType);
                 List<T_InforConfigure> orgAllDatas = DbSession.MLT.ExecuteSql<T_InforConfigure>(sql).ToList();
                 if (orgAllDatas.IsNull() || !orgAllDatas.IsHasRow())
                 {
@@ -124,7 +124,7 @@ namespace Point.com.ServiceImplement
                 }
 
                 //获取自媒体数据
-                string sqlArt = string.Format(@"SELECT TOP 500 * FROM T_SelfMediaArticle WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY SortId DESC", req.InfoType);
+                string sqlArt = string.Format(@"SELECT * FROM T_SelfMediaArticle WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY SortId DESC", req.InfoType);
                 var articleList = DbSession.MLT.ExecuteSql<T_SelfMediaArticle>(sqlArt).ToList();
                 List<T_InforConfigure> infoArtList = null;
                 if (articleList.IsNotNull() && articleList.IsHasRow())
