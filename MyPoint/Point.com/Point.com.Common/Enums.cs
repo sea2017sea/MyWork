@@ -8,7 +8,8 @@ namespace Point.com.Common
 {
     public class Enums
     {
-        public static readonly int CashProportion = 10;
+        public static readonly int CashProportion = 100;              //充值比例  1元人民币 = 100抵扣劵
+        public static readonly int TiXianProportion = 100;            //提现比例   100抵扣劵 = 1元人民币
         public static readonly string ScoreName = "抵用金";
         public static readonly string Rmb = "元";
 

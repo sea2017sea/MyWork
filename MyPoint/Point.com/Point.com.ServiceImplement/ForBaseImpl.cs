@@ -878,7 +878,7 @@ namespace Point.com.ServiceImplement
             }
 
             //低佣金转为金额 
-            decimal scoreRmb = memberInfo.Score.GetValueOrDefault()/100;
+            decimal scoreRmb = memberInfo.Score.GetValueOrDefault()/(int)Enums.TiXianProportion;
             if (scoreRmb < 1)
             {
                 //ptcp.DoResult = "账户金额小于1元，不能提现";

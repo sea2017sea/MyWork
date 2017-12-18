@@ -924,7 +924,7 @@ namespace Point.com.ServiceImplement
                     }
 
                     return null;
-                }, new TimeSpan(0, 5, 0));
+                }, new TimeSpan(0, 1, 0));
 
             ptcp.ReturnValue = allDatas;
             ptcp.DoFlag = PtcpState.Success;
