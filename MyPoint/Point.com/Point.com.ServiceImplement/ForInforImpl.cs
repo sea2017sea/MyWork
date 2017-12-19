@@ -67,7 +67,7 @@ namespace Point.com.ServiceImplement
             List<T_InforConfigure> sortList = new List<T_InforConfigure>();
             var cacheAll = string.Format("{0}.QueryHomePage.{1}.{2}", GetType().Name, req.InfoType,req.UserId);
 
-            sortList = CacheClientSession.LocalCacheClient.Get<List<T_InforConfigure>>(cacheAll);
+            //sortList = CacheClientSession.LocalCacheClient.Get<List<T_InforConfigure>>(cacheAll);
 
             if (req.PageIndex == 1 || sortList.IsNull() || !sortList.IsHasRow())
             {
@@ -738,7 +738,7 @@ namespace Point.com.ServiceImplement
                 #endregion
 
                 //写入缓存
-                CacheClientSession.LocalCacheClient.Set(cacheAll, sortList, new TimeSpan(0,10,0));
+                //CacheClientSession.LocalCacheClient.Set(cacheAll, sortList, new TimeSpan(0,10,0));
             }
 
             if (sortList.IsNull() || !sortList.IsHasRow())
@@ -746,8 +746,17 @@ namespace Point.com.ServiceImplement
                 ptcp.DoResult = "没有数据";
                 return ptcp;
             }
+            
+            List<T_InforConfigure> sortSelectList = new List<T_InforConfigure>();
+            foreach (var sl in sortList)
+            {
+                if (!sortSelectList.Any(c => c.SysNo == sl.SysNo && c.DataType == sl.DataType))
+                {
+                    sortSelectList.Add(sl);
+                }
+            }
 
-            var pageList = sortList.Skip(req.PageSize * (req.PageIndex - 1)).Take(req.PageSize).ToList();
+            var pageList = sortSelectList.Skip(req.PageSize * (req.PageIndex - 1)).Take(req.PageSize).ToList();
 
             ptcp.ReturnValue = new M_QueryHomePageRes();
 

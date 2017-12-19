@@ -507,6 +507,60 @@ namespace Point.com.ServiceImplement
                 });
                 DbSession.MLT.SaveChange();
 
+                //去除这个作者的文章信息，将这些作者的文章信息记录到已读红点表，用于首页显示红点的判断
+                var articleList = DbSession.MLT.T_SelfMediaArticleRepository.QueryBy(new T_SelfMediaArticle()
+                    {
+                        AuthorSysNo = req.AuthorSysNo,
+                        IsEnable = true
+                    }).ToList();
+
+                if (articleList.IsNotNull() && articleList.IsHasRow())
+                {
+                    //获取红点记录
+                    var redList = DbSession.MLT.T_SelfMediaRedDotRecordRepository.QueryBy(new T_SelfMediaRedDotRecord()
+                        {
+                            UserId = req.UserId,
+                            AuthorSysNo = req.AuthorSysNo,
+                            IsEnable = true
+                        }).ToList();
+
+
+                    if (redList.IsNotNull() && redList.IsHasRow())
+                    {
+                        foreach (var art in articleList)
+                        {
+                            if (!redList.Any(c => c.ArticleSysNo.GetValueOrDefault() == art.SysNo.GetValueOrDefault()))
+                            {
+                                DbSession.MLT.T_SelfMediaRedDotRecordRepository.Add(new T_SelfMediaRedDotRecord()
+                                {
+                                    UserId = req.UserId,
+                                    AuthorSysNo = req.AuthorSysNo,
+                                    ArticleSysNo = art.SysNo,
+                                    RowCeateDate = dtNow,
+                                    ModifyTime = dtNow,
+                                    IsEnable = true
+                                });
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var art in articleList)
+                        {
+                            DbSession.MLT.T_SelfMediaRedDotRecordRepository.Add(new T_SelfMediaRedDotRecord()
+                            {
+                                UserId = req.UserId,
+                                AuthorSysNo = req.AuthorSysNo,
+                                ArticleSysNo = art.SysNo,
+                                RowCeateDate = dtNow,
+                                ModifyTime = dtNow,
+                                IsEnable = true
+                            });
+                        }
+                    }
+                }
+
+
                 //关注
                 DbSession.MLT.T_SelfMediaFollowRecordRepository.Add(new T_SelfMediaFollowRecord()
                 {

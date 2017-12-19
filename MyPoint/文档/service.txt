@@ -327,6 +327,7 @@ http://api.point-server.com/json/metadata?op=AddAccountRecordReq
 
 17、清空缓存服务  开发完成
 http://api.point-server.com/json/metadata?op=LocalCacheAllReq
+http://api.point-server.com/json/reply/LocalCacheAllReq         在浏览器访问，即可清空缓存
 
 
 ==========================================================================================================================================================
