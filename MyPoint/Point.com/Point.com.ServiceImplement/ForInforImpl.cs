@@ -15,7 +15,7 @@ namespace Point.com.ServiceImplement
     {
         public List<M_SubjectEntity> subjectEntities = new List<M_SubjectEntity>();
         private static ForBaseImpl fb = new ForBaseImpl();
-
+        
         /// <summary>
         /// 获取首页的数据
         /// 如果是题目类型，则需要去掉当前会员已经回答过的题了
@@ -23,6 +23,109 @@ namespace Point.com.ServiceImplement
         /// <param name="req"></param>
         /// <returns></returns>
         public Ptcp<M_QueryHomePageRes> QueryHomePage(M_QueryHomePageReq req)
+        {
+            var ptcp = new Ptcp<M_QueryHomePageRes>();
+
+            if (req.IsNull())
+            {
+                ptcp.DoResult = "请求数据非法";
+                return ptcp;
+            }
+
+            if (req.UserId > 0)
+            {
+                var memberInfo = DbSession.MLT.T_MemberRepository.QueryBy(new T_Member()
+                {
+                    SysNo = req.UserId
+                }).FirstOrDefault();
+
+                if (memberInfo.IsNotNull() && memberInfo.SysNo > 0)
+                {
+                    req.InfoType = memberInfo.InforType.GetValueOrDefault();
+                }
+            }
+
+            string jsonParam = JsonConvert.SerializeObject(req);
+            Logger.Write(LoggerLevel.Error, "QueryHomePage_in", "", jsonParam, "");
+
+            if (req.InfoType <= 0)
+            {
+                ptcp.DoResult = "咨询类型不能为空";
+                return ptcp;
+            }
+
+            if (req.PageIndex <= 0 || req.PageIndex > 10000)
+            {
+                req.PageIndex = 1;
+            }
+
+            if (req.PageSize <= 0 || req.PageSize > 100)
+            {
+                req.PageSize = 10;
+            }
+
+            List<T_InforConfigure> sortList = new List<T_InforConfigure>();
+
+            string sql = string.Format(@"SELECT * FROM T_InforConfigure WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY IntSort DESC", req.InfoType);
+            var orgAllDatas = DbSession.MLT.ExecuteSql<T_InforConfigure>(sql).ToList();
+
+            if (orgAllDatas.IsNotNull() && orgAllDatas.IsHasRow())
+            {
+                sortList.AddRange(orgAllDatas);
+            }
+
+            //获取自媒体数据
+            string sqlArt = string.Format(@"SELECT * FROM T_SelfMediaArticle WHERE (StrInforType LIKE '%(0)%' OR StrInforType LIKE '%({0})%') AND IsShowIndex = 1 AND IsEnable = 1 ORDER BY SortId DESC", req.InfoType);
+            var articleList = DbSession.MLT.ExecuteSql<T_SelfMediaArticle>(sqlArt).ToList();
+            
+            if (articleList.IsNotNull() && articleList.IsHasRow())
+            {
+                //将 T_SelfMediaArticle 转换为 T_InforConfigure
+                var auths = AllAuthorInfo();
+                foreach (var sel in articleList)
+                {
+                    var infoArt = TableTInforConfigure(sel, auths);
+                    if (infoArt.IsNotNull())
+                    {
+                        sortList.Add(infoArt);
+                    }
+                }
+            }
+
+            if (sortList.IsNull() || !sortList.IsHasRow())
+            {
+                ptcp.DoResult = "没有内容";
+                return ptcp;
+            }
+
+            sortList = sortList.OrderByDescending(c => c.IntSort).ToList();
+            var pageList = sortList.Skip(req.PageSize * (req.PageIndex - 1)).Take(req.PageSize).ToList();
+
+
+            ptcp.ReturnValue = new M_QueryHomePageRes();
+
+            var pl = Mapper.MapperGeneric<T_InforConfigure, M_HomePageData>(pageList).ToList();
+
+            foreach (var m in pl)
+            {
+                m.StrSourceDateTime = m.SourceDateTime.ToString();
+            }
+
+            ptcp.ReturnValue.PageDatas = pl;
+
+            ptcp.ReturnValue.Total = sortList.Count;
+            ptcp.DoFlag = PtcpState.Success;
+            ptcp.DoResult = "查询成功";
+            return ptcp;
+        }
+
+        /// <summary>
+        /// 获取首页的数据
+        /// 如果是题目类型，则需要去掉当前会员已经回答过的题了
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public Ptcp<M_QueryHomePageRes> QueryHomePageTwo(M_QueryHomePageReq req)
         {
             var ptcp = new Ptcp<M_QueryHomePageRes>();
 
