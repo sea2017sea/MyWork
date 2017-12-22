@@ -127,7 +127,7 @@ namespace Point.com.ServiceImplement
         {
             string str = "http://img.point-server.com/default/default0.png";
 
-            // 1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵用劵)
+            // 1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵用劵)   64 阅读文章
             switch (tranType)
             {
                 case 1:
@@ -147,6 +147,9 @@ namespace Point.com.ServiceImplement
                     break;
                 case 32:
                     str = "http://img.point-server.com/default/arpicurl32.png";
+                    break;
+                case 64:
+                    str = "http://img.point-server.com/default/arpicurl64.png";
                     break;
                 default:
                     str = "http://img.point-server.com/default/default0.png";

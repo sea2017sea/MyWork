@@ -54,6 +54,11 @@ namespace Point.com.Facade
                     {
                         var fileName = "";
                         var reqFile = Request.Files[i];
+                        if (reqFile.ContentLength > (1024 * 1024))
+                        {
+                            res.DoResult = "图片过大，不能超过1M";
+                            return res;
+                        }
 
                         var fileBytes = new byte[reqFile.ContentLength];
                         reqFile.InputStream.Read(fileBytes, 0, (int)reqFile.ContentLength);

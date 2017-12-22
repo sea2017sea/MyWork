@@ -342,6 +342,20 @@ namespace Point.com.ServiceImplement
             
             int sysNo = DbSession.MLT.ExecuteSql<int>(sql).FirstOrDefault();
 
+            #region 处理个人账户中心默认欢迎页面 约定 T_InforConfigure 表的 SysNo = 1 为欢迎页面的消息
+
+            DbSession.MLT.T_AccountRecommendRepository.Add(new T_AccountRecommend()
+            {
+                UserId = sysNo,
+                InforSysNo = 1,
+                IsPushIn = 0,
+                RowCeateDate = dtNow,
+                ModifyTime = dtNow,
+                IsEnable = true
+            });
+
+            #endregion
+
             #region 处理会员邀请
 
             //检查当前会员手机号码是否存在要求记录里面
@@ -410,11 +424,13 @@ namespace Point.com.ServiceImplement
                             },new T_ShareAnswerRecord(){SysNo = a.SysNo});
                     }
 
-                    DbSession.MLT.SaveChange();
+                    //DbSession.MLT.SaveChange();
                 }
             }
 
             #endregion
+
+            DbSession.MLT.SaveChange();
 
             ptcp.DoFlag = PtcpState.Success;
             ptcp.DoResult = "注册成功";
