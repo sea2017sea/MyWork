@@ -155,6 +155,9 @@
     <Compile Include="T_SelfMediaRedDotRecord.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="T_SelfMediaSaveRecord.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="T_ShareAnswerRecord.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

@@ -7,6 +7,32 @@ wap地址：            http://wap.point-server.com/
 服务说明txt文档：    http://img.point-server.com/service.txt
 
 
+2017-12-30
+58、新增自媒体文章分享之后，保存手机号码
+http://api.point-server.com/json/metadata?op=AddSelfMediaSaveRecordReq
+请求参数：
+
+    public class AddSelfMediaSaveRecordReq
+    {
+        public string Mobile { get; set; }              //手机号码    必填
+        public int AuthorSysNo { get; set; }            //作者ID      必填
+        public int ArticleSysNo { get; set; }           //作者文章ID  必填
+    }
+
+返回参数：
+   DoFlag = 1 成功
+   DoResult   返回消息提示
+
+
+2、注册服务  开发完成
+2017-09-08 修正：请求参数去掉分享key ShareKey
+2017-12-30 修正：返回参数新增 自媒体文章分享保存的手机号码注册，APP跳转到作者文章列表页面 AuthorSysNo  ArticleSysNo
+        public int AuthorSysNo { get; set; }     //作者ID
+        public int ArticleSysNo { get; set; }    //作者文章ID
+http://api.point-server.com/json/metadata?op=MemberRegisterReq
+
+
+
 
 
 

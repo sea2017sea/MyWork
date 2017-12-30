@@ -811,5 +811,58 @@ namespace Point.com.ServiceImplement
 
             return ptcp;
         }
+
+        /// <summary>
+        /// 自媒体文章分析保存手机号码信息，用于注册处理数据
+        /// </summary>
+        /// <param name="mobile"></param>
+        /// <param name="authorSysNo"></param>
+        /// <param name="articleSysNo"></param>
+        /// <returns></returns>
+        public Ptcp<string> AddSelfMediaSaveRecord(string mobile, int authorSysNo, int articleSysNo)
+        {
+            var ptcp = new Ptcp<string>();
+
+            if (string.IsNullOrEmpty(mobile))
+            {
+                ptcp.DoResult = "手机号码不能为空";
+                return ptcp;
+            }
+
+            if (mobile.Length != 11)
+            {
+                ptcp.DoResult = "手机号码格式有误";
+                return ptcp;
+            }
+
+            if (authorSysNo <= 0)
+            {
+                ptcp.DoResult = "作者ID不能为空";
+                return ptcp;
+            }
+
+            if (articleSysNo <= 0)
+            {
+                ptcp.DoResult = "文章ID不能为空";
+                return ptcp;
+            }
+
+            DateTime dtNow = DateTime.Now;
+            DbSession.MLT.T_SelfMediaSaveRecordRepository.Add(new T_SelfMediaSaveRecord()
+                {
+                    Mobile = mobile,
+                    AuthorSysNo = authorSysNo,
+                    ArticleSysNo = articleSysNo,
+                    IsTransfer = 0,
+                    RowCeateDate = dtNow,
+                    ModifyTime = dtNow,
+                    IsEnable = true
+                });
+            DbSession.MLT.SaveChange();
+
+            ptcp.DoFlag = PtcpState.Success;
+            ptcp.DoResult = "保存成功";
+            return ptcp;
+        }
     }
 }

@@ -484,6 +484,29 @@ namespace Point.com.ServiceImplement
                     #endregion
 
                     break;
+                case (int)Enums.TranType.SaveSelfMedia:
+                    //自媒体分享，注册手机号码，获取低佣金
+                    tRecord.PlusReduce = 1;   //交易获取或者使用 1增加 2 使用（减）
+                    tRecord.Company = Enums.Rmb;
+                    tRecord.TranName = "自媒体分享注册";
+                    tRecord.TranNum = req.TranNum;
+
+                    sendPush.MsgTitle = string.Format("转入{0}增加",Enums.ScoreName);
+                    sendPush.MsgAlert = string.Format("恭喜你获得{0}元现金。", req.TranNum);
+                    sendPush.MsgContent = string.Format("转入{0}增加", Enums.ScoreName);
+
+                    #region 更新账户积分信息
+
+                    //更新账户积分信息
+                    DbSession.MLT.T_MemberRepository.Update(new T_Member()
+                    {
+                        Score = (memberInfo.Score + req.TranNum),
+                        ModifyTime = dtNow
+                    }, new T_Member() { SysNo = req.UserId });
+
+                    #endregion
+
+                    break;
                 default:
                     ptcp.DoResult = "交易类型错误";
                     return ptcp;

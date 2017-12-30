@@ -752,6 +752,26 @@ namespace Point.com.RepositoryFactory
 				  }  
                                   public partial class MLT:IMLT
 				  {					
+					private IT_SelfMediaSaveRecordRepository _T_SelfMediaSaveRecordRepository;
+					public virtual string T_SelfMediaSaveRecordTableName{
+						get{
+							return "T_SelfMediaSaveRecord";
+						}
+					}
+					public IT_SelfMediaSaveRecordRepository T_SelfMediaSaveRecordRepository
+					{
+						get
+						{
+							if (null == _T_SelfMediaSaveRecordRepository)
+							{
+								_T_SelfMediaSaveRecordRepository = new T_SelfMediaSaveRecordRepository(this._unitOfWork,T_SelfMediaSaveRecordTableName);
+							}
+							return _T_SelfMediaSaveRecordRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
 					private IT_ShareAnswerRecordRepository _T_ShareAnswerRecordRepository;
 					public virtual string T_ShareAnswerRecordTableName{
 						get{

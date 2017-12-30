@@ -229,7 +229,6 @@ IsEnable BIT NOT NULL                                                           
 go
 
 
-
 --创建抵扣劵兑换记录表
 CREATE TABLE T_CouponExcRecord
 (
@@ -296,8 +295,6 @@ IsEnable BIT NOT NULL                                                           
 )
 go
 
-
-
 --创建答题记录表
 CREATE TABLE T_AnswerRecord
 (
@@ -319,7 +316,7 @@ SysNo INT IDENTITY(1,1) PRIMARY KEY,                                        --主
 Mobile varchar(11) NOT  NULL,                                                     --分享答题人的手机号码
 SubSysNo int NOT NULL,                                                              --题目ID，对应 T_Subject 表 sysno
 AnsSysNo int NOT NULL,                                                              --题目答案ID，对应 T_Answer 表 sysno
-AnswerMoney DECIMAL(18, 2) NOT NULL,                                   --答题金额
+AnswerMoney DECIMAL(18, 2) NOT NULL,                                                --答题金额
 IsTransfer int NOT NULL,                                                              --是否已经迁移到答题记录表  0 未迁移  1 已迁移
 RowCeateDate DATETIME NOT NULL,                                           --创建时间
 ModifyTime DATETIME NULL,                                                        --修改时间
@@ -508,8 +505,21 @@ ModifyTime DATETIME NULL,                                      --修改时间
 IsEnable BIT NOT NULL                                          --是否启用 true 启用 0 禁用
 )
 go
-
  
+--创建自媒体分享未注册会员记录表
+CREATE TABLE T_SelfMediaSaveRecord
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                        --主键，自增长，唯一
+Mobile varchar(11) NOT NULL,                                                --填写的手机号码
+AuthorSysNo int NOT NULL,                                                   --作者ID，对应 T_SelfMediaAuthor 的 sysno
+ArticleSysNo int NOT NULL,                                                  --文章ID，对应 T_SelfMediaArticle 的 sysno
+TranNum DECIMAL(18, 2) NULL,                                                --获取的低佣金
+IsTransfer int NOT NULL,                                                    --是否已经注册并自动关注了作者  0 未迁移  1 已迁移
+RowCeateDate DATETIME NOT NULL,                                             --创建时间
+ModifyTime DATETIME NULL,                                                   --修改时间
+IsEnable BIT NOT NULL                                                       --是否启用 true 启用 0 禁用
+)
+go
 
 
 SELECT TOP 100 * FROM T_SelfMediaAuthor
@@ -538,7 +548,7 @@ SELECT TOP 100 * FROM dbo.T_AnswerRecommend ORDER BY SysNo ASC
 SELECT TOP 100 * FROM dbo.T_Favorites ORDER BY SysNo ASC
 SELECT TOP 100 * FROM dbo.T_CouponPrivateCode ORDER BY SysNo ASC
 SELECT TOP 100 * FROM dbo.T_InforConfigure
-
+SELECT TOP 100 * FROM dbo.T_SelfMediaSaveRecord order by SysNo desc
 
 
 

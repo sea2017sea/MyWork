@@ -121,9 +121,9 @@ namespace Point.com.ServiceImplement
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        public Ptcp<string> MemberRegister(M_MemberRegisterReq req)
+        public Ptcp<M_MemberRegisterRes> MemberRegister(M_MemberRegisterReq req)
         {
-            var ptcp = new Ptcp<string>();
+            var ptcp = new Ptcp<M_MemberRegisterRes>();
 
             #region 基础数据验证
 
@@ -426,6 +426,51 @@ namespace Point.com.ServiceImplement
 
                     //DbSession.MLT.SaveChange();
                 }
+            }
+
+            #endregion
+
+            #region 处理自媒体分享注册
+
+            var selfMedia = DbSession.MLT.T_SelfMediaSaveRecordRepository.QueryBy(new T_SelfMediaSaveRecord()
+                {
+                    Mobile = req.Mobile,
+                    IsTransfer = 0,
+                    IsEnable = true
+                }, " order by SysNo desc").FirstOrDefault();
+            if (selfMedia.IsNotNull())
+            {
+                DbSession.MLT.T_SelfMediaSaveRecordRepository.Update(new T_SelfMediaSaveRecord()
+                    {
+                        TranNum = 15,
+                        IsTransfer = 1,
+                        ModifyTime = dtNow
+                    },new T_SelfMediaSaveRecord()
+                    {
+                        SysNo = selfMedia.SysNo,
+                        Mobile = req.Mobile
+                    });  
+
+                //自动关注作者
+                ForSelfMediaImpl forSelf = new ForSelfMediaImpl();
+                forSelf.SetFollow(new M_SetFollowReq()
+                    {
+                        UserId = sysNo,
+                        AuthorSysNo = selfMedia.AuthorSysNo.GetValueOrDefault(),
+                        IsFollow = true
+                    });
+                
+                //给当前会员发送低佣金 
+                fb.AddAccountRecord(new M_AddAccountRecordReq()
+                {
+                    UserId = sysNo,
+                    TranNum = 15,
+                    TranType = (int)Enums.TranType.SaveSelfMedia
+                });
+
+                ptcp.ReturnValue = new M_MemberRegisterRes();
+                ptcp.ReturnValue.AuthorSysNo = selfMedia.AuthorSysNo.GetValueOrDefault();
+                ptcp.ReturnValue.ArticleSysNo = selfMedia.ArticleSysNo.GetValueOrDefault();
             }
 
             #endregion

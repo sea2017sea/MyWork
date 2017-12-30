@@ -57,5 +57,14 @@ namespace Point.com.ServiceInterface
         /// <param name="req"></param>
         /// <returns></returns>
         Ptcp<M_QueryHomePageRedDotRes> QueryHomePageRedDot(M_QueryHomePageRedDotReq req);
+
+        /// <summary>
+        /// 自媒体文章分析保存手机号码信息，用于注册处理数据
+        /// </summary>
+        /// <param name="mobile"></param>
+        /// <param name="authorSysNo"></param>
+        /// <param name="articleSysNo"></param>
+        /// <returns></returns>
+        Ptcp<string> AddSelfMediaSaveRecord(string mobile, int authorSysNo, int articleSysNo);
     }
 }

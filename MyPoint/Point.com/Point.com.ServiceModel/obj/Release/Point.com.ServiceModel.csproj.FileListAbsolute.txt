@@ -26,3 +26,10 @@ E:\mygit\MyPoint\Point.com\Point.com.ServiceModel\bin\Release\ServiceStack.Inter
 E:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Release\Point.com.ServiceModel.csprojResolveAssemblyReference.cache
 E:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Release\Point.com.ServiceModel.dll
 E:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Release\Point.com.ServiceModel.pdb
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\bin\Release\Point.com.ServiceModel.dll
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\bin\Release\Point.com.ServiceModel.pdb
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\bin\Release\ServiceStack.Interfaces.dll
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\bin\Release\ServiceStack.Interfaces.xml
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Release\Point.com.ServiceModel.csprojResolveAssemblyReference.cache
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Release\Point.com.ServiceModel.dll
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Release\Point.com.ServiceModel.pdb

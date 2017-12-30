@@ -672,6 +672,22 @@ namespace Point.com.Template4
             }
         }
         private ObjectSet<T_SelfMediaRedDotRecord> _T_SelfMediaRedDotRecord;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<T_SelfMediaSaveRecord> T_SelfMediaSaveRecord
+        {
+            get
+            {
+                if ((_T_SelfMediaSaveRecord == null))
+                {
+                    _T_SelfMediaSaveRecord = base.CreateObjectSet<T_SelfMediaSaveRecord>("T_SelfMediaSaveRecord");
+                }
+                return _T_SelfMediaSaveRecord;
+            }
+        }
+        private ObjectSet<T_SelfMediaSaveRecord> _T_SelfMediaSaveRecord;
 
         #endregion
 
@@ -979,6 +995,14 @@ namespace Point.com.Template4
         public void AddToT_SelfMediaRedDotRecord(T_SelfMediaRedDotRecord t_SelfMediaRedDotRecord)
         {
             base.AddObject("T_SelfMediaRedDotRecord", t_SelfMediaRedDotRecord);
+        }
+    
+        /// <summary>
+        /// 用于向 T_SelfMediaSaveRecord EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToT_SelfMediaSaveRecord(T_SelfMediaSaveRecord t_SelfMediaSaveRecord)
+        {
+            base.AddObject("T_SelfMediaSaveRecord", t_SelfMediaSaveRecord);
         }
 
         #endregion
@@ -11406,6 +11430,267 @@ namespace Point.com.Template4
         private global::System.Int32 _ArticleSysNo;
         partial void OnArticleSysNoChanging(global::System.Int32 value);
         partial void OnArticleSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime RowCeateDate
+        {
+            get
+            {
+                return _RowCeateDate;
+            }
+            set
+            {
+                OnRowCeateDateChanging(value);
+                ReportPropertyChanging("RowCeateDate");
+                _RowCeateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RowCeateDate");
+                OnRowCeateDateChanged();
+            }
+        }
+        private global::System.DateTime _RowCeateDate;
+        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        partial void OnRowCeateDateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ModifyTime
+        {
+            get
+            {
+                return _ModifyTime;
+            }
+            set
+            {
+                OnModifyTimeChanging(value);
+                ReportPropertyChanging("ModifyTime");
+                _ModifyTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifyTime");
+                OnModifyTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ModifyTime;
+        partial void OnModifyTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnModifyTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsEnable
+        {
+            get
+            {
+                return _IsEnable;
+            }
+            set
+            {
+                OnIsEnableChanging(value);
+                ReportPropertyChanging("IsEnable");
+                _IsEnable = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsEnable");
+                OnIsEnableChanged();
+            }
+        }
+        private global::System.Boolean _IsEnable;
+        partial void OnIsEnableChanging(global::System.Boolean value);
+        partial void OnIsEnableChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYZJ_MLTModel", Name="T_SelfMediaSaveRecord")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class T_SelfMediaSaveRecord : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 T_SelfMediaSaveRecord 对象。
+        /// </summary>
+        /// <param name="sysNo">SysNo 属性的初始值。</param>
+        /// <param name="mobile">Mobile 属性的初始值。</param>
+        /// <param name="authorSysNo">AuthorSysNo 属性的初始值。</param>
+        /// <param name="articleSysNo">ArticleSysNo 属性的初始值。</param>
+        /// <param name="isTransfer">IsTransfer 属性的初始值。</param>
+        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
+        /// <param name="isEnable">IsEnable 属性的初始值。</param>
+        public static T_SelfMediaSaveRecord CreateT_SelfMediaSaveRecord(global::System.Int32 sysNo, global::System.String mobile, global::System.Int32 authorSysNo, global::System.Int32 articleSysNo, global::System.Int32 isTransfer, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        {
+            T_SelfMediaSaveRecord t_SelfMediaSaveRecord = new T_SelfMediaSaveRecord();
+            t_SelfMediaSaveRecord.SysNo = sysNo;
+            t_SelfMediaSaveRecord.Mobile = mobile;
+            t_SelfMediaSaveRecord.AuthorSysNo = authorSysNo;
+            t_SelfMediaSaveRecord.ArticleSysNo = articleSysNo;
+            t_SelfMediaSaveRecord.IsTransfer = isTransfer;
+            t_SelfMediaSaveRecord.RowCeateDate = rowCeateDate;
+            t_SelfMediaSaveRecord.IsEnable = isEnable;
+            return t_SelfMediaSaveRecord;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SysNo
+        {
+            get
+            {
+                return _SysNo;
+            }
+            set
+            {
+                if (_SysNo != value)
+                {
+                    OnSysNoChanging(value);
+                    ReportPropertyChanging("SysNo");
+                    _SysNo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("SysNo");
+                    OnSysNoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SysNo;
+        partial void OnSysNoChanging(global::System.Int32 value);
+        partial void OnSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Mobile
+        {
+            get
+            {
+                return _Mobile;
+            }
+            set
+            {
+                OnMobileChanging(value);
+                ReportPropertyChanging("Mobile");
+                _Mobile = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Mobile");
+                OnMobileChanged();
+            }
+        }
+        private global::System.String _Mobile;
+        partial void OnMobileChanging(global::System.String value);
+        partial void OnMobileChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AuthorSysNo
+        {
+            get
+            {
+                return _AuthorSysNo;
+            }
+            set
+            {
+                OnAuthorSysNoChanging(value);
+                ReportPropertyChanging("AuthorSysNo");
+                _AuthorSysNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AuthorSysNo");
+                OnAuthorSysNoChanged();
+            }
+        }
+        private global::System.Int32 _AuthorSysNo;
+        partial void OnAuthorSysNoChanging(global::System.Int32 value);
+        partial void OnAuthorSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ArticleSysNo
+        {
+            get
+            {
+                return _ArticleSysNo;
+            }
+            set
+            {
+                OnArticleSysNoChanging(value);
+                ReportPropertyChanging("ArticleSysNo");
+                _ArticleSysNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ArticleSysNo");
+                OnArticleSysNoChanged();
+            }
+        }
+        private global::System.Int32 _ArticleSysNo;
+        partial void OnArticleSysNoChanging(global::System.Int32 value);
+        partial void OnArticleSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> TranNum
+        {
+            get
+            {
+                return _TranNum;
+            }
+            set
+            {
+                OnTranNumChanging(value);
+                ReportPropertyChanging("TranNum");
+                _TranNum = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TranNum");
+                OnTranNumChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _TranNum;
+        partial void OnTranNumChanging(Nullable<global::System.Decimal> value);
+        partial void OnTranNumChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IsTransfer
+        {
+            get
+            {
+                return _IsTransfer;
+            }
+            set
+            {
+                OnIsTransferChanging(value);
+                ReportPropertyChanging("IsTransfer");
+                _IsTransfer = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsTransfer");
+                OnIsTransferChanged();
+            }
+        }
+        private global::System.Int32 _IsTransfer;
+        partial void OnIsTransferChanging(global::System.Int32 value);
+        partial void OnIsTransferChanged();
     
         /// <summary>
         /// 没有元数据文档可用。

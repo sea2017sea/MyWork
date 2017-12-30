@@ -43,6 +43,7 @@
         <EntityTypeShape EntityType="MYZJ_MLTModel.Crm_Interactive" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.T_Member" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaRedDotRecord" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaSaveRecord" Width="1.5" PointX="12.75" PointY="2.75" IsExpanded="false" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

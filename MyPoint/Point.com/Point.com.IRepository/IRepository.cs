@@ -133,6 +133,10 @@ namespace Point.com.IRepository
     {        
     }
 	
+	public partial interface IT_SelfMediaSaveRecordRepository  : IBaseRepository<T_SelfMediaSaveRecord>
+    {        
+    }
+	
 	public partial interface IT_ShareAnswerRecordRepository  : IBaseRepository<T_ShareAnswerRecord>
     {        
     }

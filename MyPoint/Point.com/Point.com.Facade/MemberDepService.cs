@@ -63,6 +63,12 @@ namespace Point.com.Facade
                     res.DoFlag = (int)PtcpState.Success;
                 }
                 res.DoResult = ptcp.DoResult;
+
+                if (ptcp.ReturnValue.IsNotNull())
+                {
+                    res.AuthorSysNo = ptcp.ReturnValue.AuthorSysNo;
+                    res.ArticleSysNo = ptcp.ReturnValue.ArticleSysNo;
+                }
             }
             catch (Exception ex)
             {

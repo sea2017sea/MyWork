@@ -34,6 +34,12 @@ namespace Point.com.Model
         //public string ShareKey { get; set; }      //分享的key，以英文的,分割；格式：分享人的会员ID,分享的内容ID，如：10023,780   不要了
     }
 
+    public class M_MemberRegisterRes
+    {
+        public int AuthorSysNo { get; set; }     //作者ID
+        public int ArticleSysNo { get; set; }    //作者文章ID
+    }
+
     public class M_QueryMemberInfoReq : M_BaseModel
     {
     }

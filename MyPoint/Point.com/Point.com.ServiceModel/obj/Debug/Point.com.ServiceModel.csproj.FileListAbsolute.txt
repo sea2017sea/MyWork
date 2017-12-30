@@ -40,3 +40,4 @@ D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceModel.dll
 D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceModel.pdb
 D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.dll
 D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.pdb
+D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.csprojResolveAssemblyReference.cache

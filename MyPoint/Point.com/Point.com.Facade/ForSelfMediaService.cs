@@ -231,5 +231,31 @@ namespace Point.com.Facade
 
             return res;
         }
+
+        /// <summary>
+        /// 自媒体文章分析保存手机号码信息，用于注册处理数据
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public AddSelfMediaSaveRecordRes Any(AddSelfMediaSaveRecordReq req)
+        {
+            var res = new AddSelfMediaSaveRecordRes();
+
+            try
+            {
+                var ptcp = ServiceImpl.AddSelfMediaSaveRecord(req.Mobile,req.AuthorSysNo,req.ArticleSysNo);
+                if (ptcp.DoFlag == PtcpState.Success)
+                {
+                    res.DoFlag = (int)PtcpState.Success;
+                }
+                res.DoResult = ptcp.DoResult;
+            }
+            catch (Exception ex)
+            {
+                res.DoResult = "系统繁忙，请稍后再试";
+            }
+
+            return res;
+        }
     }
 }

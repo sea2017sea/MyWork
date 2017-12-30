@@ -1,7 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MYZJ_MLTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="MYZJ_MLTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="MYZJ_MLTModelStoreContainer">
+    <EntitySet Name="Base_Region" EntityType="MYZJ_MLTModel.Store.Base_Region" store:Type="Tables" store:Schema="dbo" store:Name="Base_Region">
+      <DefiningQuery>SELECT 
+      [Base_Region].[RegionId] AS [RegionId], 
+      [Base_Region].[ParentId] AS [ParentId], 
+      [Base_Region].[RegionName] AS [RegionName], 
+      [Base_Region].[RegionType] AS [RegionType], 
+      [Base_Region].[ZipCode] AS [ZipCode], 
+      [Base_Region].[QuHao] AS [QuHao], 
+      [Base_Region].[ShortSpell] AS [ShortSpell], 
+      [Base_Region].[SortId] AS [SortId], 
+      [Base_Region].[IsEnable] AS [IsEnable]
+      FROM [dbo].[Base_Region] AS [Base_Region]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Base_SaveApp" EntityType="MYZJ_MLTModel.Store.Base_SaveApp" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Crm_ClickExchange" EntityType="MYZJ_MLTModel.Store.Crm_ClickExchange" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Crm_Interactive" EntityType="MYZJ_MLTModel.Store.Crm_Interactive" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Crm_Problem" EntityType="MYZJ_MLTModel.Store.Crm_Problem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Crm_User" EntityType="MYZJ_MLTModel.Store.Crm_User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_AccountRecommend" EntityType="MYZJ_MLTModel.Store.T_AccountRecommend" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_AccountRecord" EntityType="MYZJ_MLTModel.Store.T_AccountRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Answer" EntityType="MYZJ_MLTModel.Store.T_Answer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_AnswerRecommend" EntityType="MYZJ_MLTModel.Store.T_AnswerRecommend" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_AnswerRecord" EntityType="MYZJ_MLTModel.Store.T_AnswerRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Category" EntityType="MYZJ_MLTModel.Store.T_Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_CouponExcRecord" EntityType="MYZJ_MLTModel.Store.T_CouponExcRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_CouponInfo" EntityType="MYZJ_MLTModel.Store.T_CouponInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_CouponPrivateCode" EntityType="MYZJ_MLTModel.Store.T_CouponPrivateCode" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Favorites" EntityType="MYZJ_MLTModel.Store.T_Favorites" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_InforConfigure" EntityType="MYZJ_MLTModel.Store.T_InforConfigure" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_JiGuangPush" EntityType="MYZJ_MLTModel.Store.T_JiGuangPush" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_JiGuangPushRecord" EntityType="MYZJ_MLTModel.Store.T_JiGuangPushRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Member" EntityType="MYZJ_MLTModel.Store.T_Member" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_OperationLog" EntityType="MYZJ_MLTModel.Store.T_OperationLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Recharge" EntityType="MYZJ_MLTModel.Store.T_Recharge" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaArticle" EntityType="MYZJ_MLTModel.Store.T_SelfMediaArticle" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaAuthor" EntityType="MYZJ_MLTModel.Store.T_SelfMediaAuthor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaFollowRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaFollowRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaPayRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaPayRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaRedDotRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_SelfMediaSaveRecord" EntityType="MYZJ_MLTModel.Store.T_SelfMediaSaveRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ShareAnswerRecord" EntityType="MYZJ_MLTModel.Store.T_ShareAnswerRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_ShareRegister" EntityType="MYZJ_MLTModel.Store.T_ShareRegister" store:Type="Tables" store:Schema="dbo" store:Name="T_ShareRegister">
+      <DefiningQuery>SELECT 
+      [T_ShareRegister].[SysNo] AS [SysNo], 
+      [T_ShareRegister].[ShareSysNo] AS [ShareSysNo], 
+      [T_ShareRegister].[ShareUserId] AS [ShareUserId], 
+      [T_ShareRegister].[CoverMobile] AS [CoverMobile], 
+      [T_ShareRegister].[CoverUserId] AS [CoverUserId], 
+      [T_ShareRegister].[IsReceive] AS [IsReceive], 
+      [T_ShareRegister].[RowCeateDate] AS [RowCeateDate], 
+      [T_ShareRegister].[ModifyTime] AS [ModifyTime], 
+      [T_ShareRegister].[IsEnable] AS [IsEnable]
+      FROM [dbo].[T_ShareRegister] AS [T_ShareRegister]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_ShopGoods" EntityType="MYZJ_MLTModel.Store.T_ShopGoods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Sms" EntityType="MYZJ_MLTModel.Store.T_Sms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Subject" EntityType="MYZJ_MLTModel.Store.T_Subject" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Withdrawals" EntityType="MYZJ_MLTModel.Store.T_Withdrawals" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
   <!--生成过程中发现错误:
-警告 6002: 表/视图“point.dbo.Base_Region”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+      警告 6002: 表/视图“point.dbo.Base_Region”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
   <EntityType Name="Base_Region">
     <Key>
       <PropertyRef Name="RegionId" />
@@ -21,13 +82,13 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Mobile" Type="varchar" MaxLength="11" />
     <Property Name="UserId" Type="int" />
-    <Property Name="DeviceCode" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="DeviceCode" Type="varchar" Nullable="false" MaxLength="512" />
     <Property Name="AppName" Type="nvarchar" MaxLength="512" />
     <Property Name="SourceTypeSysNo" Type="int" Nullable="false" />
-    <Property Name="ClientIp" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="ClientIp" Type="varchar" Nullable="false" MaxLength="512" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -36,11 +97,11 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="GoodsType" Type="int" Nullable="false" />
     <Property Name="GoodsPic" Type="varchar(max)" Nullable="false" />
-    <Property Name="GoodsName" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" Nullable="false" MaxLength="512" />
     <Property Name="ClickCount" Type="int" Nullable="false" />
     <Property Name="ExchangeCount" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="512" />
@@ -52,11 +113,11 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ProblemSysNo" Type="int" Nullable="false" />
-    <Property Name="InteractiveName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="InteractiveName" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="Number" Type="int" Nullable="false" />
-    <Property Name="Proportion" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Proportion" Type="decimal" Scale="2" />
     <Property Name="Remark" Type="nvarchar" MaxLength="512" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
@@ -66,9 +127,9 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="Problem" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Problem" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="Remark" Type="nvarchar" MaxLength="512" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
@@ -78,15 +139,15 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Mobile" Type="varchar" MaxLength="11" Nullable="false" />
-    <Property Name="MemPassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="BrandLogo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Mobile" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="MemPassWord" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BrandLogo" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="MerchantName" Type="nvarchar" MaxLength="128" />
-    <Property Name="MerchantMobile" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="MerchantAddress" Type="nvarchar" MaxLength="1024" Nullable="false" />
-    <Property Name="ShoppLink" Type="nvarchar" MaxLength="1024" Nullable="false" />
-    <Property Name="ContactPeople" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MerchantMobile" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="MerchantAddress" Type="nvarchar" Nullable="false" MaxLength="1024" />
+    <Property Name="ShoppLink" Type="nvarchar" Nullable="false" MaxLength="1024" />
+    <Property Name="ContactPeople" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="ComboPic" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="512" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
@@ -97,7 +158,7 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="InforSysNo" Type="int" Nullable="false" />
     <Property Name="IsPushIn" Type="int" Nullable="false" />
@@ -109,13 +170,13 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="TranType" Type="int" Nullable="false" />
     <Property Name="PlusReduce" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="TranNum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="Company" Type="nvarchar" MaxLength="8" Nullable="false" />
-    <Property Name="TranName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="TranNum" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Company" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="TranName" Type="nvarchar" Nullable="false" MaxLength="64" />
     <Property Name="InRemarks" Type="nvarchar" MaxLength="512" />
     <Property Name="IsPushIn" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
@@ -126,7 +187,7 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="SubSysNo" Type="int" Nullable="false" />
     <Property Name="ChildrenSubSysNo" Type="int" Nullable="false" />
     <Property Name="AnswerNameUrl" Type="varchar(max)" Nullable="false" />
@@ -139,7 +200,7 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="AnsSysNo" Type="int" Nullable="false" />
     <Property Name="GoodsSysNo" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
@@ -150,11 +211,11 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="SubSysNo" Type="int" Nullable="false" />
     <Property Name="AnsSysNo" Type="int" Nullable="false" />
-    <Property Name="AnswerMoney" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AnswerMoney" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -163,9 +224,9 @@
     <Key>
       <PropertyRef Name="CateId" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="CateId" Type="int" Nullable="false" />
-    <Property Name="CateName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="CateName" Type="nvarchar" Nullable="false" MaxLength="64" />
     <Property Name="CatePic" Type="varchar(max)" />
     <Property Name="IntSort" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
@@ -176,15 +237,15 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="ShopSysNo" Type="int" Nullable="false" />
     <Property Name="GoodsSysNo" Type="int" Nullable="false" />
     <Property Name="CouponSysNo" Type="int" Nullable="false" />
     <Property Name="PrivateCode" Type="varchar" MaxLength="20" />
-    <Property Name="ExcAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="UseScore" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="RechargeAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExcAmount" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="UseScore" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="RechargeAmount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="CouponState" Type="int" Nullable="false" />
@@ -194,14 +255,14 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ShopSysNo" Type="int" Nullable="false" />
-    <Property Name="CouponName" Type="nvarchar" MaxLength="512" Nullable="false" />
-    <Property Name="ExcAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CouponName" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="ExcAmount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="CouponType" Type="int" Nullable="false" />
     <Property Name="CouponCode" Type="nvarchar" MaxLength="512" />
-    <Property Name="UseRule" Type="nvarchar" MaxLength="512" Nullable="false" />
-    <Property Name="RuleContent" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="UseRule" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="RuleContent" Type="nvarchar" Nullable="false" MaxLength="1024" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -210,9 +271,9 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="CouponSysNo" Type="int" Nullable="false" />
-    <Property Name="PrivateCode" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PrivateCode" Type="varchar" Nullable="false" MaxLength="20" />
     <Property Name="UserId" Type="int" />
     <Property Name="ExcDateTime" Type="datetime" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
@@ -223,7 +284,7 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="InforSysNo" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
@@ -234,14 +295,14 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="DataType" Type="int" Nullable="false" />
-    <Property Name="StrInforType" Type="varchar" MaxLength="128" Nullable="false" />
-    <Property Name="InforName" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="StrInforType" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="InforName" Type="nvarchar" Nullable="false" MaxLength="512" />
     <Property Name="InforRemark" Type="nvarchar" MaxLength="512" />
-    <Property Name="InforDesc" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="InforDesc" Type="nvarchar" Nullable="false" MaxLength="1024" />
     <Property Name="LogoIcon" Type="varchar" MaxLength="1024" />
-    <Property Name="HeadPic" Type="varchar" MaxLength="1024" Nullable="false" />
+    <Property Name="HeadPic" Type="varchar" Nullable="false" MaxLength="1024" />
     <Property Name="CoverPic" Type="varchar" MaxLength="1024" />
     <Property Name="ShopPic" Type="varchar" MaxLength="1024" />
     <Property Name="PushPic" Type="varchar" MaxLength="1024" />
@@ -249,7 +310,7 @@
     <Property Name="CateId" Type="int" />
     <Property Name="ShopSysNo" Type="int" />
     <Property Name="ShowMode" Type="int" Nullable="false" />
-    <Property Name="InforSource" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="InforSource" Type="nvarchar" Nullable="false" MaxLength="1024" />
     <Property Name="LinkUrl" Type="varchar(max)" />
     <Property Name="IntSort" Type="int" Nullable="false" />
     <Property Name="IsShowIndex" Type="int" Nullable="false" />
@@ -262,9 +323,9 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="JiGuangSysNo" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="JiGuangSysNo" Type="varchar" Nullable="false" MaxLength="256" />
     <Property Name="SourceTypeSysNo" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
@@ -274,11 +335,11 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" />
-    <Property Name="JiGuangSysNo" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="JiGuangSysNo" Type="varchar" Nullable="false" MaxLength="256" />
     <Property Name="MsgTitle" Type="nvarchar" MaxLength="256" />
-    <Property Name="MsgAlert" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="MsgAlert" Type="nvarchar" Nullable="false" MaxLength="256" />
     <Property Name="MsgContent" Type="nvarchar" MaxLength="512" />
     <Property Name="PushMsgId" Type="varchar" MaxLength="256" />
     <Property Name="PushResult" Type="varchar" MaxLength="256" />
@@ -291,10 +352,10 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Mobile" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Mobile" Type="varchar" Nullable="false" MaxLength="11" />
     <Property Name="Portrait" Type="nvarchar(max)" />
-    <Property Name="MemPassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MemPassWord" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="NickName" Type="nvarchar" MaxLength="50" />
     <Property Name="Sex" Type="int" />
     <Property Name="RegProvince" Type="int" />
@@ -302,44 +363,44 @@
     <Property Name="RegArea" Type="int" />
     <Property Name="Birthday" Type="datetime" />
     <Property Name="InforType" Type="int" Nullable="false" />
-    <Property Name="Account" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="AccountWithdrawn" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="Score" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="ScoreWithdrawn" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Account" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="AccountWithdrawn" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Score" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="ScoreWithdrawn" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="OpenidWxOpen" Type="nvarchar" MaxLength="256" />
     <Property Name="LastLoginTime" Type="datetime" />
     <Property Name="SourceTypeSysNo" Type="int" Nullable="false" />
-    <Property Name="DeviceCode" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="DeviceCode" Type="varchar" Nullable="false" MaxLength="512" />
     <Property Name="MobileModel" Type="varchar" MaxLength="1024" />
-    <Property Name="ClientIp" Type="varchar" MaxLength="512" Nullable="false" />
-    <Property Name="MinWithdrawals" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ClientIp" Type="varchar" Nullable="false" MaxLength="512" />
+    <Property Name="MinWithdrawals" Type="decimal" Scale="2" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
-    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="T_OperationLog">
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="OperType" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" />
     <Property Name="SourceTypeSysNo" Type="int" Nullable="false" />
     <Property Name="IdentityId" Type="varchar" MaxLength="16" />
-    <Property Name="ClientIp" Type="varchar" MaxLength="128" Nullable="false" />
-    <Property Name="DeviceCode" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClientIp" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="DeviceCode" Type="varchar" Nullable="false" MaxLength="128" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="T_Recharge">
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="ShopSysNo" Type="int" Nullable="false" />
     <Property Name="GoodsSysNo" Type="int" Nullable="false" />
-    <Property Name="GoodsName" Type="nvarchar" MaxLength="512" Nullable="false" />
-    <Property Name="RechargeAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="RechargeAmount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="PaymentNumber" Type="varchar" MaxLength="128" />
     <Property Name="PayTime" Type="datetime" />
     <Property Name="PayState" Type="int" Nullable="false" />
@@ -352,14 +413,14 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StrInforType" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StrInforType" Type="varchar" Nullable="false" MaxLength="512" />
     <Property Name="AuthorSysNo" Type="int" Nullable="false" />
     <Property Name="HeadPic" Type="varchar(max)" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
-    <Property Name="Subtitle" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Subtitle" Type="nvarchar" Nullable="false" MaxLength="512" />
     <Property Name="Content" Type="nvarchar(max)" />
-    <Property Name="ReadScore" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ReadScore" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="IsHot" Type="bit" Nullable="false" />
     <Property Name="ShowMode" Type="int" Nullable="false" />
     <Property Name="IsShowIndex" Type="int" Nullable="false" />
@@ -372,11 +433,11 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AuthorName" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorName" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="Portrait" Type="nvarchar(max)" />
     <Property Name="Describe" Type="nvarchar" MaxLength="256" />
-    <Property Name="Score" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Score" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -385,7 +446,7 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="AuthorSysNo" Type="int" Nullable="false" />
     <Property Name="IsFollow" Type="bit" Nullable="false" />
@@ -397,11 +458,11 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="AuthorSysNo" Type="int" Nullable="false" />
     <Property Name="ArticleSysNo" Type="int" Nullable="false" />
-    <Property Name="PayScore" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PayScore" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -410,10 +471,24 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="AuthorSysNo" Type="int" Nullable="false" />
     <Property Name="ArticleSysNo" Type="int" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SelfMediaSaveRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Mobile" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="AuthorSysNo" Type="int" Nullable="false" />
+    <Property Name="ArticleSysNo" Type="int" Nullable="false" />
+    <Property Name="TranNum" Type="decimal" Scale="2" />
+    <Property Name="IsTransfer" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -422,18 +497,19 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Mobile" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Mobile" Type="varchar" Nullable="false" MaxLength="11" />
     <Property Name="SubSysNo" Type="int" Nullable="false" />
     <Property Name="AnsSysNo" Type="int" Nullable="false" />
-    <Property Name="AnswerMoney" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AnswerMoney" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="IsTransfer" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
   <!--生成过程中发现错误:
-警告 6002: 表/视图“point.dbo.T_ShareRegister”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+      警告 6002: 表/视图“point.dbo.T_ShareRegister”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
   <EntityType Name="T_ShareRegister">
     <Key>
       <PropertyRef Name="SysNo" />
@@ -444,10 +520,10 @@
       <PropertyRef Name="RowCeateDate" />
       <PropertyRef Name="IsEnable" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ShareSysNo" Type="int" Nullable="false" />
     <Property Name="ShareUserId" Type="int" Nullable="false" />
-    <Property Name="CoverMobile" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="CoverMobile" Type="varchar" Nullable="false" MaxLength="11" />
     <Property Name="CoverUserId" Type="int" />
     <Property Name="IsReceive" Type="bit" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
@@ -458,14 +534,14 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ShopSysNo" Type="int" Nullable="false" />
-    <Property Name="GoodsName" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" Nullable="false" MaxLength="512" />
     <Property Name="GoodsPic" Type="varchar(max)" Nullable="false" />
     <Property Name="GoodsOutLink" Type="varchar(max)" />
-    <Property Name="MarketPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="GoodsLabelOne" Type="nvarchar" MaxLength="64" Nullable="false" />
-    <Property Name="GoodsLabelTwo" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="MarketPrice" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="GoodsLabelOne" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="GoodsLabelTwo" Type="nvarchar" Nullable="false" MaxLength="64" />
     <Property Name="ExcCouponSysNo" Type="int" Nullable="false" />
     <Property Name="CouponCount" Type="int" Nullable="false" />
     <Property Name="UseCouponCount" Type="int" Nullable="false" />
@@ -479,10 +555,10 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Mobile" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Mobile" Type="varchar" Nullable="false" MaxLength="11" />
     <Property Name="SmsType" Type="int" Nullable="false" />
-    <Property Name="SmsCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SmsCode" Type="varchar" Nullable="false" MaxLength="10" />
     <Property Name="SmsStatus" Type="int" Nullable="false" />
     <Property Name="ExpireTime" Type="datetime" Nullable="false" />
     <Property Name="VerifTime" Type="datetime" />
@@ -492,10 +568,10 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="InforSysNo" Type="int" Nullable="false" />
     <Property Name="ProblemNameUrl" Type="varchar(max)" Nullable="false" />
-    <Property Name="AnswerMoney" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AnswerMoney" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="IntSort" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
@@ -505,73 +581,14 @@
     <Key>
       <PropertyRef Name="SysNo" />
     </Key>
-    <Property Name="SysNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="OpenidWxOpen" Type="nvarchar" MaxLength="256" />
     <Property Name="OpenidWxMp" Type="nvarchar" MaxLength="256" />
-    <Property Name="WithdrawalsMoney" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="WithdrawalsMoney" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="WithdrawalsState" Type="int" Nullable="false" />
     <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="MYZJ_MLTModelStoreContainer">
-    <EntitySet Name="Base_SaveApp" EntityType="Self.Base_SaveApp" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Crm_ClickExchange" EntityType="Self.Crm_ClickExchange" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Crm_Interactive" EntityType="Self.Crm_Interactive" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Crm_Problem" EntityType="Self.Crm_Problem" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Crm_User" EntityType="Self.Crm_User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_AccountRecommend" EntityType="Self.T_AccountRecommend" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_AccountRecord" EntityType="Self.T_AccountRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Answer" EntityType="Self.T_Answer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_AnswerRecommend" EntityType="Self.T_AnswerRecommend" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_AnswerRecord" EntityType="Self.T_AnswerRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Category" EntityType="Self.T_Category" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_CouponExcRecord" EntityType="Self.T_CouponExcRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_CouponInfo" EntityType="Self.T_CouponInfo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_CouponPrivateCode" EntityType="Self.T_CouponPrivateCode" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Favorites" EntityType="Self.T_Favorites" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_InforConfigure" EntityType="Self.T_InforConfigure" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_JiGuangPush" EntityType="Self.T_JiGuangPush" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_JiGuangPushRecord" EntityType="Self.T_JiGuangPushRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Member" EntityType="Self.T_Member" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_OperationLog" EntityType="Self.T_OperationLog" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Recharge" EntityType="Self.T_Recharge" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_SelfMediaArticle" EntityType="Self.T_SelfMediaArticle" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_SelfMediaAuthor" EntityType="Self.T_SelfMediaAuthor" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_SelfMediaFollowRecord" EntityType="Self.T_SelfMediaFollowRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_SelfMediaPayRecord" EntityType="Self.T_SelfMediaPayRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="Self.T_SelfMediaRedDotRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_ShareAnswerRecord" EntityType="Self.T_ShareAnswerRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_ShopGoods" EntityType="Self.T_ShopGoods" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Sms" EntityType="Self.T_Sms" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Subject" EntityType="Self.T_Subject" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="T_Withdrawals" EntityType="Self.T_Withdrawals" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Base_Region" EntityType="Self.Base_Region" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[Base_Region].[RegionId] AS [RegionId], 
-[Base_Region].[ParentId] AS [ParentId], 
-[Base_Region].[RegionName] AS [RegionName], 
-[Base_Region].[RegionType] AS [RegionType], 
-[Base_Region].[ZipCode] AS [ZipCode], 
-[Base_Region].[QuHao] AS [QuHao], 
-[Base_Region].[ShortSpell] AS [ShortSpell], 
-[Base_Region].[SortId] AS [SortId], 
-[Base_Region].[IsEnable] AS [IsEnable]
-FROM [dbo].[Base_Region] AS [Base_Region]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="T_ShareRegister" EntityType="Self.T_ShareRegister" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[T_ShareRegister].[SysNo] AS [SysNo], 
-[T_ShareRegister].[ShareSysNo] AS [ShareSysNo], 
-[T_ShareRegister].[ShareUserId] AS [ShareUserId], 
-[T_ShareRegister].[CoverMobile] AS [CoverMobile], 
-[T_ShareRegister].[CoverUserId] AS [CoverUserId], 
-[T_ShareRegister].[IsReceive] AS [IsReceive], 
-[T_ShareRegister].[RowCeateDate] AS [RowCeateDate], 
-[T_ShareRegister].[ModifyTime] AS [ModifyTime], 
-[T_ShareRegister].[IsEnable] AS [IsEnable]
-FROM [dbo].[T_ShareRegister] AS [T_ShareRegister]</DefiningQuery>
-    </EntitySet>
-  </EntityContainer>
 </Schema>

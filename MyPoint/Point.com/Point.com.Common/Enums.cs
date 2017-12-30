@@ -120,6 +120,7 @@ namespace Point.com.Common
             TiXian = 16,         //提现
             ExcGoods = 32,       //兑换商品(兑换抵用劵)
             ReadArticle = 64,    //阅读文章，扣减低佣金
+            SaveSelfMedia = 128,    //自媒体分享，注册手机号码，获取低佣金
         }
 
         /// <summary>

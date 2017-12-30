@@ -118,4 +118,15 @@ namespace Point.com.ServiceModel
     {
         public int RedCount { get; set; }                  //红点数量、未读文章的数量，> 0 UI则需要展示 
     }
+
+    public class AddSelfMediaSaveRecordReq
+    {
+        public string Mobile { get; set; }              //手机号码    必填
+        public int AuthorSysNo { get; set; }            //作者ID      必填
+        public int ArticleSysNo { get; set; }           //作者文章ID  必填
+    }
+
+    public class AddSelfMediaSaveRecordRes : BaseResponse
+    {
+    }
 }

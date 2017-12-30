@@ -22,7 +22,7 @@ namespace Point.com.ServiceInterface
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        Ptcp<string> MemberRegister(M_MemberRegisterReq req);
+        Ptcp<M_MemberRegisterRes> MemberRegister(M_MemberRegisterReq req);
 
         /// <summary>
         /// 忘记密码，找回密码

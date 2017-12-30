@@ -151,6 +151,9 @@ namespace Point.com.ServiceImplement
                 case 64:
                     str = "http://img.point-server.com/default/arpicurl64.png";
                     break;
+                case 128:
+                    str = "http://img.point-server.com/default/arpicurl128.png";
+                    break;
                 default:
                     str = "http://img.point-server.com/default/default0.png";
                     break;

@@ -39,6 +39,8 @@ namespace Point.com.ServiceModel
 
     public class MemberRegisterRes : BaseResponse
     {
+        public int AuthorSysNo { get; set; }     //作者ID
+        public int ArticleSysNo { get; set; }    //作者文章ID
     }
 
     public class MemberEntity
