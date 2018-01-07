@@ -43,3 +43,12 @@ D:\mygit\MyPoint\Point.com\Point.com.Logging\bin\Release\ServiceStack.Text.xml
 D:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.csprojResolveAssemblyReference.cache
 D:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.dll
 D:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Logging.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Logging.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Common.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\bin\Release\ServiceStack.Text.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\bin\Release\Point.com.Common.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\bin\Release\ServiceStack.Text.xml
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.csprojResolveAssemblyReference.cache
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\obj\Release\Point.com.Logging.pdb

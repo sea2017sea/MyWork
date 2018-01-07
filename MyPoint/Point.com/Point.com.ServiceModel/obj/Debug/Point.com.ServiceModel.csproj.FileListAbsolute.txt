@@ -42,3 +42,8 @@ D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceMod
 D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.pdb
 D:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.csprojResolveAssemblyReference.cache
 E:\mygit\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.csprojResolveAssemblyReference.cache
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.ServiceModel.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.ServiceModel.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.csprojResolveAssemblyReference.cache
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceModel\obj\Debug\Point.com.ServiceModel.pdb

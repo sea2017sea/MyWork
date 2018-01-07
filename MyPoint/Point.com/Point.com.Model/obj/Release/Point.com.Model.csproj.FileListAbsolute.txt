@@ -43,3 +43,12 @@ D:\mygit\MyPoint\Point.com\Point.com.Model\bin\Release\ServiceStack.Text.xml
 D:\mygit\MyPoint\Point.com\Point.com.Model\obj\Release\Point.com.Model.csprojResolveAssemblyReference.cache
 D:\mygit\MyPoint\Point.com\Point.com.Model\obj\Release\Point.com.Model.dll
 D:\mygit\MyPoint\Point.com\Point.com.Model\obj\Release\Point.com.Model.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\bin\Release\Point.com.Model.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\bin\Release\Point.com.Model.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\bin\Release\Point.com.Common.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\bin\Release\ServiceStack.Text.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\bin\Release\Point.com.Common.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\bin\Release\ServiceStack.Text.xml
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\obj\Release\Point.com.Model.csprojResolveAssemblyReference.cache
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\obj\Release\Point.com.Model.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Model\obj\Release\Point.com.Model.pdb

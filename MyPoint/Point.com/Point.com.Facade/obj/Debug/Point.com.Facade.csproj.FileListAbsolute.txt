@@ -43,3 +43,8 @@ D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Facade.dll
 D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.Facade.pdb
 D:\mygit\MyPoint\Point.com\Point.com.Facade\obj\Debug\Point.com.Facade.dll
 D:\mygit\MyPoint\Point.com\Point.com.Facade\obj\Debug\Point.com.Facade.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.Facade.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.Facade.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Facade\obj\Debug\Point.com.Facade.csprojResolveAssemblyReference.cache
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Facade\obj\Debug\Point.com.Facade.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Facade\obj\Debug\Point.com.Facade.pdb

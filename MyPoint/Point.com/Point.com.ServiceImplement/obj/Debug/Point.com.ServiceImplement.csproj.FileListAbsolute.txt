@@ -43,3 +43,8 @@ D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceImplement.dll
 D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceImplement.pdb
 D:\mygit\MyPoint\Point.com\Point.com.ServiceImplement\obj\Debug\Point.com.ServiceImplement.dll
 D:\mygit\MyPoint\Point.com\Point.com.ServiceImplement\obj\Debug\Point.com.ServiceImplement.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.ServiceImplement.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.ServiceImplement.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceImplement\obj\Debug\Point.com.ServiceImplement.csprojResolveAssemblyReference.cache
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceImplement\obj\Debug\Point.com.ServiceImplement.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceImplement\obj\Debug\Point.com.ServiceImplement.pdb

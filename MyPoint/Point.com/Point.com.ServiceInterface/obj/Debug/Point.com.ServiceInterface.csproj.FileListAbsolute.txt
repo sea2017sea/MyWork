@@ -43,3 +43,8 @@ D:\mygit\MyPoint\Point.com\Point.com.Library\Point.com.ServiceInterface.pdb
 D:\mygit\MyPoint\Point.com\Point.com.ServiceInterface\obj\Debug\Point.com.ServiceInterface.csprojResolveAssemblyReference.cache
 D:\mygit\MyPoint\Point.com\Point.com.ServiceInterface\obj\Debug\Point.com.ServiceInterface.dll
 D:\mygit\MyPoint\Point.com\Point.com.ServiceInterface\obj\Debug\Point.com.ServiceInterface.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.ServiceInterface.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.ServiceInterface.pdb
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceInterface\obj\Debug\Point.com.ServiceInterface.csprojResolveAssemblyReference.cache
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceInterface\obj\Debug\Point.com.ServiceInterface.dll
+D:\mygit\MyWork\MyPoint\Point.com\Point.com.ServiceInterface\obj\Debug\Point.com.ServiceInterface.pdb
