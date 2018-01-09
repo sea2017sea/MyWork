@@ -53,6 +53,7 @@
     <Compile Include="IntExt.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexExt.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="ServiceData.cs" />
     <Compile Include="StringExt.cs" />

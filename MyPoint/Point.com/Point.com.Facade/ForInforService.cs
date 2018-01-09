@@ -332,6 +332,7 @@ namespace Point.com.Facade
                 if (req.IsNotNull())
                 {
                     m_req.Mobile = req.Mobile;
+                    m_req.ShareUserId = req.ShareUserId;
 
                     if (!string.IsNullOrEmpty(req.Parameter))
                     {

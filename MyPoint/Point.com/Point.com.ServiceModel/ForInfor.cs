@@ -329,6 +329,9 @@ namespace Point.com.ServiceModel
     public class AddShareAnswerRecordReq
     {
         public string Mobile { get; set; }      //手机号码
+
+        public int ShareUserId { get; set; }    //分享人的会员ID，必须
+
         public string Parameter { get; set; }    //参数，格式为 AnswerRecordEntity 的json字符串
 
         //public List<AnswerRecordEntity> RecordEntities { get; set; }    //回答问题的记录

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Point.com.Common;
 using Point.com.Model;
 using Point.com.Model.Base;
@@ -15,6 +16,7 @@ namespace Point.com.ServiceImplement
     public class ForSelfMediaImpl : BaseService, IForSelfMedia
     {
         private static ForBaseImpl fb = new ForBaseImpl();
+        private static MemberDepImpl mem = new MemberDepImpl();
 
         /// <summary>
         /// 根据文章ID查询文章信息,用于从首页点击进入阅读文章页面，根据返回数据前端判断是否可以直接阅读或者需要遮罩付费
@@ -814,7 +816,7 @@ namespace Point.com.ServiceImplement
         }
 
         /// <summary>
-        /// 自媒体文章分析保存手机号码信息，用于注册处理数据
+        /// 自媒体文章分享保存手机号码信息，用于注册处理数据
         /// </summary>
         /// <param name="mobile"></param>
         /// <param name="authorSysNo"></param>
@@ -832,7 +834,14 @@ namespace Point.com.ServiceImplement
 
             if (mobile.Length != 11)
             {
-                ptcp.DoResult = "手机号码格式有误";
+                ptcp.DoResult = "手机号码格式不正确";
+                return ptcp;
+            }
+
+            Regex regex = new Regex(RegexExt.mobileRegex);
+            if (!regex.IsMatch(mobile))
+            {
+                ptcp.DoResult = "手机号码格式不正确";
                 return ptcp;
             }
 
@@ -849,7 +858,26 @@ namespace Point.com.ServiceImplement
             }
 
             DateTime dtNow = DateTime.Now;
-            DbSession.MLT.T_SelfMediaSaveRecordRepository.Add(new T_SelfMediaSaveRecord()
+            //判断当前手机号码是否已经注册过了
+            var memInfo = mem.QueryMemberInfoByMobile(mobile);
+            if (memInfo.DoFlag == PtcpState.Success)
+            {
+                //会员已经存在 直接关注
+                int userid = Converter.ParseInt(memInfo.DoResult, 0);
+
+                //自动关注作者
+                ForSelfMediaImpl forSelf = new ForSelfMediaImpl();
+                forSelf.SetFollow(new M_SetFollowReq()
+                {
+                    UserId = userid,
+                    AuthorSysNo = authorSysNo,
+                    IsFollow = true
+                });
+            }
+            else
+            {
+                //新用户，等注册的时候处理
+                DbSession.MLT.T_SelfMediaSaveRecordRepository.Add(new T_SelfMediaSaveRecord()
                 {
                     Mobile = mobile,
                     AuthorSysNo = authorSysNo,
@@ -859,7 +887,8 @@ namespace Point.com.ServiceImplement
                     ModifyTime = dtNow,
                     IsEnable = true
                 });
-            DbSession.MLT.SaveChange();
+                DbSession.MLT.SaveChange();
+            }
 
             ptcp.DoFlag = PtcpState.Success;
             ptcp.DoResult = "保存成功";

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Point.com.Common;
 using Point.com.Logging;
@@ -166,7 +167,14 @@ namespace Point.com.ServiceImplement
 
             if (req.Mobile.Length != 11)
             {
-                ptcp.DoResult = "手机号码格式有误";
+                ptcp.DoResult = "手机号码格式不正确";
+                return ptcp;
+            }
+
+            Regex regex = new Regex(RegexExt.mobileRegex);
+            if (!regex.IsMatch(req.Mobile))
+            {
+                ptcp.DoResult = "手机号码格式不正确";
                 return ptcp;
             }
 
@@ -378,35 +386,44 @@ namespace Point.com.ServiceImplement
                 //未发送奖励金
                 if (share.IsReceive == false)
                 {
-                    //更新发送状态
-                    DbSession.MLT.T_ShareRegisterRepository.Update(new T_ShareRegister()
+                    #region
+
+                    //获取最新的一道题的奖励金
+                    var answersneow = answers.Where(c => c.AnswerMoney > 0).OrderByDescending(c => c.SysNo).FirstOrDefault();
+                    if (answersneow.IsNotNull() && answersneow.SysNo > 0)
+                    { 
+                        //给分享人发送奖励金 新增流水
+                        fb.AddAccountRecord(new M_AddAccountRecordReq()
+                        {
+                            UserId = share.ShareUserId.GetValueOrDefault(),
+                            TranNum = answersneow.AnswerMoney.GetValueOrDefault(),
+                            TranType = (int)Enums.TranType.Share
+                        });
+
+                        //给被分享人(当前注册的会员)发送奖励金 新增流水
+                        fb.AddAccountRecord(new M_AddAccountRecordReq()
+                        {
+                            UserId = sysNo,
+                            TranNum = answersneow.AnswerMoney.GetValueOrDefault(),
+                            TranType = (int)Enums.TranType.Partic
+                        });
+
+                        //更新发送状态
+                        DbSession.MLT.T_ShareRegisterRepository.Update(new T_ShareRegister()
                         {
                             CoverUserId = sysNo,
                             ModifyTime = dtNow,
                             IsReceive = true
-                        });
-
-                    //给分享发送奖励金 新增流水
-                    fb.AddAccountRecord(new M_AddAccountRecordReq()
+                        },new T_ShareRegister()
                         {
-                            UserId = share.ShareUserId.GetValueOrDefault(),
-                            TranNum = 15,
-                            TranType = (int)Enums.TranType.Share
+                            SysNo = share.SysNo
                         });
 
-                    //给分享人发送奖励金 新增流水
-                    fb.AddAccountRecord(new M_AddAccountRecordReq()
-                    {
-                        UserId = sysNo,
-                        TranNum = 15,
-                        TranType = (int)Enums.TranType.Partic
-                    });
-
-                    //更新分享答题记录
-                    //将分享答题记录迁移到答题记录表
-                    foreach (var a in answers)
-                    {
-                        DbSession.MLT.T_AnswerRecordRepository.Add(new T_AnswerRecord()
+                        //更新分享答题记录
+                        //将分享答题记录迁移到答题记录表
+                        foreach (var a in answers)
+                        {
+                            DbSession.MLT.T_AnswerRecordRepository.Add(new T_AnswerRecord()
                             {
                                 UserId = sysNo,
                                 AnsSysNo = a.AnsSysNo,
@@ -417,12 +434,15 @@ namespace Point.com.ServiceImplement
                                 IsEnable = true
                             });
 
-                        DbSession.MLT.T_ShareAnswerRecordRepository.Update(new T_ShareAnswerRecord()
+                            DbSession.MLT.T_ShareAnswerRecordRepository.Update(new T_ShareAnswerRecord()
                             {
                                 ModifyTime = dtNow,
                                 IsTransfer = 1
-                            },new T_ShareAnswerRecord(){SysNo = a.SysNo});
+                            }, new T_ShareAnswerRecord() { SysNo = a.SysNo });
+                        }
                     }
+
+                    #endregion
 
                     //DbSession.MLT.SaveChange();
                 }
@@ -432,35 +452,39 @@ namespace Point.com.ServiceImplement
 
             #region 处理自媒体分享注册
 
-            var selfMedia = DbSession.MLT.T_SelfMediaSaveRecordRepository.QueryBy(new T_SelfMediaSaveRecord()
+            var selfMediaList = DbSession.MLT.T_SelfMediaSaveRecordRepository.QueryBy(new T_SelfMediaSaveRecord()
                 {
                     Mobile = req.Mobile,
                     IsTransfer = 0,
                     IsEnable = true
-                }, " order by SysNo desc").FirstOrDefault();
-            if (selfMedia.IsNotNull())
+                }, " order by SysNo desc").ToList();
+            if (selfMediaList.IsNotNull() && selfMediaList.IsHasRow())
             {
-                DbSession.MLT.T_SelfMediaSaveRecordRepository.Update(new T_SelfMediaSaveRecord()
+                ForSelfMediaImpl forSelf = new ForSelfMediaImpl();
+                foreach (var selfMedia in selfMediaList)
+                {
+                    //更新记录
+                    DbSession.MLT.T_SelfMediaSaveRecordRepository.Update(new T_SelfMediaSaveRecord()
                     {
                         TranNum = 15,
                         IsTransfer = 1,
                         ModifyTime = dtNow
-                    },new T_SelfMediaSaveRecord()
+                    }, new T_SelfMediaSaveRecord()
                     {
                         SysNo = selfMedia.SysNo,
                         Mobile = req.Mobile
-                    });  
+                    });
 
-                //自动关注作者
-                ForSelfMediaImpl forSelf = new ForSelfMediaImpl();
-                forSelf.SetFollow(new M_SetFollowReq()
+                    //自动关注作者
+                    forSelf.SetFollow(new M_SetFollowReq()
                     {
                         UserId = sysNo,
                         AuthorSysNo = selfMedia.AuthorSysNo.GetValueOrDefault(),
                         IsFollow = true
                     });
-                
-                //给当前会员发送低佣金 
+                }
+
+                //给当前会员发送低佣金  不给作者奖励金
                 fb.AddAccountRecord(new M_AddAccountRecordReq()
                 {
                     UserId = sysNo,
@@ -469,8 +493,8 @@ namespace Point.com.ServiceImplement
                 });
 
                 ptcp.ReturnValue = new M_MemberRegisterRes();
-                ptcp.ReturnValue.AuthorSysNo = selfMedia.AuthorSysNo.GetValueOrDefault();
-                ptcp.ReturnValue.ArticleSysNo = selfMedia.ArticleSysNo.GetValueOrDefault();
+                ptcp.ReturnValue.AuthorSysNo = selfMediaList[0].AuthorSysNo.GetValueOrDefault();
+                ptcp.ReturnValue.ArticleSysNo = selfMediaList[0].ArticleSysNo.GetValueOrDefault();
             }
 
             #endregion

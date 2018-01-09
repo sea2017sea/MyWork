@@ -215,7 +215,9 @@ namespace Point.com.Model
 
     public class M_AddShareAnswerRecordReq
     {
-        public string Mobile { get; set; }      //手机号码
+        public string Mobile { get; set; }      //手机号码，必须
+
+        public int ShareUserId { get; set; }    //分享人的会员ID，必须
 
         public List<M_AnswerRecordEntity> RecordEntities { get; set; }    //回答问题的记录
     }

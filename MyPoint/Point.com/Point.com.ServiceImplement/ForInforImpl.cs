@@ -13,7 +13,7 @@ namespace Point.com.ServiceImplement
 {
     public class ForInforImpl : BaseService, IForInfor
     {
-        public List<M_SubjectEntity> subjectEntities = new List<M_SubjectEntity>();
+        public List<M_SubjectEntity> subjectEntities = null;
         private static ForBaseImpl fb = new ForBaseImpl();
         private static MemberDepImpl mem = new MemberDepImpl();
         
@@ -1393,6 +1393,7 @@ namespace Point.com.ServiceImplement
                 return ptcp;
             }
 
+            subjectEntities = new List<M_SubjectEntity>();
             subjects = RecurSubject(subOne.SysNo.GetValueOrDefault());
             ptcp.ReturnValue = new M_QuerySubjectRes();
             ptcp.ReturnValue.SubjectEntities = subjects;
@@ -1542,6 +1543,7 @@ namespace Point.com.ServiceImplement
             //    return ptcp;
             //}
 
+            subjectEntities = new List<M_SubjectEntity>();
             subjects = RecurSubject(subOne.SysNo.GetValueOrDefault());
             ptcp.ReturnValue = new M_QueryShareSubjectRes();
             ptcp.ReturnValue.SubjectEntities = subjects;
@@ -1908,11 +1910,17 @@ namespace Point.com.ServiceImplement
             }
 
             string jsonParam = JsonConvert.SerializeObject(req);
-            Logger.Write(LoggerLevel.Error, "AddAnswerRecord_in", "", jsonParam, "");
+            Logger.Write(LoggerLevel.Error, "AddShareAnswerRecord_in", "", jsonParam, "");
 
             if (string.IsNullOrEmpty(req.Mobile))
             {
                 ptcp.DoResult = "请输入手机号码";
+                return ptcp;
+            }
+
+            if (req.ShareUserId <= 0)
+            {
+                ptcp.DoResult = "分享人不能为空";
                 return ptcp;
             }
 
@@ -1966,6 +1974,21 @@ namespace Point.com.ServiceImplement
 
                 #region 已注册的会员
 
+                //检查当前会员是否已经答过了
+                var answerRecord = DbSession.MLT.T_AnswerRecordRepository.QueryBy(new T_AnswerRecord()
+                {
+                    UserId = userid,
+                    SubSysNo = tsub.SysNo,
+                    IsEnable = true
+                }).FirstOrDefault();
+                if (answerRecord.IsNotNull() && answerRecord.SysNo > 0)
+                {
+                    ptcp.DoResult = "您已经回答过当前题目了";
+                    ptcp.DoFlag = PtcpState.Success;
+                    return ptcp;
+                }
+
+                //将答题记录插入到正式的答题记录表
                 foreach (var rec in req.RecordEntities)
                 {
                     decimal? answerMoney = 0;
@@ -1984,13 +2007,21 @@ namespace Point.com.ServiceImplement
                     });
                 }
 
-                //账号新增流水，插入抵用金
+                //账号新增流水，插入抵用金  被分享人/当前答题人
                 fb.AddAccountRecord(new M_AddAccountRecordReq()
                 {
                     TranType = (int)Enums.TranType.Partic,
                     UserId = userid,
                     TranNum = Convert.ToDecimal(tsub.AnswerMoney)
                 });
+
+                ////账号新增流水，插入抵用金  分享人
+                //fb.AddAccountRecord(new M_AddAccountRecordReq()
+                //{
+                //    TranType = (int)Enums.TranType.Partic,
+                //    UserId = req.ShareUserId,
+                //    TranNum = Convert.ToDecimal(tsub.AnswerMoney)
+                //});
 
                 DbSession.MLT.SaveChange();
 
@@ -2021,6 +2052,17 @@ namespace Point.com.ServiceImplement
                     return ptcp;
                 }
 
+                //保存邀请分享记录，以供注册的时候判断处理
+                DbSession.MLT.T_ShareRegisterRepository.Add(new T_ShareRegister()
+                {
+                    ShareUserId = req.ShareUserId,
+                    ShareSysNo = tsub.InforSysNo,
+                    CoverMobile = req.Mobile,
+                    IsReceive = false,
+                    RowCeateDate = dtNow,
+                    IsEnable = true
+                });
+
                 ////将其他的回答记录作废
                 //DbSession.MLT.T_ShareAnswerRecordRepository.Update(new T_ShareAnswerRecord()
                 //    {
@@ -2032,6 +2074,7 @@ namespace Point.com.ServiceImplement
                 //        });
                 //DbSession.MLT.SaveChange();
 
+                //将答题记录插入到分享的记录表
                 foreach (var rec in req.RecordEntities)
                 {
                     decimal? answerMoney = 0;
