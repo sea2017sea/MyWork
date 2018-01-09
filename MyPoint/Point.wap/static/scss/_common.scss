@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@import "compass/reset";
+@import "compass/css3";
+
+body {
+  font-size: .5rem;
+  font-family: Arial,Helvetica,sans-serif;
+  margin: 0px auto;
+  min-width: 320px;
+  max-width: 640px;
+  min-height: 100%;
+  background-color: #f3f3f3;
+}
+
+.touchweb_mask {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: 0;
+  .loading {
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -1.075rem;
+    margin-top: -.275rem;
+    margin-top: -1.5rem;
+  }
+  .loading .gif_img {
+    width: 2rem;
+    height: 2rem;
+    background: url(../img/loading.gif) no-repeat;
+    background-size: 100%;
+  }
+
+  .bg_open_app{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -6.5rem;
+    margin-top: -7rem;
+    width: 13rem;
+    height: 13.9rem;
+    background: url(../img/overlay_open_app.png) no-repeat;
+    background-size: 100%;
+    a{
+      display: block;
+      width: 8.5rem;
+      height: 2rem;
+      position: absolute;
+      bottom:2.4rem;
+      left: 50%;
+      margin-left: -4.25rem;
+    }
+  }
+}

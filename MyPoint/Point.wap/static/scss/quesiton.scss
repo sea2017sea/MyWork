@@ -1,0 +1,107 @@
+﻿@charset "UTF-8";
+@import "common";
+
+body{
+  background: #fff;
+}
+.question_content{
+  .title{
+    width: 13rem;
+    margin: 2rem auto;
+    i{
+      display: inline-block;
+      width: 1.8rem;
+      height: 1.6rem;
+      vertical-align: middle;
+      background: url("../img/icon_title.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .txt{
+      display: inline-block;
+      vertical-align: middle;
+      width: 10.5rem;
+      margin-left: .5rem;
+      .txt_a{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      .txt_b{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .list{
+    width: 14rem;
+      margin: 1rem auto;
+      overflow: hidden;
+    padding-bottom: 2rem;
+    ul{
+      width: 16rem;
+      li{
+        &.active{
+          border: 1px solid #f70;
+        }
+        float: left;
+        background: #fff;
+        width: 6rem;
+        height: 7rem;
+        margin-right: 1.6rem;
+        margin-bottom: 1.6rem;
+        border: 1px solid #ebebeb;
+        a{
+          display: block;
+              text-decoration: none;
+          img{
+            display: block;
+            width: 5rem;
+            height: 5rem;
+            margin: .3rem auto;
+          }
+          p{
+            text-align: center;
+            font-size: 14px;
+            color:#333;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+.bottom{
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background: #5a595d;
+  .txt_zan{
+    height: 2.5rem;
+    line-height: 2.5rem;
+    display: block;
+    float: left;
+    width: 3.75rem;
+    text-align: center;
+    font-size: .8rem;
+    font-weight: bold;
+    color:#56c6c0;
+  }
+  .txt_desc{
+    height: 2.5rem;
+    line-height: 2.5rem;
+    display: block;
+    float: left;
+    width: 12.25rem;
+    text-align: center;
+    font-size: .6rem;
+    color: #fff;
+  }
+}
+
+}
