@@ -37,6 +37,7 @@ public partial class selfmediashare : System.Web.UI.Page
                     foreach (var item in res.ArticleEntities)
                     {
                         item.Content = "";
+                        item.Subtitle = item.Subtitle.Replace("\n", "\\n");
                         subtitle = item.Subtitle;
                     }
                 }
