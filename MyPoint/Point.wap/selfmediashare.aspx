@@ -7,8 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <meta name="keyword" content="" />
-<meta name="description" content="" />
-<title></title>
+<meta name="description" content="<%= subtitle %>" />
+<title>独家资讯尽在趣赞！<%= author_name %>等您来阅读</title>
 <link href="include/css/style.css" rel="stylesheet" />
 </head>
 <body class="">
@@ -57,7 +57,7 @@
 <script src="static/js/zepto.js"></script>
     
 <script src="static/js/common.js"></script>
-<script src="static/js/selfmediashare.js"></script>
+<script src="static/js/selfmediashare.js?v=2"></script>
 <script>
  var auther_name = "<%= author_name%>";
     var res =  eval('(<%=res_str%>)');

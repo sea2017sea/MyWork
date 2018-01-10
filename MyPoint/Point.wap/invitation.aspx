@@ -18,7 +18,8 @@
 <div class="container-index">
     <img src="static/img/bg1.jpg" alt="">
     <div class="input-box">
-        <a href="download/PointAppRelease.apk" class="startBtn" id="A1"></a>
+<%--        <a href="download/PointAppRelease.apk" class="startBtn" id="A1"></a>--%>
+        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.point.quzan" class="startBtn" id="A2"></a>
     </div>
     
 <%--    　<div class="btnList">
@@ -34,20 +35,21 @@
 </div>
 
 <script type="text/javascript">
-    (function (doc, win) {
+    
+        (function (doc, win) {
         var docEl = doc.documentElement,
-            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-            recalc = function () {
-                var clientWidth = docEl.clientWidth;
-                if (!clientWidth) return;
-                if (clientWidth > 640) clientWidth = 640;
-                docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
-            };
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+        var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+        if (clientWidth > 640) clientWidth = 640;
+        docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+    };
         if (!doc.addEventListener) return;
         win.addEventListener(resizeEvt, recalc, false);
         doc.addEventListener('DOMContentLoaded', recalc, false);
     })(document, window);
-    
+
 </script>
 </body>
     

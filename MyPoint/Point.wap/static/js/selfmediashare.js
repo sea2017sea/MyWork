@@ -1,10 +1,6 @@
 ﻿
 $(function(){
 
-
-
-
-
     var strHtml = "";
     if(res != null && res.ArticleEntities.length>0)
     {
@@ -18,12 +14,12 @@ $(function(){
             strHtml+='<div class="text-center"><div class="line"></div></div></div>';
         }
     }
-    console.log("html:"+strHtml);
+    //console.log("html:"+strHtml);
     $(".share-list").html(strHtml);
 
     $(".btn-read").click(function () {
 
-        console.log("Save");
+        //console.log("Save");
 
         var mobile = $(".form-control").val();
         if (mobile.length <= 0) {
@@ -43,9 +39,14 @@ $(function(){
                     dataType: 'json',
                     success: function (res) {
                         common.loading(false);
-                        console.log("res===", res);
+                        //console.log("res===", res);
                         var data = eval("(" + res.d + ")");
-                        alert(data.DoResult);
+                        if (data.DoFlag == 1) {
+                            //下载app链接
+                            window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.point.quzan";
+                        } else {
+                            alert(data.DoResult);
+                        }
                     }
                 });
             }

@@ -15,6 +15,7 @@ public partial class selfmediashare : System.Web.UI.Page
     public int author_id = 0;
     public int article_id = 0;
     public string res_str;
+    public string subtitle = "";
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -36,6 +37,7 @@ public partial class selfmediashare : System.Web.UI.Page
                     foreach (var item in res.ArticleEntities)
                     {
                         item.Content = "";
+                        subtitle = item.Subtitle;
                     }
                 }
                 if (res.ArticleEntities != null && res.ArticleEntities.Count > 0)
