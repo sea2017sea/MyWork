@@ -1,7 +1,7 @@
 ﻿
 var hdUserid = "0";// $("#hdShareUserId").val();shareUserId
 var shareUserId = $("#hdShareUserId").val();
-var hdMoblie = '';
+var hdMoblie = "";
 var hdInforSysNo = "";
 var isBegin = false;
 $(function () {

@@ -36,6 +36,7 @@ public partial class selfmediashare : System.Web.UI.Page
                     foreach (var item in res.ArticleEntities)
                     {
                         item.Content = "";
+                        item.Subtitle = item.Subtitle.Replace("\n", "\\n");
                     }
                 }
                 if (res.ArticleEntities != null && res.ArticleEntities.Count > 0)
@@ -47,7 +48,6 @@ public partial class selfmediashare : System.Web.UI.Page
                 author_id = res.AuthorEntity.AuthorSysNo;
                 author_name = res.AuthorEntity.AuthorName;
             }
-
         }
     }
 }
