@@ -1,6 +1,7 @@
 ﻿
 var hdUserid = "0";// $("#hdShareUserId").val();
-var hdMoblie = '';
+var hdShareUserId = $("#hdShareUserId").val();
+var hdMoblie = "";
 var hdInforSysNo = "";
 $(function () {
 
@@ -37,7 +38,7 @@ $(function () {
             type: "POST",
             contentType: "application/json",
             url: 'Ajax/indexAjax.aspx/AddAnswerRecordAjax',
-            data: "{'userid':" + hdUserid + ",'moblie':'" + hdMoblie + "','parameter':'" + lsAns + "'}",
+            data: "{'shareUserId':" + hdShareUserId + ",'moblie':'" + hdMoblie + "','parameter':'" + lsAns + "'}",
             dataType: 'json',
             success: function (res) {
                 common.loading(false);
