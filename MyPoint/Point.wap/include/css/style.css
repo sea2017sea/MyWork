@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 
 /**
  * Swiper 3.4.0
@@ -133,15 +133,17 @@ a {text-decoration:none; color:#424242;}
 .box {}
 .box .box-thumbnail {width:100%; display:block;}
 
-.dialog {width:80%; background-color:#fff; border-radius:0.3rem; position:absolute; top:1.5rem; left:50%; margin-left:-42.5%; z-index:100; padding:0.5rem; font-size:0.75rem;}
+
+
+.dialog {width:80%; background-color:#fff; border-radius:0.3rem; position:absolute; top:2.5rem; left:50%; margin-left:-42.5%; z-index:100; padding:0.5rem; font-size:0.75rem;}
 
 .logo {background:url(../images/logo.png) no-repeat center center/cover; width:1.75rem; height:1.75rem; margin:1rem auto;}
 .share-content-text {text-align:center; line-height:1.4;}
 .hongbao {background:url(../images/hb.png) no-repeat center center/cover; width:4.85rem; height:6.25rem; margin:0.8rem auto 1.2rem; box-sizing:border-box; color:#f2a30a; font-size:1rem; text-align:center; font-weight:bold; padding-top:2.3rem;}
 .share-operation {margin:0.8rem 1.4rem;}
 .font-l {font-size:0.9rem;}
-.btn-dialog {padding:0.7rem 1rem; font-size:0.7rem;}
+.btn-dialog {padding:0.7rem 1rem; font-size:0.7rem; }
 .share-field {margin:0.8rem 1.4rem 0;}
-.share-field .form-control {display:block; border-radius:0.15rem; border:#31ccc3 0.05rem solid; width:100%; height:1.8rem; text-align:center; font-size:0.8rem; font-weight:bold; outline:none;}
+.share-field .form-control {display:block; border-radius:0.15rem; border:#31ccc3 0.05rem solid; width:100%; height:1.8rem; text-align:center; font-size:0.8rem; font-weight:bold; outline:none;box-shadow:0px 0px 0px rgba(0,0,0,0); -webkit-appearance:none;}
 input::-webkit-input-placeholder { font-weight:normal; font-size:0.7rem;}
 input::-moz-placeholder {font-weight:normal; font-size:0.7rem;}

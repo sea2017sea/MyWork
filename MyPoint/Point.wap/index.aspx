@@ -8,10 +8,15 @@
 <meta name="keyword" content="" />
 <meta name="description" content="" />
 <title><%=shareTitle %></title>
-<link href="include/css/style.css" rel="stylesheet" />
+<link href="include/css/style.css?rid=<%= DateTime.Now.ToString("yyyyMMddHHmmssfff") %>" rel="stylesheet" />
 </head>
 <body class="">
+
+           
+	<img src="static/img/logo300.jpg" style="display:none" />
     <form runat="server">
+       
+	<img src="static/img/logo300.jpg" style="display:none" />
 <div class="banner">
 	<img src="include/images/img02.jpg" />
 </div>
@@ -77,11 +82,12 @@
     <input type="hidden" id="hdShareSysNo" value="<%=shareSysNo %>"/>
     <input type="hidden" id="hdShareUserId" value="<%=shareUserId %>"/>
     <input type="hidden" id="hdSaveAnswer" value=""/>
+    <input type="hidden" id="hdIsBegin" value="0"/>
 <!-- <script src="js/zepto.min.js"></script> -->
 <%--<script src="include/js/jquery2x.min.js"></script>--%>
 <script src="static/js/zepto.js"></script>
 <script src="static/js/common.js"></script>
-<script src="static/js/question2.js"></script>
+<script src="static/js/question2.js?rid=<%= DateTime.Now.ToString("yyyyMMddHHmmssfff") %>"></script>
 <script>
 
 </script>

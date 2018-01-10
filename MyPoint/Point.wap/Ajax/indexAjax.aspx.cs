@@ -151,6 +151,7 @@ public partial class Ajax_index : System.Web.UI.Page
         //}
     }
 
+
     /// <summary>
     /// 保存自媒体分享手机号
     /// </summary>
@@ -163,7 +164,6 @@ public partial class Ajax_index : System.Web.UI.Page
     {
         return soa.AddSelfMediaSaveRecordReq(authID, articleID, mobile);
     }
-
     /// <summary>
     /// 获取问题分享的题目列表
     /// </summary>

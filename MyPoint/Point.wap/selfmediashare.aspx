@@ -51,7 +51,6 @@
 
 
 </div>
-    
 
 <!-- <script src="js/zepto.min.js"></script> -->
 <script src="include/js/jquery2x.min.js"></script>
@@ -61,7 +60,7 @@
 <script src="static/js/selfmediashare.js"></script>
 <script>
  var auther_name = "<%= author_name%>";
-    var res = eval('(<%=res_str%>)');
+    var res =  eval('(<%=res_str%>)');
     var aiticle_id = "<%=article_id%>";
     var AuthorSysNo = "<%=author_id%>";
 

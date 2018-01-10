@@ -1,12 +1,12 @@
 ﻿
-var hdUserid = "0";// $("#hdShareUserId").val();shareUserId
-var shareUserId = $("#hdShareUserId").val();
-var hdMoblie = "";
+var hdUserid = "0";// $("#hdShareUserId").val();
+var hdMoblie = '';
 var hdInforSysNo = "";
-var isBegin = false;
 $(function () {
 
-    if (!isBegin)
+    var isBegin =  $("#hdIsBegin").val();
+    
+    if (isBegin == 0)
     {
         $(".state01").show();
     }
@@ -15,7 +15,7 @@ $(function () {
 
     loadQuestion();
     $(".btn-begin").live('click', function () {
-        isBegin = true;
+        $("#hdIsBegin").val("1");
         $(".state01").hide();
     });
 
@@ -37,15 +37,16 @@ $(function () {
             type: "POST",
             contentType: "application/json",
             url: 'Ajax/indexAjax.aspx/AddAnswerRecordAjax',
-            data: "{'shareUserId':" + shareUserId + ",'moblie':'" + hdMoblie + "','parameter':'" + lsAns + "'}",
+            data: "{'userid':" + hdUserid + ",'moblie':'" + hdMoblie + "','parameter':'" + lsAns + "'}",
             dataType: 'json',
             success: function (res) {
                 common.loading(false);
                 var data = eval("(" + res.d + ")");
                 if (data.DoFlag == 1) {
 
-                    alert("数据提交成功");
-                 //   window.location.href = "/result.aspx?AnswerMoney=" + data.StrAnswerMoney + "&ShareSysNo=" + hdInforSysNo + "&ShareUserId=" + hdShareUserId;
+                  //  alert("数据提交成功");
+                    //下载链接
+                    window.location.href = "https://www.baidu.com/";
                 } else {
                     alert("保存答案失败");
                 }
@@ -58,12 +59,15 @@ $(function () {
         var childrenSubSysNo = $(this).attr('ChildrenSubSysNo');
         var sysNo = $(this).attr('SysNo');
         var subSysNo = $(this).attr('SubSysNo');
-        
+
+
         var savaAns = $("#hdSaveAnswer").val();
         var lsAns = savaAns + "{\"SubSysNo\":" + subSysNo + ",\"AnsSysNo\":" + sysNo + "},";
         $("#hdSaveAnswer").val(lsAns);
-        
-        //console.log("info=>childrenSubSysNo:" + childrenSubSysNo);
+
+
+
+        console.log("info=>childrenSubSysNo:" + childrenSubSysNo);
 
         if (childrenSubSysNo > 0) {
             //依然存在题目
@@ -81,8 +85,8 @@ $(function () {
                 }
             });
         }
-        else {
-            //已经全部回答完毕
+        else {//已经全部回答完毕
+
             $(".state02").show();
         }
     });
@@ -90,6 +94,8 @@ $(function () {
 
 });
 function loadQuestion() {
+
+
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -98,9 +104,20 @@ function loadQuestion() {
         dataType: 'json',
         success: function (res) {
             common.loading(false);
-            //console.log("res===", res);
+            console.log("res===", res);
             var data = eval("(" + res.d + ")");
+
+            var amoney = data.SubjectEntities[0].AnswerMoney;
+            //    amoney = 3;
+            $(".hbbegin").html(amoney);
+            $(".hbend").html(amoney);
+            $(".phbend").html("获得" + data.SubjectEntities[0].StrAnswerMoney + "元奖励金");
+
             BindData(data);
+
+
+          
+
         }
     });
 }
@@ -116,23 +133,15 @@ function BindData(data)
             $(".banner").html(strTitle);
             var htmlData = "";
 
-
-            var amoney = data.SubjectEntities[0].AnswerMoney;
-        //    amoney = 3;
-                $(".hbbegin").html(amoney);
-                $(".hbend").html(amoney);
-                $(".phbend").html("获得" + data.SubjectEntities[0].StrAnswerMoney + "元奖励金");
-
-
             var anent = data.SubjectEntities[0].AnswerEntities;
             if (anent != null) {
                 for (var i = 0; i < anent.length; i++) {
-                    htmlData += '<div class="grid"><div class="box"><img class="box-thumbnail"   SubSysNo=\"' + anent[i].SubSysNo + '\" SysNo=\"' + anent[i].SysNo + '\" ChildrenSubSysNo=\"' + anent[i].ChildrenSubSysNo + '\"   src="' + anent[i].AnswerNameUrl + '" /></div></div>';
+                    htmlData += '<div class="grid"><div class="box"><img class="box-thumbnail" style="cursor: pointer;"   SubSysNo=\"' + anent[i].SubSysNo + '\" SysNo=\"' + anent[i].SysNo + '\" ChildrenSubSysNo=\"' + anent[i].ChildrenSubSysNo + '\"   src="' + anent[i].AnswerNameUrl + '" /></div></div>';
                 }
                 $(".list").html(htmlData);
             }
             else {
-                alert("已经答过了");
+                alert("已经答过了？");
             }
         } else {
             common.downLoadDialog();

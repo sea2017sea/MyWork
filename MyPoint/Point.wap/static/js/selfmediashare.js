@@ -1,7 +1,12 @@
 ﻿
 $(function(){
+
+
+
+
+
     var strHtml = "";
-    if(res != null && res.ArticleEntities.length > 0)
+    if(res != null && res.ArticleEntities.length>0)
     {
         for(var i=0;i<res.ArticleEntities.length;i++)
         {
@@ -13,7 +18,7 @@ $(function(){
             strHtml+='<div class="text-center"><div class="line"></div></div></div>';
         }
     }
-    //console.log("html:"+strHtml);
+    console.log("html:"+strHtml);
     $(".share-list").html(strHtml);
 
     $(".btn-read").click(function () {
