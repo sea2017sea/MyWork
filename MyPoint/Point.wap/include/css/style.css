@@ -135,7 +135,7 @@ a {text-decoration:none; color:#424242;}
 
 
 
-.dialog {width:80%; background-color:#fff; border-radius:0.3rem; position:absolute; top:2.5rem; left:50%; margin-left:-42.5%; z-index:100; padding:0.5rem; font-size:0.75rem;}
+.dialog {width:80%; background-color:#fff; border-radius:0.3rem; position:absolute;  left:50%; margin-left:-42.5%; z-index:100; padding:0.5rem; font-size:0.75rem;}
 
 .logo {background:url(../images/logo.png) no-repeat center center/cover; width:1.75rem; height:1.75rem; margin:1rem auto;}
 .share-content-text {text-align:center; line-height:1.4;}

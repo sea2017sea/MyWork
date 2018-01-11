@@ -57,6 +57,8 @@
 <script src="static/js/zepto.js"></script>
     
 <script src="static/js/common.js"></script>
+    
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="static/js/selfmediashare.js?v=2"></script>
 <script>
  var auther_name = "<%= author_name%>";

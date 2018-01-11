@@ -235,3 +235,16 @@ public class AnswerEntity
     public string AnswerNameUrl { get; set; }           //答案，一个图片地址
 }
 
+/// <summary>
+/// H5 自定义分享签名结构体
+/// </summary>
+public class ShareConfigContract
+{
+    public string appid { get; set; }
+
+    public string timestamp { get; set; }
+
+    public string nonceStr { get; set; }
+
+    public string signture { get; set; }
+}

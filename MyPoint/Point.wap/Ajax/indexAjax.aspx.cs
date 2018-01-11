@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Point.com.ServiceModel;
 using ServiceStack.ServiceClient.Web;
+using WxPayAPI;
 
 public partial class Ajax_index : System.Web.UI.Page
 {
@@ -181,5 +182,33 @@ public partial class Ajax_index : System.Web.UI.Page
             return JsonConvert.SerializeObject(res);
         }
         return "";
+    }
+
+
+    [WebMethod]
+    public static string ShareConfig(string shareurl)
+    {
+
+        var access_token = "";
+        if (HttpContext.Current.Cache.Get("access_token_js") == null)
+        {
+            access_token = JSAPI.getToken();
+            HttpContext.Current.Cache.Insert("access_token_js", access_token);
+        }
+        else
+        {
+            access_token = HttpContext.Current.Cache.Get("access_token_js").ToString();
+        }
+
+        var ticket = JSAPI.GetTickect(access_token);
+
+        var result = new ShareConfigContract();
+        result.appid = WxPayConfig.APPID;
+        result.timestamp = WxPayApi.GenerateTimeStamp();
+        result.nonceStr = WxPayApi.GenerateNonceStr();
+        var str = "";
+        result.signture = JSAPI.GetSignature(ticket, result.nonceStr, result.timestamp, shareurl, out str);
+
+        return JsonConvert.SerializeObject(result);
     }
 }

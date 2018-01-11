@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Point.wap", "http://localhost:5226", "{65F42E94-4BA6-43F0-A9B6-61F3BFEA84DB}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
@@ -8,16 +10,16 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Point.wap", "http://localho
 		Debug.AspNetCompiler.VirtualPath = "/localhost_5226"
 		Debug.AspNetCompiler.PhysicalPath = "..\Point.wap\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5226\"
-		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.Updateable = "false"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.FixedNames = "true"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_5226"
 		Release.AspNetCompiler.PhysicalPath = "..\Point.wap\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5226\"
-		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.Updateable = "false"
 		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.FixedNames = "true"
 		Release.AspNetCompiler.Debug = "False"
 		SlnRelativePath = "..\Point.wap\"
 		DefaultWebSiteLanguage = "Visual C#"
