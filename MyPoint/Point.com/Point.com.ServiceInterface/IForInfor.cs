@@ -163,6 +163,6 @@ namespace Point.com.ServiceInterface
         /// </summary>
         /// <param name="sysno"></param>
         /// <returns></returns>
-        Ptcp<string> QueryShareTitle(int sysno);
+        Ptcp<M_QueryShareTitleRes> QueryShareTitle(int sysno);
     }
 }

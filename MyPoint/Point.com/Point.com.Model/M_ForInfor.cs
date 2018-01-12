@@ -8,12 +8,13 @@ namespace Point.com.Model
 {
     public class M_QueryHomePageReq
     {
-        public int UserId { get; set; }      //会员ID，如果已经注册并且登录，则必须传递，如果存在会员ID则会影响到返回的数据
+        public int UserId { get; set; } //会员ID，如果已经注册并且登录，则必须传递，如果存在会员ID则会影响到返回的数据
 
         //资讯类型  1 30岁以上男  2 30岁以下男  4 30岁以上女   8 30岁以下女
         public int InfoType { get; set; }
-        public int PageIndex { get; set; }   //第几页
-        public int PageSize { get; set; }    //每页大小
+
+        public int PageIndex { get; set; } //第几页
+        public int PageSize { get; set; } //每页大小
     }
 
     public class M_QueryHomePageRes
@@ -23,6 +24,11 @@ namespace Point.com.Model
 
         //总的数据条数
         public int Total { get; set; }
+    }
+
+    public class M_QueryShareTitleRes
+    {
+        public M_HomePageData PageData { get; set; }
     }
 
     public class M_HomePageData

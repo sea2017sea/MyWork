@@ -421,5 +421,6 @@ namespace Point.com.ServiceModel
 
     public class QueryShareTitleRes: BaseResponse
     {
+        public HomePageData PageData { get; set; }
     }
 }

@@ -39,3 +39,4 @@ D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.Common.pdb
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.csprojResolveAssemblyReference.cache
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.dll
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.pdb
+E:\mygit\MyPoint\Point.com\Point.com.Common\obj\Debug\Point.com.Common.csprojResolveAssemblyReference.cache

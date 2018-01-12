@@ -681,9 +681,15 @@ namespace Point.com.Facade
             try
             {
                 var ptcp = ServiceImpl.QueryShareTitle(req.SysNo);
+
                 if (ptcp.DoFlag == PtcpState.Success)
                 {
                     res.DoFlag = (int)PtcpState.Success;
+                }
+
+                if (ptcp.ReturnValue.IsNotNull() && ptcp.ReturnValue.PageData.IsNotNull())
+                {
+                    res.PageData = Mapper.Map<M_HomePageData, HomePageData>(ptcp.ReturnValue.PageData);
                 }
                 res.DoResult = ptcp.DoResult;
             }

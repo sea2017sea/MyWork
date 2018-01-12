@@ -3236,9 +3236,9 @@ namespace Point.com.ServiceImplement
         /// </summary>
         /// <param name="sysno"></param>
         /// <returns></returns>
-        public Ptcp<string> QueryShareTitle(int sysno)
+        public Ptcp<M_QueryShareTitleRes> QueryShareTitle(int sysno)
         {
-            var ptcp = new Ptcp<string>();
+            var ptcp = new Ptcp<M_QueryShareTitleRes>();
 
             var info = DbSession.MLT.T_InforConfigureRepository.QueryBy(new T_InforConfigure()
                 {
@@ -3248,7 +3248,9 @@ namespace Point.com.ServiceImplement
 
             if (info.IsNotNull())
             {
-                ptcp.DoResult = info.InforName;
+                var pl = Mapper.Map<T_InforConfigure, M_HomePageData>(info);
+                ptcp.ReturnValue = new M_QueryShareTitleRes();
+                ptcp.ReturnValue.PageData = pl;
                 ptcp.DoFlag = PtcpState.Success;
             }
 
