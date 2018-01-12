@@ -488,7 +488,8 @@ namespace Point.com.ServiceImplement
                     //自媒体分享，注册手机号码，获取低佣金
                     tRecord.PlusReduce = 1;   //交易获取或者使用 1增加 2 使用（减）
                     tRecord.Company = Enums.Rmb;
-                    tRecord.TranName = "自媒体分享注册";
+                    //tRecord.TranName = "自媒体分享注册"; 
+                    tRecord.TranName = "阅读体验"; 
                     tRecord.TranNum = req.TranNum;
 
                     sendPush.MsgTitle = string.Format("转入{0}增加",Enums.ScoreName);

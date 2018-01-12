@@ -128,6 +128,7 @@ namespace Point.com.ServiceImplement
             string str = "http://img.point-server.com/default/default0.png";
 
             // 1 回答问题（参与互动）    2 邀请好友（分享好友）  4 转出积分  8 转入积分 16 现金提现 32 兑换商品(兑换抵用劵)   64 阅读文章
+            // 128 自媒体分享，注册手机号码，获取低佣金
             switch (tranType)
             {
                 case 1:
