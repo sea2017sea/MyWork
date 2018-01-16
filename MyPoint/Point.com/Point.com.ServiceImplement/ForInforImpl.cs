@@ -113,6 +113,9 @@ namespace Point.com.ServiceImplement
             }
 
             ptcp.ReturnValue.PageDatas = pl;
+            
+            //string dataParm = JsonConvert.SerializeObject(pl);
+            //Logger.Write(LoggerLevel.Error, "QueryHomePage_Data", jsonParam, dataParm, "");
 
             ptcp.ReturnValue.Total = sortList.Count;
             ptcp.DoFlag = PtcpState.Success;

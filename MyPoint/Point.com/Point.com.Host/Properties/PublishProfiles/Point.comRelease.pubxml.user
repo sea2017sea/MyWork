@@ -27,46 +27,46 @@
       <publishTime>08/11/2017 13:49:43</publishTime>
     </File>
     <File Include="bin/Point.com.Assembler.dll">
-      <publishTime>01/12/2018 12:53:27</publishTime>
+      <publishTime>01/16/2018 11:01:16</publishTime>
     </File>
     <File Include="bin/Point.com.Caching.dll">
-      <publishTime>01/12/2018 12:53:27</publishTime>
+      <publishTime>01/16/2018 11:01:16</publishTime>
     </File>
     <File Include="bin/Point.com.Common.dll">
-      <publishTime>01/12/2018 12:53:27</publishTime>
+      <publishTime>01/16/2018 11:01:16</publishTime>
     </File>
     <File Include="bin/Point.com.Facade.dll">
-      <publishTime>01/12/2018 12:53:30</publishTime>
+      <publishTime>01/16/2018 11:01:25</publishTime>
     </File>
     <File Include="bin/Point.com.Host.dll">
-      <publishTime>01/12/2018 12:53:46</publishTime>
+      <publishTime>01/16/2018 11:02:11</publishTime>
     </File>
     <File Include="bin/Point.com.IRepository.dll">
-      <publishTime>01/12/2018 12:53:28</publishTime>
+      <publishTime>01/16/2018 11:01:23</publishTime>
     </File>
     <File Include="bin/Point.com.Logging.dll">
-      <publishTime>01/12/2018 12:53:28</publishTime>
+      <publishTime>01/16/2018 11:01:23</publishTime>
     </File>
     <File Include="bin/Point.com.Model.dll">
-      <publishTime>01/12/2018 12:53:28</publishTime>
+      <publishTime>01/16/2018 11:01:23</publishTime>
     </File>
     <File Include="bin/Point.com.Repository.dll">
-      <publishTime>01/12/2018 12:53:29</publishTime>
+      <publishTime>01/16/2018 11:01:24</publishTime>
     </File>
     <File Include="bin/Point.com.RepositoryFactory.dll">
-      <publishTime>01/12/2018 12:53:29</publishTime>
+      <publishTime>01/16/2018 11:01:24</publishTime>
     </File>
     <File Include="bin/Point.com.ServiceContainer.dll">
-      <publishTime>01/12/2018 12:53:29</publishTime>
+      <publishTime>01/16/2018 11:01:25</publishTime>
     </File>
     <File Include="bin/Point.com.ServiceImplement.dll">
-      <publishTime>01/12/2018 12:53:29</publishTime>
+      <publishTime>01/16/2018 11:01:25</publishTime>
     </File>
     <File Include="bin/Point.com.ServiceInterface.dll">
-      <publishTime>01/12/2018 12:53:28</publishTime>
+      <publishTime>01/16/2018 11:01:23</publishTime>
     </File>
     <File Include="bin/Point.com.ServiceModel.dll">
-      <publishTime>01/12/2018 12:53:27</publishTime>
+      <publishTime>01/16/2018 11:01:16</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>10/29/2014 14:21:49</publishTime>
