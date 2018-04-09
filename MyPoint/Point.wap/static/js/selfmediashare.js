@@ -26,7 +26,8 @@ $(function(){
             alert("请输入手机号码");
             return;
         } else {
-            if (!mobile.match(/^(13|15|17|18|14)[0-9]{9}$/)) {
+            //if (!mobile.match(/^(13|15|17|18|14)[0-9]{9}$/)) {
+            if (mobile.length != 11) {
                 alert("手机号码格式不正确");
                 return;
             } else {
