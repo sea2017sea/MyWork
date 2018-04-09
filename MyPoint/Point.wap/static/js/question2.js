@@ -26,7 +26,8 @@ $(function () {
 
         var hdMoblie = $.trim($(".data-mobile").val());
 
-        if (!hdMoblie.match(/^(13|15|17|18|14)[0-9]{9}$/)) {
+        //if (!hdMoblie.match(/^(13|15|17|18|14)[0-9]{9}$/)) {
+        if (hdMoblie.length != 11) {
             alert("手机号码格式不正确");
             return;
         }
