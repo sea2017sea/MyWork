@@ -171,8 +171,9 @@ namespace Point.com.ServiceImplement
                 return ptcp;
             }
 
-            Regex regex = new Regex(RegexExt.mobileRegex);
-            if (!regex.IsMatch(req.Mobile))
+            //Regex regex = new Regex(RegexExt.mobileRegex);
+            //if (!regex.IsMatch(req.Mobile))
+            if (req.Mobile.Length != 11)
             {
                 ptcp.DoResult = "手机号码格式不正确";
                 return ptcp;
