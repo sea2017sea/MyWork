@@ -4,7 +4,7 @@ var hdShareUserId = $("#hdShareUserId").val();
 var hdMoblie = "";
 var hdInforSysNo = "";
 $(function () {
-
+    
     var isBegin =  $("#hdIsBegin").val();
     
     if (isBegin == 0)

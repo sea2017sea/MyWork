@@ -3,7 +3,6 @@
 crm管理后台地址：    http://crm.point-server.com/
 wap地址：            http://wap.point-server.com/
 图片服务地址：       http://img.point-server.com/
-wap地址：            http://wap.point-server.com/
 服务说明txt文档：    http://img.point-server.com/service.txt
 
 
