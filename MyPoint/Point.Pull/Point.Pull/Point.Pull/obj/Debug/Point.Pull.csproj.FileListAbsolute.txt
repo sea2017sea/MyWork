@@ -11,3 +11,9 @@ E:\mygit\MyPoint\Point.Pull\Point.Pull\Point.Pull\bin\Debug\TopSdk.dll
 E:\mygit\MyPoint\Point.Pull\Point.Pull\Point.Pull\obj\Debug\Point.Pull.csprojResolveAssemblyReference.cache
 E:\mygit\MyPoint\Point.Pull\Point.Pull\Point.Pull\obj\Debug\Point.Pull.exe
 E:\mygit\MyPoint\Point.Pull\Point.Pull\Point.Pull\obj\Debug\Point.Pull.pdb
+D:\mygit\MyWork\MyPoint\Point.Pull\Point.Pull\Point.Pull\bin\Debug\Point.Pull.exe.config
+D:\mygit\MyWork\MyPoint\Point.Pull\Point.Pull\Point.Pull\obj\Debug\Point.Pull.exe
+D:\mygit\MyWork\MyPoint\Point.Pull\Point.Pull\Point.Pull\obj\Debug\Point.Pull.pdb
+D:\mygit\MyWork\MyPoint\Point.Pull\Point.Pull\Point.Pull\bin\Debug\Point.Pull.exe
+D:\mygit\MyWork\MyPoint\Point.Pull\Point.Pull\Point.Pull\bin\Debug\Point.Pull.pdb
+D:\mygit\MyWork\MyPoint\Point.Pull\Point.Pull\Point.Pull\bin\Debug\TopSdk.dll

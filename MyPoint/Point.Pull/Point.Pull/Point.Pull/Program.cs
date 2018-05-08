@@ -151,7 +151,15 @@ namespace Point.Pull
                     Console.WriteLine("开始拉取后台类目...");
 
 
-
+                    ITopClient client = new DefaultTopClient(url, appkey, appsecret);
+                    //ItemAddRequest sdf = new AlibabaWholesaleCategoryGetRequest();
+                    //ItemcatsGetRequest req = new ItemcatsGetRequest();
+                    ////req.Cids = "18957,19562";
+                    ////req.Datetime = DateTime.Parse("2000-01-01 00:00:00");
+                    ////req.Fields = "cid,parent_cid,name,is_parent";
+                    ////req.ParentCid = 50011999L;
+                    //ItemcatsGetResponse rsp = client.Execute(req);
+                    //Console.WriteLine(rsp.Body);
 
                     Console.WriteLine(string.Format("成功拉取后台类目......本次共拉取 {0} 条数据", 12));
 
