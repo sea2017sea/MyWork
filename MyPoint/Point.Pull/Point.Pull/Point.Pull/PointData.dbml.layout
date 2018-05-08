@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="PointData">
+  <DataContextMoniker Name="/PointDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d3273e88-59d0-4792-af8b-d5a5e267e919" isExpanded="false" absoluteBounds="0.5, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/PointDataDataContext/Taobao_tbk_dg_item_coupon_get" />
+      <nestedChildShapes>
+        <elementListCompartment Id="25126fff-3d3c-4ffa-98c6-7b60c6dea72a" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 4.640920003255208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
