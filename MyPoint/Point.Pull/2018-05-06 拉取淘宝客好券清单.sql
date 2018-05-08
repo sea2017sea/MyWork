@@ -3,7 +3,7 @@
 
 create table Taobao_tbk_dg_item_coupon_get
 (
-SysNo int identity primary key,             --主机，自增
+SysNo int identity primary key,             --主键，自增
 Shop_title nvarchar(256) null,              --店铺名称
 User_type int null,                         --卖家类型，0表示集市，1表示商城
 Zk_final_price nvarchar(32) null,           --折扣价
@@ -32,9 +32,26 @@ go
 
 
 
+--taobao.itemcats.get (获取后台供卖家发布商品的标准商品类目)
+
+create table Taobao_itemcats_get
+(
+SysNo int identity primary key,             --主键，自增
+Cid bigint NULL,                            --商品所属类目ID
+Parent_cid bigint NULL,                     --父类目ID=0时，代表的是一级的类目
+CidName nvarchar(256) NULL,                 --类目名称
+Is_parent bit NULL,                         --该类目是否为父类目(即：该类目是否还有子类目)
+CidStatus nvarchar(32) NULL,                --状态。可选值:normal(正常),deleted(删除)
+Sort_order bigint NULL,                     --排列序号，表示同级类目的展现次序，如数值相等则按名称次序排列。取值范围:大于零的整数
+Taosir_cat bit NULL,                        --是否度量衡类目
+Last_modified datetime NULL,                --最近修改时间(如果取增量，会返回该字段)。
+RowCreateTime datetime not null,            --创建时间
+IsHandle bit not null                       --是否处理 true 已处理  false 未处理
+)
+go
 
 select * from Taobao_tbk_dg_item_coupon_get order by sysno desc
 
-
+SELECT * FROM Taobao_itemcats_get 
 
 

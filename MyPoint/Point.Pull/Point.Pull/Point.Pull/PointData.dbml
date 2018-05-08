@@ -27,4 +27,19 @@
       <Column Name="IsHandle" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.Taobao_itemcats_get" Member="Taobao_itemcats_get">
+    <Type Name="Taobao_itemcats_get">
+      <Column Name="SysNo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Parent_cid" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CidName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Is_parent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CidStatus" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Sort_order" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Taosir_cat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Last_modified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RowCreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsHandle" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

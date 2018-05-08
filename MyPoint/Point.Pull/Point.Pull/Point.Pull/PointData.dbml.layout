@@ -8,5 +8,11 @@
         <elementListCompartment Id="25126fff-3d3c-4ffa-98c6-7b60c6dea72a" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 4.640920003255208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="3a1755a9-bd34-4101-b149-67f7b2f2f5f1" isExpanded="false" absoluteBounds="2.75, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/PointDataDataContext/Taobao_itemcats_get" />
+      <nestedChildShapes>
+        <elementListCompartment Id="172b696d-1f78-4652-a79b-ad4333b07ad1" absoluteBounds="2.765, 0.96, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
