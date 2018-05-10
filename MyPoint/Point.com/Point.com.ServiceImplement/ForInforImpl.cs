@@ -920,7 +920,7 @@ namespace Point.com.ServiceImplement
                     if (req.CateId <= 0)
                     {
                         sql =
-                            string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SysNo DESC) AS RowNumber,* FROM T_InforConfigure WHERE DataType = 2 AND IsEnable = 1) as A  
+                            string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY IntSort DESC) AS RowNumber,* FROM T_InforConfigure WHERE DataType = 2 AND IsEnable = 1) as A  
                          WHERE RowNumber > {0}*({1}-1) ORDER BY A.IntSort DESC", req.PageSize, req.PageIndex);
 
                         sqlCount =
@@ -929,7 +929,7 @@ namespace Point.com.ServiceImplement
                     else
                     {
                         sql =
-                            string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SysNo DESC) AS RowNumber,* FROM T_InforConfigure WHERE DataType = 2 AND CateId = {1} AND IsEnable = 1) as A  
+                            string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY IntSort DESC) AS RowNumber,* FROM T_InforConfigure WHERE DataType = 2 AND CateId = {1} AND IsEnable = 1) as A  
                          WHERE RowNumber > {0}*({2}-1) ORDER BY A.IntSort DESC", req.PageSize, req.CateId, req.PageIndex);
 
                         sqlCount =
@@ -1238,7 +1238,7 @@ namespace Point.com.ServiceImplement
                 }
             }
 
-            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SysNo DESC) AS RowNumber,* FROM T_ShopGoods WHERE ShopSysNo = {1} {3} AND IsEnable = 1) as A  
+            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY IntSort DESC) AS RowNumber,* FROM T_ShopGoods WHERE ShopSysNo = {1} {3} AND IsEnable = 1) as A  
                          WHERE RowNumber > {0}*({2}-1) ORDER BY A.IntSort DESC", req.PageSize, req.ShopId, req.PageIndex, sqlgoodsLab);
 
             string sqlCount = string.Format(@"SELECT COUNT(0) FROM T_ShopGoods WHERE ShopSysNo = {0} {1} AND IsEnable = 1", req.ShopId, sqlgoodsLab);
@@ -2744,7 +2744,7 @@ namespace Point.com.ServiceImplement
                 req.PageSize = 10;
             }
 
-            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SysNo DESC) AS RowNumber,* FROM T_CouponExcRecord WHERE UserId = {1} AND IsEnable = 1) as A  
+            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY RowCeateDate DESC) AS RowNumber,* FROM T_CouponExcRecord WHERE UserId = {1} AND IsEnable = 1) as A  
                          WHERE RowNumber > {0}*({2}-1) ORDER BY A.RowCeateDate DESC", req.PageSize, req.UserId, req.PageIndex);
 
             string sqlCount =
@@ -3015,7 +3015,7 @@ namespace Point.com.ServiceImplement
 
             strInforSysNo = strInforSysNo.Trim(',');
 
-            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SysNo DESC) AS RowNumber,* FROM T_InforConfigure WHERE SysNo IN ({1}) AND IsEnable = 1) as A  
+            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY IntSort DESC) AS RowNumber,* FROM T_InforConfigure WHERE SysNo IN ({1}) AND IsEnable = 1) as A  
                          WHERE RowNumber > {0}*({2}-1) ORDER BY A.IntSort DESC", req.PageSize, strInforSysNo, req.PageIndex);
 
             string sqlCount = string.Format(@"SELECT COUNT(0) FROM T_InforConfigure WHERE SysNo IN ({0}) AND IsEnable = 1", strInforSysNo);
@@ -3136,7 +3136,7 @@ namespace Point.com.ServiceImplement
             }
 
             strInforSysNo = strInforSysNo.Trim(',');
-            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY SysNo DESC) AS RowNumber,* FROM T_InforConfigure WHERE SysNo IN ({1}) AND IsEnable = 1) as A  
+            string sql = string.Format(@"SELECT TOP {0} * FROM (SELECT ROW_NUMBER() OVER (ORDER BY IntSort DESC) AS RowNumber,* FROM T_InforConfigure WHERE SysNo IN ({1}) AND IsEnable = 1) as A  
                          WHERE RowNumber > {0}*({2}-1) ORDER BY A.IntSort DESC", req.PageSize, strInforSysNo, req.PageIndex);
 
             string sqlCount = string.Format(@"SELECT COUNT(0) FROM T_InforConfigure WHERE SysNo IN ({0}) AND IsEnable = 1", strInforSysNo);
