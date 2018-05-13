@@ -26,7 +26,6 @@
     <EntitySet Name="T_Recharge" EntityType="MYZJ_MLTModel.T_Recharge" />
     <EntitySet Name="T_ShareRegister" EntityType="MYZJ_MLTModel.T_ShareRegister" />
     <EntitySet Name="T_Sms" EntityType="MYZJ_MLTModel.T_Sms" />
-    <EntitySet Name="T_Subject" EntityType="MYZJ_MLTModel.T_Subject" />
     <EntitySet Name="T_Withdrawals" EntityType="MYZJ_MLTModel.T_Withdrawals" />
     <EntitySet Name="T_ShareAnswerRecord" EntityType="MYZJ_MLTModel.T_ShareAnswerRecord" />
     <EntitySet Name="T_ShopGoods" EntityType="MYZJ_MLTModel.T_ShopGoods" />
@@ -40,6 +39,7 @@
     <EntitySet Name="T_Member" EntityType="MYZJ_MLTModel.T_Member" />
     <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="MYZJ_MLTModel.T_SelfMediaRedDotRecord" />
     <EntitySet Name="T_SelfMediaSaveRecord" EntityType="MYZJ_MLTModel.T_SelfMediaSaveRecord" />
+    <EntitySet Name="T_Subject" EntityType="MYZJ_MLTModel.T_Subject" />
   </EntityContainer>
   <EntityType Name="Base_Deliver">
     <Key>
@@ -249,7 +249,7 @@
     <Property Type="Int32" Name="UserId" Nullable="false" />
     <Property Type="Int32" Name="InforSysNo" Nullable="false" />
     <Property Type="Int32" Name="IsPushIn" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -267,7 +267,7 @@
     <Property Type="String" Name="InRemarks" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="IsPushIn" Nullable="false" />
     <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
   <EntityType Name="T_Answer">
@@ -279,7 +279,7 @@
     <Property Type="Int32" Name="ChildrenSubSysNo" Nullable="false" />
     <Property Type="String" Name="AnswerNameUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="IntSort" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -290,7 +290,7 @@
     <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int32" Name="AnsSysNo" Nullable="false" />
     <Property Type="Int32" Name="GoodsSysNo" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -303,22 +303,28 @@
     <Property Type="Int32" Name="SubSysNo" Nullable="false" />
     <Property Type="Int32" Name="AnsSysNo" Nullable="false" />
     <Property Type="Decimal" Name="AnswerMoney" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
   <EntityType Name="T_Category">
     <Key>
       <PropertyRef Name="CateId" />
+      <PropertyRef Name="sysno" />
     </Key>
     <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int32" Name="CateId" Nullable="false" />
     <Property Type="String" Name="CateName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="CatePic" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="IntSort" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
-    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+    <Property Type="Boolean" Name="IsEnable" />
+    <Property Type="Int32" Name="sysno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="cateid" Nullable="false" />
+    <Property Type="String" Name="catename" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="catepic" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="intsort" Nullable="false" />
   </EntityType>
   <EntityType Name="T_CouponExcRecord">
     <Key>
@@ -333,7 +339,7 @@
     <Property Type="Decimal" Name="ExcAmount" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="UseScore" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="RechargeAmount" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Int32" Name="CouponState" Nullable="false" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
@@ -348,9 +354,9 @@
     <Property Type="Decimal" Name="ExcAmount" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Int32" Name="CouponType" Nullable="false" />
     <Property Type="String" Name="CouponCode" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="UseRule" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="RuleContent" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="String" Name="UseRule" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RuleContent" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -363,7 +369,7 @@
     <Property Type="String" Name="PrivateCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="UserId" />
     <Property Type="DateTime" Name="ExcDateTime" Precision="3" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -374,7 +380,7 @@
     <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int32" Name="UserId" Nullable="false" />
     <Property Type="Int32" Name="InforSysNo" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -386,7 +392,7 @@
     <Property Type="Int32" Name="UserId" Nullable="false" />
     <Property Type="String" Name="JiGuangSysNo" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="SourceTypeSysNo" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -403,7 +409,7 @@
     <Property Type="String" Name="PushMsgId" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="PushResult" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Type="Int32" Name="SourceTypeSysNo" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -458,19 +464,6 @@
     <Property Type="DateTime" Name="VerifTime" Precision="3" />
     <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityType Name="T_Subject">
-    <Key>
-      <PropertyRef Name="SysNo" />
-    </Key>
-    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="InforSysNo" Nullable="false" />
-    <Property Type="String" Name="ProblemNameUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="AnswerMoney" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Int32" Name="IntSort" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
-    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
-    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
-  </EntityType>
   <EntityType Name="T_Withdrawals">
     <Key>
       <PropertyRef Name="SysNo" />
@@ -516,7 +509,7 @@
     <Property Type="Int32" Name="UseCouponCount" Nullable="false" />
     <Property Type="Int32" Name="OverCouponCount" Nullable="false" />
     <Property Type="Int32" Name="IntSort" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -529,9 +522,9 @@
     <Property Type="String" Name="StrInforType" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="InforName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="InforRemark" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="InforDesc" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="InforDesc" MaxLength="1024" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="LogoIcon" MaxLength="1024" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="HeadPic" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HeadPic" MaxLength="1024" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="CoverPic" MaxLength="1024" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="ShopPic" MaxLength="1024" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="PushPic" MaxLength="1024" FixedLength="false" Unicode="false" />
@@ -544,7 +537,7 @@
     <Property Type="Int32" Name="IntSort" Nullable="false" />
     <Property Type="Int32" Name="IsShowIndex" Nullable="false" />
     <Property Type="DateTime" Name="SourceDateTime" Nullable="false" Precision="3" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
@@ -648,18 +641,18 @@
     <Property Name="RegArea" Type="Int32" />
     <Property Name="Birthday" Type="DateTime" Precision="3" />
     <Property Name="InforType" Type="Int32" Nullable="false" />
-    <Property Name="Account" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="AccountWithdrawn" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="Score" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="ScoreWithdrawn" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Account" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="AccountWithdrawn" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="Score" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+    <Property Name="ScoreWithdrawn" Type="Decimal" Precision="9" Scale="0" />
     <Property Name="OpenidWxOpen" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
-    <Property Name="SourceTypeSysNo" Type="Int32" Nullable="false" />
-    <Property Name="DeviceCode" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="SourceTypeSysNo" Type="Int32" />
+    <Property Name="DeviceCode" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
     <Property Name="MobileModel" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
-    <Property Name="ClientIp" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="ClientIp" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
     <Property Name="MinWithdrawals" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RowCeateDate" Type="DateTime" Precision="3" />
     <Property Name="ModifyTime" Type="DateTime" Precision="3" />
     <Property Name="timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
   </EntityType>
@@ -688,5 +681,19 @@
     <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Subject">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="InforSysNo" Nullable="false" />
+    <Property Type="String" Name="ProblemNameUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="AnswerMoney" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="IntSort" Nullable="false" />
+    <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+    <Property Type="Int32" Name="AnswerCount" />
   </EntityType>
 </Schema>

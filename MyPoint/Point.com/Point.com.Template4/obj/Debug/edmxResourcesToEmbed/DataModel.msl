@@ -156,14 +156,14 @@
     <EntitySetMapping Name="T_Category">
       <EntityTypeMapping TypeName="MYZJ_MLTModel.T_Category">
         <MappingFragment StoreEntitySet="T_Category">
+          <ScalarProperty Name="intsort" ColumnName="intsort" />
+          <ScalarProperty Name="catepic" ColumnName="catepic" />
+          <ScalarProperty Name="catename" ColumnName="catename" />
+          <ScalarProperty Name="cateid" ColumnName="cateid" />
+          <ScalarProperty Name="sysno" ColumnName="sysno" />
           <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
           <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
           <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
-          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
-          <ScalarProperty Name="CatePic" ColumnName="CatePic" />
-          <ScalarProperty Name="CateName" ColumnName="CateName" />
-          <ScalarProperty Name="CateId" ColumnName="CateId" />
-          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -304,20 +304,6 @@
           <ScalarProperty Name="SmsCode" ColumnName="SmsCode" />
           <ScalarProperty Name="SmsType" ColumnName="SmsType" />
           <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="T_Subject">
-      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_Subject">
-        <MappingFragment StoreEntitySet="T_Subject">
-          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
-          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
-          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
-          <ScalarProperty Name="AnswerMoney" ColumnName="AnswerMoney" />
-          <ScalarProperty Name="ProblemNameUrl" ColumnName="ProblemNameUrl" />
-          <ScalarProperty Name="InforSysNo" ColumnName="InforSysNo" />
           <ScalarProperty Name="SysNo" ColumnName="SysNo" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -549,6 +535,21 @@
           <ScalarProperty Name="ArticleSysNo" ColumnName="ArticleSysNo" />
           <ScalarProperty Name="AuthorSysNo" ColumnName="AuthorSysNo" />
           <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Subject">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.T_Subject">
+        <MappingFragment StoreEntitySet="T_Subject">
+          <ScalarProperty Name="AnswerCount" ColumnName="AnswerCount" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
+          <ScalarProperty Name="AnswerMoney" ColumnName="AnswerMoney" />
+          <ScalarProperty Name="ProblemNameUrl" ColumnName="ProblemNameUrl" />
+          <ScalarProperty Name="InforSysNo" ColumnName="InforSysNo" />
           <ScalarProperty Name="SysNo" ColumnName="SysNo" />
         </MappingFragment>
       </EntityTypeMapping>

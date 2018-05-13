@@ -30,20 +30,20 @@
         <EntityTypeShape EntityType="MYZJ_MLTModel.T_Recharge" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.T_ShareRegister" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.T_Sms" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_Subject" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_Withdrawals" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_ShareAnswerRecord" Width="1.5" PointX="10.75" PointY="2.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_ShopGoods" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_InforConfigure" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_OperationLog" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaAuthor" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaFollowRecord" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaPayRecord" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaArticle" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.Crm_Interactive" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_Member" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaRedDotRecord" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaSaveRecord" Width="1.5" PointX="12.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_Withdrawals" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_ShareAnswerRecord" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_ShopGoods" Width="1.5" PointX="10.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_InforConfigure" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_OperationLog" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaAuthor" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaFollowRecord" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaPayRecord" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaArticle" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.Crm_Interactive" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_Member" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaRedDotRecord" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_SelfMediaSaveRecord" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.T_Subject" Width="1.5" PointX="12.75" PointY="2.75" IsExpanded="false" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

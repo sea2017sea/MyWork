@@ -23,5 +23,6 @@ namespace Point.com.Model
         public Nullable<System.DateTime> RowCeateDate { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }
         public Nullable<bool> IsEnable { get; set; }
+        public Nullable<int> AnswerCount { get; set; }
     }
 }

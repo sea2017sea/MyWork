@@ -274,6 +274,7 @@ SysNo INT IDENTITY(1,1) PRIMARY KEY,                                        --主
 InforSysNo  int NOT NULL,                                                           --问题，对应 T_InforConfigure 表sysno，为0则，表示是由答案引发的题目
 ProblemNameUrl VARCHAR(max) NOT NULL,                                --题目的名称，是一个图片的地址
 AnswerMoney DECIMAL(18, 2) NOT NULL,                                   --答题金额
+AnswerCount int null,                                                  --回答问题的人数，后台管理人员手动维护，实际人数 = AnswerCount + T_AnswerRecord 实际数量（最多6条）
 IntSort int NOT NULL,                                                                   --排序，数值越大越靠前
 RowCeateDate DATETIME NOT NULL,                                           --创建时间
 ModifyTime DATETIME NULL,                                                        --修改时间

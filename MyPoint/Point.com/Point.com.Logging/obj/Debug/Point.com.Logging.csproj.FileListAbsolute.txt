@@ -39,7 +39,6 @@ D:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.dll
 D:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.pdb
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.Logging.dll
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.Logging.pdb
-D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.csprojResolveAssemblyReference.cache
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.dll
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.pdb
 E:\mygit\MyPoint\Point.com\Point.com.Logging\obj\Debug\Point.com.Logging.csprojResolveAssemblyReference.cache

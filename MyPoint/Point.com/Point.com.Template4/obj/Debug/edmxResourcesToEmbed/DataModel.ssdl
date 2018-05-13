@@ -162,7 +162,7 @@
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="InforSysNo" Type="int" Nullable="false" />
     <Property Name="IsPushIn" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -180,7 +180,7 @@
     <Property Name="InRemarks" Type="nvarchar" MaxLength="512" />
     <Property Name="IsPushIn" Type="int" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="200" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="T_Answer">
@@ -192,7 +192,7 @@
     <Property Name="ChildrenSubSysNo" Type="int" Nullable="false" />
     <Property Name="AnswerNameUrl" Type="varchar(max)" Nullable="false" />
     <Property Name="IntSort" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -203,7 +203,7 @@
     <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="AnsSysNo" Type="int" Nullable="false" />
     <Property Name="GoodsSysNo" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -216,22 +216,22 @@
     <Property Name="SubSysNo" Type="int" Nullable="false" />
     <Property Name="AnsSysNo" Type="int" Nullable="false" />
     <Property Name="AnswerMoney" Type="decimal" Nullable="false" Scale="2" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="T_Category">
     <Key>
-      <PropertyRef Name="CateId" />
+      <PropertyRef Name="sysno" />
     </Key>
-    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="CateId" Type="int" Nullable="false" />
-    <Property Name="CateName" Type="nvarchar" Nullable="false" MaxLength="64" />
-    <Property Name="CatePic" Type="varchar(max)" />
-    <Property Name="IntSort" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="sysno" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cateid" Type="int" Nullable="false" />
+    <Property Name="catename" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="catepic" Type="varchar(max)" Nullable="false" />
+    <Property Name="intsort" Type="int" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
-    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" />
   </EntityType>
   <EntityType Name="T_CouponExcRecord">
     <Key>
@@ -246,7 +246,7 @@
     <Property Name="ExcAmount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="UseScore" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="RechargeAmount" Type="decimal" Nullable="false" Scale="2" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="CouponState" Type="int" Nullable="false" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
@@ -261,9 +261,9 @@
     <Property Name="ExcAmount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="CouponType" Type="int" Nullable="false" />
     <Property Name="CouponCode" Type="nvarchar" MaxLength="512" />
-    <Property Name="UseRule" Type="nvarchar" Nullable="false" MaxLength="512" />
-    <Property Name="RuleContent" Type="nvarchar" Nullable="false" MaxLength="1024" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="UseRule" Type="nvarchar" MaxLength="512" />
+    <Property Name="RuleContent" Type="nvarchar" MaxLength="1024" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -276,7 +276,7 @@
     <Property Name="PrivateCode" Type="varchar" Nullable="false" MaxLength="20" />
     <Property Name="UserId" Type="int" />
     <Property Name="ExcDateTime" Type="datetime" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -287,7 +287,7 @@
     <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="InforSysNo" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -300,9 +300,9 @@
     <Property Name="StrInforType" Type="varchar" Nullable="false" MaxLength="128" />
     <Property Name="InforName" Type="nvarchar" Nullable="false" MaxLength="512" />
     <Property Name="InforRemark" Type="nvarchar" MaxLength="512" />
-    <Property Name="InforDesc" Type="nvarchar" Nullable="false" MaxLength="1024" />
+    <Property Name="InforDesc" Type="nvarchar" MaxLength="1024" />
     <Property Name="LogoIcon" Type="varchar" MaxLength="1024" />
-    <Property Name="HeadPic" Type="varchar" Nullable="false" MaxLength="1024" />
+    <Property Name="HeadPic" Type="varchar" MaxLength="1024" />
     <Property Name="CoverPic" Type="varchar" MaxLength="1024" />
     <Property Name="ShopPic" Type="varchar" MaxLength="1024" />
     <Property Name="PushPic" Type="varchar" MaxLength="1024" />
@@ -315,7 +315,7 @@
     <Property Name="IntSort" Type="int" Nullable="false" />
     <Property Name="IsShowIndex" Type="int" Nullable="false" />
     <Property Name="SourceDateTime" Type="datetime" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -327,7 +327,7 @@
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="JiGuangSysNo" Type="varchar" Nullable="false" MaxLength="256" />
     <Property Name="SourceTypeSysNo" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -344,7 +344,7 @@
     <Property Name="PushMsgId" Type="varchar" MaxLength="256" />
     <Property Name="PushResult" Type="varchar" MaxLength="256" />
     <Property Name="SourceTypeSysNo" Type="int" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -363,18 +363,18 @@
     <Property Name="RegArea" Type="int" />
     <Property Name="Birthday" Type="datetime" />
     <Property Name="InforType" Type="int" Nullable="false" />
-    <Property Name="Account" Type="decimal" Nullable="false" Scale="2" />
-    <Property Name="AccountWithdrawn" Type="decimal" Nullable="false" Scale="2" />
-    <Property Name="Score" Type="decimal" Nullable="false" Scale="2" />
-    <Property Name="ScoreWithdrawn" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Account" Type="decimal" Precision="9" />
+    <Property Name="AccountWithdrawn" Type="decimal" Precision="9" />
+    <Property Name="Score" Type="decimal" Nullable="false" Precision="5" />
+    <Property Name="ScoreWithdrawn" Type="decimal" Precision="9" />
     <Property Name="OpenidWxOpen" Type="nvarchar" MaxLength="256" />
     <Property Name="LastLoginTime" Type="datetime" />
-    <Property Name="SourceTypeSysNo" Type="int" Nullable="false" />
-    <Property Name="DeviceCode" Type="varchar" Nullable="false" MaxLength="512" />
+    <Property Name="SourceTypeSysNo" Type="int" />
+    <Property Name="DeviceCode" Type="varchar" MaxLength="512" />
     <Property Name="MobileModel" Type="varchar" MaxLength="1024" />
-    <Property Name="ClientIp" Type="varchar" Nullable="false" MaxLength="512" />
+    <Property Name="ClientIp" Type="varchar" MaxLength="512" />
     <Property Name="MinWithdrawals" Type="decimal" Scale="2" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
   </EntityType>
@@ -547,7 +547,7 @@
     <Property Name="UseCouponCount" Type="int" Nullable="false" />
     <Property Name="OverCouponCount" Type="int" Nullable="false" />
     <Property Name="IntSort" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -573,9 +573,10 @@
     <Property Name="ProblemNameUrl" Type="varchar(max)" Nullable="false" />
     <Property Name="AnswerMoney" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="IntSort" Type="int" Nullable="false" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="AnswerCount" Type="int" />
   </EntityType>
   <EntityType Name="T_Withdrawals">
     <Key>

@@ -1406,85 +1406,6 @@ namespace Point.com.ServiceImplement
             return ptcp;
         }
 
-        #region 2018-01-07 作废老的分享答题逻辑
-
-        ///// <summary>
-        ///// 分享 没有注册会员时 根据广告(答题)咨询ID获取所有的题目信息
-        ///// </summary>
-        ///// <param name="userId"></param>
-        ///// <param name="inforSysNo"></param>
-        ///// <returns></returns>
-        //public Ptcp<M_QueryShareSubjectRes> QueryShareSubject(string moblie, int inforSysNo)
-        //{
-        //    var ptcp = new Ptcp<M_QueryShareSubjectRes>();
-
-        //    string jsonParam = string.Format("moblie：{0};inforSysNo:{1}", moblie, inforSysNo);
-        //    Logger.Write(LoggerLevel.Error, "QueryShareSubject_in", "", jsonParam, "");
-
-        //    if (string.IsNullOrEmpty(moblie))
-        //    {
-        //        ptcp.DoResult = "手机号码不能为空";
-        //        return ptcp;
-        //    }
-
-        //    if (inforSysNo <= 0)
-        //    {
-        //        ptcp.DoResult = "信息ID错误";
-        //        return ptcp;
-        //    }
-
-        //    //获取当前信息下面的所有的一级题目
-        //    var subOne = DbSession.MLT.T_SubjectRepository.QueryBy(new T_Subject()
-        //    {
-        //        InforSysNo = inforSysNo,
-        //        IsEnable = true
-        //    }).FirstOrDefault();
-        //    if (subOne.IsNull() || subOne.SysNo <= 0)
-        //    {
-        //        ptcp.DoResult = "没有题目";
-        //        return ptcp;
-        //    }
-
-        //    //检查当前会员是否已经答过了
-        //    var answerRecord = DbSession.MLT.T_ShareAnswerRecordRepository.QueryBy(new T_ShareAnswerRecord()
-        //    {
-        //        Mobile = moblie,
-        //        SubSysNo = subOne.SysNo,
-        //        IsEnable = true
-        //    }).FirstOrDefault();
-
-        //    List<M_SubjectEntity> subjects = new List<M_SubjectEntity>();
-        //    M_SubjectEntity subject = new M_SubjectEntity();
-        //    subject.SysNo = subOne.SysNo.GetValueOrDefault();
-        //    subject.InforSysNo = subOne.InforSysNo.GetValueOrDefault();
-        //    subject.ProblemNameUrl = subOne.ProblemNameUrl;
-        //    subject.AnswerMoney = Convert.ToDecimal(subOne.AnswerMoney);
-        //    subject.StrAnswerMoney = subject.AnswerMoney.ToString();
-
-        //    if (answerRecord.IsNotNull() && answerRecord.SysNo >= 0)
-        //    {
-        //        //已经回答过问题了
-        //        subjects.Add(subject);
-
-        //        ptcp.ReturnValue = new M_QueryShareSubjectRes();
-        //        ptcp.ReturnValue.SubjectEntities = subjects;
-        //        ptcp.ReturnValue.IsAnswer = 1;        //是否已经回答过了，0 未回答  1 已回答
-        //        ptcp.DoFlag = PtcpState.Success;
-        //        ptcp.DoResult = "已经答过了";
-        //        return ptcp;
-        //    }
-
-        //    subjects = RecurSubject(subOne.SysNo.GetValueOrDefault());
-        //    ptcp.ReturnValue = new M_QueryShareSubjectRes();
-        //    ptcp.ReturnValue.SubjectEntities = subjects;
-        //    ptcp.ReturnValue.IsAnswer = 0;    //是否已经回答过了，0 未回答  1 已回答
-        //    ptcp.DoFlag = PtcpState.Success;
-        //    ptcp.DoResult = "获取成功";
-        //    return ptcp;
-        //}
-
-        #endregion
-
         /// <summary>
         /// 2018-01-07 作废老的分享答题逻辑 启用新的答题逻辑：根据题目ID直接获取题目信息，不判断是否已经答过
         /// 分享 没有注册会员时 根据广告(答题)咨询ID获取所有的题目信息
@@ -1587,56 +1508,103 @@ namespace Point.com.ServiceImplement
                         #region
 
                         //获取答题记录
-                        var ansRecordsAll = DbSession.MLT.T_AnswerRecordRepository.QueryBy(new T_AnswerRecord()
+                        var ansRecordsAll = DbSession.MLT.T_AnswerRecordRepository.QueryTopBy(6,new T_AnswerRecord()
                             {
                                 SubSysNo = subject.SysNo,
                                 IsEnable = true
                             }, "ORDER BY SysNo DESC").ToList();
 
+
                         if (ansRecordsAll.IsNotNull() && ansRecordsAll.IsHasRow())
                         {
                             //获取答题记录
-                            var ansRecords = ansRecordsAll.Take(6).ToList();
-                            if (ansRecords.IsNotNull() && ansRecords.IsHasRow())
+                            #region 获取答题记录 2018-05-14 作废
+
+                            //var ansRecords = ansRecordsAll.Take(6).ToList();
+                            //if (ansRecords.IsNotNull() && ansRecords.IsHasRow())
+                            //{
+                            //    List<int> userids = ansRecords.Select(c => c.UserId.GetValueOrDefault()).ToList();
+                            //    string strUserIds = string.Join(",", userids);
+
+                            //    string sql = string.Format(@"SELECT * FROM T_Member WHERE SysNo IN ({0})", strUserIds);
+                            //    ;
+                            //    var memberInfos = DbSession.MLT.ExecuteSql<T_Member>(sql).ToList();
+                            //    if (memberInfos.IsNotNull() && memberInfos.IsHasRow())
+                            //    {
+                            //        List<M_ParticipateRecord> mParticipate = new List<M_ParticipateRecord>();
+                            //        foreach (var mp in memberInfos)
+                            //        {
+                            //            mParticipate.Add(new M_ParticipateRecord()
+                            //            {
+                            //                UserId = mp.SysNo.GetValueOrDefault(),
+                            //                Portrait = mp.Portrait,
+                            //                NickName = mp.NickName
+                            //            });
+                            //        }
+
+                            //        M_SubjectParticipateRes mSubject = new M_SubjectParticipateRes();
+                            //        mSubject.Participates = mParticipate;
+
+                            //        int allCount = ansRecordsAll.Count;
+                            //        string showNum = "0";
+                            //        if (allCount > 1000)
+                            //        {
+                            //            showNum = string.Format("{0}k", Math.Round((float)allCount / 1000, 1));
+                            //        }
+                            //        else
+                            //        {
+                            //            showNum = allCount.ToString();
+                            //        }
+
+                            //        mSubject.ParticipateCount = string.Format("+{0}", showNum);
+
+                            //        return mSubject;
+                            //    }
+                            //}
+
+                            #endregion
+
+                            #region 获取答题记录
+
+                            List<int> userids = ansRecordsAll.Select(c => c.UserId.GetValueOrDefault()).ToList();
+                            string strUserIds = string.Join(",", userids);
+
+                            string sql = string.Format(@"SELECT * FROM T_Member WHERE SysNo IN ({0})", strUserIds);
+                            ;
+                            var memberInfos = DbSession.MLT.ExecuteSql<T_Member>(sql).ToList();
+                            if (memberInfos.IsNotNull() && memberInfos.IsHasRow())
                             {
-                                List<int> userids = ansRecords.Select(c => c.UserId.GetValueOrDefault()).ToList();
-                                string strUserIds = string.Join(",", userids);
-
-                                string sql = string.Format(@"SELECT * FROM T_Member WHERE SysNo IN ({0})", strUserIds);
-                                ;
-                                var memberInfos = DbSession.MLT.ExecuteSql<T_Member>(sql).ToList();
-                                if (memberInfos.IsNotNull() && memberInfos.IsHasRow())
+                                List<M_ParticipateRecord> mParticipate = new List<M_ParticipateRecord>();
+                                foreach (var mp in memberInfos)
                                 {
-                                    List<M_ParticipateRecord> mParticipate = new List<M_ParticipateRecord>();
-                                    foreach (var mp in memberInfos)
+                                    mParticipate.Add(new M_ParticipateRecord()
                                     {
-                                        mParticipate.Add(new M_ParticipateRecord()
-                                            {
-                                                UserId = mp.SysNo.GetValueOrDefault(),
-                                                Portrait = mp.Portrait,
-                                                NickName = mp.NickName
-                                            });
-                                    }
-
-                                    M_SubjectParticipateRes mSubject = new M_SubjectParticipateRes();
-                                    mSubject.Participates = mParticipate;
-
-                                    int allCount = ansRecordsAll.Count;
-                                    string showNum = "0";
-                                    if (allCount > 1000)
-                                    {
-                                        showNum = string.Format("{0}k", Math.Round((float)allCount / 1000, 1));
-                                    }
-                                    else
-                                    {
-                                        showNum = allCount.ToString();
-                                    }
-
-                                    mSubject.ParticipateCount = string.Format("+{0}", showNum);
-
-                                    return mSubject;
+                                        UserId = mp.SysNo.GetValueOrDefault(),
+                                        Portrait = mp.Portrait,
+                                        NickName = mp.NickName
+                                    });
                                 }
+
+                                M_SubjectParticipateRes mSubject = new M_SubjectParticipateRes();
+                                mSubject.Participates = mParticipate;
+
+                                int allCount = ansRecordsAll.Count + subject.AnswerCount.GetValueOrDefault();
+                                string showNum = "0";
+                                if (allCount > 1000)
+                                {
+                                    showNum = string.Format("{0}k", Math.Round((float)allCount / 1000, 1));
+                                }
+                                else
+                                {
+                                    showNum = allCount.ToString();
+                                }
+
+                                mSubject.ParticipateCount = string.Format("+{0}", showNum);
+
+                                return mSubject;
                             }
+
+                            #endregion
                         }
 
                         #endregion
@@ -1763,136 +1731,6 @@ namespace Point.com.ServiceImplement
             ptcp.DoResult = "保存成功";
             return ptcp;
         }
-
-        #region 2018-01-07 作废老的分享答题逻辑
-
-        ///// <summary>
-        ///// h5 分享会员不存在 保存答案，获得奖励金
-        ///// </summary>
-        ///// <param name="req"></param>
-        ///// <returns></returns>
-        //public Ptcp<M_AddShareAnswerRecordRes> AddShareAnswerRecord(M_AddShareAnswerRecordReq req)
-        //{
-        //    var ptcp = new Ptcp<M_AddShareAnswerRecordRes>();
-
-        //    if (req.IsNull())
-        //    {
-        //        ptcp.DoResult = "请求数据非法";
-        //        return ptcp;
-        //    }
-
-        //    string jsonParam = JsonConvert.SerializeObject(req);
-        //    Logger.Write(LoggerLevel.Error, "AddAnswerRecord_in", "", jsonParam, "");
-
-        //    if (string.IsNullOrEmpty(req.Mobile))
-        //    {
-        //        ptcp.DoResult = "请输入手机号码";
-        //        return ptcp;
-        //    }
-
-        //    if (req.RecordEntities.IsNull() || !req.RecordEntities.IsHasRow())
-        //    {
-        //        ptcp.DoResult = "请求数据非法";
-        //        return ptcp;
-        //    }
-
-        //    List<M_AnswerRecordEntity> mAnswer = new List<M_AnswerRecordEntity>();
-        //    foreach (var re in req.RecordEntities)
-        //    {
-        //        if (re.SubSysNo <= 0)
-        //        {
-        //            ptcp.DoResult = "题目ID不能小于等于0";
-        //            return ptcp;
-        //        }
-
-        //        if (re.AnsSysNo <= 0)
-        //        {
-        //            ptcp.DoResult = "答案ID不能小于等于0";
-        //            return ptcp;
-        //        }
-
-        //        if (!mAnswer.Any(c => c.SubSysNo == re.SubSysNo && c.AnsSysNo == re.AnsSysNo))
-        //        {
-        //            mAnswer.Add(re);
-        //        }
-        //    }
-
-        //    req.RecordEntities = mAnswer;
-
-        //    List<int> subSysNos = req.RecordEntities.Select(c => c.SubSysNo).ToList();
-        //    string strSubSysNo = string.Join(",", subSysNos);
-
-        //    string sql = string.Format(@"SELECT * FROM T_Subject WHERE SysNo IN ({0}) AND InforSysNo != 0 AND IsEnable = 1", strSubSysNo);
-        //    var tsub = DbSession.MLT.ExecuteSql<T_Subject>(sql).FirstOrDefault();
-        //    if (tsub.IsNull() || tsub.SysNo <= 0)
-        //    {
-        //        ptcp.DoResult = "获取抵用金额失败，请稍后再试";
-        //        return ptcp;
-        //    }
-
-        //    //检查当前会员是否已经答过了
-        //    var answerRecord = DbSession.MLT.T_ShareAnswerRecordRepository.QueryBy(new T_ShareAnswerRecord()
-        //    {
-        //        Mobile = req.Mobile,
-        //        SubSysNo = tsub.SysNo,
-        //        IsEnable = true
-        //    }).FirstOrDefault();
-        //    if (answerRecord.IsNotNull() && answerRecord.SysNo > 0)
-        //    {
-        //        ptcp.DoResult = "您已经回答过当前题目了";
-        //        return ptcp;
-        //    }
-
-        //    ////将其他的回答记录作废
-        //    //DbSession.MLT.T_ShareAnswerRecordRepository.Update(new T_ShareAnswerRecord()
-        //    //    {
-        //    //        IsEnable = false
-        //    //    },new T_ShareAnswerRecord()
-        //    //        {
-        //    //            Mobile = req.Mobile,
-        //    //            IsEnable = true
-        //    //        });
-        //    //DbSession.MLT.SaveChange();
-
-        //    DateTime dtNow = DateTime.Now;
-        //    foreach (var rec in req.RecordEntities)
-        //    {
-        //        decimal? answerMoney = 0;
-        //        if (rec.SubSysNo == tsub.SysNo)
-        //        {
-        //            answerMoney = tsub.AnswerMoney;
-        //        }
-        //        DbSession.MLT.T_ShareAnswerRecordRepository.Add(new T_ShareAnswerRecord()
-        //        {
-        //            Mobile = req.Mobile,
-        //            SubSysNo = rec.SubSysNo,
-        //            AnsSysNo = rec.AnsSysNo,
-        //            AnswerMoney = answerMoney,
-        //            RowCeateDate = dtNow,
-        //            IsTransfer = 0,
-        //            IsEnable = true
-        //        });
-        //    }
-
-        //    ////账号新增流水，插入抵用金
-        //    //fb.AddAccountRecord(new M_AddAccountRecordReq()
-        //    //{
-        //    //    TranType = (int)Enums.TranType.Partic,
-        //    //    UserId = req.UserId,
-        //    //    TranNum = Convert.ToDecimal(tsub.AnswerMoney)
-        //    //});
-
-        //    DbSession.MLT.SaveChange();
-
-        //    ptcp.ReturnValue = new M_AddShareAnswerRecordRes();
-        //    ptcp.ReturnValue.AnswerMoney = Convert.ToDecimal(tsub.AnswerMoney);
-        //    ptcp.ReturnValue.StrAnswerMoney = tsub.AnswerMoney.ToString();
-        //    ptcp.DoFlag = PtcpState.Success;
-        //    ptcp.DoResult = "保存成功";
-        //    return ptcp;
-        //}
-
-        #endregion
 
         /// <summary>
         /// 2018-01-07 作废老的分享答题逻辑 启用新的答题逻辑：根据题目ID直接获取题目信息，不判断是否已经答过
@@ -2120,7 +1958,6 @@ namespace Point.com.ServiceImplement
             
             return ptcp;
         }
-
 
         /// <summary>
         /// 答题推荐商品

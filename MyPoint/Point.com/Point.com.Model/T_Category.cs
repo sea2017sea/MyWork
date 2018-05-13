@@ -23,5 +23,10 @@ namespace Point.com.Model
         public Nullable<System.DateTime> RowCeateDate { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }
         public Nullable<bool> IsEnable { get; set; }
+        public Nullable<int> Sysno { get; set; }
+        public Nullable<int> Cateid { get; set; }
+        public string Catename { get; set; }
+        public string Catepic { get; set; }
+        public Nullable<int> Intsort { get; set; }
     }
 }

@@ -468,22 +468,6 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<T_Subject> T_Subject
-        {
-            get
-            {
-                if ((_T_Subject == null))
-                {
-                    _T_Subject = base.CreateObjectSet<T_Subject>("T_Subject");
-                }
-                return _T_Subject;
-            }
-        }
-        private ObjectSet<T_Subject> _T_Subject;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<T_Withdrawals> T_Withdrawals
         {
             get
@@ -688,6 +672,22 @@ namespace Point.com.Template4
             }
         }
         private ObjectSet<T_SelfMediaSaveRecord> _T_SelfMediaSaveRecord;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<T_Subject> T_Subject
+        {
+            get
+            {
+                if ((_T_Subject == null))
+                {
+                    _T_Subject = base.CreateObjectSet<T_Subject>("T_Subject");
+                }
+                return _T_Subject;
+            }
+        }
+        private ObjectSet<T_Subject> _T_Subject;
 
         #endregion
 
@@ -894,14 +894,6 @@ namespace Point.com.Template4
         }
     
         /// <summary>
-        /// 用于向 T_Subject EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToT_Subject(T_Subject t_Subject)
-        {
-            base.AddObject("T_Subject", t_Subject);
-        }
-    
-        /// <summary>
         /// 用于向 T_Withdrawals EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddToT_Withdrawals(T_Withdrawals t_Withdrawals)
@@ -1003,6 +995,14 @@ namespace Point.com.Template4
         public void AddToT_SelfMediaSaveRecord(T_SelfMediaSaveRecord t_SelfMediaSaveRecord)
         {
             base.AddObject("T_SelfMediaSaveRecord", t_SelfMediaSaveRecord);
+        }
+    
+        /// <summary>
+        /// 用于向 T_Subject EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToT_Subject(T_Subject t_Subject)
+        {
+            base.AddObject("T_Subject", t_Subject);
         }
 
         #endregion
@@ -5274,16 +5274,14 @@ namespace Point.com.Template4
         /// <param name="userId">UserId 属性的初始值。</param>
         /// <param name="inforSysNo">InforSysNo 属性的初始值。</param>
         /// <param name="isPushIn">IsPushIn 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_AccountRecommend CreateT_AccountRecommend(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 inforSysNo, global::System.Int32 isPushIn, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_AccountRecommend CreateT_AccountRecommend(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 inforSysNo, global::System.Int32 isPushIn, global::System.Boolean isEnable)
         {
             T_AccountRecommend t_AccountRecommend = new T_AccountRecommend();
             t_AccountRecommend.SysNo = sysNo;
             t_AccountRecommend.UserId = userId;
             t_AccountRecommend.InforSysNo = inforSysNo;
             t_AccountRecommend.IsPushIn = isPushIn;
-            t_AccountRecommend.RowCeateDate = rowCeateDate;
             t_AccountRecommend.IsEnable = isEnable;
             return t_AccountRecommend;
         }
@@ -5394,9 +5392,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -5411,8 +5409,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -5489,9 +5487,8 @@ namespace Point.com.Template4
         /// <param name="company">Company 属性的初始值。</param>
         /// <param name="tranName">TranName 属性的初始值。</param>
         /// <param name="isPushIn">IsPushIn 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_AccountRecord CreateT_AccountRecord(global::System.Int32 sysNo, global::System.Int32 tranType, global::System.Int32 plusReduce, global::System.Int32 userId, global::System.Decimal tranNum, global::System.String company, global::System.String tranName, global::System.Int32 isPushIn, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_AccountRecord CreateT_AccountRecord(global::System.Int32 sysNo, global::System.Int32 tranType, global::System.Int32 plusReduce, global::System.Int32 userId, global::System.Decimal tranNum, global::System.String company, global::System.String tranName, global::System.Int32 isPushIn, global::System.Boolean isEnable)
         {
             T_AccountRecord t_AccountRecord = new T_AccountRecord();
             t_AccountRecord.SysNo = sysNo;
@@ -5502,7 +5499,6 @@ namespace Point.com.Template4
             t_AccountRecord.Company = company;
             t_AccountRecord.TranName = tranName;
             t_AccountRecord.IsPushIn = isPushIn;
-            t_AccountRecord.RowCeateDate = rowCeateDate;
             t_AccountRecord.IsEnable = isEnable;
             return t_AccountRecord;
         }
@@ -5757,9 +5753,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -5774,8 +5770,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -5825,9 +5821,8 @@ namespace Point.com.Template4
         /// <param name="childrenSubSysNo">ChildrenSubSysNo 属性的初始值。</param>
         /// <param name="answerNameUrl">AnswerNameUrl 属性的初始值。</param>
         /// <param name="intSort">IntSort 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_Answer CreateT_Answer(global::System.Int32 sysNo, global::System.Int32 subSysNo, global::System.Int32 childrenSubSysNo, global::System.String answerNameUrl, global::System.Int32 intSort, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_Answer CreateT_Answer(global::System.Int32 sysNo, global::System.Int32 subSysNo, global::System.Int32 childrenSubSysNo, global::System.String answerNameUrl, global::System.Int32 intSort, global::System.Boolean isEnable)
         {
             T_Answer t_Answer = new T_Answer();
             t_Answer.SysNo = sysNo;
@@ -5835,7 +5830,6 @@ namespace Point.com.Template4
             t_Answer.ChildrenSubSysNo = childrenSubSysNo;
             t_Answer.AnswerNameUrl = answerNameUrl;
             t_Answer.IntSort = intSort;
-            t_Answer.RowCeateDate = rowCeateDate;
             t_Answer.IsEnable = isEnable;
             return t_Answer;
         }
@@ -5970,9 +5964,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -5987,8 +5981,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -6060,15 +6054,13 @@ namespace Point.com.Template4
         /// <param name="sysNo">SysNo 属性的初始值。</param>
         /// <param name="ansSysNo">AnsSysNo 属性的初始值。</param>
         /// <param name="goodsSysNo">GoodsSysNo 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_AnswerRecommend CreateT_AnswerRecommend(global::System.Int32 sysNo, global::System.Int32 ansSysNo, global::System.Int32 goodsSysNo, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_AnswerRecommend CreateT_AnswerRecommend(global::System.Int32 sysNo, global::System.Int32 ansSysNo, global::System.Int32 goodsSysNo, global::System.Boolean isEnable)
         {
             T_AnswerRecommend t_AnswerRecommend = new T_AnswerRecommend();
             t_AnswerRecommend.SysNo = sysNo;
             t_AnswerRecommend.AnsSysNo = ansSysNo;
             t_AnswerRecommend.GoodsSysNo = goodsSysNo;
-            t_AnswerRecommend.RowCeateDate = rowCeateDate;
             t_AnswerRecommend.IsEnable = isEnable;
             return t_AnswerRecommend;
         }
@@ -6155,9 +6147,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -6172,8 +6164,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -6247,9 +6239,8 @@ namespace Point.com.Template4
         /// <param name="subSysNo">SubSysNo 属性的初始值。</param>
         /// <param name="ansSysNo">AnsSysNo 属性的初始值。</param>
         /// <param name="answerMoney">AnswerMoney 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_AnswerRecord CreateT_AnswerRecord(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 subSysNo, global::System.Int32 ansSysNo, global::System.Decimal answerMoney, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_AnswerRecord CreateT_AnswerRecord(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 subSysNo, global::System.Int32 ansSysNo, global::System.Decimal answerMoney, global::System.Boolean isEnable)
         {
             T_AnswerRecord t_AnswerRecord = new T_AnswerRecord();
             t_AnswerRecord.SysNo = sysNo;
@@ -6257,7 +6248,6 @@ namespace Point.com.Template4
             t_AnswerRecord.SubSysNo = subSysNo;
             t_AnswerRecord.AnsSysNo = ansSysNo;
             t_AnswerRecord.AnswerMoney = answerMoney;
-            t_AnswerRecord.RowCeateDate = rowCeateDate;
             t_AnswerRecord.IsEnable = isEnable;
             return t_AnswerRecord;
         }
@@ -6392,9 +6382,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -6409,8 +6399,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -6483,17 +6473,23 @@ namespace Point.com.Template4
         /// <param name="cateId">CateId 属性的初始值。</param>
         /// <param name="cateName">CateName 属性的初始值。</param>
         /// <param name="intSort">IntSort 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
-        /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_Category CreateT_Category(global::System.Int32 sysNo, global::System.Int32 cateId, global::System.String cateName, global::System.Int32 intSort, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        /// <param name="sysno">sysno 属性的初始值。</param>
+        /// <param name="cateid">cateid 属性的初始值。</param>
+        /// <param name="catename">catename 属性的初始值。</param>
+        /// <param name="catepic">catepic 属性的初始值。</param>
+        /// <param name="intsort">intsort 属性的初始值。</param>
+        public static T_Category CreateT_Category(global::System.Int32 sysNo, global::System.Int32 cateId, global::System.String cateName, global::System.Int32 intSort, global::System.Int32 sysno, global::System.Int32 cateid, global::System.String catename, global::System.String catepic, global::System.Int32 intsort)
         {
             T_Category t_Category = new T_Category();
             t_Category.SysNo = sysNo;
             t_Category.CateId = cateId;
             t_Category.CateName = cateName;
             t_Category.IntSort = intSort;
-            t_Category.RowCeateDate = rowCeateDate;
-            t_Category.IsEnable = isEnable;
+            t_Category.sysno = sysno;
+            t_Category.cateid = cateid;
+            t_Category.catename = catename;
+            t_Category.catepic = catepic;
+            t_Category.intsort = intsort;
             return t_Category;
         }
 
@@ -6627,9 +6623,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -6644,8 +6640,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -6675,9 +6671,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Boolean IsEnable
+        public Nullable<global::System.Boolean> IsEnable
         {
             get
             {
@@ -6692,9 +6688,132 @@ namespace Point.com.Template4
                 OnIsEnableChanged();
             }
         }
-        private global::System.Boolean _IsEnable;
-        partial void OnIsEnableChanging(global::System.Boolean value);
+        private Nullable<global::System.Boolean> _IsEnable;
+        partial void OnIsEnableChanging(Nullable<global::System.Boolean> value);
         partial void OnIsEnableChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 sysno
+        {
+            get
+            {
+                return _sysno;
+            }
+            set
+            {
+                if (_sysno != value)
+                {
+                    OnsysnoChanging(value);
+                    ReportPropertyChanging("sysno");
+                    _sysno = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("sysno");
+                    OnsysnoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _sysno;
+        partial void OnsysnoChanging(global::System.Int32 value);
+        partial void OnsysnoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cateid
+        {
+            get
+            {
+                return _cateid;
+            }
+            set
+            {
+                OncateidChanging(value);
+                ReportPropertyChanging("cateid");
+                _cateid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cateid");
+                OncateidChanged();
+            }
+        }
+        private global::System.Int32 _cateid;
+        partial void OncateidChanging(global::System.Int32 value);
+        partial void OncateidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String catename
+        {
+            get
+            {
+                return _catename;
+            }
+            set
+            {
+                OncatenameChanging(value);
+                ReportPropertyChanging("catename");
+                _catename = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("catename");
+                OncatenameChanged();
+            }
+        }
+        private global::System.String _catename;
+        partial void OncatenameChanging(global::System.String value);
+        partial void OncatenameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String catepic
+        {
+            get
+            {
+                return _catepic;
+            }
+            set
+            {
+                OncatepicChanging(value);
+                ReportPropertyChanging("catepic");
+                _catepic = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("catepic");
+                OncatepicChanged();
+            }
+        }
+        private global::System.String _catepic;
+        partial void OncatepicChanging(global::System.String value);
+        partial void OncatepicChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 intsort
+        {
+            get
+            {
+                return _intsort;
+            }
+            set
+            {
+                OnintsortChanging(value);
+                ReportPropertyChanging("intsort");
+                _intsort = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("intsort");
+                OnintsortChanged();
+            }
+        }
+        private global::System.Int32 _intsort;
+        partial void OnintsortChanging(global::System.Int32 value);
+        partial void OnintsortChanged();
 
         #endregion
 
@@ -6722,10 +6841,9 @@ namespace Point.com.Template4
         /// <param name="excAmount">ExcAmount 属性的初始值。</param>
         /// <param name="useScore">UseScore 属性的初始值。</param>
         /// <param name="rechargeAmount">RechargeAmount 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="couponState">CouponState 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_CouponExcRecord CreateT_CouponExcRecord(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 shopSysNo, global::System.Int32 goodsSysNo, global::System.Int32 couponSysNo, global::System.Decimal excAmount, global::System.Decimal useScore, global::System.Decimal rechargeAmount, global::System.DateTime rowCeateDate, global::System.Int32 couponState, global::System.Boolean isEnable)
+        public static T_CouponExcRecord CreateT_CouponExcRecord(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 shopSysNo, global::System.Int32 goodsSysNo, global::System.Int32 couponSysNo, global::System.Decimal excAmount, global::System.Decimal useScore, global::System.Decimal rechargeAmount, global::System.Int32 couponState, global::System.Boolean isEnable)
         {
             T_CouponExcRecord t_CouponExcRecord = new T_CouponExcRecord();
             t_CouponExcRecord.SysNo = sysNo;
@@ -6736,7 +6854,6 @@ namespace Point.com.Template4
             t_CouponExcRecord.ExcAmount = excAmount;
             t_CouponExcRecord.UseScore = useScore;
             t_CouponExcRecord.RechargeAmount = rechargeAmount;
-            t_CouponExcRecord.RowCeateDate = rowCeateDate;
             t_CouponExcRecord.CouponState = couponState;
             t_CouponExcRecord.IsEnable = isEnable;
             return t_CouponExcRecord;
@@ -6968,9 +7085,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -6985,8 +7102,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -7084,11 +7201,8 @@ namespace Point.com.Template4
         /// <param name="couponName">CouponName 属性的初始值。</param>
         /// <param name="excAmount">ExcAmount 属性的初始值。</param>
         /// <param name="couponType">CouponType 属性的初始值。</param>
-        /// <param name="useRule">UseRule 属性的初始值。</param>
-        /// <param name="ruleContent">RuleContent 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_CouponInfo CreateT_CouponInfo(global::System.Int32 sysNo, global::System.Int32 shopSysNo, global::System.String couponName, global::System.Decimal excAmount, global::System.Int32 couponType, global::System.String useRule, global::System.String ruleContent, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_CouponInfo CreateT_CouponInfo(global::System.Int32 sysNo, global::System.Int32 shopSysNo, global::System.String couponName, global::System.Decimal excAmount, global::System.Int32 couponType, global::System.Boolean isEnable)
         {
             T_CouponInfo t_CouponInfo = new T_CouponInfo();
             t_CouponInfo.SysNo = sysNo;
@@ -7096,9 +7210,6 @@ namespace Point.com.Template4
             t_CouponInfo.CouponName = couponName;
             t_CouponInfo.ExcAmount = excAmount;
             t_CouponInfo.CouponType = couponType;
-            t_CouponInfo.UseRule = useRule;
-            t_CouponInfo.RuleContent = ruleContent;
-            t_CouponInfo.RowCeateDate = rowCeateDate;
             t_CouponInfo.IsEnable = isEnable;
             return t_CouponInfo;
         }
@@ -7257,7 +7368,7 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String UseRule
         {
@@ -7269,7 +7380,7 @@ namespace Point.com.Template4
             {
                 OnUseRuleChanging(value);
                 ReportPropertyChanging("UseRule");
-                _UseRule = StructuralObject.SetValidValue(value, false);
+                _UseRule = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("UseRule");
                 OnUseRuleChanged();
             }
@@ -7281,7 +7392,7 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String RuleContent
         {
@@ -7293,7 +7404,7 @@ namespace Point.com.Template4
             {
                 OnRuleContentChanging(value);
                 ReportPropertyChanging("RuleContent");
-                _RuleContent = StructuralObject.SetValidValue(value, false);
+                _RuleContent = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("RuleContent");
                 OnRuleContentChanged();
             }
@@ -7305,9 +7416,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -7322,8 +7433,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -7395,15 +7506,13 @@ namespace Point.com.Template4
         /// <param name="sysNo">SysNo 属性的初始值。</param>
         /// <param name="couponSysNo">CouponSysNo 属性的初始值。</param>
         /// <param name="privateCode">PrivateCode 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_CouponPrivateCode CreateT_CouponPrivateCode(global::System.Int32 sysNo, global::System.Int32 couponSysNo, global::System.String privateCode, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_CouponPrivateCode CreateT_CouponPrivateCode(global::System.Int32 sysNo, global::System.Int32 couponSysNo, global::System.String privateCode, global::System.Boolean isEnable)
         {
             T_CouponPrivateCode t_CouponPrivateCode = new T_CouponPrivateCode();
             t_CouponPrivateCode.SysNo = sysNo;
             t_CouponPrivateCode.CouponSysNo = couponSysNo;
             t_CouponPrivateCode.PrivateCode = privateCode;
-            t_CouponPrivateCode.RowCeateDate = rowCeateDate;
             t_CouponPrivateCode.IsEnable = isEnable;
             return t_CouponPrivateCode;
         }
@@ -7538,9 +7647,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -7555,8 +7664,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -7628,15 +7737,13 @@ namespace Point.com.Template4
         /// <param name="sysNo">SysNo 属性的初始值。</param>
         /// <param name="userId">UserId 属性的初始值。</param>
         /// <param name="inforSysNo">InforSysNo 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_Favorites CreateT_Favorites(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 inforSysNo, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_Favorites CreateT_Favorites(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 inforSysNo, global::System.Boolean isEnable)
         {
             T_Favorites t_Favorites = new T_Favorites();
             t_Favorites.SysNo = sysNo;
             t_Favorites.UserId = userId;
             t_Favorites.InforSysNo = inforSysNo;
-            t_Favorites.RowCeateDate = rowCeateDate;
             t_Favorites.IsEnable = isEnable;
             return t_Favorites;
         }
@@ -7723,9 +7830,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -7740,8 +7847,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -7814,30 +7921,24 @@ namespace Point.com.Template4
         /// <param name="dataType">DataType 属性的初始值。</param>
         /// <param name="strInforType">StrInforType 属性的初始值。</param>
         /// <param name="inforName">InforName 属性的初始值。</param>
-        /// <param name="inforDesc">InforDesc 属性的初始值。</param>
-        /// <param name="headPic">HeadPic 属性的初始值。</param>
         /// <param name="showMode">ShowMode 属性的初始值。</param>
         /// <param name="inforSource">InforSource 属性的初始值。</param>
         /// <param name="intSort">IntSort 属性的初始值。</param>
         /// <param name="isShowIndex">IsShowIndex 属性的初始值。</param>
         /// <param name="sourceDateTime">SourceDateTime 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_InforConfigure CreateT_InforConfigure(global::System.Int32 sysNo, global::System.Int32 dataType, global::System.String strInforType, global::System.String inforName, global::System.String inforDesc, global::System.String headPic, global::System.Int32 showMode, global::System.String inforSource, global::System.Int32 intSort, global::System.Int32 isShowIndex, global::System.DateTime sourceDateTime, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_InforConfigure CreateT_InforConfigure(global::System.Int32 sysNo, global::System.Int32 dataType, global::System.String strInforType, global::System.String inforName, global::System.Int32 showMode, global::System.String inforSource, global::System.Int32 intSort, global::System.Int32 isShowIndex, global::System.DateTime sourceDateTime, global::System.Boolean isEnable)
         {
             T_InforConfigure t_InforConfigure = new T_InforConfigure();
             t_InforConfigure.SysNo = sysNo;
             t_InforConfigure.DataType = dataType;
             t_InforConfigure.StrInforType = strInforType;
             t_InforConfigure.InforName = inforName;
-            t_InforConfigure.InforDesc = inforDesc;
-            t_InforConfigure.HeadPic = headPic;
             t_InforConfigure.ShowMode = showMode;
             t_InforConfigure.InforSource = inforSource;
             t_InforConfigure.IntSort = intSort;
             t_InforConfigure.IsShowIndex = isShowIndex;
             t_InforConfigure.SourceDateTime = sourceDateTime;
-            t_InforConfigure.RowCeateDate = rowCeateDate;
             t_InforConfigure.IsEnable = isEnable;
             return t_InforConfigure;
         }
@@ -7972,7 +8073,7 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String InforDesc
         {
@@ -7984,7 +8085,7 @@ namespace Point.com.Template4
             {
                 OnInforDescChanging(value);
                 ReportPropertyChanging("InforDesc");
-                _InforDesc = StructuralObject.SetValidValue(value, false);
+                _InforDesc = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("InforDesc");
                 OnInforDescChanged();
             }
@@ -8020,7 +8121,7 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String HeadPic
         {
@@ -8032,7 +8133,7 @@ namespace Point.com.Template4
             {
                 OnHeadPicChanging(value);
                 ReportPropertyChanging("HeadPic");
-                _HeadPic = StructuralObject.SetValidValue(value, false);
+                _HeadPic = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("HeadPic");
                 OnHeadPicChanged();
             }
@@ -8332,9 +8433,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -8349,8 +8450,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -8423,16 +8524,14 @@ namespace Point.com.Template4
         /// <param name="userId">UserId 属性的初始值。</param>
         /// <param name="jiGuangSysNo">JiGuangSysNo 属性的初始值。</param>
         /// <param name="sourceTypeSysNo">SourceTypeSysNo 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_JiGuangPush CreateT_JiGuangPush(global::System.Int32 sysNo, global::System.Int32 userId, global::System.String jiGuangSysNo, global::System.Int32 sourceTypeSysNo, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_JiGuangPush CreateT_JiGuangPush(global::System.Int32 sysNo, global::System.Int32 userId, global::System.String jiGuangSysNo, global::System.Int32 sourceTypeSysNo, global::System.Boolean isEnable)
         {
             T_JiGuangPush t_JiGuangPush = new T_JiGuangPush();
             t_JiGuangPush.SysNo = sysNo;
             t_JiGuangPush.UserId = userId;
             t_JiGuangPush.JiGuangSysNo = jiGuangSysNo;
             t_JiGuangPush.SourceTypeSysNo = sourceTypeSysNo;
-            t_JiGuangPush.RowCeateDate = rowCeateDate;
             t_JiGuangPush.IsEnable = isEnable;
             return t_JiGuangPush;
         }
@@ -8543,9 +8642,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -8560,8 +8659,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -8633,15 +8732,13 @@ namespace Point.com.Template4
         /// <param name="sysNo">SysNo 属性的初始值。</param>
         /// <param name="jiGuangSysNo">JiGuangSysNo 属性的初始值。</param>
         /// <param name="msgAlert">MsgAlert 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_JiGuangPushRecord CreateT_JiGuangPushRecord(global::System.Int32 sysNo, global::System.String jiGuangSysNo, global::System.String msgAlert, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_JiGuangPushRecord CreateT_JiGuangPushRecord(global::System.Int32 sysNo, global::System.String jiGuangSysNo, global::System.String msgAlert, global::System.Boolean isEnable)
         {
             T_JiGuangPushRecord t_JiGuangPushRecord = new T_JiGuangPushRecord();
             t_JiGuangPushRecord.SysNo = sysNo;
             t_JiGuangPushRecord.JiGuangSysNo = jiGuangSysNo;
             t_JiGuangPushRecord.MsgAlert = msgAlert;
-            t_JiGuangPushRecord.RowCeateDate = rowCeateDate;
             t_JiGuangPushRecord.IsEnable = isEnable;
             return t_JiGuangPushRecord;
         }
@@ -8872,9 +8969,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -8889,8 +8986,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -8963,30 +9060,16 @@ namespace Point.com.Template4
         /// <param name="mobile">Mobile 属性的初始值。</param>
         /// <param name="memPassWord">MemPassWord 属性的初始值。</param>
         /// <param name="inforType">InforType 属性的初始值。</param>
-        /// <param name="account">Account 属性的初始值。</param>
-        /// <param name="accountWithdrawn">AccountWithdrawn 属性的初始值。</param>
         /// <param name="score">Score 属性的初始值。</param>
-        /// <param name="scoreWithdrawn">ScoreWithdrawn 属性的初始值。</param>
-        /// <param name="sourceTypeSysNo">SourceTypeSysNo 属性的初始值。</param>
-        /// <param name="deviceCode">DeviceCode 属性的初始值。</param>
-        /// <param name="clientIp">ClientIp 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="timestamp">timestamp 属性的初始值。</param>
-        public static T_Member CreateT_Member(global::System.Int32 sysNo, global::System.String mobile, global::System.String memPassWord, global::System.Int32 inforType, global::System.Decimal account, global::System.Decimal accountWithdrawn, global::System.Decimal score, global::System.Decimal scoreWithdrawn, global::System.Int32 sourceTypeSysNo, global::System.String deviceCode, global::System.String clientIp, global::System.DateTime rowCeateDate, global::System.Byte[] timestamp)
+        public static T_Member CreateT_Member(global::System.Int32 sysNo, global::System.String mobile, global::System.String memPassWord, global::System.Int32 inforType, global::System.Decimal score, global::System.Byte[] timestamp)
         {
             T_Member t_Member = new T_Member();
             t_Member.SysNo = sysNo;
             t_Member.Mobile = mobile;
             t_Member.MemPassWord = memPassWord;
             t_Member.InforType = inforType;
-            t_Member.Account = account;
-            t_Member.AccountWithdrawn = accountWithdrawn;
             t_Member.Score = score;
-            t_Member.ScoreWithdrawn = scoreWithdrawn;
-            t_Member.SourceTypeSysNo = sourceTypeSysNo;
-            t_Member.DeviceCode = deviceCode;
-            t_Member.ClientIp = clientIp;
-            t_Member.RowCeateDate = rowCeateDate;
             t_Member.timestamp = timestamp;
             return t_Member;
         }
@@ -9265,9 +9348,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal Account
+        public Nullable<global::System.Decimal> Account
         {
             get
             {
@@ -9282,16 +9365,16 @@ namespace Point.com.Template4
                 OnAccountChanged();
             }
         }
-        private global::System.Decimal _Account;
-        partial void OnAccountChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _Account;
+        partial void OnAccountChanging(Nullable<global::System.Decimal> value);
         partial void OnAccountChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal AccountWithdrawn
+        public Nullable<global::System.Decimal> AccountWithdrawn
         {
             get
             {
@@ -9306,8 +9389,8 @@ namespace Point.com.Template4
                 OnAccountWithdrawnChanged();
             }
         }
-        private global::System.Decimal _AccountWithdrawn;
-        partial void OnAccountWithdrawnChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _AccountWithdrawn;
+        partial void OnAccountWithdrawnChanging(Nullable<global::System.Decimal> value);
         partial void OnAccountWithdrawnChanged();
     
         /// <summary>
@@ -9337,9 +9420,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Decimal ScoreWithdrawn
+        public Nullable<global::System.Decimal> ScoreWithdrawn
         {
             get
             {
@@ -9354,8 +9437,8 @@ namespace Point.com.Template4
                 OnScoreWithdrawnChanged();
             }
         }
-        private global::System.Decimal _ScoreWithdrawn;
-        partial void OnScoreWithdrawnChanging(global::System.Decimal value);
+        private Nullable<global::System.Decimal> _ScoreWithdrawn;
+        partial void OnScoreWithdrawnChanging(Nullable<global::System.Decimal> value);
         partial void OnScoreWithdrawnChanged();
     
         /// <summary>
@@ -9409,9 +9492,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 SourceTypeSysNo
+        public Nullable<global::System.Int32> SourceTypeSysNo
         {
             get
             {
@@ -9426,14 +9509,14 @@ namespace Point.com.Template4
                 OnSourceTypeSysNoChanged();
             }
         }
-        private global::System.Int32 _SourceTypeSysNo;
-        partial void OnSourceTypeSysNoChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _SourceTypeSysNo;
+        partial void OnSourceTypeSysNoChanging(Nullable<global::System.Int32> value);
         partial void OnSourceTypeSysNoChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String DeviceCode
         {
@@ -9445,7 +9528,7 @@ namespace Point.com.Template4
             {
                 OnDeviceCodeChanging(value);
                 ReportPropertyChanging("DeviceCode");
-                _DeviceCode = StructuralObject.SetValidValue(value, false);
+                _DeviceCode = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("DeviceCode");
                 OnDeviceCodeChanged();
             }
@@ -9481,7 +9564,7 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String ClientIp
         {
@@ -9493,7 +9576,7 @@ namespace Point.com.Template4
             {
                 OnClientIpChanging(value);
                 ReportPropertyChanging("ClientIp");
-                _ClientIp = StructuralObject.SetValidValue(value, false);
+                _ClientIp = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ClientIp");
                 OnClientIpChanged();
             }
@@ -9529,9 +9612,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -9546,8 +9629,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -12336,9 +12419,8 @@ namespace Point.com.Template4
         /// <param name="useCouponCount">UseCouponCount 属性的初始值。</param>
         /// <param name="overCouponCount">OverCouponCount 属性的初始值。</param>
         /// <param name="intSort">IntSort 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_ShopGoods CreateT_ShopGoods(global::System.Int32 sysNo, global::System.Int32 shopSysNo, global::System.String goodsName, global::System.String goodsPic, global::System.Decimal marketPrice, global::System.String goodsLabelOne, global::System.String goodsLabelTwo, global::System.Int32 excCouponSysNo, global::System.Int32 couponCount, global::System.Int32 useCouponCount, global::System.Int32 overCouponCount, global::System.Int32 intSort, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_ShopGoods CreateT_ShopGoods(global::System.Int32 sysNo, global::System.Int32 shopSysNo, global::System.String goodsName, global::System.String goodsPic, global::System.Decimal marketPrice, global::System.String goodsLabelOne, global::System.String goodsLabelTwo, global::System.Int32 excCouponSysNo, global::System.Int32 couponCount, global::System.Int32 useCouponCount, global::System.Int32 overCouponCount, global::System.Int32 intSort, global::System.Boolean isEnable)
         {
             T_ShopGoods t_ShopGoods = new T_ShopGoods();
             t_ShopGoods.SysNo = sysNo;
@@ -12353,7 +12435,6 @@ namespace Point.com.Template4
             t_ShopGoods.UseCouponCount = useCouponCount;
             t_ShopGoods.OverCouponCount = overCouponCount;
             t_ShopGoods.IntSort = intSort;
-            t_ShopGoods.RowCeateDate = rowCeateDate;
             t_ShopGoods.IsEnable = isEnable;
             return t_ShopGoods;
         }
@@ -12680,9 +12761,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -12697,8 +12778,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -13009,9 +13090,8 @@ namespace Point.com.Template4
         /// <param name="problemNameUrl">ProblemNameUrl 属性的初始值。</param>
         /// <param name="answerMoney">AnswerMoney 属性的初始值。</param>
         /// <param name="intSort">IntSort 属性的初始值。</param>
-        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
         /// <param name="isEnable">IsEnable 属性的初始值。</param>
-        public static T_Subject CreateT_Subject(global::System.Int32 sysNo, global::System.Int32 inforSysNo, global::System.String problemNameUrl, global::System.Decimal answerMoney, global::System.Int32 intSort, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        public static T_Subject CreateT_Subject(global::System.Int32 sysNo, global::System.Int32 inforSysNo, global::System.String problemNameUrl, global::System.Decimal answerMoney, global::System.Int32 intSort, global::System.Boolean isEnable)
         {
             T_Subject t_Subject = new T_Subject();
             t_Subject.SysNo = sysNo;
@@ -13019,7 +13099,6 @@ namespace Point.com.Template4
             t_Subject.ProblemNameUrl = problemNameUrl;
             t_Subject.AnswerMoney = answerMoney;
             t_Subject.IntSort = intSort;
-            t_Subject.RowCeateDate = rowCeateDate;
             t_Subject.IsEnable = isEnable;
             return t_Subject;
         }
@@ -13154,9 +13233,9 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime RowCeateDate
+        public Nullable<global::System.DateTime> RowCeateDate
         {
             get
             {
@@ -13171,8 +13250,8 @@ namespace Point.com.Template4
                 OnRowCeateDateChanged();
             }
         }
-        private global::System.DateTime _RowCeateDate;
-        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _RowCeateDate;
+        partial void OnRowCeateDateChanging(Nullable<global::System.DateTime> value);
         partial void OnRowCeateDateChanged();
     
         /// <summary>
@@ -13222,6 +13301,30 @@ namespace Point.com.Template4
         private global::System.Boolean _IsEnable;
         partial void OnIsEnableChanging(global::System.Boolean value);
         partial void OnIsEnableChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> AnswerCount
+        {
+            get
+            {
+                return _AnswerCount;
+            }
+            set
+            {
+                OnAnswerCountChanging(value);
+                ReportPropertyChanging("AnswerCount");
+                _AnswerCount = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AnswerCount");
+                OnAnswerCountChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _AnswerCount;
+        partial void OnAnswerCountChanging(Nullable<global::System.Int32> value);
+        partial void OnAnswerCountChanged();
 
         #endregion
 

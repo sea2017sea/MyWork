@@ -5118,6 +5118,30 @@ public partial class T_CategoryRepository : BaseRepository<T_Category>, IT_Categ
 			list.Add(addFunc("IsEnable",model.IsEnable.ToString()));
 		}
 
+						if(model.Sysno!=null && (long)model.Sysno!=0) 
+		{
+			list.Add(addFunc("Sysno",model.Sysno.ToString()));
+		}	
+								if(model.Cateid!=null) 
+		{
+			list.Add(addFunc("Cateid",model.Cateid.ToString()));
+		}
+
+						if(model.Catename!=null) 
+		{
+			list.Add(addFunc("Catename",model.Catename.ToString()));
+		}
+
+						if(model.Catepic!=null) 
+		{
+			list.Add(addFunc("Catepic",model.Catepic.ToString()));
+		}
+
+						if(model.Intsort!=null) 
+		{
+			list.Add(addFunc("Intsort",model.Intsort.ToString()));
+		}
+
 					
 		return string.Join(joinFunc(string.Empty),list.ToArray());
 	}
@@ -5178,6 +5202,36 @@ public partial class T_CategoryRepository : BaseRepository<T_Category>, IT_Categ
 						if(model.IsEnable!=null) 
 		{
 			list.Add(string.Format("{1}='{0}'",model.IsEnable.ToString(),addFunc("[IsEnable]")));
+		}
+					
+
+						if(model.Sysno!=null && (long)model.Sysno!=0) 
+		{
+			list.Add(string.Format("{1}={0}",model.Sysno.ToString(),addFunc("[Sysno]")));
+		}
+					
+
+						if(model.Cateid!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.Cateid.ToString(),addFunc("[Cateid]")));
+		}
+					
+
+						if(model.Catename!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.Catename.ToString(),addFunc("[Catename]")));
+		}
+					
+
+						if(model.Catepic!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.Catepic.ToString(),addFunc("[Catepic]")));
+		}
+					
+
+						if(model.Intsort!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.Intsort.ToString(),addFunc("[Intsort]")));
 		}
 					
 
@@ -11428,6 +11482,11 @@ public partial class T_SubjectRepository : BaseRepository<T_Subject>, IT_Subject
 			list.Add(addFunc("IsEnable",model.IsEnable.ToString()));
 		}
 
+						if(model.AnswerCount!=null) 
+		{
+			list.Add(addFunc("AnswerCount",model.AnswerCount.ToString()));
+		}
+
 					
 		return string.Join(joinFunc(string.Empty),list.ToArray());
 	}
@@ -11488,6 +11547,12 @@ public partial class T_SubjectRepository : BaseRepository<T_Subject>, IT_Subject
 						if(model.IsEnable!=null) 
 		{
 			list.Add(string.Format("{1}='{0}'",model.IsEnable.ToString(),addFunc("[IsEnable]")));
+		}
+					
+
+						if(model.AnswerCount!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.AnswerCount.ToString(),addFunc("[AnswerCount]")));
 		}
 					
 
