@@ -62,8 +62,8 @@ function shareInit(shareurl, ShareTitle, ShareIntro) {
     var imageUrl = "http://wap.point-server.com/static/img/logo300.JPG";
     //  var shareurl = window.location.href;
     var jsonData = "{'shareurl':'" + shareurl + "'}";
-    console.log(jsonData);
-    console.log("'shareurl':" + shareurl);
+    //console.log(jsonData);
+    //console.log("'shareurl':" + shareurl);
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -74,8 +74,8 @@ function shareInit(shareurl, ShareTitle, ShareIntro) {
             common.loading(false);
 
             var data = eval("(" + res.d + ")");
-            console.log("data");
-            console.log(data);
+            //console.log("data");
+            //console.log(data);
             wx.config({
                 debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                 appId: data.appid, // 必填，公众号的唯一标识
