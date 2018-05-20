@@ -185,20 +185,34 @@ public partial class Ajax_index : System.Web.UI.Page
     }
 
 
+
+    [WebMethod]
+    public static string QueryShareInfo(int inforSysNo)
+    {
+
+        var res = soa.QueryShareTitleReqNew(inforSysNo);
+        if (res.DoFlag == 1)
+        {
+        
+            return JsonConvert.SerializeObject(res);
+        }
+        return "";
+    }
+
     [WebMethod]
     public static string ShareConfig(string shareurl)
     {
 
         var access_token = "";
-        if (HttpContext.Current.Cache.Get("access_token_js") == null)
-        {
+        //if (HttpContext.Current.Cache.Get("access_token_js") == null)
+        //{
             access_token = JSAPI.getToken();
-            HttpContext.Current.Cache.Insert("access_token_js", access_token);
-        }
-        else
-        {
-            access_token = HttpContext.Current.Cache.Get("access_token_js").ToString();
-        }
+        //    HttpContext.Current.Cache.Insert("access_token_js", access_token,null,DateTime.Now.AddSeconds(720),new TimeSpan(0,0,12));
+        //}
+        //else
+        //{
+        //    access_token = HttpContext.Current.Cache.Get("access_token_js").ToString();
+        //}
 
         var ticket = JSAPI.GetTickect(access_token);
 
@@ -206,8 +220,10 @@ public partial class Ajax_index : System.Web.UI.Page
         result.appid = WxPayConfig.APPID;
         result.timestamp = WxPayApi.GenerateTimeStamp();
         result.nonceStr = WxPayApi.GenerateNonceStr();
+        result.jsapi_ticket = ticket;
         var str = "";
         result.signture = JSAPI.GetSignature(ticket, result.nonceStr, result.timestamp, shareurl, out str);
+        result.str = str;
 
         return JsonConvert.SerializeObject(result);
     }

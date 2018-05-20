@@ -103,6 +103,19 @@ public class SOAPointClient
     }
 
 
+    public QueryShareInfoRes QueryShareTitleReqNew(int sysno)
+    {
+        var res = PointJsonServiceClient.Send<QueryShareInfoRes>(new QueryShareTitleReq()
+        {
+           
+            SysNo = sysno
+        });
+
+        return res;
+        
+    }
+
+
     public QueryAuthorArticleRes QueryAuthorArticleReqs(int _AuthorSysNo, int _PageIndex, int _PageSize)
     {
         var res = PointJsonServiceClient.Send<QueryAuthorArticleRes>(new QueryAuthorArticleReq()
@@ -141,6 +154,38 @@ public class SOAPointClient
 
 
 
+
+public class QueryShareInfoRes : Point.com.ServiceModel.BaseResponse
+{
+
+    public PageDataClass PageData { get; set; }       
+}
+
+public class PageDataClass
+{
+
+    public string InforSource { get; set; }       //作者信息
+    public string InforDesc { get; set; }                                 //总的数据条数
+
+//    "SysNo": 7,
+//"DataType": 4,
+//"InforName": "特别熟悉有些陌生BMW创新2系旅行车，告诉我们宝马2系旅行车最吸引您的是？",
+//"InforRemark": "",
+//"InforDesc": "9月7日，期待已久的《爸爸去哪儿》第五季终于开播啦，又到了各路星爸与萌娃们斗(shou)智(mang)斗(jiao)勇(luan)的时候，“爸式带娃”的独特画风也在观众中间引发了热烈的讨论。如今，随着越来越多的当代女性不断追求职业发展的同时，爸爸们也在逐步回归家庭，投入更多时间和精力参与育儿大计。",
+//"LogoIcon": "http://img.point-server.com/test/hl.jpg",
+//"HeadPic": "http://img.point-server.com/test/BMW.jpg",
+//"CoverPic": "http://img.point-server.com/test/20171206.jpg",
+//"ShopPic": "http://img.point-server.com/test/BMW.jpg",
+//"PushPic": "http://img.point-server.com/test/ad1011.jpg",
+//"VideoUrl": "http://v.point-server.com/d723ef35ca24422c890030c871a2c53a/19cf981d3b6a45f69e72fee6ca2ad6ae-5287d2089db37e62345123a1be272f8b.mp4",
+//"CateId": 1,
+//"ShopSysNo": 4,
+//"ShowMode": 1,
+//"InforSource": "宝马中国",
+//"LinkUrl": "http://www.bmw.com.cn/zh/index.html",
+//"IntSort": 171900,
+//"SourceDateTime": "/Date(1512360480067-0000)/"
+}
 
 public class QueryAuthorArticleRes : Point.com.ServiceModel.BaseResponse
 {
@@ -245,6 +290,11 @@ public class ShareConfigContract
     public string timestamp { get; set; }
 
     public string nonceStr { get; set; }
+ 
 
     public string signture { get; set; }
+
+    public string str { get; set; }
+
+    public string jsapi_ticket { get; set; }
 }

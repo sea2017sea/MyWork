@@ -26,3 +26,96 @@
 2018-01-11 00:35:42.525 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [2X8PFa0142vr65!]"}
 2018-01-11 00:36:14.653 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
 2018-01-11 00:36:14.653 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [.ZeIcA0174vr43!]"}
+2018-01-11 01:06:09.366 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 01:06:09.367 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [4Q64tA09692994]"}
+2018-01-11 01:06:09.407 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 01:06:09.408 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [Of_xIA0969vr64!]"}
+2018-01-11 01:06:13.479 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 01:06:13.480 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [xdg5NA0973vr45!]"}
+2018-01-11 01:06:46.609 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 01:06:46.610 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [Qg6Bka0006vr45!]"}
+2018-01-11 01:09:28.697 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 01:09:28.697 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [BvbfSa0168sha8]"}
+2018-01-11 01:09:28.710 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 01:09:28.711 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [Twxx5a0168vr44!]"}
+2018-01-11 01:09:49.796 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 01:09:49.797 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [0IRema01891466]"}
+2018-01-11 01:09:57.782 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 01:09:57.782 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [6sO_ua0197vr61!]"}
+2018-01-11 01:17:18.613 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 01:17:18.614 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [SawEiA06381501]"}
+2018-01-11 01:17:18.740 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 01:17:18.740 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [cxq4_a0638vr53!]"}
+2018-01-11 01:29:59.315 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 01:29:59.315 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [frGn1a06802790]"}
+2018-01-11 01:30:10.355 ERROR HttpService: System.Net.WebException: The remote name could not be resolved: 'api.weixin.qq.com'
+   at System.Net.HttpWebRequest.GetResponse()
+   at WxPayAPI.HttpService.Get(String url) in c:\Projects\other\point_new\Point.wap 2018-01-10\Point.wap\App_Code\Helper\WeChatSDK\lib\HttpService.cs:line 160
+2018-01-11 23:15:32.071 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:15:32.072 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [eBWdta07321501]"}
+2018-01-11 23:15:32.110 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:15:32.111 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [glzuma0732vr70!]"}
+2018-01-11 23:16:27.111 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:16:27.111 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [CQoH07873612]"}
+2018-01-11 23:16:27.125 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:16:27.125 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [g5Vq3a0787vr53!]"}
+2018-01-11 23:17:32.417 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:17:32.418 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [t0t7908522790]"}
+2018-01-11 23:17:32.433 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:17:32.433 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [SDupoA0852vr44!]"}
+2018-01-11 23:18:13.395 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:18:13.396 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [7RGUoA08932790]"}
+2018-01-11 23:18:13.417 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:18:13.418 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [gXIB.a0893vr61!]"}
+2018-01-11 23:18:27.231 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:18:27.232 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [.9RnqA09071501]"}
+2018-01-11 23:18:27.244 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:18:27.245 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [chzV8a0907vr53!]"}
+2018-01-11 23:20:45.412 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:20:45.413 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [_EdXza0045sha6]"}
+2018-01-11 23:20:45.425 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:20:45.425 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [CdcbuA0045vr57!]"}
+2018-01-11 23:21:10.711 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:21:10.711 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [too7uA00701512]"}
+2018-01-11 23:21:10.728 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:21:10.729 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [q5bFGa0070vr61!]"}
+2018-01-11 23:22:51.288 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:22:51.288 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [0171sha6]"}
+2018-01-11 23:22:51.309 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:22:51.310 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [yYA090171vr63!]"}
+2018-01-11 23:24:02.045 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:24:02.045 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [XQPZwA02421528]"}
+2018-01-11 23:24:02.073 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:24:02.074 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [fBFnSa0242vr70!]"}
+2018-01-11 23:24:33.931 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:24:33.931 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [thiawA02732976]"}
+2018-01-11 23:24:33.950 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:24:33.950 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [9XOuGA0273vr69!]"}
+2018-01-11 23:26:35.002 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:26:35.002 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [wZnAGA03943612]"}
+2018-01-11 23:26:35.019 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:26:35.019 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [JlOMEA0394vr47!]"}
+2018-01-11 23:32:21.748 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:32:21.749 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [e..jDA07412790]"}
+2018-01-11 23:32:21.795 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:32:21.795 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [f94EZa0741vr43!]"}
+2018-01-11 23:33:35.402 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:33:35.402 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [eehF08152976]"}
+2018-01-11 23:33:35.413 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:33:35.413 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [no_S0815vr43!]"}
+2018-01-11 23:33:59.019 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:33:59.019 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [.4ibIa08392790]"}
+2018-01-11 23:33:59.034 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:33:59.035 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [VUYPCa0839vr60!]"}
+2018-01-11 23:41:29.981 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:41:29.981 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [Ocez8a02892994]"}
+2018-01-11 23:41:30.017 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:41:30.017 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [dZxSXa0290vr47!]"}
+2018-01-11 23:44:32.194 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:44:32.195 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [nALnpA04721512]"}
+2018-01-11 23:44:32.210 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:44:32.211 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [_3IApa0472vr29!]"}
+2018-01-11 23:44:36.481 DEBUG JSAPI: Get access_token  url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx06ffdb486f9a18ae&secret=ddf25ccd5af4a99c35eff779bdd656c2
+2018-01-11 23:44:36.481 DEBUG JSAPI: Get access_token : {"errcode":40164,"errmsg":"invalid ip 116.226.149.114, not in whitelist hint: [5reQ5a04762976]"}
+2018-01-11 23:44:36.499 DEBUG JSAPI: Get jsapi_ticket  url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=&type=jsapi
+2018-01-11 23:44:36.499 DEBUG JSAPI: Get jsapi_ticket : {"errcode":41001,"errmsg":"access_token missing hint: [LFhu50476vr45!]"}

@@ -83,17 +83,17 @@
     <input type="hidden" id="hdShareUserId" value="<%=shareUserId %>"/>
     <input type="hidden" id="hdSaveAnswer" value=""/>
     <input type="hidden" id="hdIsBegin" value="0"/>
-    <input type="hidden" id="hdTitle" value="<%=shareTitle %>"/>
+    <input type="hidden" id="hdTitle" value="参与<%=shareTitle %>互动活动 趣赞现金等您领"/>
 <!-- <script src="js/zepto.min.js"></script> -->
 <%--<script src="include/js/jquery2x.min.js"></script>--%>
 <script src="static/js/zepto.js"></script>
-<script src="static/js/common.js"></script>
+<script src="static/js/common.js?rid=<%= DateTime.Now.ToString("yyyyMMddHHmmssfff") %>"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <%--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>--%>
         
 <script src="static/js/question2.js?rid=<%= DateTime.Now.ToString("yyyyMMddHHmmssfff") %>"></script>
 <script>
-
+    var shareIntro = "<%=shareIntro %>";
 </script>
         </form>
 </body>

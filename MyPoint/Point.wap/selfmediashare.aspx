@@ -9,7 +9,7 @@
 <meta name="keyword" content="" />
 <meta name="description" content="<%= subtitle %>" />
 <title>独家资讯尽在趣赞！<%= author_name %>等您来阅读</title>
-<link href="include/css/style.css" rel="stylesheet" />
+<link href="include/css/style.css?rid=<%= DateTime.Now.ToString("yyyyMMddHHmmssfff") %>" rel="stylesheet" />
 </head>
 <body class="">
 <form id="form1" runat="server">
@@ -19,7 +19,7 @@
 	<div class="share-form">
 		<div class="form-group">
 			<div class="form-field field-phone">
-				<input class="form-control" type="text" placeholder="输入手机号" />
+				<input class="form-control data-mobile" type="text" placeholder="输入手机号" />
 			</div>
 		</div>
 		<div class="form-group">
@@ -51,20 +51,24 @@
 
 
 </div>
+    
 
 <!-- <script src="js/zepto.min.js"></script> -->
 <script src="include/js/jquery2x.min.js"></script>
 <script src="static/js/zepto.js"></script>
     
-<script src="static/js/common.js"></script>
+<script src="static/js/common.js?rid=<%= DateTime.Now.ToString("yyyyMMddHHmmssfff") %>"></script>
     
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script src="static/js/selfmediashare.js?v=2"></script>
+<script src="static/js/selfmediashare.js?rid=<%= DateTime.Now.ToString("yyyyMMddHHmmssfff") %>"></script>
 <script>
  var auther_name = "<%= author_name%>";
     var res =  eval('(<%=res_str%>)');
     var aiticle_id = "<%=article_id%>";
     var AuthorSysNo = "<%=author_id%>";
+    var shareTitle = "独家资讯尽在趣赞！<%= author_name %>等您来阅读";
+    var shareIntro = "";
+   
 
 </script>
     </form>

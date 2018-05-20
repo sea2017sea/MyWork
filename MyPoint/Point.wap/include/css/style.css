@@ -112,7 +112,14 @@ a {text-decoration:none; color:#424242;}
 .share-logo {background:url(../images/logo.png) no-repeat center center/cover; width:2rem; height:2rem; margin:1rem auto 0.5rem;}
 .share-txt {font-size:0.75rem; line-height:1.325rem; text-align:center; padding:0 1rem;}
 .field-phone {border:#31ccc3 0.05rem solid; border-radius:0.15rem; width:9.85rem; height:1.5rem; margin:0.6rem auto 0.8rem;}
-.field-phone .form-control {display:block; width:100%; height:1.5rem; line-height:1.5rem; border:0 none; background:transparent; text-align:center; font-size:0.6rem;}
+.field-phone .form-control {
+    
+    display:block; width:100%; height:1.5rem; line-height:1.5rem; border:0 none; background:transparent; text-align:center; font-size:0.8rem;font-weight:bold;
+
+    /*display:block;border-radius:0.15rem;border:#31ccc3 0.05rem solid;width:100%;height:1.8rem;text-align:center;font-size:0.8rem;font-weight:bold;outline:none;box-shadow:0px 0px 0px rgba(0,0,0,0);-webkit-appearance:none;*/
+
+
+}
 .btn-read {background:#31ccc3; width:9.85rem; height:1.5rem; line-height:0.9rem; border-radius:0.15rem; margin:0 auto; text-align:center; color:#fff; font-size:0.7rem;}
 
 .share-list {margin:2rem 0 0;}

@@ -4,12 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net;
+using System.Text;
+using System.IO;
 
 public partial class index : System.Web.UI.Page
 {
     public string shareSysNo = "0";
     public string shareUserId = "0";
     public string shareTitle = "参与互动获抵用金";
+    public string shareIntro = "参与互动获抵用金";
 
     private static SOAPointClient soa = new SOAPointClient();
     protected void Page_Load(object sender, EventArgs e)
@@ -19,7 +23,12 @@ public partial class index : System.Web.UI.Page
             if (Request.QueryString["ShareSysNo"] != null)
             {
                 shareSysNo = Request.QueryString["ShareSysNo"];
-                shareTitle = soa.QueryShareTitleReq(Convert.ToInt32(shareSysNo));
+                var res = soa.QueryShareTitleReqNew(Convert.ToInt32(shareSysNo));
+                if (res != null && res.PageData != null)
+                {
+                    shareTitle = res.PageData.InforSource;
+                    shareIntro = res.PageData.InforDesc;
+                }
             }
 
             if (Request.QueryString["ShareUserId"] != null)
