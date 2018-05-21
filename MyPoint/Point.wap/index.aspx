@@ -13,15 +13,15 @@
 <body class="">
 
            
-	<img src="static/img/logo300.jpg" style="display:none" />
+<%--	<img src="static/img/logo300.jpg" style="display:none" />--%>
     <form runat="server">
        
-	<img src="static/img/logo300.jpg" style="display:none" />
+<%--	<img src="static/img/logo300.jpg" style="display:none" />--%>
 <div class="banner">
-	<img src="include/images/img02.jpg" />
+	<%--<img src="include/images/img02.jpg" />--%>
 </div>
 <div class="list grids">
-	<div class="grid">
+	<%--<div class="grid">
 		<div class="box"><img class="box-thumbnail" src="include/images/img03-1.jpg" /></div>
 	</div>
 	<div class="grid">
@@ -44,8 +44,8 @@
 	</div>
 	<div class="grid">
 		<div class="box"><img class="box-thumbnail" src="include/images/img03-4.jpg" /></div>
-	</div>
-</div><!-- /.list -->
+	</div>--%>
+</div>
 
 <div class="state01"  >
 	<div class="mask"></div>
