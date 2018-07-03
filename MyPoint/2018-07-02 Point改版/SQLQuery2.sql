@@ -1,7 +1,10 @@
 
+--2018-07-03 Point 二版数据库脚本
 
-
-
+USE point
+go
+  
+select * from dbo.T_Category
 
 --创建数据信息表（用于首页数据展示）
 CREATE TABLE B_InforConfigure
