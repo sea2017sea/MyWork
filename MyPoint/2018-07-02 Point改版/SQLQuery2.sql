@@ -4,7 +4,43 @@
 USE point
 go
   
-select * from dbo.T_Category
+  SELECT * FROM T_Member
+  
+--´´½¨»áÔ±±í(·ÇÐÂÔö£¬µ÷Õû×Ö¶Î)
+CREATE TABLE T_Member
+(
+SysNo INT IDENTITY(10000,1) PRIMARY KEY,                                      --»áÔ±ID£¬×ÔÔö³¤£¬Ö÷¼ü£¬Î¨Ò»
+Mobile VARCHAR(11) NOT NULL,                                                  --µÇÂ¼ÊÖ»úºÅÂë
+Portrait NVARCHAR(max) NULL,                                                  --Ð¤Ïñ£¬ÓÃÓÚ´æ·Å»áÔ±Í·Ïñ
+MemPassWord NVARCHAR(50) NOT NULL,                                            --»áÔ±ÕËºÅ£¬ÃÜÂë£¬±£´æÃÜÎÄ
+NickName NVARCHAR(50) NULL,                                                   --»áÔ±êÇ³Æ
+Sex INT NULL,                                                                 --»áÔ±ÐÔ±ð£¬0 ±£ÃÜ  1 ÄÐ 2Å®
+RegProvince INT NULL,                                                         --×¢²áÊ¡·ÝID   Ä¬ÈÏÖµ£¨²»ÌîÐ´£©£º0 
+RegCity INT NULL,                                                             --×¢²áÊÐID     Ä¬ÈÏÖµ£¨²»ÌîÐ´£©£º0
+RegArea INT NULL,                                                             --×¢²áÇøÏØID   Ä¬ÈÏÖµ£¨²»ÌîÐ´£©£º0
+Birthday DATETIME NOT NULL,                                                   --»áÔ±ÉúÈÕ     Ä¬ÈÏÖµ£¨²»ÌîÐ´£©£ºnull
+InforType INT NOT NULL,                                                       --×ÊÑ¶ÀàÐÍ  1 30ËêÒÔÉÏÄÐ  2 30ËêÒÔÏÂÄÐ  4 30ËêÒÔÉÏÅ®   8 30ËêÒÔÏÂÅ®  100 Ã»ÓÐÌîÐ´ÉúÈÕµÄÀàÐÍ      2017-12-16µ÷ÕûÎª 0 Ã»ÓÐÑ¡ÔñÐÔ±ð  1 ÄÐ  2 Å®
+
+Account DECIMAL(18, 2) NOT NULL,                                              --ÕË»§×ÜµÄ¿ÉÓÃÏÖ½ð£¬µ¥Î»£ºÔª     2017-12-09¸Ä°æÈ·ÈÏ²»ÒªÁË    2018-07-04 ×ÜµÄ¿ÉÌáÏÖ½ð¶î£¬µ¥Î»£ºÔª Èç²Ù×÷ÌáÏÖ£¬Ò»´ÎÐÔÌáÍê   
+AccountWithdrawn DECIMAL(18, 2) NOT NULL,                                     --ÕËºÅÀÛ»ýÌáÏÖ×ÜÏÖ½ð£¬µ¥Î»£ºÔª   2017-12-09¸Ä°æÈ·ÈÏ²»ÒªÁË    
+Score DECIMAL(18, 2) NOT NULL,                                                --ÕË»§×ÜµÄ¿ÉÓÃµÖÓÃ½ð½ð¶î£¬µ¥Î»£ºÔª  Î´×ª»¯ÎªRMBdµÄ½ð¶î£»2018-07-04 È·ÈÏ²»ÒªÁË 
+ScoreWithdrawn DECIMAL(18,2) NOT NULL,                                        --ÕË»§ÀÛ»ýÌáÏÖµÍÓÃ½ð½ð¶î£¬µ¥Î»£ºÔª  Î´×ª»¯ÎªRMBdµÄ½ð¶î£»2018-07-04 È·ÈÏ²»ÒªÁË
+
+--JpushId NVARCHAR(100)  NULL,                                                --ÍÆËÍ±êÊ¶          ²»ÒªÁË
+OpenidWxOpen NVARCHAR (256)  NULL,                                            --Î¢ÐÅ¿ª·¢Æ½Ì¨±êÊ¶              
+--OpenidWxMp NVARCHAR(100)  NULL,                                             --Î¢ÐÅ¹«ÖÚºÅ±êÊ¶    ²»ÒªÁË
+LastLoginTime DATETIME NULL,                                                  --×îºóÒ»´ÎµÇÂ¼Ê±¼ä
+SourceTypeSysNo INT NOT NULL,                                                 --×¢²áÀ´Ô´ 1 °²×¿  2 IOS  0 Ã»ÓÐÀ´Ô´ÇþµÀ
+DeviceCode  VARCHAR(256) NOT NULL,                                            --Éè±¸Âë  Ä¬ÈÏÖµ£º-1£¬IOSÈç¹û»ñÈ¡²»µ½Éè±¸Âë£¬»á¸ø 0
+MobileModel  VARCHAR(1024)  NULL,                                             --ÊÖ»úÐÍºÅ  °²×¿¸øµÄÊÇÊÖ»úÐÍºÅ£»IOS¿ÉÄÜ¸øµÄÊÖ»úÆÁÄ»³ß´ç£¬Ò²¿ÉÄÜÊÖ»úÐÍºÅ
+ClientIp VARCHAR(512) NOT NULL,                                               --×¢²áIP  Ä¬ÈÏÖµ£º127.0.0.1
+MinWithdrawals DECIMAL(18,2) NOT NULL DEFAULT 1,                              --×îÐ¡ÌáÏÖ¶î¶È  Ä¬ÈÏÎª£º1.00 Ôª£¬°üº¬
+RowCeateDate DATETIME NOT NULL,                                               --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                     --ÐÞ¸ÄÊ±¼ä
+timestamp TIMESTAMP NOT NULL,                                                 --Ê±¼ä´Á
+)
+go
+
 
 --´´½¨Êý¾ÝÐÅÏ¢±í£¨ÓÃÓÚÊ×Ò³Êý¾ÝÕ¹Ê¾£©
 CREATE TABLE B_InforConfigure
@@ -13,6 +49,8 @@ SysNo INT IDENTITY(1,1) PRIMARY KEY,                                     --Ö÷¼ü£
 DataType int NOT NULL,                                                   --Êý¾ÝÀàÐÍ   1 ¹ã¸æ£¨²ÎÓë»¥¶¯£¬ÁìÈ¡ºì°ü£©   2 ÍÆ¹ã(ÑûÇëºÃÓÑ£¬Á¢ÏíîÒ»Ý)
 ShowCrowd VARCHAR(64) NOT NULL,                                          --Õ¹Ê¾µÄÈËÈº 0 ËùÓÐ  1 30ËêÒÔÉÏÄÐ  2 30ËêÒÔÏÂÄÐ  4 30ËêÒÔÉÏÅ®   8 30ËêÒÔÏÂÅ®£¬¸ñÊ½£º(1),(2),(3)
 CoverPicUrl VARCHAR(max) NOT NULL,                                       --·âÃæÍ¼Æ¬
+ShopName nvarchar(128) NULL,                                             --µêÆÌÃû³Æ      µ± DataType = 2 Ê±£¬ÓÐµêÆÌÃû³Æ
+LogoPicUrl VARCHAR(max) NULL,                                            --µêÆÌlogoÍ¼Æ¬  µ± DataType = 2 Ê±£¬ÓÐµêÆÌlogo
 Title NVARCHAR(512) NULL,                                                --±êÌâ
 DescOne NVARCHAR(256) NULL,                                              --ÃèÊö1
 DescTwo NVARCHAR(256) NULL,                                              --ÃèÊö2
@@ -27,10 +65,11 @@ go
 
 
 --´´½¨¹ã¸æÉÌÆ·±í
-CREATE TABLE T_AdvGoods
+CREATE TABLE B_AdvGoods
 (
 SysNo INT IDENTITY(1,1) PRIMARY KEY,                                     --Ö÷¼ü£¬×ÔÔö³¤
 AdvSysNo INT NOT NULL,                                                   --¹ã¸æID ¶ÔÓ¦ B_InforConfigure ±íµÄÖ÷¼ü
+CateId INT NOT NULL,                                                     --ÉÌÆ·ËùÊô·ÖÀà
 GoodsName NVARCHAR(512) NOT NULL,                                        --ÉÌÆ·Ãû³Æ
 GoodsPic VARCHAR(max) NOT NULL,                                          --ÉÌÆ·Í¼Æ¬µØÖ·
 GoodsDetailedLink VARCHAR(max) NULL,                                     --ÉÌÆ·Ã÷Ï¸Á¬½ÓµØÖ·£¬µã»÷ÉÌÆ·Í¼Æ¬µÄµØÖ· Èç¹ûÓÐÖµÔòËµÃ÷¿ÉÒÔµã»÷ÉÌÆ·£¬µ½Õâ¸öÁ´½ÓÈ¥
@@ -38,6 +77,9 @@ GoodsExcLink VARCHAR(max) NULL,                                          --ÉÌÆ·¶
 MarketPrice DECIMAL(18, 4) NOT NULL,                                     --ÊÐ³¡¼Û¸ñ
 PromotionPrice DECIMAL(18,4) NULL,                                       --´ÙÏú¼Û¸ñ
 DeductibleMoney DECIMAL(18,4) NULL,                                      --µÖ¿Û½ð¶î
+CashBonus DECIMAL(18,4) NULL,                                            --ÏÖ½ðºì°ü ¿Í»§²ÎÓëÖ®ºó·¢¸ø¿Í»§µÄºì°ü½ð¶î 0 ²»¸øºì°ü
+CashBonusNum int NULL,                                                   --ÏÖ½ðºì°üµÄ×ÜÊýÁ¿
+--SetInvitationNum INT NULL,                                               --ÐèÒªÑûÇëµÄÈËÊý
 IntSort int NOT NULL,                                                    --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
 RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê±¼ä
 ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ±¼ä
@@ -45,10 +87,51 @@ IsEnable BIT NOT NULL                                                    --ÊÇ·ñÆ
 )
 go
 
+--ÐÂÔö¹ã¸æÉÌÆ·»¥¶¯¼ÇÂ¼(ºì°üÁìÈ¡¼ÇÂ¼±í)
+CREATE TABLE B_AdvGoodsRecord
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                     --Ö÷¼ü£¬×ÔÔö³¤
+UserId INT NOT NULL,                                                     --»áÔ±ID
+AdvSysNo INT NOT NULL,                                                   --¹ã¸æID ¶ÔÓ¦ B_InforConfigure ±íµÄÖ÷¼ü
+AdvGoodsSysNo INT NOT NULL,                                              --¹ã¸æÉÌÆ·ID ¶ÔÓ¦ T_AdvGoods ±íµÄÖ÷¼ü
+CashBonus DECIMAL(18,4) NULL,                                            --»ñÈ¡µÄÏÖ½ðºì°ü ¿Í»§²ÎÓëÖ®ºó·¢¸ø¿Í»§µÄºì°ü½ð¶î
+RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                                    --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
 
 
+--´´½¨·ÖÀà±í
+CREATE TABLE B_Category
+(
+SysNo INT IDENTITY(1,1) ,                                                    --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
+CateId INT PRIMARY KEY,                                                      --·ÖÀàID
+CateName NVARCHAR(64) NOT NULL,                                              --·ÖÀàÃû³Æ
+CateDescOne NVARCHAR(64) NOT NULL,                                           --·ÖÀàÃèÊöÐÅÏ¢1
+CateDescTwo NVARCHAR(64) NOT NULL,                                           --·ÖÀàÃèÊöÐÅÏ¢2
+CatePic VARCHAR(max) NULL,                                                   --·ÖÀàÍ¼Æ¬
+IntSort int NOT NULL,                                                        --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
+RowCeateDate DATETIME NOT NULL,                                              --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                    --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                                        --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
 
-
+--´´½¨ ÑûÇë/·ÖÏí ºÃÓÑ¼ÇÂ¼±í
+CREATE TABLE B_ShareFriends
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                          --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
+ShareSysNo int NOT NULL,                                                      --·ÖÏíµÄÄÚÈÝ±êÊ¶  ¶ÔÓ¦ B_InforConfigure ±íµÄÖ÷¼ü
+ShareUserId int NOT NULL,                                                     --·ÖÏíÈËµÄ»áÔ±ID
+CoverMobile varchar(11) NOT NULL,                                             --±»·ÖÏíÈËµÄÊÖ»úºÅÂë
+CoverUserId int NULL,                                                         --±»·ÖÏíÈËµÄ»áÔ±ID
+IsReceive bit NOT NULL,                                                       --ÊÇ·ñ·¢·ÅÁìÈ¡ÁË½±Àø½ð¶î
+RowCeateDate DATETIME NOT NULL,                                               --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                     --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                                         --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
 
 
 
