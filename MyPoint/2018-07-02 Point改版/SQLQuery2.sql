@@ -4,7 +4,7 @@
 USE point
 go
   
-  SELECT * FROM T_Member
+ SELECT * FROM T_Member
   
 --´´½¨»áÔ±±í(·ÇÐÂÔö£¬µ÷Õû×Ö¶Î)
 CREATE TABLE T_Member
@@ -42,24 +42,84 @@ timestamp TIMESTAMP NOT NULL,                                                 --
 go
 
 
+--´´½¨ÌáÏÖ¼ÇÂ¼±í
+CREATE TABLE T_Withdrawals
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                   --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
+UserId int NOT NULL,                                                   --»áÔ±ID£¬ÉêÇëÈË
+OpenidWxOpen NVARCHAR (256)  NULL,                                     --Î¢ÐÅ¿ª·¢Æ½Ì¨±êÊ¶              
+--OpenidWxMp NVARCHAR(256)  NULL,                                        --Î¢ÐÅ¹«ÖÚºÅ±êÊ¶
+WithdrawalsMoney DECIMAL(18, 4) NOT NULL,                              --ÌáÏÖ½ð¶î£¬µ¥Î»£ºÔª
+WithdrawalsState int NOT NULL,                                         --ÌáÏÖ×´Ì¬£¬0 ´ý´¦Àí  1 ´¦ÀíÖÐ 2³É¹¦£¨ÒÑ¾­·¢·Å°üº¬¸ø¿Í»§£©
+RowCeateDate DATETIME NOT NULL,                                        --´´½¨Ê±¼ä(ÉêÇëÊ±¼ä)
+ModifyTime DATETIME NULL,                                              --ÐÞ¸ÄÊ±¼ä(Êµ¼Ê·¢ËÍºì°üÊ±¼ä£¬Ò²¾ÍÊÇ WithdrawalsState = 2 Ê±µÄÊ±¼ä)
+IsEnable BIT NOT NULL                                                  --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
+
+
+--´´½¨ÕËºÅ½»Ò×Á÷Ë®±í
+CREATE TABLE T_AccountRecord
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                    --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
+TranType INT NOT NULL,                                  --½»Ò×ÀàÐÍ  1 »Ø´ðÎÊÌâ£¨²ÎÓë»¥¶¯£©    2 ÑûÇëºÃÓÑ£¨·ÖÏíºÃÓÑ£©  4 ×ª³ö»ý·Ö  8 ×ªÈë»ý·Ö 16 ÏÖ½ðÌáÏÖ 32 ¶Ò»»ÉÌÆ·(¶Ò»»µÖ¿Û„»)   64 ÔÄ¶ÁÎÄÕÂ¸¶·Ñ
+PlusReduce INT NOT NULL,                                --½»Ò×»ñÈ¡»òÕßÊ¹ÓÃ 1Ôö¼Ó 2 Ê¹ÓÃ£¨¼õ£©
+UserId INT NOT NULL,                                    --»áÔ±ID
+TranNum DECIMAL(18, 2) NOT NULL,                        --½»Ò×ÊýÁ¿
+Company NVARCHAR(8) NOT NULL,                           --½»Ò×µ¥Î»£º»ý·Ö¡¢Ôª
+TranName NVARCHAR(64) NOT NULL,                         --½»Ò×ËµÃ÷
+InRemarks NVARCHAR(512)  NULL,                          --ÄÚ²¿±¸×¢£¬Èç£ºÀ´Ô´ÓÚÄÄÀï£¬¹Ø¼üIDµÈÐÅÏ¢
+IsPushIn int NOT NULL,                                  --Õ¾ÄÚÊÇ·ñÍÆËÍ£¬ºìµãÕ¹Ê¾£¬0 Î´ÍÆËÍ 1 ÍÆËÍ  2ÍÆËÍÊ§°Ü
+--IsPushOut int NOT NULL,                               --Õ¾ÍâÊÇ·ñÍÆËÍ£¬ºìµãÕ¹Ê¾£¬0 Î´ÍÆËÍ 1 ÍÆËÍ  2ÍÆËÍÊ§°Ü    ²»ÒªÁË
+Remark NVARCHAR(200) NULL,                              --±¸×¢ÐÅÏ¢
+RowCeateDate DATETIME NOT NULL,                         --´´½¨Ê±¼ä
+IsEnable BIT NOT NULL,                                  --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+GO
+
+
+
+----------------------------------------------------------------------------------------------------------------
+--ÒÔÏÂÊÇÐÂÔöµÄ±í
+
 --´´½¨Êý¾ÝÐÅÏ¢±í£¨ÓÃÓÚÊ×Ò³Êý¾ÝÕ¹Ê¾£©
 CREATE TABLE B_InforConfigure
 (
-SysNo INT IDENTITY(1,1) PRIMARY KEY,                                     --Ö÷¼ü£¬×ÔÔö³¤
-DataType int NOT NULL,                                                   --Êý¾ÝÀàÐÍ   1 ¹ã¸æ£¨²ÎÓë»¥¶¯£¬ÁìÈ¡ºì°ü£©   2 ÍÆ¹ã(ÑûÇëºÃÓÑ£¬Á¢ÏíîÒ»Ý)
-ShowCrowd VARCHAR(64) NOT NULL,                                          --Õ¹Ê¾µÄÈËÈº 0 ËùÓÐ  1 30ËêÒÔÉÏÄÐ  2 30ËêÒÔÏÂÄÐ  4 30ËêÒÔÉÏÅ®   8 30ËêÒÔÏÂÅ®£¬¸ñÊ½£º(1),(2),(3)
-CoverPicUrl VARCHAR(max) NOT NULL,                                       --·âÃæÍ¼Æ¬
-ShopName nvarchar(128) NULL,                                             --µêÆÌÃû³Æ      µ± DataType = 2 Ê±£¬ÓÐµêÆÌÃû³Æ
-LogoPicUrl VARCHAR(max) NULL,                                            --µêÆÌlogoÍ¼Æ¬  µ± DataType = 2 Ê±£¬ÓÐµêÆÌlogo
-Title NVARCHAR(512) NULL,                                                --±êÌâ
-DescOne NVARCHAR(256) NULL,                                              --ÃèÊö1
-DescTwo NVARCHAR(256) NULL,                                              --ÃèÊö2
-MarketPrice DECIMAL(18,4) NULL,                                          --ÊÐ³¡¼Û¸ñ
-PromotionPrice DECIMAL(18,4) NULL,                                       --´ÙÏú¼Û¸ñ
-IntSort int NOT NULL,                                                    --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
-RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê±¼ä
-ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ±¼ä
-IsEnable BIT NOT NULL                                                    --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+SysNo INT IDENTITY(1,1) PRIMARY KEY,  --Ö÷¼ü£¬×ÔÔö³¤
+DataType int NOT NULL,                --Êý¾ÝÀàÐÍ   1 ¹ã¸æ£¨²ÎÓë»¥¶¯£¬ÁìÈ¡ºì°ü£©   2 ÍÆ¹ã(ÑûÇëºÃÓÑ£¬Á¢ÏíîÒ»Ý)
+ShowCrowd VARCHAR(64) NOT NULL,       --Õ¹Ê¾µÄÈËÈº 0 ËùÓÐ  1 30ËêÒÔÉÏÄÐ  2 30ËêÒÔÏÂÄÐ  4 30ËêÒÔÉÏÅ®   8 30ËêÒÔÏÂÅ®£¬¸ñÊ½£º(1),(2),(3)
+CoverPicUrl VARCHAR(max) NOT NULL,    --·âÃæÍ¼Æ¬
+
+ShopName nvarchar(128) NULL,          --µêÆÌÃû³Æ              µ± DataType = 2 Ê±£¬ÓÐµêÆÌÃû³Æ
+LogoPicUrl VARCHAR(max) NULL,         --µêÆÌlogoÍ¼Æ¬          µ± DataType = 2 Ê±£¬ÓÐµêÆÌlogo
+SetInvitationNum INT NULL,            --ÐèÒªÑûÇëµÄÈËÊý        µ± DataType = 2 Ê±£¬ÐèÒªÓÐÑûÇëµÄÈËÊý
+CouponMoney DECIMAL(18,4) NULL,       --ÓÅ»ÝÈ¯½ð¶î            µ± DataType = 2 Ê±£¬ÐèÒªÓÅ»ÝÈ¯½ð¶î
+ReceiveUrl VARCHAR(max) NULL,         --ÓÅ»ÝÈ¯ÁìÈ¡Á¬½ÓµØÖ·    µ± DataType = 2 Ê±£¬Èç¹ûÎª¿Õµã»÷ÁìÈ¡Ö±½Ó·¢·Å CouponMoney µÄ½ð¶îµ½ÕË»§£¬¿ÉÌáÏÖ
+ 
+Title NVARCHAR(512) NULL,             --±êÌâ
+DescOne NVARCHAR(256) NULL,           --ÃèÊö1
+DescTwo NVARCHAR(256) NULL,           --ÃèÊö2
+MarketPrice DECIMAL(18,4) NULL,       --ÊÐ³¡¼Û¸ñ
+PromotionPrice DECIMAL(18,4) NULL,    --´ÙÏú¼Û¸ñ
+IntSort int NOT NULL,                 --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
+RowCeateDate DATETIME NOT NULL,       --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,             --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                 --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
+
+--´´½¨ ÑûÇë/·ÖÏí ºÃÓÑ¼ÇÂ¼±í  
+--H5Ò³ÃæÊÕ¼¯ÊÕ¼¯ºÅÂë APP×¢²áµÄ¸ù¾Ý×¢²áµÄÊÖ»úºÅÂë»ØÐ´ CoverUserId ×Ö¶Î£¬ÐÎ³É±Õ»·
+CREATE TABLE B_ShareFriends
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                          --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
+ShareSysNo int NOT NULL,                                                      --·ÖÏíµÄÄÚÈÝ±êÊ¶  ¶ÔÓ¦ B_InforConfigure ±íµÄÖ÷¼ü
+ShareUserId int NOT NULL,                                                     --·ÖÏíÈË(·¢ÆðÈË)µÄ»áÔ±ID
+CoverMobile varchar(11) NOT NULL,                                             --±»·ÖÏíÈËµÄÊÖ»úºÅÂë
+CoverUserId int NULL,                                                         --±»·ÖÏíÈËµÄ»áÔ±ID
+RowCeateDate DATETIME NOT NULL,                                               --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                     --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                                         --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
 )
 go
 
@@ -79,7 +139,6 @@ PromotionPrice DECIMAL(18,4) NULL,                                       --´ÙÏú¼
 DeductibleMoney DECIMAL(18,4) NULL,                                      --µÖ¿Û½ð¶î
 CashBonus DECIMAL(18,4) NULL,                                            --ÏÖ½ðºì°ü ¿Í»§²ÎÓëÖ®ºó·¢¸ø¿Í»§µÄºì°ü½ð¶î 0 ²»¸øºì°ü
 CashBonusNum int NULL,                                                   --ÏÖ½ðºì°üµÄ×ÜÊýÁ¿
---SetInvitationNum INT NULL,                                               --ÐèÒªÑûÇëµÄÈËÊý
 IntSort int NOT NULL,                                                    --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
 RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê±¼ä
 ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ±¼ä
@@ -118,20 +177,6 @@ IsEnable BIT NOT NULL                                                        --Ê
 )
 go
 
---´´½¨ ÑûÇë/·ÖÏí ºÃÓÑ¼ÇÂ¼±í
-CREATE TABLE B_ShareFriends
-(
-SysNo INT IDENTITY(1,1) PRIMARY KEY,                                          --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
-ShareSysNo int NOT NULL,                                                      --·ÖÏíµÄÄÚÈÝ±êÊ¶  ¶ÔÓ¦ B_InforConfigure ±íµÄÖ÷¼ü
-ShareUserId int NOT NULL,                                                     --·ÖÏíÈËµÄ»áÔ±ID
-CoverMobile varchar(11) NOT NULL,                                             --±»·ÖÏíÈËµÄÊÖ»úºÅÂë
-CoverUserId int NULL,                                                         --±»·ÖÏíÈËµÄ»áÔ±ID
-IsReceive bit NOT NULL,                                                       --ÊÇ·ñ·¢·ÅÁìÈ¡ÁË½±Àø½ð¶î
-RowCeateDate DATETIME NOT NULL,                                               --´´½¨Ê±¼ä
-ModifyTime DATETIME NULL,                                                     --ÐÞ¸ÄÊ±¼ä
-IsEnable BIT NOT NULL                                                         --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
-)
-go
 
 
 
