@@ -192,6 +192,86 @@ namespace Point.com.RepositoryFactory
 				  }  
                                   public partial class MLT:IMLT
 				  {					
+					private IB_AdvGoodsRepository _B_AdvGoodsRepository;
+					public virtual string B_AdvGoodsTableName{
+						get{
+							return "B_AdvGoods";
+						}
+					}
+					public IB_AdvGoodsRepository B_AdvGoodsRepository
+					{
+						get
+						{
+							if (null == _B_AdvGoodsRepository)
+							{
+								_B_AdvGoodsRepository = new B_AdvGoodsRepository(this._unitOfWork,B_AdvGoodsTableName);
+							}
+							return _B_AdvGoodsRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IB_InforConfigureRepository _B_InforConfigureRepository;
+					public virtual string B_InforConfigureTableName{
+						get{
+							return "B_InforConfigure";
+						}
+					}
+					public IB_InforConfigureRepository B_InforConfigureRepository
+					{
+						get
+						{
+							if (null == _B_InforConfigureRepository)
+							{
+								_B_InforConfigureRepository = new B_InforConfigureRepository(this._unitOfWork,B_InforConfigureTableName);
+							}
+							return _B_InforConfigureRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IB_ReceiveConfigureRepository _B_ReceiveConfigureRepository;
+					public virtual string B_ReceiveConfigureTableName{
+						get{
+							return "B_ReceiveConfigure";
+						}
+					}
+					public IB_ReceiveConfigureRepository B_ReceiveConfigureRepository
+					{
+						get
+						{
+							if (null == _B_ReceiveConfigureRepository)
+							{
+								_B_ReceiveConfigureRepository = new B_ReceiveConfigureRepository(this._unitOfWork,B_ReceiveConfigureTableName);
+							}
+							return _B_ReceiveConfigureRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IB_RecommendConfigureRepository _B_RecommendConfigureRepository;
+					public virtual string B_RecommendConfigureTableName{
+						get{
+							return "B_RecommendConfigure";
+						}
+					}
+					public IB_RecommendConfigureRepository B_RecommendConfigureRepository
+					{
+						get
+						{
+							if (null == _B_RecommendConfigureRepository)
+							{
+								_B_RecommendConfigureRepository = new B_RecommendConfigureRepository(this._unitOfWork,B_RecommendConfigureTableName);
+							}
+							return _B_RecommendConfigureRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
 					private ICrm_ClickExchangeRepository _Crm_ClickExchangeRepository;
 					public virtual string Crm_ClickExchangeTableName{
 						get{

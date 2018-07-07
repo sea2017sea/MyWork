@@ -8,6 +8,1446 @@ namespace Point.com.Repository
 {
    
 	
+public partial class B_AdvGoodsRepository : BaseRepository<B_AdvGoods>, IB_AdvGoodsRepository
+{
+		public B_AdvGoodsRepository(IUnitOfWork unitOfWork)
+        : base(unitOfWork)
+		{
+			_tableName="B_AdvGoods";
+		} 
+		public B_AdvGoodsRepository(IUnitOfWork unitOfWork,string tableName)
+        : base(unitOfWork)
+		{
+			_tableName=tableName;
+		}  
+		private string _tableName;
+	
+	protected override string GetSqlFromModel(B_AdvGoods model,Func<string,string,string> addFunc,Func<string,string> joinFunc)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(addFunc("SysNo",model.SysNo.ToString()));
+		}	
+								if(model.AdvSysNo!=null) 
+		{
+			list.Add(addFunc("AdvSysNo",model.AdvSysNo.ToString()));
+		}
+
+						if(model.CateId!=null) 
+		{
+			list.Add(addFunc("CateId",model.CateId.ToString()));
+		}
+
+						if(model.GoodsName!=null) 
+		{
+			list.Add(addFunc("GoodsName",model.GoodsName.ToString()));
+		}
+
+						if(model.GoodsPic!=null) 
+		{
+			list.Add(addFunc("GoodsPic",model.GoodsPic.ToString()));
+		}
+
+						if(model.GoodsDetailedLink!=null) 
+		{
+			list.Add(addFunc("GoodsDetailedLink",model.GoodsDetailedLink.ToString()));
+		}
+
+						if(model.GoodsExcLink!=null) 
+		{
+			list.Add(addFunc("GoodsExcLink",model.GoodsExcLink.ToString()));
+		}
+
+						if(model.MarketPrice!=null) 
+		{
+			list.Add(addFunc("MarketPrice",model.MarketPrice.ToString()));
+		}
+
+						if(model.PromotionPrice!=null) 
+		{
+			list.Add(addFunc("PromotionPrice",model.PromotionPrice.ToString()));
+		}
+
+						if(model.DeductibleMoney!=null) 
+		{
+			list.Add(addFunc("DeductibleMoney",model.DeductibleMoney.ToString()));
+		}
+
+						if(model.CashBonus!=null) 
+		{
+			list.Add(addFunc("CashBonus",model.CashBonus.ToString()));
+		}
+
+						if(model.CashBonusNum!=null) 
+		{
+			list.Add(addFunc("CashBonusNum",model.CashBonusNum.ToString()));
+		}
+
+						if(model.IntSort!=null) 
+		{
+			list.Add(addFunc("IntSort",model.IntSort.ToString()));
+		}
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(addFunc("RowCeateDate",model.RowCeateDate.ToString()));
+		}
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(addFunc("ModifyTime",model.ModifyTime.ToString()));
+		}
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(addFunc("IsEnable",model.IsEnable.ToString()));
+		}
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+	protected override string GetWhereSqlFromModel(B_AdvGoods model,Func<string,string> joinFunc,Func<string,string> addFunc=null)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		if(addFunc==null)
+		{
+			addFunc=(s)=>s;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(string.Format("{1}={0}",model.SysNo.ToString(),addFunc("[SysNo]")));
+		}
+					
+
+						if(model.AdvSysNo!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.AdvSysNo.ToString(),addFunc("[AdvSysNo]")));
+		}
+					
+
+						if(model.CateId!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.CateId.ToString(),addFunc("[CateId]")));
+		}
+					
+
+						if(model.GoodsName!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.GoodsName.ToString(),addFunc("[GoodsName]")));
+		}
+					
+
+						if(model.GoodsPic!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.GoodsPic.ToString(),addFunc("[GoodsPic]")));
+		}
+					
+
+						if(model.GoodsDetailedLink!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.GoodsDetailedLink.ToString(),addFunc("[GoodsDetailedLink]")));
+		}
+					
+
+						if(model.GoodsExcLink!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.GoodsExcLink.ToString(),addFunc("[GoodsExcLink]")));
+		}
+					
+
+						if(model.MarketPrice!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.MarketPrice.ToString(),addFunc("[MarketPrice]")));
+		}
+					
+
+						if(model.PromotionPrice!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.PromotionPrice.ToString(),addFunc("[PromotionPrice]")));
+		}
+					
+
+						if(model.DeductibleMoney!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.DeductibleMoney.ToString(),addFunc("[DeductibleMoney]")));
+		}
+					
+
+						if(model.CashBonus!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.CashBonus.ToString(),addFunc("[CashBonus]")));
+		}
+					
+
+						if(model.CashBonusNum!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.CashBonusNum.ToString(),addFunc("[CashBonusNum]")));
+		}
+					
+
+						if(model.IntSort!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.IntSort.ToString(),addFunc("[IntSort]")));
+		}
+					
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.RowCeateDate.ToString(),addFunc("[RowCeateDate]")));
+		}
+					
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ModifyTime.ToString(),addFunc("[ModifyTime]")));
+		}
+					
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.IsEnable.ToString(),addFunc("[IsEnable]")));
+		}
+					
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+public override string PersistNewItem(params ModelBase[] item)
+{
+	var data=(B_AdvGoods)item[0];
+string sql = string.Format("insert into {2}({0}) values({1})",
+                                this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]",name),s=>","),
+								this.GetSqlFromModel(data,(name,value)=>string.Format("'{0}'",value),s=>","),_tableName);
+    return sql;
+}
+
+public override string PersistUpdatedItem(params ModelBase[] item)
+{
+	var data=(B_AdvGoods)item[0];		
+	var where=	(B_AdvGoods)item[1];
+string sql = string.Format("update {2} set {0} where {1}",  
+						this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]='{1}'",name,value),s=>","),
+						this.GetWhereSqlFromModel(where,s=>" and "),_tableName);
+    return sql;
+}      
+
+protected override string QueryBySql(B_AdvGoods where = null, string order = null)
+{
+	string whereStr = string.Empty;
+	if (null != where)
+	{
+		string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+		if (!string.IsNullOrEmpty(whereSql))
+		{
+			whereStr = string.Format("where {0}", whereSql);
+		}
+	}
+    string sql = string.Format("select * from {2} {0} {1}", whereStr, order,_tableName);
+    return sql;
+}
+
+protected override string QueryPageBySql(int pageIndex = 1, int pageSize = 20, B_AdvGoods where = null, string order = null)
+{
+    string whereStr = string.Empty;
+    if (null != where)
+    {
+        whereStr =this.GetWhereSqlFromModel(where, s => " and ");
+    }
+    string sql =
+        string.Format(
+            @"SELECT  t.*
+			FROM    ( SELECT    * ,
+								ROW_NUMBER() OVER ({0}) AS Rn
+					  FROM {4} {1}
+					) AS t
+			WHERE   t.Rn BETWEEN {2} AND {3}",
+            string.IsNullOrEmpty(order)?"ORDER BY GETDATE()":order,
+            (string.IsNullOrEmpty(whereStr) ? string.Empty : string.Format("where {0}", whereStr)),
+			(pageIndex-1)*pageSize+1,
+			pageSize*pageIndex,_tableName);
+
+    return sql;
+}
+
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QueryCountBySql(B_AdvGoods where = null)
+        {
+            //TODO:Where不能为空
+
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select count(1) from {1} {0} ", whereStr,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询指定列的数据之和
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QuerySumBySql(string columnName, B_AdvGoods where = null)
+        {
+            if (string.IsNullOrEmpty(columnName))
+            {
+                throw new ArgumentNullException(string.Format("查询指定列数据汇总失败，失败详情：指定列名不能为空"));
+
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select SUM({1}) from {2} {0} ", whereStr, columnName,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询top条数据
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        protected override string QueryTopBySql(int? top, B_AdvGoods where = null, string order = null)
+        {
+            if (null == top)
+            {
+                throw new ArgumentNullException(string.Format("查询指定TOP数据失败，失败详情：TOP不能为空"));
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select top ({2}) * from {3} {0} {1}", whereStr, order,
+                                       Math.Abs((int)top),_tableName);
+
+            return sql;
+        }
+
+
+public override void AddDataTable(System.Data.DataTable dataTable)
+        {
+            base.AddDataTable(dataTable,_tableName);
+        }
+
+}
+	
+public partial class B_AdvGoodsRecordRepository : BaseRepository<B_AdvGoodsRecord>, IB_AdvGoodsRecordRepository
+{
+		public B_AdvGoodsRecordRepository(IUnitOfWork unitOfWork)
+        : base(unitOfWork)
+		{
+			_tableName="B_AdvGoodsRecord";
+		} 
+		public B_AdvGoodsRecordRepository(IUnitOfWork unitOfWork,string tableName)
+        : base(unitOfWork)
+		{
+			_tableName=tableName;
+		}  
+		private string _tableName;
+	
+	protected override string GetSqlFromModel(B_AdvGoodsRecord model,Func<string,string,string> addFunc,Func<string,string> joinFunc)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		List<string> list=new List<string>();
+			
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+	protected override string GetWhereSqlFromModel(B_AdvGoodsRecord model,Func<string,string> joinFunc,Func<string,string> addFunc=null)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		if(addFunc==null)
+		{
+			addFunc=(s)=>s;
+		}
+		List<string> list=new List<string>();
+			
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+public override string PersistNewItem(params ModelBase[] item)
+{
+	var data=(B_AdvGoodsRecord)item[0];
+string sql = string.Format("insert into {2}({0}) values({1})",
+                                this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]",name),s=>","),
+								this.GetSqlFromModel(data,(name,value)=>string.Format("'{0}'",value),s=>","),_tableName);
+    return sql;
+}
+
+public override string PersistUpdatedItem(params ModelBase[] item)
+{
+	var data=(B_AdvGoodsRecord)item[0];		
+	var where=	(B_AdvGoodsRecord)item[1];
+string sql = string.Format("update {2} set {0} where {1}",  
+						this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]='{1}'",name,value),s=>","),
+						this.GetWhereSqlFromModel(where,s=>" and "),_tableName);
+    return sql;
+}      
+
+protected override string QueryBySql(B_AdvGoodsRecord where = null, string order = null)
+{
+	string whereStr = string.Empty;
+	if (null != where)
+	{
+		string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+		if (!string.IsNullOrEmpty(whereSql))
+		{
+			whereStr = string.Format("where {0}", whereSql);
+		}
+	}
+    string sql = string.Format("select * from {2} {0} {1}", whereStr, order,_tableName);
+    return sql;
+}
+
+protected override string QueryPageBySql(int pageIndex = 1, int pageSize = 20, B_AdvGoodsRecord where = null, string order = null)
+{
+    string whereStr = string.Empty;
+    if (null != where)
+    {
+        whereStr =this.GetWhereSqlFromModel(where, s => " and ");
+    }
+    string sql =
+        string.Format(
+            @"SELECT  t.*
+			FROM    ( SELECT    * ,
+								ROW_NUMBER() OVER ({0}) AS Rn
+					  FROM {4} {1}
+					) AS t
+			WHERE   t.Rn BETWEEN {2} AND {3}",
+            string.IsNullOrEmpty(order)?"ORDER BY GETDATE()":order,
+            (string.IsNullOrEmpty(whereStr) ? string.Empty : string.Format("where {0}", whereStr)),
+			(pageIndex-1)*pageSize+1,
+			pageSize*pageIndex,_tableName);
+
+    return sql;
+}
+
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QueryCountBySql(B_AdvGoodsRecord where = null)
+        {
+            //TODO:Where不能为空
+
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select count(1) from {1} {0} ", whereStr,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询指定列的数据之和
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QuerySumBySql(string columnName, B_AdvGoodsRecord where = null)
+        {
+            if (string.IsNullOrEmpty(columnName))
+            {
+                throw new ArgumentNullException(string.Format("查询指定列数据汇总失败，失败详情：指定列名不能为空"));
+
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select SUM({1}) from {2} {0} ", whereStr, columnName,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询top条数据
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        protected override string QueryTopBySql(int? top, B_AdvGoodsRecord where = null, string order = null)
+        {
+            if (null == top)
+            {
+                throw new ArgumentNullException(string.Format("查询指定TOP数据失败，失败详情：TOP不能为空"));
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select top ({2}) * from {3} {0} {1}", whereStr, order,
+                                       Math.Abs((int)top),_tableName);
+
+            return sql;
+        }
+
+
+public override void AddDataTable(System.Data.DataTable dataTable)
+        {
+            base.AddDataTable(dataTable,_tableName);
+        }
+
+}
+	
+public partial class B_InforConfigureRepository : BaseRepository<B_InforConfigure>, IB_InforConfigureRepository
+{
+		public B_InforConfigureRepository(IUnitOfWork unitOfWork)
+        : base(unitOfWork)
+		{
+			_tableName="B_InforConfigure";
+		} 
+		public B_InforConfigureRepository(IUnitOfWork unitOfWork,string tableName)
+        : base(unitOfWork)
+		{
+			_tableName=tableName;
+		}  
+		private string _tableName;
+	
+	protected override string GetSqlFromModel(B_InforConfigure model,Func<string,string,string> addFunc,Func<string,string> joinFunc)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(addFunc("SysNo",model.SysNo.ToString()));
+		}	
+								if(model.DataType!=null) 
+		{
+			list.Add(addFunc("DataType",model.DataType.ToString()));
+		}
+
+						if(model.ShowCrowd!=null) 
+		{
+			list.Add(addFunc("ShowCrowd",model.ShowCrowd.ToString()));
+		}
+
+						if(model.CoverPicUrl!=null) 
+		{
+			list.Add(addFunc("CoverPicUrl",model.CoverPicUrl.ToString()));
+		}
+
+						if(model.ShopName!=null) 
+		{
+			list.Add(addFunc("ShopName",model.ShopName.ToString()));
+		}
+
+						if(model.LogoPicUrl!=null) 
+		{
+			list.Add(addFunc("LogoPicUrl",model.LogoPicUrl.ToString()));
+		}
+
+						if(model.SetInvitationNum!=null) 
+		{
+			list.Add(addFunc("SetInvitationNum",model.SetInvitationNum.ToString()));
+		}
+
+						if(model.ReceiveType!=null) 
+		{
+			list.Add(addFunc("ReceiveType",model.ReceiveType.ToString()));
+		}
+
+						if(model.CouponMoney!=null) 
+		{
+			list.Add(addFunc("CouponMoney",model.CouponMoney.ToString()));
+		}
+
+						if(model.Title!=null) 
+		{
+			list.Add(addFunc("Title",model.Title.ToString()));
+		}
+
+						if(model.DescOne!=null) 
+		{
+			list.Add(addFunc("DescOne",model.DescOne.ToString()));
+		}
+
+						if(model.DescTwo!=null) 
+		{
+			list.Add(addFunc("DescTwo",model.DescTwo.ToString()));
+		}
+
+						if(model.MarketPrice!=null) 
+		{
+			list.Add(addFunc("MarketPrice",model.MarketPrice.ToString()));
+		}
+
+						if(model.PromotionPrice!=null) 
+		{
+			list.Add(addFunc("PromotionPrice",model.PromotionPrice.ToString()));
+		}
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(addFunc("RowCeateDate",model.RowCeateDate.ToString()));
+		}
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(addFunc("ModifyTime",model.ModifyTime.ToString()));
+		}
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(addFunc("IsEnable",model.IsEnable.ToString()));
+		}
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+	protected override string GetWhereSqlFromModel(B_InforConfigure model,Func<string,string> joinFunc,Func<string,string> addFunc=null)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		if(addFunc==null)
+		{
+			addFunc=(s)=>s;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(string.Format("{1}={0}",model.SysNo.ToString(),addFunc("[SysNo]")));
+		}
+					
+
+						if(model.DataType!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.DataType.ToString(),addFunc("[DataType]")));
+		}
+					
+
+						if(model.ShowCrowd!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ShowCrowd.ToString(),addFunc("[ShowCrowd]")));
+		}
+					
+
+						if(model.CoverPicUrl!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.CoverPicUrl.ToString(),addFunc("[CoverPicUrl]")));
+		}
+					
+
+						if(model.ShopName!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ShopName.ToString(),addFunc("[ShopName]")));
+		}
+					
+
+						if(model.LogoPicUrl!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.LogoPicUrl.ToString(),addFunc("[LogoPicUrl]")));
+		}
+					
+
+						if(model.SetInvitationNum!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.SetInvitationNum.ToString(),addFunc("[SetInvitationNum]")));
+		}
+					
+
+						if(model.ReceiveType!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ReceiveType.ToString(),addFunc("[ReceiveType]")));
+		}
+					
+
+						if(model.CouponMoney!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.CouponMoney.ToString(),addFunc("[CouponMoney]")));
+		}
+					
+
+						if(model.Title!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.Title.ToString(),addFunc("[Title]")));
+		}
+					
+
+						if(model.DescOne!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.DescOne.ToString(),addFunc("[DescOne]")));
+		}
+					
+
+						if(model.DescTwo!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.DescTwo.ToString(),addFunc("[DescTwo]")));
+		}
+					
+
+						if(model.MarketPrice!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.MarketPrice.ToString(),addFunc("[MarketPrice]")));
+		}
+					
+
+						if(model.PromotionPrice!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.PromotionPrice.ToString(),addFunc("[PromotionPrice]")));
+		}
+					
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.RowCeateDate.ToString(),addFunc("[RowCeateDate]")));
+		}
+					
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ModifyTime.ToString(),addFunc("[ModifyTime]")));
+		}
+					
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.IsEnable.ToString(),addFunc("[IsEnable]")));
+		}
+					
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+public override string PersistNewItem(params ModelBase[] item)
+{
+	var data=(B_InforConfigure)item[0];
+string sql = string.Format("insert into {2}({0}) values({1})",
+                                this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]",name),s=>","),
+								this.GetSqlFromModel(data,(name,value)=>string.Format("'{0}'",value),s=>","),_tableName);
+    return sql;
+}
+
+public override string PersistUpdatedItem(params ModelBase[] item)
+{
+	var data=(B_InforConfigure)item[0];		
+	var where=	(B_InforConfigure)item[1];
+string sql = string.Format("update {2} set {0} where {1}",  
+						this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]='{1}'",name,value),s=>","),
+						this.GetWhereSqlFromModel(where,s=>" and "),_tableName);
+    return sql;
+}      
+
+protected override string QueryBySql(B_InforConfigure where = null, string order = null)
+{
+	string whereStr = string.Empty;
+	if (null != where)
+	{
+		string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+		if (!string.IsNullOrEmpty(whereSql))
+		{
+			whereStr = string.Format("where {0}", whereSql);
+		}
+	}
+    string sql = string.Format("select * from {2} {0} {1}", whereStr, order,_tableName);
+    return sql;
+}
+
+protected override string QueryPageBySql(int pageIndex = 1, int pageSize = 20, B_InforConfigure where = null, string order = null)
+{
+    string whereStr = string.Empty;
+    if (null != where)
+    {
+        whereStr =this.GetWhereSqlFromModel(where, s => " and ");
+    }
+    string sql =
+        string.Format(
+            @"SELECT  t.*
+			FROM    ( SELECT    * ,
+								ROW_NUMBER() OVER ({0}) AS Rn
+					  FROM {4} {1}
+					) AS t
+			WHERE   t.Rn BETWEEN {2} AND {3}",
+            string.IsNullOrEmpty(order)?"ORDER BY GETDATE()":order,
+            (string.IsNullOrEmpty(whereStr) ? string.Empty : string.Format("where {0}", whereStr)),
+			(pageIndex-1)*pageSize+1,
+			pageSize*pageIndex,_tableName);
+
+    return sql;
+}
+
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QueryCountBySql(B_InforConfigure where = null)
+        {
+            //TODO:Where不能为空
+
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select count(1) from {1} {0} ", whereStr,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询指定列的数据之和
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QuerySumBySql(string columnName, B_InforConfigure where = null)
+        {
+            if (string.IsNullOrEmpty(columnName))
+            {
+                throw new ArgumentNullException(string.Format("查询指定列数据汇总失败，失败详情：指定列名不能为空"));
+
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select SUM({1}) from {2} {0} ", whereStr, columnName,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询top条数据
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        protected override string QueryTopBySql(int? top, B_InforConfigure where = null, string order = null)
+        {
+            if (null == top)
+            {
+                throw new ArgumentNullException(string.Format("查询指定TOP数据失败，失败详情：TOP不能为空"));
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select top ({2}) * from {3} {0} {1}", whereStr, order,
+                                       Math.Abs((int)top),_tableName);
+
+            return sql;
+        }
+
+
+public override void AddDataTable(System.Data.DataTable dataTable)
+        {
+            base.AddDataTable(dataTable,_tableName);
+        }
+
+}
+	
+public partial class B_ReceiveConfigureRepository : BaseRepository<B_ReceiveConfigure>, IB_ReceiveConfigureRepository
+{
+		public B_ReceiveConfigureRepository(IUnitOfWork unitOfWork)
+        : base(unitOfWork)
+		{
+			_tableName="B_ReceiveConfigure";
+		} 
+		public B_ReceiveConfigureRepository(IUnitOfWork unitOfWork,string tableName)
+        : base(unitOfWork)
+		{
+			_tableName=tableName;
+		}  
+		private string _tableName;
+	
+	protected override string GetSqlFromModel(B_ReceiveConfigure model,Func<string,string,string> addFunc,Func<string,string> joinFunc)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(addFunc("SysNo",model.SysNo.ToString()));
+		}	
+								if(model.RecSysNo!=null) 
+		{
+			list.Add(addFunc("RecSysNo",model.RecSysNo.ToString()));
+		}
+
+						if(model.ReceiveUrl!=null) 
+		{
+			list.Add(addFunc("ReceiveUrl",model.ReceiveUrl.ToString()));
+		}
+
+						if(model.UserId!=null) 
+		{
+			list.Add(addFunc("UserId",model.UserId.ToString()));
+		}
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(addFunc("RowCeateDate",model.RowCeateDate.ToString()));
+		}
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(addFunc("ModifyTime",model.ModifyTime.ToString()));
+		}
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(addFunc("IsEnable",model.IsEnable.ToString()));
+		}
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+	protected override string GetWhereSqlFromModel(B_ReceiveConfigure model,Func<string,string> joinFunc,Func<string,string> addFunc=null)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		if(addFunc==null)
+		{
+			addFunc=(s)=>s;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(string.Format("{1}={0}",model.SysNo.ToString(),addFunc("[SysNo]")));
+		}
+					
+
+						if(model.RecSysNo!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.RecSysNo.ToString(),addFunc("[RecSysNo]")));
+		}
+					
+
+						if(model.ReceiveUrl!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ReceiveUrl.ToString(),addFunc("[ReceiveUrl]")));
+		}
+					
+
+						if(model.UserId!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.UserId.ToString(),addFunc("[UserId]")));
+		}
+					
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.RowCeateDate.ToString(),addFunc("[RowCeateDate]")));
+		}
+					
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ModifyTime.ToString(),addFunc("[ModifyTime]")));
+		}
+					
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.IsEnable.ToString(),addFunc("[IsEnable]")));
+		}
+					
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+public override string PersistNewItem(params ModelBase[] item)
+{
+	var data=(B_ReceiveConfigure)item[0];
+string sql = string.Format("insert into {2}({0}) values({1})",
+                                this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]",name),s=>","),
+								this.GetSqlFromModel(data,(name,value)=>string.Format("'{0}'",value),s=>","),_tableName);
+    return sql;
+}
+
+public override string PersistUpdatedItem(params ModelBase[] item)
+{
+	var data=(B_ReceiveConfigure)item[0];		
+	var where=	(B_ReceiveConfigure)item[1];
+string sql = string.Format("update {2} set {0} where {1}",  
+						this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]='{1}'",name,value),s=>","),
+						this.GetWhereSqlFromModel(where,s=>" and "),_tableName);
+    return sql;
+}      
+
+protected override string QueryBySql(B_ReceiveConfigure where = null, string order = null)
+{
+	string whereStr = string.Empty;
+	if (null != where)
+	{
+		string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+		if (!string.IsNullOrEmpty(whereSql))
+		{
+			whereStr = string.Format("where {0}", whereSql);
+		}
+	}
+    string sql = string.Format("select * from {2} {0} {1}", whereStr, order,_tableName);
+    return sql;
+}
+
+protected override string QueryPageBySql(int pageIndex = 1, int pageSize = 20, B_ReceiveConfigure where = null, string order = null)
+{
+    string whereStr = string.Empty;
+    if (null != where)
+    {
+        whereStr =this.GetWhereSqlFromModel(where, s => " and ");
+    }
+    string sql =
+        string.Format(
+            @"SELECT  t.*
+			FROM    ( SELECT    * ,
+								ROW_NUMBER() OVER ({0}) AS Rn
+					  FROM {4} {1}
+					) AS t
+			WHERE   t.Rn BETWEEN {2} AND {3}",
+            string.IsNullOrEmpty(order)?"ORDER BY GETDATE()":order,
+            (string.IsNullOrEmpty(whereStr) ? string.Empty : string.Format("where {0}", whereStr)),
+			(pageIndex-1)*pageSize+1,
+			pageSize*pageIndex,_tableName);
+
+    return sql;
+}
+
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QueryCountBySql(B_ReceiveConfigure where = null)
+        {
+            //TODO:Where不能为空
+
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select count(1) from {1} {0} ", whereStr,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询指定列的数据之和
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QuerySumBySql(string columnName, B_ReceiveConfigure where = null)
+        {
+            if (string.IsNullOrEmpty(columnName))
+            {
+                throw new ArgumentNullException(string.Format("查询指定列数据汇总失败，失败详情：指定列名不能为空"));
+
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select SUM({1}) from {2} {0} ", whereStr, columnName,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询top条数据
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        protected override string QueryTopBySql(int? top, B_ReceiveConfigure where = null, string order = null)
+        {
+            if (null == top)
+            {
+                throw new ArgumentNullException(string.Format("查询指定TOP数据失败，失败详情：TOP不能为空"));
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select top ({2}) * from {3} {0} {1}", whereStr, order,
+                                       Math.Abs((int)top),_tableName);
+
+            return sql;
+        }
+
+
+public override void AddDataTable(System.Data.DataTable dataTable)
+        {
+            base.AddDataTable(dataTable,_tableName);
+        }
+
+}
+	
+public partial class B_RecommendConfigureRepository : BaseRepository<B_RecommendConfigure>, IB_RecommendConfigureRepository
+{
+		public B_RecommendConfigureRepository(IUnitOfWork unitOfWork)
+        : base(unitOfWork)
+		{
+			_tableName="B_RecommendConfigure";
+		} 
+		public B_RecommendConfigureRepository(IUnitOfWork unitOfWork,string tableName)
+        : base(unitOfWork)
+		{
+			_tableName=tableName;
+		}  
+		private string _tableName;
+	
+	protected override string GetSqlFromModel(B_RecommendConfigure model,Func<string,string,string> addFunc,Func<string,string> joinFunc)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(addFunc("SysNo",model.SysNo.ToString()));
+		}	
+								if(model.DataType!=null) 
+		{
+			list.Add(addFunc("DataType",model.DataType.ToString()));
+		}
+
+						if(model.UserId!=null) 
+		{
+			list.Add(addFunc("UserId",model.UserId.ToString()));
+		}
+
+						if(model.InforSysNo!=null) 
+		{
+			list.Add(addFunc("InforSysNo",model.InforSysNo.ToString()));
+		}
+
+						if(model.PushState!=null) 
+		{
+			list.Add(addFunc("PushState",model.PushState.ToString()));
+		}
+
+						if(model.IntSort!=null) 
+		{
+			list.Add(addFunc("IntSort",model.IntSort.ToString()));
+		}
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(addFunc("RowCeateDate",model.RowCeateDate.ToString()));
+		}
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(addFunc("ModifyTime",model.ModifyTime.ToString()));
+		}
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(addFunc("IsEnable",model.IsEnable.ToString()));
+		}
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+	protected override string GetWhereSqlFromModel(B_RecommendConfigure model,Func<string,string> joinFunc,Func<string,string> addFunc=null)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		if(addFunc==null)
+		{
+			addFunc=(s)=>s;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(string.Format("{1}={0}",model.SysNo.ToString(),addFunc("[SysNo]")));
+		}
+					
+
+						if(model.DataType!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.DataType.ToString(),addFunc("[DataType]")));
+		}
+					
+
+						if(model.UserId!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.UserId.ToString(),addFunc("[UserId]")));
+		}
+					
+
+						if(model.InforSysNo!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.InforSysNo.ToString(),addFunc("[InforSysNo]")));
+		}
+					
+
+						if(model.PushState!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.PushState.ToString(),addFunc("[PushState]")));
+		}
+					
+
+						if(model.IntSort!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.IntSort.ToString(),addFunc("[IntSort]")));
+		}
+					
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.RowCeateDate.ToString(),addFunc("[RowCeateDate]")));
+		}
+					
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ModifyTime.ToString(),addFunc("[ModifyTime]")));
+		}
+					
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.IsEnable.ToString(),addFunc("[IsEnable]")));
+		}
+					
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+public override string PersistNewItem(params ModelBase[] item)
+{
+	var data=(B_RecommendConfigure)item[0];
+string sql = string.Format("insert into {2}({0}) values({1})",
+                                this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]",name),s=>","),
+								this.GetSqlFromModel(data,(name,value)=>string.Format("'{0}'",value),s=>","),_tableName);
+    return sql;
+}
+
+public override string PersistUpdatedItem(params ModelBase[] item)
+{
+	var data=(B_RecommendConfigure)item[0];		
+	var where=	(B_RecommendConfigure)item[1];
+string sql = string.Format("update {2} set {0} where {1}",  
+						this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]='{1}'",name,value),s=>","),
+						this.GetWhereSqlFromModel(where,s=>" and "),_tableName);
+    return sql;
+}      
+
+protected override string QueryBySql(B_RecommendConfigure where = null, string order = null)
+{
+	string whereStr = string.Empty;
+	if (null != where)
+	{
+		string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+		if (!string.IsNullOrEmpty(whereSql))
+		{
+			whereStr = string.Format("where {0}", whereSql);
+		}
+	}
+    string sql = string.Format("select * from {2} {0} {1}", whereStr, order,_tableName);
+    return sql;
+}
+
+protected override string QueryPageBySql(int pageIndex = 1, int pageSize = 20, B_RecommendConfigure where = null, string order = null)
+{
+    string whereStr = string.Empty;
+    if (null != where)
+    {
+        whereStr =this.GetWhereSqlFromModel(where, s => " and ");
+    }
+    string sql =
+        string.Format(
+            @"SELECT  t.*
+			FROM    ( SELECT    * ,
+								ROW_NUMBER() OVER ({0}) AS Rn
+					  FROM {4} {1}
+					) AS t
+			WHERE   t.Rn BETWEEN {2} AND {3}",
+            string.IsNullOrEmpty(order)?"ORDER BY GETDATE()":order,
+            (string.IsNullOrEmpty(whereStr) ? string.Empty : string.Format("where {0}", whereStr)),
+			(pageIndex-1)*pageSize+1,
+			pageSize*pageIndex,_tableName);
+
+    return sql;
+}
+
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QueryCountBySql(B_RecommendConfigure where = null)
+        {
+            //TODO:Where不能为空
+
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select count(1) from {1} {0} ", whereStr,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询指定列的数据之和
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QuerySumBySql(string columnName, B_RecommendConfigure where = null)
+        {
+            if (string.IsNullOrEmpty(columnName))
+            {
+                throw new ArgumentNullException(string.Format("查询指定列数据汇总失败，失败详情：指定列名不能为空"));
+
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select SUM({1}) from {2} {0} ", whereStr, columnName,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询top条数据
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        protected override string QueryTopBySql(int? top, B_RecommendConfigure where = null, string order = null)
+        {
+            if (null == top)
+            {
+                throw new ArgumentNullException(string.Format("查询指定TOP数据失败，失败详情：TOP不能为空"));
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select top ({2}) * from {3} {0} {1}", whereStr, order,
+                                       Math.Abs((int)top),_tableName);
+
+            return sql;
+        }
+
+
+public override void AddDataTable(System.Data.DataTable dataTable)
+        {
+            base.AddDataTable(dataTable,_tableName);
+        }
+
+}
+	
 public partial class Base_DeliverRepository : BaseRepository<Base_Deliver>, IBase_DeliverRepository
 {
 		public Base_DeliverRepository(IUnitOfWork unitOfWork)

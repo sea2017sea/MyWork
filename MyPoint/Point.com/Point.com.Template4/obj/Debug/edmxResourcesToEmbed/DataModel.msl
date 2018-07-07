@@ -554,5 +554,92 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="B_ReceiveConfigure">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_ReceiveConfigure">
+        <MappingFragment StoreEntitySet="B_ReceiveConfigure">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ReceiveUrl" ColumnName="ReceiveUrl" />
+          <ScalarProperty Name="RecSysNo" ColumnName="RecSysNo" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="B_InforConfigure">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_InforConfigure">
+        <MappingFragment StoreEntitySet="B_InforConfigure">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="PromotionPrice" ColumnName="PromotionPrice" />
+          <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
+          <ScalarProperty Name="DescTwo" ColumnName="DescTwo" />
+          <ScalarProperty Name="DescOne" ColumnName="DescOne" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CouponMoney" ColumnName="CouponMoney" />
+          <ScalarProperty Name="ReceiveType" ColumnName="ReceiveType" />
+          <ScalarProperty Name="SetInvitationNum" ColumnName="SetInvitationNum" />
+          <ScalarProperty Name="LogoPicUrl" ColumnName="LogoPicUrl" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="CoverPicUrl" ColumnName="CoverPicUrl" />
+          <ScalarProperty Name="ShowCrowd" ColumnName="ShowCrowd" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="B_RecommendConfigure">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_RecommendConfigure">
+        <MappingFragment StoreEntitySet="B_RecommendConfigure">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
+          <ScalarProperty Name="PushState" ColumnName="PushState" />
+          <ScalarProperty Name="InforSysNo" ColumnName="InforSysNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="B_AdvGoods">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_AdvGoods">
+        <MappingFragment StoreEntitySet="B_AdvGoods">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
+          <ScalarProperty Name="CashBonusNum" ColumnName="CashBonusNum" />
+          <ScalarProperty Name="CashBonus" ColumnName="CashBonus" />
+          <ScalarProperty Name="DeductibleMoney" ColumnName="DeductibleMoney" />
+          <ScalarProperty Name="PromotionPrice" ColumnName="PromotionPrice" />
+          <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
+          <ScalarProperty Name="GoodsExcLink" ColumnName="GoodsExcLink" />
+          <ScalarProperty Name="GoodsDetailedLink" ColumnName="GoodsDetailedLink" />
+          <ScalarProperty Name="GoodsPic" ColumnName="GoodsPic" />
+          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+          <ScalarProperty Name="CateId" ColumnName="CateId" />
+          <ScalarProperty Name="AdvSysNo" ColumnName="AdvSysNo" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="B_AdvGoodsRecord">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_AdvGoodsRecord">
+        <MappingFragment StoreEntitySet="B_AdvGoodsRecord">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="CashBonus" ColumnName="CashBonus" />
+          <ScalarProperty Name="AdvGoodsSysNo" ColumnName="AdvGoodsSysNo" />
+          <ScalarProperty Name="AdvSysNo" ColumnName="AdvSysNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

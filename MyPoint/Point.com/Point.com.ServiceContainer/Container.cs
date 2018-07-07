@@ -5,7 +5,9 @@ using System.Text;
 using Point.com.ServiceImplement;
 using Point.com.ServiceImplement.ForJiGuang;
 using Point.com.ServiceImplement.ForWxPay;
+using Point.com.ServiceImplement.VersionTwo;
 using Point.com.ServiceInterface;
+using Point.com.ServiceInterface.VersionTwo;
 
 namespace Point.com.ServiceContainer
 {
@@ -33,6 +35,13 @@ namespace Point.com.ServiceContainer
 
             //自媒体
             container.Register<ForSelfMediaImpl, IForSelfMedia>(new ForSelfMediaImpl());
+           
+            #region 二版新增接口
+
+            //首页的数据
+            container.Register<ForIndexImpl, IForIndex>(new ForIndexImpl());
+
+            #endregion
         }
     }
 }

@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MYZJ_MLTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="MYZJ_MLTModelStoreContainer">
+    <EntitySet Name="B_AdvGoods" EntityType="MYZJ_MLTModel.Store.B_AdvGoods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="B_AdvGoodsRecord" EntityType="MYZJ_MLTModel.Store.B_AdvGoodsRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="B_InforConfigure" EntityType="MYZJ_MLTModel.Store.B_InforConfigure" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="B_ReceiveConfigure" EntityType="MYZJ_MLTModel.Store.B_ReceiveConfigure" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="B_RecommendConfigure" EntityType="MYZJ_MLTModel.Store.B_RecommendConfigure" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Base_Region" EntityType="MYZJ_MLTModel.Store.Base_Region" store:Type="Tables" store:Schema="dbo" store:Name="Base_Region">
       <DefiningQuery>SELECT 
       [Base_Region].[RegionId] AS [RegionId], 
@@ -60,6 +65,88 @@
     <EntitySet Name="T_Subject" EntityType="MYZJ_MLTModel.Store.T_Subject" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="T_Withdrawals" EntityType="MYZJ_MLTModel.Store.T_Withdrawals" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
+  <EntityType Name="B_AdvGoods">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AdvSysNo" Type="int" Nullable="false" />
+    <Property Name="CateId" Type="int" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" Nullable="false" MaxLength="512" />
+    <Property Name="GoodsPic" Type="varchar(max)" Nullable="false" />
+    <Property Name="GoodsDetailedLink" Type="varchar(max)" />
+    <Property Name="GoodsExcLink" Type="varchar(max)" />
+    <Property Name="MarketPrice" Type="decimal" Nullable="false" Scale="4" />
+    <Property Name="PromotionPrice" Type="decimal" Scale="4" />
+    <Property Name="DeductibleMoney" Type="decimal" Scale="4" />
+    <Property Name="CashBonus" Type="decimal" Scale="4" />
+    <Property Name="CashBonusNum" Type="int" />
+    <Property Name="IntSort" Type="int" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_AdvGoodsRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="AdvSysNo" Type="int" Nullable="false" />
+    <Property Name="AdvGoodsSysNo" Type="int" Nullable="false" />
+    <Property Name="CashBonus" Type="decimal" Scale="4" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_InforConfigure">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DataType" Type="int" Nullable="false" />
+    <Property Name="ShowCrowd" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="CoverPicUrl" Type="varchar(max)" Nullable="false" />
+    <Property Name="ShopName" Type="nvarchar" MaxLength="128" />
+    <Property Name="LogoPicUrl" Type="varchar(max)" />
+    <Property Name="SetInvitationNum" Type="int" />
+    <Property Name="ReceiveType" Type="int" Nullable="false" />
+    <Property Name="CouponMoney" Type="decimal" Scale="4" />
+    <Property Name="Title" Type="nvarchar" MaxLength="512" />
+    <Property Name="DescOne" Type="nvarchar" MaxLength="256" />
+    <Property Name="DescTwo" Type="nvarchar" MaxLength="256" />
+    <Property Name="MarketPrice" Type="decimal" Scale="4" />
+    <Property Name="PromotionPrice" Type="decimal" Scale="4" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_ReceiveConfigure">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RecSysNo" Type="int" Nullable="false" />
+    <Property Name="ReceiveUrl" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_RecommendConfigure">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DataType" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="InforSysNo" Type="int" Nullable="false" />
+    <Property Name="PushState" Type="int" Nullable="false" />
+    <Property Name="IntSort" Type="int" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+  </EntityType>
   <!--生成过程中发现错误:
       警告 6002: 表/视图“point.dbo.Base_Region”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
@@ -425,7 +512,7 @@
     <Property Name="ShowMode" Type="int" Nullable="false" />
     <Property Name="IsShowIndex" Type="int" Nullable="false" />
     <Property Name="SortId" Type="int" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -438,7 +525,7 @@
     <Property Name="Portrait" Type="nvarchar(max)" />
     <Property Name="Describe" Type="nvarchar" MaxLength="256" />
     <Property Name="Score" Type="decimal" Nullable="false" Scale="2" />
-    <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+    <Property Name="RowCeateDate" Type="datetime" />
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="IsEnable" Type="bit" Nullable="false" />
   </EntityType>
@@ -517,8 +604,8 @@
       <PropertyRef Name="ShareUserId" />
       <PropertyRef Name="CoverMobile" />
       <PropertyRef Name="IsReceive" />
-      <PropertyRef Name="RowCeateDate" />
       <PropertyRef Name="IsEnable" />
+      <PropertyRef Name="RowCeateDate" />
     </Key>
     <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ShareSysNo" Type="int" Nullable="false" />

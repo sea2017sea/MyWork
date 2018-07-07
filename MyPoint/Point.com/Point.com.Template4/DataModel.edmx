@@ -6,6 +6,11 @@
     <edmx:StorageModels>
     <Schema Namespace="MYZJ_MLTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MYZJ_MLTModelStoreContainer">
+          <EntitySet Name="B_AdvGoods" EntityType="MYZJ_MLTModel.Store.B_AdvGoods" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="B_AdvGoodsRecord" EntityType="MYZJ_MLTModel.Store.B_AdvGoodsRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="B_InforConfigure" EntityType="MYZJ_MLTModel.Store.B_InforConfigure" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="B_ReceiveConfigure" EntityType="MYZJ_MLTModel.Store.B_ReceiveConfigure" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="B_RecommendConfigure" EntityType="MYZJ_MLTModel.Store.B_RecommendConfigure" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Base_Region" EntityType="MYZJ_MLTModel.Store.Base_Region" store:Type="Tables" store:Schema="dbo" store:Name="Base_Region">
             <DefiningQuery>SELECT 
       [Base_Region].[RegionId] AS [RegionId], 
@@ -65,6 +70,88 @@
           <EntitySet Name="T_Subject" EntityType="MYZJ_MLTModel.Store.T_Subject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_Withdrawals" EntityType="MYZJ_MLTModel.Store.T_Withdrawals" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="B_AdvGoods">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AdvSysNo" Type="int" Nullable="false" />
+          <Property Name="CateId" Type="int" Nullable="false" />
+          <Property Name="GoodsName" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="GoodsPic" Type="varchar(max)" Nullable="false" />
+          <Property Name="GoodsDetailedLink" Type="varchar(max)" />
+          <Property Name="GoodsExcLink" Type="varchar(max)" />
+          <Property Name="MarketPrice" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="PromotionPrice" Type="decimal" Scale="4" />
+          <Property Name="DeductibleMoney" Type="decimal" Scale="4" />
+          <Property Name="CashBonus" Type="decimal" Scale="4" />
+          <Property Name="CashBonusNum" Type="int" />
+          <Property Name="IntSort" Type="int" Nullable="false" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_AdvGoodsRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AdvSysNo" Type="int" Nullable="false" />
+          <Property Name="AdvGoodsSysNo" Type="int" Nullable="false" />
+          <Property Name="CashBonus" Type="decimal" Scale="4" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_InforConfigure">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataType" Type="int" Nullable="false" />
+          <Property Name="ShowCrowd" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="CoverPicUrl" Type="varchar(max)" Nullable="false" />
+          <Property Name="ShopName" Type="nvarchar" MaxLength="128" />
+          <Property Name="LogoPicUrl" Type="varchar(max)" />
+          <Property Name="SetInvitationNum" Type="int" />
+          <Property Name="ReceiveType" Type="int" Nullable="false" />
+          <Property Name="CouponMoney" Type="decimal" Scale="4" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="DescOne" Type="nvarchar" MaxLength="256" />
+          <Property Name="DescTwo" Type="nvarchar" MaxLength="256" />
+          <Property Name="MarketPrice" Type="decimal" Scale="4" />
+          <Property Name="PromotionPrice" Type="decimal" Scale="4" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_ReceiveConfigure">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RecSysNo" Type="int" Nullable="false" />
+          <Property Name="ReceiveUrl" Type="varchar(max)" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_RecommendConfigure">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataType" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="InforSysNo" Type="int" Nullable="false" />
+          <Property Name="PushState" Type="int" Nullable="false" />
+          <Property Name="IntSort" Type="int" Nullable="false" />
+          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
         <!--生成过程中发现错误:
       警告 6002: 表/视图“point.dbo.Base_Region”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
@@ -430,7 +517,7 @@
           <Property Name="ShowMode" Type="int" Nullable="false" />
           <Property Name="IsShowIndex" Type="int" Nullable="false" />
           <Property Name="SortId" Type="int" />
-          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="RowCeateDate" Type="datetime" />
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="IsEnable" Type="bit" Nullable="false" />
         </EntityType>
@@ -443,7 +530,7 @@
           <Property Name="Portrait" Type="nvarchar(max)" />
           <Property Name="Describe" Type="nvarchar" MaxLength="256" />
           <Property Name="Score" Type="decimal" Nullable="false" Scale="2" />
-          <Property Name="RowCeateDate" Type="datetime" Nullable="false" />
+          <Property Name="RowCeateDate" Type="datetime" />
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="IsEnable" Type="bit" Nullable="false" />
         </EntityType>
@@ -522,8 +609,8 @@
             <PropertyRef Name="ShareUserId" />
             <PropertyRef Name="CoverMobile" />
             <PropertyRef Name="IsReceive" />
-            <PropertyRef Name="RowCeateDate" />
             <PropertyRef Name="IsEnable" />
+            <PropertyRef Name="RowCeateDate" />
           </Key>
           <Property Name="SysNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ShareSysNo" Type="int" Nullable="false" />
@@ -641,6 +728,11 @@
           <EntitySet Name="T_SelfMediaRedDotRecord" EntityType="MYZJ_MLTModel.T_SelfMediaRedDotRecord" />
           <EntitySet Name="T_SelfMediaSaveRecord" EntityType="MYZJ_MLTModel.T_SelfMediaSaveRecord" />
           <EntitySet Name="T_Subject" EntityType="MYZJ_MLTModel.T_Subject" />
+          <EntitySet Name="B_ReceiveConfigure" EntityType="MYZJ_MLTModel.B_ReceiveConfigure" />
+          <EntitySet Name="B_InforConfigure" EntityType="MYZJ_MLTModel.B_InforConfigure" />
+          <EntitySet Name="B_RecommendConfigure" EntityType="MYZJ_MLTModel.B_RecommendConfigure" />
+          <EntitySet Name="B_AdvGoods" EntityType="MYZJ_MLTModel.B_AdvGoods" />
+          <EntitySet Name="B_AdvGoodsRecord" EntityType="MYZJ_MLTModel.B_AdvGoodsRecord" />
           </EntityContainer>
         <EntityType Name="Base_Deliver">
           <Key>
@@ -1164,7 +1256,7 @@
           <Property Type="String" Name="Portrait" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Describe" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Score" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
           <Property Type="DateTime" Name="ModifyTime" Precision="3" />
           <Property Type="Boolean" Name="IsEnable" Nullable="false" />
         </EntityType>
@@ -1209,7 +1301,7 @@
           <Property Type="Int32" Name="ShowMode" Nullable="false" />
           <Property Type="Int32" Name="IsShowIndex" Nullable="false" />
           <Property Type="Int32" Name="SortId" />
-          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="RowCeateDate" Precision="3" />
           <Property Type="DateTime" Name="ModifyTime" Precision="3" />
           <Property Type="Boolean" Name="IsEnable" Nullable="false" />
         </EntityType>
@@ -1296,6 +1388,88 @@
           <Property Type="DateTime" Name="ModifyTime" Precision="3" />
           <Property Type="Boolean" Name="IsEnable" Nullable="false" />
           <Property Type="Int32" Name="AnswerCount" />
+        </EntityType>
+        <EntityType Name="B_ReceiveConfigure">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RecSysNo" Nullable="false" />
+          <Property Type="String" Name="ReceiveUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_InforConfigure">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataType" Nullable="false" />
+          <Property Type="String" Name="ShowCrowd" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CoverPicUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShopName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LogoPicUrl" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SetInvitationNum" />
+          <Property Type="Int32" Name="ReceiveType" Nullable="false" />
+          <Property Type="Decimal" Name="CouponMoney" Precision="18" Scale="4" />
+          <Property Type="String" Name="Title" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescOne" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DescTwo" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MarketPrice" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="PromotionPrice" Precision="18" Scale="4" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_RecommendConfigure">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DataType" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="InforSysNo" Nullable="false" />
+          <Property Type="Int32" Name="PushState" Nullable="false" />
+          <Property Type="Int32" Name="IntSort" Nullable="false" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_AdvGoods">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AdvSysNo" Nullable="false" />
+          <Property Type="Int32" Name="CateId" Nullable="false" />
+          <Property Type="String" Name="GoodsName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GoodsPic" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GoodsDetailedLink" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GoodsExcLink" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MarketPrice" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="PromotionPrice" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="DeductibleMoney" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="CashBonus" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="CashBonusNum" />
+          <Property Type="Int32" Name="IntSort" Nullable="false" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+        </EntityType>
+        <EntityType Name="B_AdvGoodsRecord">
+          <Key>
+            <PropertyRef Name="SysNo" />
+          </Key>
+          <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="AdvSysNo" Nullable="false" />
+          <Property Type="Int32" Name="AdvGoodsSysNo" Nullable="false" />
+          <Property Type="Decimal" Name="CashBonus" Precision="18" Scale="4" />
+          <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="Boolean" Name="IsEnable" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1852,6 +2026,93 @@
                 <ScalarProperty Name="AnswerMoney" ColumnName="AnswerMoney" />
                 <ScalarProperty Name="ProblemNameUrl" ColumnName="ProblemNameUrl" />
                 <ScalarProperty Name="InforSysNo" ColumnName="InforSysNo" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_ReceiveConfigure">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.B_ReceiveConfigure">
+              <MappingFragment StoreEntitySet="B_ReceiveConfigure">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReceiveUrl" ColumnName="ReceiveUrl" />
+                <ScalarProperty Name="RecSysNo" ColumnName="RecSysNo" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_InforConfigure">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.B_InforConfigure">
+              <MappingFragment StoreEntitySet="B_InforConfigure">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="PromotionPrice" ColumnName="PromotionPrice" />
+                <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
+                <ScalarProperty Name="DescTwo" ColumnName="DescTwo" />
+                <ScalarProperty Name="DescOne" ColumnName="DescOne" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CouponMoney" ColumnName="CouponMoney" />
+                <ScalarProperty Name="ReceiveType" ColumnName="ReceiveType" />
+                <ScalarProperty Name="SetInvitationNum" ColumnName="SetInvitationNum" />
+                <ScalarProperty Name="LogoPicUrl" ColumnName="LogoPicUrl" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="CoverPicUrl" ColumnName="CoverPicUrl" />
+                <ScalarProperty Name="ShowCrowd" ColumnName="ShowCrowd" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_RecommendConfigure">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.B_RecommendConfigure">
+              <MappingFragment StoreEntitySet="B_RecommendConfigure">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="IntSort" ColumnName="IntSort" />
+                <ScalarProperty Name="PushState" ColumnName="PushState" />
+                <ScalarProperty Name="InforSysNo" ColumnName="InforSysNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_AdvGoods">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.B_AdvGoods">
+              <MappingFragment StoreEntitySet="B_AdvGoods">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="IntSort" ColumnName="IntSort" />
+                <ScalarProperty Name="CashBonusNum" ColumnName="CashBonusNum" />
+                <ScalarProperty Name="CashBonus" ColumnName="CashBonus" />
+                <ScalarProperty Name="DeductibleMoney" ColumnName="DeductibleMoney" />
+                <ScalarProperty Name="PromotionPrice" ColumnName="PromotionPrice" />
+                <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
+                <ScalarProperty Name="GoodsExcLink" ColumnName="GoodsExcLink" />
+                <ScalarProperty Name="GoodsDetailedLink" ColumnName="GoodsDetailedLink" />
+                <ScalarProperty Name="GoodsPic" ColumnName="GoodsPic" />
+                <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+                <ScalarProperty Name="CateId" ColumnName="CateId" />
+                <ScalarProperty Name="AdvSysNo" ColumnName="AdvSysNo" />
+                <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="B_AdvGoodsRecord">
+            <EntityTypeMapping TypeName="MYZJ_MLTModel.B_AdvGoodsRecord">
+              <MappingFragment StoreEntitySet="B_AdvGoodsRecord">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+                <ScalarProperty Name="CashBonus" ColumnName="CashBonus" />
+                <ScalarProperty Name="AdvGoodsSysNo" ColumnName="AdvGoodsSysNo" />
+                <ScalarProperty Name="AdvSysNo" ColumnName="AdvSysNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="SysNo" ColumnName="SysNo" />
               </MappingFragment>
             </EntityTypeMapping>

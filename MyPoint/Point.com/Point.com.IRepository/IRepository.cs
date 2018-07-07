@@ -5,6 +5,26 @@ namespace Point.com.IRepository
 {
    
 	
+	public partial interface IB_AdvGoodsRepository  : IBaseRepository<B_AdvGoods>
+    {        
+    }
+	
+	public partial interface IB_AdvGoodsRecordRepository  : IBaseRepository<B_AdvGoodsRecord>
+    {        
+    }
+	
+	public partial interface IB_InforConfigureRepository  : IBaseRepository<B_InforConfigure>
+    {        
+    }
+	
+	public partial interface IB_ReceiveConfigureRepository  : IBaseRepository<B_ReceiveConfigure>
+    {        
+    }
+	
+	public partial interface IB_RecommendConfigureRepository  : IBaseRepository<B_RecommendConfigure>
+    {        
+    }
+	
 	public partial interface IBase_DeliverRepository  : IBaseRepository<Base_Deliver>
     {        
     }

@@ -4,7 +4,6 @@
 USE point
 go
   
- SELECT * FROM T_Member
   
 --´´½¨»áÔ±±í(·ÇÐÂÔö£¬µ÷Õû×Ö¶Î)
 CREATE TABLE T_Member
@@ -78,7 +77,6 @@ IsEnable BIT NOT NULL,                                  --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½
 GO
 
 
-
 ----------------------------------------------------------------------------------------------------------------
 --ÒÔÏÂÊÇÐÂÔöµÄ±í
 
@@ -93,15 +91,14 @@ CoverPicUrl VARCHAR(max) NOT NULL,    --·âÃæÍ¼Æ¬
 ShopName nvarchar(128) NULL,          --µêÆÌÃû³Æ              µ± DataType = 2 Ê±£¬ÓÐµêÆÌÃû³Æ
 LogoPicUrl VARCHAR(max) NULL,         --µêÆÌlogoÍ¼Æ¬          µ± DataType = 2 Ê±£¬ÓÐµêÆÌlogo
 SetInvitationNum INT NULL,            --ÐèÒªÑûÇëµÄÈËÊý        µ± DataType = 2 Ê±£¬ÐèÒªÓÐÑûÇëµÄÈËÊý
+ReceiveType int not null,             --ÁìÈ¡ÀàÐÍ£¨µ± DataType = 2 Ê±ÓÐÐ§£©  1 Õ¾ÄÚ²¹ÌùÏÖ½ðºì°ü£¨CouponMoney ´ËÊ±±ØÐëÓÐÖµ£©   2 Õ¾ÍâÁ´½ÓµØÖ·,´ËÊ±»áÈ¥ T_ReceiveConfigure ±íÕÒ¶ÔÓ¦µÄ¼ÇÂ¼
 CouponMoney DECIMAL(18,4) NULL,       --ÓÅ»ÝÈ¯½ð¶î            µ± DataType = 2 Ê±£¬ÐèÒªÓÅ»ÝÈ¯½ð¶î
-ReceiveUrl VARCHAR(max) NULL,         --ÓÅ»ÝÈ¯ÁìÈ¡Á¬½ÓµØÖ·    µ± DataType = 2 Ê±£¬Èç¹ûÎª¿Õµã»÷ÁìÈ¡Ö±½Ó·¢·Å CouponMoney µÄ½ð¶îµ½ÕË»§£¬¿ÉÌáÏÖ
- 
+
 Title NVARCHAR(512) NULL,             --±êÌâ
 DescOne NVARCHAR(256) NULL,           --ÃèÊö1
 DescTwo NVARCHAR(256) NULL,           --ÃèÊö2
 MarketPrice DECIMAL(18,4) NULL,       --ÊÐ³¡¼Û¸ñ
 PromotionPrice DECIMAL(18,4) NULL,    --´ÙÏú¼Û¸ñ
-IntSort int NOT NULL,                 --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
 RowCeateDate DATETIME NOT NULL,       --´´½¨Ê±¼ä
 ModifyTime DATETIME NULL,             --ÐÞ¸ÄÊ±¼ä
 IsEnable BIT NOT NULL                 --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
@@ -121,13 +118,43 @@ RowCeateDate DATETIME NOT NULL,                                               --
 ModifyTime DATETIME NULL,                                                     --ÐÞ¸ÄÊ±¼ä
 IsEnable BIT NOT NULL                                                         --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
 )
+
+--´´½¨ÑûÇëºÃÓÑÍâ²¿Á´½ÓÅäÖÃ±í
+create table B_ReceiveConfigure
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                          --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
+RecSysNo INT not null,                                                        --¶ÔÓ¦ B_InforConfigure ±íµÄ sysno ×Ö¶Î
+ReceiveUrl varchar(max) not null,                                             --ÁìÈ¡µÄµØÖ·
+UserId int null,                                                              --¹ØÁªµÄ»áÔ±ID£¬ÓÐ»áÔ±ID£¬ÔòËµÃ÷µ±Ç°µØÖ·ÒÑ¾­±»µ±Ç°»áÔ±°ó¶¨
+RowCeateDate DATETIME NOT NULL,                                               --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                     --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                                         --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
 go
 
+
+--´´½¨ÍÆ¼öÊý¾ÝÅäÖÃ±í
+--ÓÃÓÚAPP ÊÖ»ú×ÀÃæºìµã ÒÔ¼° Ê×Ò³À­È¡µÄÂß¼­
+--×¢²áµÄÊ±ºòÖ±½ÓÔÚ±¾±í²åÈë×î½üµÄÈýÌõÐÅÏ¢ID£¬ÓÃÓÚÄ¬ÈÏÕ¹Ê¾
+--Èç¹ûÊÇÑûÇëºÃÓÑ¹ýÀ´µÄ£¬»¹ÐèÒª°ÑÑûÇëµÄÄÇÌõÐÅÏ¢Í¬Ê±²åÈëµ½ÕâÕÅ±í£¬·ñÔòÊ×Ò³²»ÄÜÏÔÊ¾ÕâÌõÊý¾Ý
+CREATE TABLE B_RecommendConfigure
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                        --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»D
+DataType int not null,                                                      --Êý¾ÝÀàÐÍ 1 ÈË¹¤²åÈë  2 ÏµÍ³²åÈë£¨ÏµÍ³²åÈëµÄ²»ÐèÒªºìµãÕ¹Ê¾£©
+UserId int NOT NULL,                                                        --»áÔ±ID
+InforSysNo int NOT NULL,                                                    --ÐÅÏ¢ID£¬¶ÔÓ¦ T_InforConfigure ±ísysno
+PushState int NOT NULL,                                                     --ÍÆËÍ£¬ºìµãÕ¹Ê¾£¬0 Î´ÍÆËÍ(Î´¶ÁÈ¡) 1 ÍÆËÍ
+IntSort int NOT NULL,                                                       --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
+RowCeateDate DATETIME NOT NULL,                                             --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                   --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                                       --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
 
 --´´½¨¹ã¸æÉÌÆ·±í
 CREATE TABLE B_AdvGoods
 (
-SysNo INT IDENTITY(1,1) PRIMARY KEY,                                     --Ö÷¼ü£¬×ÔÔö³¤
+SysNo INT IDENTITY(1000,1) PRIMARY KEY,                                  --Ö÷¼ü£¬×ÔÔö³¤£¬ÉÌÆ·ID
 AdvSysNo INT NOT NULL,                                                   --¹ã¸æID ¶ÔÓ¦ B_InforConfigure ±íµÄÖ÷¼ü
 CateId INT NOT NULL,                                                     --ÉÌÆ·ËùÊô·ÖÀà
 GoodsName NVARCHAR(512) NOT NULL,                                        --ÉÌÆ·Ãû³Æ
@@ -144,15 +171,15 @@ RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê
 ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ±¼ä
 IsEnable BIT NOT NULL                                                    --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
 )
-go
+go 
 
 --ÐÂÔö¹ã¸æÉÌÆ·»¥¶¯¼ÇÂ¼(ºì°üÁìÈ¡¼ÇÂ¼±í)
 CREATE TABLE B_AdvGoodsRecord
 (
 SysNo INT IDENTITY(1,1) PRIMARY KEY,                                     --Ö÷¼ü£¬×ÔÔö³¤
 UserId INT NOT NULL,                                                     --»áÔ±ID
-AdvSysNo INT NOT NULL,                                                   --¹ã¸æID ¶ÔÓ¦ B_InforConfigure ±íµÄÖ÷¼ü
-AdvGoodsSysNo INT NOT NULL,                                              --¹ã¸æÉÌÆ·ID ¶ÔÓ¦ T_AdvGoods ±íµÄÖ÷¼ü
+AdvSysNo INT NOT NULL,                                                   --¹ã¸æID ¶ÔÓ¦ B_InforConfigure ±íµÄ SysNo Ö÷¼ü
+AdvGoodsSysNo INT NOT NULL,                                              --¹ã¸æÉÌÆ·ID ¶ÔÓ¦ T_AdvGoods ±íµÄ SysNo Ö÷¼ü
 CashBonus DECIMAL(18,4) NULL,                                            --»ñÈ¡µÄÏÖ½ðºì°ü ¿Í»§²ÎÓëÖ®ºó·¢¸ø¿Í»§µÄºì°ü½ð¶î
 RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê±¼ä
 ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ±¼ä
@@ -178,5 +205,17 @@ IsEnable BIT NOT NULL                                                        --Ê
 go
 
 
+select * from dbo.B_RecommendConfigure
 
+select * from dbo.B_InforConfigure
+
+select * from dbo.B_AdvGoodsRecord
+select * from dbo.B_AdvGoods
+--insert into B_InforConfigure values (1,'0','·âÃæÍ¼Æ¬','µêÆÌÃû³Æ','µêÆÌlogoÍ¼Æ¬',1,1,0,'±êÌâ','ÃèÊö1','ÃèÊö2',123,23,'2018-07-05 14:17:42.000','2018-07-05 14:17:42.000',1)
+--insert into B_RecommendConfigure values (1,123,1,1,1,'2018-05-10 14:00:11.000','2018-05-10 14:00:11.000',1)
+
+--insert into B_AdvGoods values(1,1,'ÉÌÆ·Ãû³Æ','ÉÌÆ·Í¼Æ¬µØÖ·','ÉÌÆ·Ã÷Ï¸Á¬½ÓµØÖ·','ÉÌÆ·¶Ò»»Á´½ÓµØÖ·',123,343,23,23,232,1,'2018-07-05 14:17:42.000','2018-07-05 14:17:42.000',1)
+--insert into B_AdvGoodsRecord values(123,1,1,23,'2018-05-11 09:46:27.000','2018-05-11 09:46:27.000',1)
+
+select * from dbo.T_Member
 

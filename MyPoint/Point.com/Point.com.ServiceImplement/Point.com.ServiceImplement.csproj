@@ -114,6 +114,7 @@
     <Compile Include="Pm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmsImpl.cs" />
+    <Compile Include="VersionTwo\ForIndexImpl.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
