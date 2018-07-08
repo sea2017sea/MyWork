@@ -207,6 +207,8 @@ go
 
 select * from dbo.B_RecommendConfigure
 
+update B_RecommendConfigure set pushstate = 0
+
 select * from dbo.B_InforConfigure
 
 select * from dbo.B_AdvGoodsRecord
@@ -220,4 +222,5 @@ select * from dbo.B_AdvGoods
 select * from dbo.T_MemB_AdvGoodsRecordber
 
 
+select * from dbo.T_Member
 
