@@ -217,5 +217,7 @@ select * from dbo.B_AdvGoods
 --insert into B_AdvGoods values(1,1,'商品名称','商品图片地址','商品明细连接地址','商品兑换链接地址',123,343,23,23,232,1,'2018-07-05 14:17:42.000','2018-07-05 14:17:42.000',1)
 --insert into B_AdvGoodsRecord values(123,1,1,23,'2018-05-11 09:46:27.000','2018-05-11 09:46:27.000',1)
 
-select * from dbo.T_Member
+select * from dbo.T_MemB_AdvGoodsRecordber
+
+
 
