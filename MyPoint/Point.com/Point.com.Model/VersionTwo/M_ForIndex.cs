@@ -38,6 +38,17 @@ namespace Point.com.Model.VersionTwo
 
     #endregion
 
+    #region 领取红包
+
+    public class M_ReceiveRedRes
+    {
+        public string Title { get; set; }            //标题
+        public int SurplusCount { get; set; }        //红包剩余数量
+        public decimal ReceiveAmount { get; set; }   //领取金额，单位：元
+    }
+
+    #endregion
+
     public class M_IndexPageData
     {
         public int SysNo { get; set; }                   //主键，自增长，唯一标识

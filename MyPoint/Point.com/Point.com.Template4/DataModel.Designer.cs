@@ -768,6 +768,38 @@ namespace Point.com.Template4
             }
         }
         private ObjectSet<B_AdvGoodsRecord> _B_AdvGoodsRecord;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<B_Category> B_Category
+        {
+            get
+            {
+                if ((_B_Category == null))
+                {
+                    _B_Category = base.CreateObjectSet<B_Category>("B_Category");
+                }
+                return _B_Category;
+            }
+        }
+        private ObjectSet<B_Category> _B_Category;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<B_ShareFriends> B_ShareFriends
+        {
+            get
+            {
+                if ((_B_ShareFriends == null))
+                {
+                    _B_ShareFriends = base.CreateObjectSet<B_ShareFriends>("B_ShareFriends");
+                }
+                return _B_ShareFriends;
+            }
+        }
+        private ObjectSet<B_ShareFriends> _B_ShareFriends;
 
         #endregion
 
@@ -1123,6 +1155,22 @@ namespace Point.com.Template4
         public void AddToB_AdvGoodsRecord(B_AdvGoodsRecord b_AdvGoodsRecord)
         {
             base.AddObject("B_AdvGoodsRecord", b_AdvGoodsRecord);
+        }
+    
+        /// <summary>
+        /// 用于向 B_Category EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToB_Category(B_Category b_Category)
+        {
+            base.AddObject("B_Category", b_Category);
+        }
+    
+        /// <summary>
+        /// 用于向 B_ShareFriends EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToB_ShareFriends(B_ShareFriends b_ShareFriends)
+        {
+            base.AddObject("B_ShareFriends", b_ShareFriends);
         }
 
         #endregion
@@ -1723,6 +1771,293 @@ namespace Point.com.Template4
         private Nullable<global::System.Decimal> _CashBonus;
         partial void OnCashBonusChanging(Nullable<global::System.Decimal> value);
         partial void OnCashBonusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime RowCeateDate
+        {
+            get
+            {
+                return _RowCeateDate;
+            }
+            set
+            {
+                OnRowCeateDateChanging(value);
+                ReportPropertyChanging("RowCeateDate");
+                _RowCeateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RowCeateDate");
+                OnRowCeateDateChanged();
+            }
+        }
+        private global::System.DateTime _RowCeateDate;
+        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        partial void OnRowCeateDateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ModifyTime
+        {
+            get
+            {
+                return _ModifyTime;
+            }
+            set
+            {
+                OnModifyTimeChanging(value);
+                ReportPropertyChanging("ModifyTime");
+                _ModifyTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifyTime");
+                OnModifyTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ModifyTime;
+        partial void OnModifyTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnModifyTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsEnable
+        {
+            get
+            {
+                return _IsEnable;
+            }
+            set
+            {
+                OnIsEnableChanging(value);
+                ReportPropertyChanging("IsEnable");
+                _IsEnable = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsEnable");
+                OnIsEnableChanged();
+            }
+        }
+        private global::System.Boolean _IsEnable;
+        partial void OnIsEnableChanging(global::System.Boolean value);
+        partial void OnIsEnableChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYZJ_MLTModel", Name="B_Category")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class B_Category : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 B_Category 对象。
+        /// </summary>
+        /// <param name="sysNo">SysNo 属性的初始值。</param>
+        /// <param name="cateId">CateId 属性的初始值。</param>
+        /// <param name="cateName">CateName 属性的初始值。</param>
+        /// <param name="cateDescOne">CateDescOne 属性的初始值。</param>
+        /// <param name="cateDescTwo">CateDescTwo 属性的初始值。</param>
+        /// <param name="intSort">IntSort 属性的初始值。</param>
+        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
+        /// <param name="isEnable">IsEnable 属性的初始值。</param>
+        public static B_Category CreateB_Category(global::System.Int32 sysNo, global::System.Int32 cateId, global::System.String cateName, global::System.String cateDescOne, global::System.String cateDescTwo, global::System.Int32 intSort, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        {
+            B_Category b_Category = new B_Category();
+            b_Category.SysNo = sysNo;
+            b_Category.CateId = cateId;
+            b_Category.CateName = cateName;
+            b_Category.CateDescOne = cateDescOne;
+            b_Category.CateDescTwo = cateDescTwo;
+            b_Category.IntSort = intSort;
+            b_Category.RowCeateDate = rowCeateDate;
+            b_Category.IsEnable = isEnable;
+            return b_Category;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SysNo
+        {
+            get
+            {
+                return _SysNo;
+            }
+            set
+            {
+                OnSysNoChanging(value);
+                ReportPropertyChanging("SysNo");
+                _SysNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SysNo");
+                OnSysNoChanged();
+            }
+        }
+        private global::System.Int32 _SysNo;
+        partial void OnSysNoChanging(global::System.Int32 value);
+        partial void OnSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CateId
+        {
+            get
+            {
+                return _CateId;
+            }
+            set
+            {
+                if (_CateId != value)
+                {
+                    OnCateIdChanging(value);
+                    ReportPropertyChanging("CateId");
+                    _CateId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CateId");
+                    OnCateIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CateId;
+        partial void OnCateIdChanging(global::System.Int32 value);
+        partial void OnCateIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CateName
+        {
+            get
+            {
+                return _CateName;
+            }
+            set
+            {
+                OnCateNameChanging(value);
+                ReportPropertyChanging("CateName");
+                _CateName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CateName");
+                OnCateNameChanged();
+            }
+        }
+        private global::System.String _CateName;
+        partial void OnCateNameChanging(global::System.String value);
+        partial void OnCateNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CateDescOne
+        {
+            get
+            {
+                return _CateDescOne;
+            }
+            set
+            {
+                OnCateDescOneChanging(value);
+                ReportPropertyChanging("CateDescOne");
+                _CateDescOne = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CateDescOne");
+                OnCateDescOneChanged();
+            }
+        }
+        private global::System.String _CateDescOne;
+        partial void OnCateDescOneChanging(global::System.String value);
+        partial void OnCateDescOneChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CateDescTwo
+        {
+            get
+            {
+                return _CateDescTwo;
+            }
+            set
+            {
+                OnCateDescTwoChanging(value);
+                ReportPropertyChanging("CateDescTwo");
+                _CateDescTwo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CateDescTwo");
+                OnCateDescTwoChanged();
+            }
+        }
+        private global::System.String _CateDescTwo;
+        partial void OnCateDescTwoChanging(global::System.String value);
+        partial void OnCateDescTwoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CatePic
+        {
+            get
+            {
+                return _CatePic;
+            }
+            set
+            {
+                OnCatePicChanging(value);
+                ReportPropertyChanging("CatePic");
+                _CatePic = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CatePic");
+                OnCatePicChanged();
+            }
+        }
+        private global::System.String _CatePic;
+        partial void OnCatePicChanging(global::System.String value);
+        partial void OnCatePicChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IntSort
+        {
+            get
+            {
+                return _IntSort;
+            }
+            set
+            {
+                OnIntSortChanging(value);
+                ReportPropertyChanging("IntSort");
+                _IntSort = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IntSort");
+                OnIntSortChanged();
+            }
+        }
+        private global::System.Int32 _IntSort;
+        partial void OnIntSortChanging(global::System.Int32 value);
+        partial void OnIntSortChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -2648,6 +2983,241 @@ namespace Point.com.Template4
         private global::System.Int32 _IntSort;
         partial void OnIntSortChanging(global::System.Int32 value);
         partial void OnIntSortChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime RowCeateDate
+        {
+            get
+            {
+                return _RowCeateDate;
+            }
+            set
+            {
+                OnRowCeateDateChanging(value);
+                ReportPropertyChanging("RowCeateDate");
+                _RowCeateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RowCeateDate");
+                OnRowCeateDateChanged();
+            }
+        }
+        private global::System.DateTime _RowCeateDate;
+        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        partial void OnRowCeateDateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ModifyTime
+        {
+            get
+            {
+                return _ModifyTime;
+            }
+            set
+            {
+                OnModifyTimeChanging(value);
+                ReportPropertyChanging("ModifyTime");
+                _ModifyTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifyTime");
+                OnModifyTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ModifyTime;
+        partial void OnModifyTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnModifyTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsEnable
+        {
+            get
+            {
+                return _IsEnable;
+            }
+            set
+            {
+                OnIsEnableChanging(value);
+                ReportPropertyChanging("IsEnable");
+                _IsEnable = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsEnable");
+                OnIsEnableChanged();
+            }
+        }
+        private global::System.Boolean _IsEnable;
+        partial void OnIsEnableChanging(global::System.Boolean value);
+        partial void OnIsEnableChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYZJ_MLTModel", Name="B_ShareFriends")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class B_ShareFriends : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 B_ShareFriends 对象。
+        /// </summary>
+        /// <param name="sysNo">SysNo 属性的初始值。</param>
+        /// <param name="shareSysNo">ShareSysNo 属性的初始值。</param>
+        /// <param name="shareUserId">ShareUserId 属性的初始值。</param>
+        /// <param name="coverMobile">CoverMobile 属性的初始值。</param>
+        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
+        /// <param name="isEnable">IsEnable 属性的初始值。</param>
+        public static B_ShareFriends CreateB_ShareFriends(global::System.Int32 sysNo, global::System.Int32 shareSysNo, global::System.Int32 shareUserId, global::System.String coverMobile, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        {
+            B_ShareFriends b_ShareFriends = new B_ShareFriends();
+            b_ShareFriends.SysNo = sysNo;
+            b_ShareFriends.ShareSysNo = shareSysNo;
+            b_ShareFriends.ShareUserId = shareUserId;
+            b_ShareFriends.CoverMobile = coverMobile;
+            b_ShareFriends.RowCeateDate = rowCeateDate;
+            b_ShareFriends.IsEnable = isEnable;
+            return b_ShareFriends;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SysNo
+        {
+            get
+            {
+                return _SysNo;
+            }
+            set
+            {
+                if (_SysNo != value)
+                {
+                    OnSysNoChanging(value);
+                    ReportPropertyChanging("SysNo");
+                    _SysNo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("SysNo");
+                    OnSysNoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SysNo;
+        partial void OnSysNoChanging(global::System.Int32 value);
+        partial void OnSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ShareSysNo
+        {
+            get
+            {
+                return _ShareSysNo;
+            }
+            set
+            {
+                OnShareSysNoChanging(value);
+                ReportPropertyChanging("ShareSysNo");
+                _ShareSysNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ShareSysNo");
+                OnShareSysNoChanged();
+            }
+        }
+        private global::System.Int32 _ShareSysNo;
+        partial void OnShareSysNoChanging(global::System.Int32 value);
+        partial void OnShareSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ShareUserId
+        {
+            get
+            {
+                return _ShareUserId;
+            }
+            set
+            {
+                OnShareUserIdChanging(value);
+                ReportPropertyChanging("ShareUserId");
+                _ShareUserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ShareUserId");
+                OnShareUserIdChanged();
+            }
+        }
+        private global::System.Int32 _ShareUserId;
+        partial void OnShareUserIdChanging(global::System.Int32 value);
+        partial void OnShareUserIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CoverMobile
+        {
+            get
+            {
+                return _CoverMobile;
+            }
+            set
+            {
+                OnCoverMobileChanging(value);
+                ReportPropertyChanging("CoverMobile");
+                _CoverMobile = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CoverMobile");
+                OnCoverMobileChanged();
+            }
+        }
+        private global::System.String _CoverMobile;
+        partial void OnCoverMobileChanging(global::System.String value);
+        partial void OnCoverMobileChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CoverUserId
+        {
+            get
+            {
+                return _CoverUserId;
+            }
+            set
+            {
+                OnCoverUserIdChanging(value);
+                ReportPropertyChanging("CoverUserId");
+                _CoverUserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CoverUserId");
+                OnCoverUserIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CoverUserId;
+        partial void OnCoverUserIdChanging(Nullable<global::System.Int32> value);
+        partial void OnCoverUserIdChanged();
     
         /// <summary>
         /// 没有元数据文档可用。

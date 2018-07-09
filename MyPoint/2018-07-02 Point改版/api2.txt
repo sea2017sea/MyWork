@@ -275,10 +275,69 @@ public class QueryAdvGoodsByIdRes:BaseResponse
 
 
 
+2018-07-09
+4、广告互动领取现金红包
+http://139.224.71.72:30000/json/metadata?op=ReceiveRedReq
+请求参数：
+{"UserId":0,"GoodsId":0}
+
+    public class ReceiveRedReq
+    {
+        public int UserId { get; set; }     //会员ID
+        public int GoodsId { get; set; }    //商品ID
+    }
+
+
+返回参数：
+{"Title":"String","SurplusCount":0,"ReceiveAmount":0,"ResponseStatus":{"ErrorCode":"String","Message":"String","StackTrace":"String","Errors":[{"ErrorCode":"String","FieldName":"String","Message":"String"}]},"DoFlag":0,"DoResult":"String","SysTime":"String"}
 
 
 
+    public class ReceiveRedRes : BaseResponse
+    {
+        public string Title { get; set; }            //标题
+        public int SurplusCount { get; set; }        //红包剩余数量
+        public decimal ReceiveAmount { get; set; }   //领取金额，单位：元
+    }
 
+
+返回参数样例：
+{
+  "Title": "标题",
+  "SurplusCount": 231,
+  "ReceiveAmount": 23,
+  "ResponseStatus": {},
+  "DoFlag": 1,
+  "DoResult": "领取成功",
+  "SysTime": "2018/7/9 16:02:53"
+}
+
+
+5、查询获取所有的分类信息 
+http://139.224.71.72:30000/json/metadata?op=QueryCategoryReq
+
+请求参数：无
+       
+
+
+返回参数：
+{"Entities":[{"CateId":0,"CateName":"String","CateDescOne":"String","CateDescTwo":"String","CatePic":"String"}],"ResponseStatus":{"ErrorCode":"String","Message":"String","StackTrace":"String","Errors":[{"ErrorCode":"String","FieldName":"String","Message":"String"}]},"DoFlag":0,"DoResult":"String","SysTime":"String"}
+
+
+    public class QueryCategoryRes : BaseResponse
+    {
+        //分类集合
+        public List<CategoryEntity> Entities { get; set; }
+    }
+
+    public class CategoryEntity
+    {
+        public int CateId { get; set; }           //分类ID
+        public string CateName { get; set; }      //分类名称
+        public string CateDescOne { get; set; }   //分类描述1
+        public string CateDescTwo { get; set; }   //分类描述2
+        public string CatePic { get; set; }       //分类图标
+    }
 
 
 

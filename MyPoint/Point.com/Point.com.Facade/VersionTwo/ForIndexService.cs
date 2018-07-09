@@ -110,5 +110,37 @@ namespace Point.com.Facade.VersionTwo
             return res;
         }
 
+        /// <summary>
+        /// 广告互动领取现金红包
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public ReceiveRedRes Any(ReceiveRedReq req)
+        {
+            var res = new ReceiveRedRes();
+
+            try
+            {
+                var ptcp = ServiceImpl.ReceiveRed(req.UserId, req.GoodsId);
+                if (ptcp.DoFlag == PtcpState.Success)
+                {
+                    res.DoFlag = (int)PtcpState.Success;
+                }
+                res.DoResult = ptcp.DoResult;
+
+                if (ptcp.ReturnValue.IsNotNull())
+                {
+                    res.Title = ptcp.ReturnValue.Title;
+                    res.ReceiveAmount = ptcp.ReturnValue.ReceiveAmount;
+                    res.SurplusCount = ptcp.ReturnValue.SurplusCount;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.DoResult = "系统繁忙，请稍后再试";
+            }
+
+            return res;
+        }
     }
 }

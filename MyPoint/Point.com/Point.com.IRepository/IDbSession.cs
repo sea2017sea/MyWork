@@ -47,6 +47,14 @@ namespace Point.com.IRepository
 				  }  
                                   public partial interface IMLT
 				  {	
+					IB_AdvGoodsRecordRepository B_AdvGoodsRecordRepository{get;}
+				  }  
+                                  public partial interface IMLT
+				  {	
+					IB_CategoryRepository B_CategoryRepository{get;}
+				  }  
+                                  public partial interface IMLT
+				  {	
 					IB_InforConfigureRepository B_InforConfigureRepository{get;}
 				  }  
                                   public partial interface IMLT
@@ -56,6 +64,10 @@ namespace Point.com.IRepository
                                   public partial interface IMLT
 				  {	
 					IB_RecommendConfigureRepository B_RecommendConfigureRepository{get;}
+				  }  
+                                  public partial interface IMLT
+				  {	
+					IB_ShareFriendsRepository B_ShareFriendsRepository{get;}
 				  }  
                                   public partial interface IMLT
 				  {	

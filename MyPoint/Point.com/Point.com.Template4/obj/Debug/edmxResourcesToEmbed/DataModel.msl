@@ -641,5 +641,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="B_Category">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_Category">
+        <MappingFragment StoreEntitySet="B_Category">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
+          <ScalarProperty Name="CatePic" ColumnName="CatePic" />
+          <ScalarProperty Name="CateDescTwo" ColumnName="CateDescTwo" />
+          <ScalarProperty Name="CateDescOne" ColumnName="CateDescOne" />
+          <ScalarProperty Name="CateName" ColumnName="CateName" />
+          <ScalarProperty Name="CateId" ColumnName="CateId" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="B_ShareFriends">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_ShareFriends">
+        <MappingFragment StoreEntitySet="B_ShareFriends">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="CoverUserId" ColumnName="CoverUserId" />
+          <ScalarProperty Name="CoverMobile" ColumnName="CoverMobile" />
+          <ScalarProperty Name="ShareUserId" ColumnName="ShareUserId" />
+          <ScalarProperty Name="ShareSysNo" ColumnName="ShareSysNo" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

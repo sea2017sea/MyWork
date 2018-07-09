@@ -63,6 +63,9 @@
     <Compile Include="B_AdvGoodsRecord.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="B_Category.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="B_InforConfigure.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -70,6 +73,9 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="B_RecommendConfigure.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="B_ShareFriends.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Crm_ClickExchange.cs">

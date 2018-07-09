@@ -23,12 +23,11 @@ namespace Point.com.Model
 
     public class M_CategoryEntity
     {
-        //分类ID
-        public int CateId { get; set; }
-        //分类名称
-        public string CateName { get; set; }
-        //分类图标
-        public string CatePic { get; set; }
+        public int CateId { get; set; }           //分类ID
+        public string CateName { get; set; }      //分类名称
+        public string CateDescOne { get; set; }   //分类描述1
+        public string CateDescTwo { get; set; }   //分类描述2
+        public string CatePic { get; set; }       //分类图标
     }
 
     public class M_QueryAccountRecordReq

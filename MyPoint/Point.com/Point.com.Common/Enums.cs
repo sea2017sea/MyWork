@@ -121,6 +121,7 @@ namespace Point.com.Common
             ExcGoods = 32,       //兑换商品(兑换抵用劵)
             ReadArticle = 64,    //阅读文章，扣减低佣金
             SaveSelfMedia = 128,    //自媒体分享，注册手机号码，获取低佣金
+            Share_New = 70,      //新版参与互动  
         }
 
         /// <summary>

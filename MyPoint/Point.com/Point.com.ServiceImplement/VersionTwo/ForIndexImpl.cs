@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using Point.com.Common;
 using Point.com.Logging;
 using Point.com.Model;
 using Point.com.Model.Base;
@@ -13,6 +14,8 @@ namespace Point.com.ServiceImplement.VersionTwo
 {
     public class ForIndexImpl : BaseService, IForIndex
     {
+        private static ForBaseImpl fb = new ForBaseImpl();
+
         /// <summary>
         /// 首页的数据
         /// </summary>
@@ -202,7 +205,7 @@ namespace Point.com.ServiceImplement.VersionTwo
 
             if (advSysNo <= 0)
             {
-                ptcp.DoResult = "广告商品ID不能为空";
+                ptcp.DoResult = "广告ID不能为空";
                 return ptcp;
             }
 
@@ -234,6 +237,110 @@ namespace Point.com.ServiceImplement.VersionTwo
 
             ptcp.DoFlag = PtcpState.Success;
             ptcp.DoResult = "成功";
+
+            return ptcp;
+        }
+
+        /// <summary>
+        /// 领取红包
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="goodsId"></param>
+        /// <returns></returns>
+        public Ptcp<M_ReceiveRedRes> ReceiveRed(int userid, int goodsId)
+        {
+            var ptcp = new Ptcp<M_ReceiveRedRes>();
+
+            if (userid <= 0)
+            {
+                ptcp.DoResult = "会员ID不能为空";
+                return ptcp;
+            }
+
+            if (goodsId <= 0)
+            {
+                ptcp.DoResult = "广告商品ID不能为空";
+                return ptcp;
+            }
+
+            var goodsEntity = DbSession.MLT.B_AdvGoodsRepository.QueryBy(new B_AdvGoods()
+            {
+                SysNo = goodsId,
+                IsEnable = true
+            }).FirstOrDefault();
+
+            if (goodsEntity.IsNull())
+            {
+                ptcp.DoResult = "获取广告商品信息失败";
+                return ptcp;
+            }
+
+            var infoEntity = DbSession.MLT.B_InforConfigureRepository.QueryBy(new B_InforConfigure()
+            {
+                SysNo = goodsEntity.AdvSysNo,
+                IsEnable = true
+            }).FirstOrDefault();
+            if (infoEntity.IsNull())
+            {
+                ptcp.DoResult = "获取广告信息失败";
+                return ptcp;
+            }
+
+            //判断是否已经领取了
+            var isReceiveRedCount = DbSession.MLT.B_AdvGoodsRecordRepository.QueryCountBy(new B_AdvGoodsRecord()
+            {
+                UserId = userid,
+                AdvSysNo = goodsEntity.AdvSysNo,
+                IsEnable = true
+            });
+            if (isReceiveRedCount > 0)
+            {
+                ptcp.DoResult = "您已经领取过了，不可重复领取";
+                return ptcp;
+            }
+
+            //检查剩余数量
+            var goodsRecordCount = DbSession.MLT.B_AdvGoodsRecordRepository.QueryCountBy(new B_AdvGoodsRecord()
+            {
+                AdvGoodsSysNo = goodsEntity.SysNo,
+                IsEnable = true
+            });
+
+            int surplusCount = goodsEntity.CashBonusNum.GetValueOrDefault() - (int)goodsRecordCount;
+            if (surplusCount <= 0)
+            {
+                ptcp.DoResult = "很遗憾，红包已经被领光了";
+                return ptcp;
+            }
+
+            //插入领取红包记录，会员主表保存现金
+            fb.AddAccountRecord(new M_AddAccountRecordReq()
+            {
+                UserId = userid,
+                TranNum = goodsEntity.CashBonus.GetValueOrDefault(),
+                TranType = (int)Enums.TranType.Share_New
+            });
+
+            //保存商品领取记录
+            DbSession.MLT.B_AdvGoodsRecordRepository.Add(new B_AdvGoodsRecord()
+            {
+                UserId = userid,
+                AdvSysNo = infoEntity.SysNo,
+                AdvGoodsSysNo = goodsEntity.SysNo,
+                CashBonus = goodsEntity.CashBonus,
+                RowCeateDate = DateTime.Now,
+                ModifyTime = null,
+                IsEnable = true
+            });
+            
+            DbSession.MLT.SaveChange();
+            
+            ptcp.ReturnValue = new M_ReceiveRedRes();
+            ptcp.ReturnValue.ReceiveAmount = goodsEntity.CashBonus.GetValueOrDefault();
+            ptcp.ReturnValue.SurplusCount = (surplusCount - 1);
+            ptcp.ReturnValue.Title = infoEntity.Title;
+            ptcp.DoFlag = PtcpState.Success;
+            ptcp.DoResult = "领取成功";
 
             return ptcp;
         }

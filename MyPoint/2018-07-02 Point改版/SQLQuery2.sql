@@ -57,11 +57,15 @@ IsEnable BIT NOT NULL                                                  --ÊÇ·ñÆôÓ
 go
 
 
+
 --´´½¨ÕËºÅ½»Ò×Á÷Ë®±í
 CREATE TABLE T_AccountRecord
 (
 SysNo INT IDENTITY(1,1) PRIMARY KEY,                    --Ö÷¼ü£¬×ÔÔö³¤£¬Î¨Ò»
-TranType INT NOT NULL,                                  --½»Ò×ÀàÐÍ  1 »Ø´ðÎÊÌâ£¨²ÎÓë»¥¶¯£©    2 ÑûÇëºÃÓÑ£¨·ÖÏíºÃÓÑ£©  4 ×ª³ö»ý·Ö  8 ×ªÈë»ý·Ö 16 ÏÖ½ðÌáÏÖ 32 ¶Ò»»ÉÌÆ·(¶Ò»»µÖ¿Û„»)   64 ÔÄ¶ÁÎÄÕÂ¸¶·Ñ
+TranType INT NOT NULL,                                  --½»Ò×ÀàÐÍ  1 »Ø´ðÎÊÌâ£¨²ÎÓë»¥¶¯£©    2 ÑûÇëºÃÓÑ£¨·ÖÏíºÃÓÑ£© 
+                                                        --4 ×ª³ö»ý·Ö  8 ×ªÈë»ý·Ö 16 ÏÖ½ðÌáÏÖ 32 ¶Ò»»ÉÌÆ·(¶Ò»»µÖ¿Û„»)   64 ÔÄ¶ÁÎÄÕÂ¸¶·Ñ
+                                                        --70 ÐÂ°æ²ÎÓë»¥¶¯  
+                                                        
 PlusReduce INT NOT NULL,                                --½»Ò×»ñÈ¡»òÕßÊ¹ÓÃ 1Ôö¼Ó 2 Ê¹ÓÃ£¨¼õ£©
 UserId INT NOT NULL,                                    --»áÔ±ID
 TranNum DECIMAL(18, 2) NOT NULL,                        --½»Ò×ÊýÁ¿
@@ -164,7 +168,7 @@ GoodsExcLink VARCHAR(max) NULL,                                          --ÉÌÆ·¶
 MarketPrice DECIMAL(18, 4) NOT NULL,                                     --ÊÐ³¡¼Û¸ñ
 PromotionPrice DECIMAL(18,4) NULL,                                       --´ÙÏú¼Û¸ñ
 DeductibleMoney DECIMAL(18,4) NULL,                                      --µÖ¿Û½ð¶î
-CashBonus DECIMAL(18,4) NULL,                                            --ÏÖ½ðºì°ü ¿Í»§²ÎÓëÖ®ºó·¢¸ø¿Í»§µÄºì°ü½ð¶î 0 ²»¸øºì°ü
+CashBonus DECIMAL(18,4) NULL,                                            --ÏÖ½ðºì°ü ¿Í»§²ÎÓëÖ®ºó·¢¸ø¿Í»§µÄºì°ü½ð¶î
 CashBonusNum int NULL,                                                   --ÏÖ½ðºì°üµÄ×ÜÊýÁ¿
 IntSort int NOT NULL,                                                    --ÅÅÐò£¬ÊýÖµÔ½´óÔ½¿¿Ç°
 RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê±¼ä
@@ -172,6 +176,7 @@ ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ
 IsEnable BIT NOT NULL                                                    --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
 )
 go 
+
 
 --ÐÂÔö¹ã¸æÉÌÆ·»¥¶¯¼ÇÂ¼(ºì°üÁìÈ¡¼ÇÂ¼±í)
 CREATE TABLE B_AdvGoodsRecord
@@ -204,6 +209,7 @@ IsEnable BIT NOT NULL                                                        --Ê
 )
 go
 
+SELECT * FROM B_Category
 
 select * from dbo.B_RecommendConfigure
 
@@ -223,4 +229,10 @@ select * from dbo.T_MemB_AdvGoodsRecordber
 
 
 select * from dbo.T_Member
+select * from dbo.T_Member WHERE sysno = 18162
+SELECT * FROM B_AdvGoodsRecord 
+SELECT * FROM T_AccountRecord ORDER BY sysno DESC
 
+SELECT * FROM T_AccountRecord   WHERE userid = 18162
+
+UPDATE B_AdvGoodsRecord SET isenable = 0 WHERE userid = 18162

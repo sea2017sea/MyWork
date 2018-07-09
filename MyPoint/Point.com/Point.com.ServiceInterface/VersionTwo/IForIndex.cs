@@ -33,5 +33,13 @@ namespace Point.com.ServiceInterface.VersionTwo
         /// <param name="advSysNo"></param>
         /// <returns></returns>
         Ptcp<M_QueryAdvGoodsByIdRes> QueryAdvGoodsById(int userid, int advSysNo);
+
+        /// <summary>
+        /// 领取红包
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="goodsId"></param>
+        /// <returns></returns>
+        Ptcp<M_ReceiveRedRes> ReceiveRed(int userid, int goodsId);
     }
 }

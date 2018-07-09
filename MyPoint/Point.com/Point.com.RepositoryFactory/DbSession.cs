@@ -212,6 +212,46 @@ namespace Point.com.RepositoryFactory
 				  }  
                                   public partial class MLT:IMLT
 				  {					
+					private IB_AdvGoodsRecordRepository _B_AdvGoodsRecordRepository;
+					public virtual string B_AdvGoodsRecordTableName{
+						get{
+							return "B_AdvGoodsRecord";
+						}
+					}
+					public IB_AdvGoodsRecordRepository B_AdvGoodsRecordRepository
+					{
+						get
+						{
+							if (null == _B_AdvGoodsRecordRepository)
+							{
+								_B_AdvGoodsRecordRepository = new B_AdvGoodsRecordRepository(this._unitOfWork,B_AdvGoodsRecordTableName);
+							}
+							return _B_AdvGoodsRecordRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IB_CategoryRepository _B_CategoryRepository;
+					public virtual string B_CategoryTableName{
+						get{
+							return "B_Category";
+						}
+					}
+					public IB_CategoryRepository B_CategoryRepository
+					{
+						get
+						{
+							if (null == _B_CategoryRepository)
+							{
+								_B_CategoryRepository = new B_CategoryRepository(this._unitOfWork,B_CategoryTableName);
+							}
+							return _B_CategoryRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
 					private IB_InforConfigureRepository _B_InforConfigureRepository;
 					public virtual string B_InforConfigureTableName{
 						get{
@@ -267,6 +307,26 @@ namespace Point.com.RepositoryFactory
 								_B_RecommendConfigureRepository = new B_RecommendConfigureRepository(this._unitOfWork,B_RecommendConfigureTableName);
 							}
 							return _B_RecommendConfigureRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
+					private IB_ShareFriendsRepository _B_ShareFriendsRepository;
+					public virtual string B_ShareFriendsTableName{
+						get{
+							return "B_ShareFriends";
+						}
+					}
+					public IB_ShareFriendsRepository B_ShareFriendsRepository
+					{
+						get
+						{
+							if (null == _B_ShareFriendsRepository)
+							{
+								_B_ShareFriendsRepository = new B_ShareFriendsRepository(this._unitOfWork,B_ShareFriendsTableName);
+							}
+							return _B_ShareFriendsRepository;
 						}
 					}
 				  }  

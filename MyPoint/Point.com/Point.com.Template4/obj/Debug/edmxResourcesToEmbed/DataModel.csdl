@@ -45,6 +45,8 @@
     <EntitySet Name="B_RecommendConfigure" EntityType="MYZJ_MLTModel.B_RecommendConfigure" />
     <EntitySet Name="B_AdvGoods" EntityType="MYZJ_MLTModel.B_AdvGoods" />
     <EntitySet Name="B_AdvGoodsRecord" EntityType="MYZJ_MLTModel.B_AdvGoodsRecord" />
+    <EntitySet Name="B_Category" EntityType="MYZJ_MLTModel.B_Category" />
+    <EntitySet Name="B_ShareFriends" EntityType="MYZJ_MLTModel.B_ShareFriends" />
   </EntityContainer>
   <EntityType Name="Base_Deliver">
     <Key>
@@ -782,5 +784,33 @@
     <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_Category">
+    <Key>
+      <PropertyRef Name="CateId" />
+    </Key>
+    <Property Name="SysNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CateId" Type="Int32" Nullable="false" />
+    <Property Name="CateName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="CateDescOne" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="CateDescTwo" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="CatePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IntSort" Type="Int32" Nullable="false" />
+    <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_ShareFriends">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShareSysNo" Type="Int32" Nullable="false" />
+    <Property Name="ShareUserId" Type="Int32" Nullable="false" />
+    <Property Name="CoverMobile" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="CoverUserId" Type="Int32" />
+    <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

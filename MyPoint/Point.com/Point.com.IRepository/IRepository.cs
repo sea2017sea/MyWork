@@ -13,6 +13,10 @@ namespace Point.com.IRepository
     {        
     }
 	
+	public partial interface IB_CategoryRepository  : IBaseRepository<B_Category>
+    {        
+    }
+	
 	public partial interface IB_InforConfigureRepository  : IBaseRepository<B_InforConfigure>
     {        
     }
@@ -22,6 +26,10 @@ namespace Point.com.IRepository
     }
 	
 	public partial interface IB_RecommendConfigureRepository  : IBaseRepository<B_RecommendConfigure>
+    {        
+    }
+	
+	public partial interface IB_ShareFriendsRepository  : IBaseRepository<B_ShareFriends>
     {        
     }
 	

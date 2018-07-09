@@ -58,6 +58,24 @@ namespace Point.com.ServiceModel.VersionTwo
 
     #endregion
 
+    #region 领取现金红包
+
+    public class ReceiveRedReq
+    {
+        public int UserId { get; set; }    //会员ID
+        public int GoodsId { get; set; }    //商品ID
+    }
+
+    public class ReceiveRedRes : BaseResponse
+    {
+        public string Title { get; set; }            //标题
+        public int SurplusCount { get; set; }        //红包剩余数量
+        public decimal ReceiveAmount { get; set; }   //领取金额，单位：元
+    }
+
+
+    #endregion
+
     public class IndexPageData
     {
         public int SysNo { get; set; }                   //主键，自增长，唯一标识

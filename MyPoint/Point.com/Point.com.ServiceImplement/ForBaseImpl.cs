@@ -123,18 +123,18 @@ namespace Point.com.ServiceImplement
             string cacheKey = string.Format("{0}.QueryCategory", GetType().Name);
             var cates = CacheClientSession.LocalCacheClient.Get(cacheKey, () =>
                 {
-                    var cateDBs = DbSession.MLT.T_CategoryRepository.QueryBy(new T_Category()
+                    var cateDBs = DbSession.MLT.B_CategoryRepository.QueryBy(new B_Category()
                         {
                             IsEnable = true
                         }, " ORDER BY IntSort DESC").ToList();
 
                     if (cateDBs.IsNotNull() && cateDBs.IsHasRow())
                     {
-                        return Mapper.MapperGeneric<T_Category, M_CategoryEntity>(cateDBs).ToList();
+                        return Mapper.MapperGeneric<B_Category, M_CategoryEntity>(cateDBs).ToList();
                     }
 
                     return null;
-                }, new TimeSpan(1, 0, 0));
+                }, new TimeSpan(0, 10, 0));
 
             ptcp.ReturnValue = new M_QueryCategoryRes();
             ptcp.ReturnValue.Entities = cates;
@@ -262,7 +262,6 @@ namespace Point.com.ServiceImplement
             tRecord.UserId = req.UserId;
             tRecord.RowCeateDate = DateTime.Now;
             tRecord.IsPushIn = 0;
-            //tRecord.IsPushOut = 1;
             tRecord.IsEnable = true;
             tRecord.InRemarks = req.InRemarks;
 
@@ -279,6 +278,8 @@ namespace Point.com.ServiceImplement
             DateTime dtNow = DateTime.Now;
             switch (req.TranType)
             {
+                #region 一版的
+
                 case (int) Enums.TranType.Partic:
                     //参与互动
                     tRecord.PlusReduce = 1;   //交易获取或者使用 1增加 2 使用（减）
@@ -502,6 +503,32 @@ namespace Point.com.ServiceImplement
                     DbSession.MLT.T_MemberRepository.Update(new T_Member()
                     {
                         Score = (memberInfo.Score + req.TranNum),
+                        ModifyTime = dtNow
+                    }, new T_Member() { SysNo = req.UserId });
+
+                    #endregion
+
+                    break;
+
+                #endregion
+
+                case (int)Enums.TranType.Share_New:
+                    //参与互动
+                    tRecord.PlusReduce = 1;           //交易获取或者使用 1增加 2 使用（减）
+                    tRecord.Company = Enums.Rmb;
+                    tRecord.TranName = "参与互动";
+                    tRecord.TranNum = req.TranNum;
+                    
+                    sendPush.MsgTitle = "参与互动，现金红包增加";
+                    sendPush.MsgAlert = string.Format("恭喜您参与互动，获得 {0} 元现金红包。", req.TranNum);
+                    sendPush.MsgContent = "参与互动，现金红包增加";
+
+                    #region 更新账户积分信息
+
+                    //更新账户积分信息
+                    DbSession.MLT.T_MemberRepository.Update(new T_Member()
+                    {
+                        Account = (memberInfo.Account + req.TranNum),
                         ModifyTime = dtNow
                     }, new T_Member() { SysNo = req.UserId });
 
