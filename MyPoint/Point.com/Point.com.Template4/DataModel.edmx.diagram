@@ -47,10 +47,10 @@
         <EntityTypeShape EntityType="MYZJ_MLTModel.B_ReceiveConfigure" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.B_InforConfigure" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="false" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.B_RecommendConfigure" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.B_AdvGoods" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.B_AdvGoodsRecord" Width="1.5" PointX="6.75" PointY="12.75" />
-        <EntityTypeShape EntityType="MYZJ_MLTModel.B_Category" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.B_AdvGoodsRecord" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.B_Category" Width="1.5" PointX="6.75" PointY="12.75" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.B_ShareFriends" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.B_AdvGoods" Width="1.5" PointX="12.75" PointY="10.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

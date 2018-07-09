@@ -740,22 +740,6 @@ namespace Point.com.Template4
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<B_AdvGoods> B_AdvGoods
-        {
-            get
-            {
-                if ((_B_AdvGoods == null))
-                {
-                    _B_AdvGoods = base.CreateObjectSet<B_AdvGoods>("B_AdvGoods");
-                }
-                return _B_AdvGoods;
-            }
-        }
-        private ObjectSet<B_AdvGoods> _B_AdvGoods;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<B_AdvGoodsRecord> B_AdvGoodsRecord
         {
             get
@@ -800,6 +784,22 @@ namespace Point.com.Template4
             }
         }
         private ObjectSet<B_ShareFriends> _B_ShareFriends;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<B_AdvGoods> B_AdvGoods
+        {
+            get
+            {
+                if ((_B_AdvGoods == null))
+                {
+                    _B_AdvGoods = base.CreateObjectSet<B_AdvGoods>("B_AdvGoods");
+                }
+                return _B_AdvGoods;
+            }
+        }
+        private ObjectSet<B_AdvGoods> _B_AdvGoods;
 
         #endregion
 
@@ -1142,14 +1142,6 @@ namespace Point.com.Template4
         }
     
         /// <summary>
-        /// 用于向 B_AdvGoods EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToB_AdvGoods(B_AdvGoods b_AdvGoods)
-        {
-            base.AddObject("B_AdvGoods", b_AdvGoods);
-        }
-    
-        /// <summary>
         /// 用于向 B_AdvGoodsRecord EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddToB_AdvGoodsRecord(B_AdvGoodsRecord b_AdvGoodsRecord)
@@ -1171,6 +1163,14 @@ namespace Point.com.Template4
         public void AddToB_ShareFriends(B_ShareFriends b_ShareFriends)
         {
             base.AddObject("B_ShareFriends", b_ShareFriends);
+        }
+    
+        /// <summary>
+        /// 用于向 B_AdvGoods EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToB_AdvGoods(B_AdvGoods b_AdvGoods)
+        {
+            base.AddObject("B_AdvGoods", b_AdvGoods);
         }
 
         #endregion
@@ -1512,6 +1512,30 @@ namespace Point.com.Template4
         private Nullable<global::System.Int32> _CashBonusNum;
         partial void OnCashBonusNumChanging(Nullable<global::System.Int32> value);
         partial void OnCashBonusNumChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SalesVolume
+        {
+            get
+            {
+                return _SalesVolume;
+            }
+            set
+            {
+                OnSalesVolumeChanging(value);
+                ReportPropertyChanging("SalesVolume");
+                _SalesVolume = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SalesVolume");
+                OnSalesVolumeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SalesVolume;
+        partial void OnSalesVolumeChanging(Nullable<global::System.Int32> value);
+        partial void OnSalesVolumeChanged();
     
         /// <summary>
         /// 没有元数据文档可用。

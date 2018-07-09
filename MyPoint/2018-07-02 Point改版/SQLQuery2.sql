@@ -88,7 +88,7 @@ GO
 CREATE TABLE B_InforConfigure
 (
 SysNo INT IDENTITY(1,1) PRIMARY KEY,  --÷чЉь£ђ„‘‘ц≥§
-DataType int NOT NULL,                -- эЊЁја–Ќ   1 єгЄж£®≤ќ”лї•ґѓ£ђЅм»°Їм∞ь£©   2 Ќ∆єг(—ы«лЇ√”—£ђЅҐѕно“їЁ)
+DataType int NOT NULL,                -- эЊЁја–Ќ   1 єгЄж£®≤ќ”лї•ґѓ£ђЅм»°Їм∞ь£©   2 Ќ∆єг(—ы«лЇ√”—£ђЅҐѕно“їЁ)  3 »»¬фЌ∆Љц
 ShowCrowd VARCHAR(64) NOT NULL,       --’є Њµƒ»Ћ»Ї 0 Ћщ”–  1 30Ћк“‘…ѕƒ–  2 30Ћк“‘ѕ¬ƒ–  4 30Ћк“‘…ѕ≈Ѓ   8 30Ћк“‘ѕ¬≈Ѓ£ђЄс љ£Ї(1),(2),(3)
 CoverPicUrl VARCHAR(max) NOT NULL,    --Јв√жЌЉ∆ђ
 
@@ -170,6 +170,7 @@ PromotionPrice DECIMAL(18,4) NULL,                                       --іўѕъЉ
 DeductibleMoney DECIMAL(18,4) NULL,                                      --µ÷њџљрґо
 CashBonus DECIMAL(18,4) NULL,                                            --ѕ÷љрЇм∞ь њЌїІ≤ќ”л÷ЃЇуЈҐЄшњЌїІµƒЇм∞ьљрґо
 CashBonusNum int NULL,                                                   --ѕ÷љрЇм∞ьµƒ„№ эЅњ
+SalesVolume int NULL,                                                    --ѕъЅњ ґ‘”¶ B_InforConfigure ±нµƒ DataType = 3 »»¬фЌ∆Љцµƒѕъ џ эЅњ
 IntSort int NOT NULL,                                                    --≈≈–т£ђ э÷µ‘љіу‘љњњ«∞
 RowCeateDate DATETIME NOT NULL,                                          --ііљ® ±Љд
 ModifyTime DATETIME NULL,                                                --–ёЄƒ ±Љд

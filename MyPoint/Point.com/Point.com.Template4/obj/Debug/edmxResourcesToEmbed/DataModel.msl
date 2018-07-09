@@ -605,28 +605,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="B_AdvGoods">
-      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_AdvGoods">
-        <MappingFragment StoreEntitySet="B_AdvGoods">
-          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
-          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
-          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
-          <ScalarProperty Name="CashBonusNum" ColumnName="CashBonusNum" />
-          <ScalarProperty Name="CashBonus" ColumnName="CashBonus" />
-          <ScalarProperty Name="DeductibleMoney" ColumnName="DeductibleMoney" />
-          <ScalarProperty Name="PromotionPrice" ColumnName="PromotionPrice" />
-          <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
-          <ScalarProperty Name="GoodsExcLink" ColumnName="GoodsExcLink" />
-          <ScalarProperty Name="GoodsDetailedLink" ColumnName="GoodsDetailedLink" />
-          <ScalarProperty Name="GoodsPic" ColumnName="GoodsPic" />
-          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
-          <ScalarProperty Name="CateId" ColumnName="CateId" />
-          <ScalarProperty Name="AdvSysNo" ColumnName="AdvSysNo" />
-          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="B_AdvGoodsRecord">
       <EntityTypeMapping TypeName="MYZJ_MLTModel.B_AdvGoodsRecord">
         <MappingFragment StoreEntitySet="B_AdvGoodsRecord">
@@ -667,6 +645,29 @@
           <ScalarProperty Name="CoverMobile" ColumnName="CoverMobile" />
           <ScalarProperty Name="ShareUserId" ColumnName="ShareUserId" />
           <ScalarProperty Name="ShareSysNo" ColumnName="ShareSysNo" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="B_AdvGoods">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_AdvGoods">
+        <MappingFragment StoreEntitySet="B_AdvGoods">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="IntSort" ColumnName="IntSort" />
+          <ScalarProperty Name="SalesVolume" ColumnName="SalesVolume" />
+          <ScalarProperty Name="CashBonusNum" ColumnName="CashBonusNum" />
+          <ScalarProperty Name="CashBonus" ColumnName="CashBonus" />
+          <ScalarProperty Name="DeductibleMoney" ColumnName="DeductibleMoney" />
+          <ScalarProperty Name="PromotionPrice" ColumnName="PromotionPrice" />
+          <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
+          <ScalarProperty Name="GoodsExcLink" ColumnName="GoodsExcLink" />
+          <ScalarProperty Name="GoodsDetailedLink" ColumnName="GoodsDetailedLink" />
+          <ScalarProperty Name="GoodsPic" ColumnName="GoodsPic" />
+          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+          <ScalarProperty Name="CateId" ColumnName="CateId" />
+          <ScalarProperty Name="AdvSysNo" ColumnName="AdvSysNo" />
           <ScalarProperty Name="SysNo" ColumnName="SysNo" />
         </MappingFragment>
       </EntityTypeMapping>

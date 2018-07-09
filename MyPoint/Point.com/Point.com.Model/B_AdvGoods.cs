@@ -27,6 +27,7 @@ namespace Point.com.Model
         public Nullable<decimal> DeductibleMoney { get; set; }
         public Nullable<decimal> CashBonus { get; set; }
         public Nullable<int> CashBonusNum { get; set; }
+        public Nullable<int> SalesVolume { get; set; }
         public Nullable<int> IntSort { get; set; }
         public Nullable<System.DateTime> RowCeateDate { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }

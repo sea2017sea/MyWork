@@ -43,10 +43,10 @@
     <EntitySet Name="B_ReceiveConfigure" EntityType="MYZJ_MLTModel.B_ReceiveConfigure" />
     <EntitySet Name="B_InforConfigure" EntityType="MYZJ_MLTModel.B_InforConfigure" />
     <EntitySet Name="B_RecommendConfigure" EntityType="MYZJ_MLTModel.B_RecommendConfigure" />
-    <EntitySet Name="B_AdvGoods" EntityType="MYZJ_MLTModel.B_AdvGoods" />
     <EntitySet Name="B_AdvGoodsRecord" EntityType="MYZJ_MLTModel.B_AdvGoodsRecord" />
     <EntitySet Name="B_Category" EntityType="MYZJ_MLTModel.B_Category" />
     <EntitySet Name="B_ShareFriends" EntityType="MYZJ_MLTModel.B_ShareFriends" />
+    <EntitySet Name="B_AdvGoods" EntityType="MYZJ_MLTModel.B_AdvGoods" />
   </EntityContainer>
   <EntityType Name="Base_Deliver">
     <Key>
@@ -751,27 +751,6 @@
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
-  <EntityType Name="B_AdvGoods">
-    <Key>
-      <PropertyRef Name="SysNo" />
-    </Key>
-    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="AdvSysNo" Nullable="false" />
-    <Property Type="Int32" Name="CateId" Nullable="false" />
-    <Property Type="String" Name="GoodsName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="GoodsPic" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="GoodsDetailedLink" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="GoodsExcLink" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="MarketPrice" Nullable="false" Precision="18" Scale="4" />
-    <Property Type="Decimal" Name="PromotionPrice" Precision="18" Scale="4" />
-    <Property Type="Decimal" Name="DeductibleMoney" Precision="18" Scale="4" />
-    <Property Type="Decimal" Name="CashBonus" Precision="18" Scale="4" />
-    <Property Type="Int32" Name="CashBonusNum" />
-    <Property Type="Int32" Name="IntSort" Nullable="false" />
-    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
-    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
-    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
-  </EntityType>
   <EntityType Name="B_AdvGoodsRecord">
     <Key>
       <PropertyRef Name="SysNo" />
@@ -812,5 +791,27 @@
     <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifyTime" Type="DateTime" Precision="3" />
     <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_AdvGoods">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Type="Int32" Name="SysNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="AdvSysNo" Nullable="false" />
+    <Property Type="Int32" Name="CateId" Nullable="false" />
+    <Property Type="String" Name="GoodsName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="GoodsPic" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GoodsDetailedLink" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GoodsExcLink" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="MarketPrice" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="PromotionPrice" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="DeductibleMoney" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="CashBonus" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="CashBonusNum" />
+    <Property Type="Int32" Name="SalesVolume" />
+    <Property Type="Int32" Name="IntSort" Nullable="false" />
+    <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="Boolean" Name="IsEnable" Nullable="false" />
   </EntityType>
 </Schema>

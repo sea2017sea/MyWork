@@ -91,6 +91,9 @@ namespace Point.com.Model.VersionTwo
         public decimal MarketPrice { get; set; }            //市场价格
         public decimal PromotionPrice { get; set; }         //促销价格
         public decimal DeductibleMoney { get; set; }        //抵扣金额
+
+        public int SalesVolume { get; set; }                //销量 对应 B_InforConfigure 表的 DataType = 3 热卖推荐的销售数量
+
         public decimal CashBonus { get; set; }              //现金红包 客户参与之后发给客户的红包金额 0 不给红包
         public int CashBonusNum { get; set; }               //现金红包的总数量
     }
