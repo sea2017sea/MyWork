@@ -5,7 +5,7 @@
 
 
 2018-07-08
-1、获取首页数据
+1、获取首页数据 分页
 http://139.224.71.72:30000/json/reply/QueryIndexDataPageReq
 请求参数：
 {"UserId":0,"PageIndex":0,"PageSize":0}
@@ -40,7 +40,7 @@ public class QueryIndexDataPageRes : BaseResponse
     public class IndexPageData
     {
         public int SysNo { get; set; }                   //主键，自增长，唯一标识
-        public int DataType { get; set; }               //数据类型   1 广告（参与互动，领取红包）   2 推广(邀请好友，立享钜惠)
+        public int DataType { get; set; }               //数据类型   1 广告（参与互动，领取红包）   2 推广(邀请好友，立享钜惠)  3 热销推荐
         public string CoverPicUrl { get; set; }         //封面图片
 
         public string ShopName { get; set; }            //店铺名称         当 DataType = 2 时，有店铺名称
@@ -78,6 +78,7 @@ public class QueryIndexDataPageRes : BaseResponse
         public decimal MarketPrice { get; set; }            //市场价格
         public decimal PromotionPrice { get; set; }         //促销价格
         public decimal DeductibleMoney { get; set; }        //抵扣金额
+        public int SalesVolume { get; set; }                //销量 对应 B_InforConfigure 表的 DataType = 3 热卖推荐的销售数量
         public decimal CashBonus { get; set; }              //现金红包 客户参与之后发给客户的红包金额 0 不给红包
         public int CashBonusNum { get; set; }               //现金红包的总数量
     }
@@ -114,7 +115,8 @@ public class QueryIndexDataPageRes : BaseResponse
                     "PromotionPrice":343,
                     "DeductibleMoney":23,
                     "CashBonus":23,
-                    "CashBonusNum":232
+                    "CashBonusNum":232,
+                    "SalesVolume":0
                 },
                 {
                     "SysNo":1001,
@@ -128,7 +130,8 @@ public class QueryIndexDataPageRes : BaseResponse
                     "PromotionPrice":343,
                     "DeductibleMoney":23,
                     "CashBonus":23,
-                    "CashBonusNum":232
+                    "CashBonusNum":232,
+                    "SalesVolume":0
                 }
             ]
         }
@@ -160,24 +163,31 @@ public class QueryIndexRedDotRes : BaseResponse
 
 
 
-3、根据广告ID获取广告商品信息(首页是广告类型时，点击调用的服务)
+3、根据广告ID获取广告商品信息(首页是广告类型、热卖推荐时，点击调用的服务，两种类型用这一个服务)    分页
 http://139.224.71.72:30000/json/metadata?op=QueryAdvGoodsByIdReq
 请求参数：
-{"UserId":0,"AdvSysNo":0}
+{"UserId":0,"AdvSysNo":0,"PageIndex":0,"PageSize":0}
 
-public class QueryAdvGoodsByIdReq
+
+    public class QueryAdvGoodsByIdReq
     {
-        public int UserId { get; set; }    //会员ID，必须
-        public int AdvSysNo { get; set; }  //广告信息ID，必须
+        public int UserId { get; set; }          //会员ID 必须
+
+        public int AdvSysNo { get; set; }        //广告ID，热卖类型ID
+
+        public int PageIndex { get; set; }       //第几页 默认 1 必须 
+
+        public int PageSize { get; set; }        //每页大小 默认 10 必须
     }
 
 
-返回参数：
-{"Portrait":"String","NickName":"String","AdvGoodsModels":[{"SysNo":0,"AdvSysNo":0,"CateId":0,"GoodsName":"String","GoodsPic":"String","GoodsDetailedLink":"String","GoodsExcLink":"String","MarketPrice":0,"PromotionPrice":0,"DeductibleMoney":0,"CashBonus":0,"CashBonusNum":0}],"ResponseStatus":{"ErrorCode":"String","Message":"String","StackTrace":"String","Errors":[{"ErrorCode":"String","FieldName":"String","Message":"String"}]},"DoFlag":0,"DoResult":"String","SysTime":"String"}
 
+返回参数：
+{"Total":0,"Portrait":"String","NickName":"String","AdvGoodsModels":[{"SysNo":0,"AdvSysNo":0,"CateId":0,"GoodsName":"String","GoodsPic":"String","GoodsDetailedLink":"String","GoodsExcLink":"String","MarketPrice":0,"PromotionPrice":0,"DeductibleMoney":0,"SalesVolume":0,"CashBonus":0,"CashBonusNum":0}],"ResponseStatus":{"ErrorCode":"String","Message":"String","StackTrace":"String","Errors":[{"ErrorCode":"String","FieldName":"String","Message":"String"}]},"DoFlag":0,"DoResult":"String","SysTime":"String"}
 
 public class QueryAdvGoodsByIdRes:BaseResponse
     {
+        public int Total { get; set; }                  //总的数据条数
         public string Portrait { get; set; }            //头像图片地址
         public string NickName { get; set; }            //昵称
 
@@ -205,7 +215,8 @@ public class QueryAdvGoodsByIdRes:BaseResponse
             "PromotionPrice":343,
             "DeductibleMoney":23,
             "CashBonus":23,
-            "CashBonusNum":232
+            "CashBonusNum":232,
+            "SalesVolume":0
         },
         {
             "SysNo":1001,
@@ -219,7 +230,8 @@ public class QueryAdvGoodsByIdRes:BaseResponse
             "PromotionPrice":343,
             "DeductibleMoney":23,
             "CashBonus":23,
-            "CashBonusNum":232
+            "CashBonusNum":232,
+            "SalesVolume":0
         },
         {
             "SysNo":1002,
@@ -233,7 +245,8 @@ public class QueryAdvGoodsByIdRes:BaseResponse
             "PromotionPrice":343,
             "DeductibleMoney":23,
             "CashBonus":23,
-            "CashBonusNum":232
+            "CashBonusNum":232,
+            "SalesVolume":0
         },
         {
             "SysNo":1003,
@@ -247,7 +260,8 @@ public class QueryAdvGoodsByIdRes:BaseResponse
             "PromotionPrice":343,
             "DeductibleMoney":23,
             "CashBonus":23,
-            "CashBonusNum":232
+            "CashBonusNum":232,
+            "SalesVolume":0
         },
         {
             "SysNo":1004,
@@ -261,7 +275,8 @@ public class QueryAdvGoodsByIdRes:BaseResponse
             "PromotionPrice":343,
             "DeductibleMoney":23,
             "CashBonus":23,
-            "CashBonusNum":232
+            "CashBonusNum":232,
+            "SalesVolume":0
         }
     ],
     "ResponseStatus":{
@@ -341,13 +356,82 @@ http://139.224.71.72:30000/json/metadata?op=QueryCategoryReq
 
 
 
+2018-07-10
+6、查询邀请好友（用于首页点击 DataType = 2 时的明细页面）
+http://139.224.71.72:30000/json/metadata?op=QueryInvitingFriendsReq
+请求参数：
+{"UserId":0,"RecSysNo":0}
+
+
+    public class QueryInvitingFriendsReq
+    {
+        public int UserId { get; set; }       //会员ID
+        public int RecSysNo { get; set; }     //邀请好友标识 对应 B_InforConfigure 表的 SysNo
+    }
+
+
+返回参数：
+{"InvitingFriends":{"Portrait":"String","NickName":"String","ShopName":"String","LogoPicUrl":"String","SetInvitationNum":0,"ReceiveType":0,"IsReceive":false,"CouponMoney":0,"ReceiveUrl":"String","MarketPrice":0,"PromotionPrice":0,"InvitationMembers":["String"]},"ResponseStatus":{"ErrorCode":"String","Message":"String","StackTrace":"String","Errors":[{"ErrorCode":"String","FieldName":"String","Message":"String"}]},"DoFlag":0,"DoResult":"String","SysTime":"String"}
+
+
+    public class QueryInvitingFriendsRes : BaseResponse
+    {
+        public InvitingFriendsModel InvitingFriends { get; set; }    //邀请好友实体
+    }
+
+
+    public class InvitingFriendsModel
+    {
+        public string Portrait { get; set; }            //头像图片地址
+
+        public string NickName { get; set; }            //昵称
+
+        public string ShopName { get; set; }            //店铺名称
+
+        public string LogoPicUrl { get; set; }          //店铺logo
+
+        public int SetInvitationNum { get; set; }       //需要邀请的人数
+        
+        public bool IsReceive { get; set; }             //是否可以领取  true 可以  false 不可以
+
+        public decimal MarketPrice { get; set; }       //市场价格
+
+        public decimal PromotionPrice { get; set; }    //促销价格
+
+        public decimal CouponMoney { get; set; }        //优惠券金额
+        
+        public List<string> InvitationMembers { get; set; }  //邀请的会员头像集合
+    }
 
 
 
+7、领取优惠劵
+http://139.224.71.72:30000/json/metadata?op=ReceiveCouponReq
+请求参数：
+
+{"UserId":0,"RecSysNo":0}
+
+    public class ReceiveCouponReq
+    {
+        public int UserId { get; set; }       //会员ID
+
+        public int RecSysNo { get; set; }     //邀请好友标识 对应 B_InforConfigure 表的 SysNo
+    }
 
 
+返回参数：
+{"ReceiveType":0,"CouponMoney":0,"ReceiveUrl":"String","ResponseStatus":{"ErrorCode":"String","Message":"String","StackTrace":"String","Errors":[{"ErrorCode":"String","FieldName":"String","Message":"String"}]},"DoFlag":0,"DoResult":"String","SysTime":"String"}
 
+    public class ReceiveCouponRes: BaseResponse
+    {
+        /// <summary>
+        /// 领取类型（当 DataType = 2 时有效）
+        /// 1 站内补贴现金红包（CouponMoney 此时必须有值）
+        /// 2 站外链接地址,此时会去 T_ReceiveConfigure 表找对应的记录
+        /// </summary>
+        public int ReceiveType { get; set; }
 
+        public decimal CouponMoney { get; set; }        //成功领取的优惠券金额 ReceiveType = 1 并且  IsReceive = true 并且 CouponMoney > 0 可用 
 
-
-
+        public string ReceiveUrl { get; set; }          //领取的地址，外部地址 ReceiveType = 2 并且 IsReceive = true 有外链的URL地址
+    }

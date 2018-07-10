@@ -63,6 +63,10 @@ namespace Point.com.IRepository
 				  }  
                                   public partial interface IMLT
 				  {	
+					IB_ReceiveCouponRecordRepository B_ReceiveCouponRecordRepository{get;}
+				  }  
+                                  public partial interface IMLT
+				  {	
 					IB_RecommendConfigureRepository B_RecommendConfigureRepository{get;}
 				  }  
                                   public partial interface IMLT

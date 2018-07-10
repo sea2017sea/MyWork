@@ -25,6 +25,10 @@ namespace Point.com.IRepository
     {        
     }
 	
+	public partial interface IB_ReceiveCouponRecordRepository  : IBaseRepository<B_ReceiveCouponRecord>
+    {        
+    }
+	
 	public partial interface IB_RecommendConfigureRepository  : IBaseRepository<B_RecommendConfigure>
     {        
     }

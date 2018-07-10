@@ -79,6 +79,9 @@ namespace Point.com.Facade.VersionTwo
 
         /// <summary>
         /// 根据广告ID获取广告商品信息
+        /// 根据热卖ID获取热卖商品信息
+        ///
+        /// (首页是广告类型、热卖推荐时，点击调用的服务，两种类型用这一个服务)
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
@@ -88,7 +91,8 @@ namespace Point.com.Facade.VersionTwo
 
             try
             {
-                var ptcp = ServiceImpl.QueryAdvGoodsById(req.UserId,req.AdvSysNo);
+                var m_req = Mapper.Map<QueryAdvGoodsByIdReq, M_QueryAdvGoodsByIdReq>(req);
+                var ptcp = ServiceImpl.QueryAdvGoodsById(m_req);
                 if (ptcp.DoFlag == PtcpState.Success)
                 {
                     res.DoFlag = (int)PtcpState.Success;
@@ -97,6 +101,7 @@ namespace Point.com.Facade.VersionTwo
 
                 if (ptcp.ReturnValue.IsNotNull() && ptcp.ReturnValue.AdvGoodsModels.IsHasRow())
                 {
+                    res.Total = ptcp.ReturnValue.Total;
                     res.Portrait = ptcp.ReturnValue.Portrait;
                     res.NickName = ptcp.ReturnValue.NickName;
                     res.AdvGoodsModels = Mapper.MapperGeneric<M_AdvGoodsModel, AdvGoodsModel>(ptcp.ReturnValue.AdvGoodsModels).ToList();
@@ -133,6 +138,70 @@ namespace Point.com.Facade.VersionTwo
                     res.Title = ptcp.ReturnValue.Title;
                     res.ReceiveAmount = ptcp.ReturnValue.ReceiveAmount;
                     res.SurplusCount = ptcp.ReturnValue.SurplusCount;
+                }
+            }
+            catch (Exception ex)
+            {
+                res.DoResult = "系统繁忙，请稍后再试";
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// 查询邀请好友（用于首页点击 DataType = 2 时的明细页面）
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public QueryInvitingFriendsRes Any(QueryInvitingFriendsReq req)
+        {
+            var res = new QueryInvitingFriendsRes();
+
+            try
+            {
+                var ptcp = ServiceImpl.QueryInvitingFriends(req.UserId,req.RecSysNo);
+                if (ptcp.DoFlag == PtcpState.Success)
+                {
+                    res.DoFlag = (int)PtcpState.Success;
+                }
+                res.DoResult = ptcp.DoResult;
+
+                if (ptcp.ReturnValue.IsNotNull())
+                {
+                    res.InvitingFriends = Mapper.Map<M_InvitingFriendsModel, InvitingFriendsModel>(ptcp.ReturnValue.InvitingFriends);
+                }
+            }
+            catch (Exception ex)
+            {
+                res.DoResult = "系统繁忙，请稍后再试";
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// 领取优惠劵
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public ReceiveCouponRes Any(ReceiveCouponReq req)
+        {
+            var res = new ReceiveCouponRes();
+
+            try
+            {
+                var ptcp = ServiceImpl.ReceiveCoupon(req.UserId, req.RecSysNo);
+                if (ptcp.DoFlag == PtcpState.Success)
+                {
+                    res.DoFlag = (int)PtcpState.Success;
+                }
+                res.DoResult = ptcp.DoResult;
+
+                if (ptcp.ReturnValue.IsNotNull())
+                {
+                    res.CouponMoney = ptcp.ReturnValue.CouponMoney;
+                    res.ReceiveType = ptcp.ReturnValue.ReceiveType;
+                    res.ReceiveUrl = ptcp.ReturnValue.ReceiveUrl;
                 }
             }
             catch (Exception ex)

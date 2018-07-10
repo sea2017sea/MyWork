@@ -88,6 +88,11 @@ public partial class B_AdvGoodsRepository : BaseRepository<B_AdvGoods>, IB_AdvGo
 			list.Add(addFunc("CashBonusNum",model.CashBonusNum.ToString()));
 		}
 
+						if(model.SalesVolume!=null) 
+		{
+			list.Add(addFunc("SalesVolume",model.SalesVolume.ToString()));
+		}
+
 						if(model.IntSort!=null) 
 		{
 			list.Add(addFunc("IntSort",model.IntSort.ToString()));
@@ -192,6 +197,12 @@ public partial class B_AdvGoodsRepository : BaseRepository<B_AdvGoods>, IB_AdvGo
 						if(model.CashBonusNum!=null) 
 		{
 			list.Add(string.Format("{1}='{0}'",model.CashBonusNum.ToString(),addFunc("[CashBonusNum]")));
+		}
+					
+
+						if(model.SalesVolume!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.SalesVolume.ToString(),addFunc("[SalesVolume]")));
 		}
 					
 
@@ -1518,6 +1529,263 @@ protected override string QueryPageBySql(int pageIndex = 1, int pageSize = 20, B
         /// <param name="order"></param>
         /// <returns></returns>
         protected override string QueryTopBySql(int? top, B_ReceiveConfigure where = null, string order = null)
+        {
+            if (null == top)
+            {
+                throw new ArgumentNullException(string.Format("查询指定TOP数据失败，失败详情：TOP不能为空"));
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select top ({2}) * from {3} {0} {1}", whereStr, order,
+                                       Math.Abs((int)top),_tableName);
+
+            return sql;
+        }
+
+
+public override void AddDataTable(System.Data.DataTable dataTable)
+        {
+            base.AddDataTable(dataTable,_tableName);
+        }
+
+}
+	
+public partial class B_ReceiveCouponRecordRepository : BaseRepository<B_ReceiveCouponRecord>, IB_ReceiveCouponRecordRepository
+{
+		public B_ReceiveCouponRecordRepository(IUnitOfWork unitOfWork)
+        : base(unitOfWork)
+		{
+			_tableName="B_ReceiveCouponRecord";
+		} 
+		public B_ReceiveCouponRecordRepository(IUnitOfWork unitOfWork,string tableName)
+        : base(unitOfWork)
+		{
+			_tableName=tableName;
+		}  
+		private string _tableName;
+	
+	protected override string GetSqlFromModel(B_ReceiveCouponRecord model,Func<string,string,string> addFunc,Func<string,string> joinFunc)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(addFunc("SysNo",model.SysNo.ToString()));
+		}	
+								if(model.UserId!=null) 
+		{
+			list.Add(addFunc("UserId",model.UserId.ToString()));
+		}
+
+						if(model.CouponSysNo!=null) 
+		{
+			list.Add(addFunc("CouponSysNo",model.CouponSysNo.ToString()));
+		}
+
+						if(model.CashBonus!=null) 
+		{
+			list.Add(addFunc("CashBonus",model.CashBonus.ToString()));
+		}
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(addFunc("RowCeateDate",model.RowCeateDate.ToString()));
+		}
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(addFunc("ModifyTime",model.ModifyTime.ToString()));
+		}
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(addFunc("IsEnable",model.IsEnable.ToString()));
+		}
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+	protected override string GetWhereSqlFromModel(B_ReceiveCouponRecord model,Func<string,string> joinFunc,Func<string,string> addFunc=null)
+	{
+		if(null==model)
+		{
+			return string.Empty;
+		}
+		if(addFunc==null)
+		{
+			addFunc=(s)=>s;
+		}
+		List<string> list=new List<string>();
+				if(model.SysNo!=null && (long)model.SysNo!=0) 
+		{
+			list.Add(string.Format("{1}={0}",model.SysNo.ToString(),addFunc("[SysNo]")));
+		}
+					
+
+						if(model.UserId!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.UserId.ToString(),addFunc("[UserId]")));
+		}
+					
+
+						if(model.CouponSysNo!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.CouponSysNo.ToString(),addFunc("[CouponSysNo]")));
+		}
+					
+
+						if(model.CashBonus!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.CashBonus.ToString(),addFunc("[CashBonus]")));
+		}
+					
+
+						if(model.RowCeateDate!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.RowCeateDate.ToString(),addFunc("[RowCeateDate]")));
+		}
+					
+
+						if(model.ModifyTime!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.ModifyTime.ToString(),addFunc("[ModifyTime]")));
+		}
+					
+
+						if(model.IsEnable!=null) 
+		{
+			list.Add(string.Format("{1}='{0}'",model.IsEnable.ToString(),addFunc("[IsEnable]")));
+		}
+					
+
+					
+		return string.Join(joinFunc(string.Empty),list.ToArray());
+	}
+
+public override string PersistNewItem(params ModelBase[] item)
+{
+	var data=(B_ReceiveCouponRecord)item[0];
+string sql = string.Format("insert into {2}({0}) values({1})",
+                                this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]",name),s=>","),
+								this.GetSqlFromModel(data,(name,value)=>string.Format("'{0}'",value),s=>","),_tableName);
+    return sql;
+}
+
+public override string PersistUpdatedItem(params ModelBase[] item)
+{
+	var data=(B_ReceiveCouponRecord)item[0];		
+	var where=	(B_ReceiveCouponRecord)item[1];
+string sql = string.Format("update {2} set {0} where {1}",  
+						this.GetSqlFromModel(data,(name,value)=>string.Format("[{0}]='{1}'",name,value),s=>","),
+						this.GetWhereSqlFromModel(where,s=>" and "),_tableName);
+    return sql;
+}      
+
+protected override string QueryBySql(B_ReceiveCouponRecord where = null, string order = null)
+{
+	string whereStr = string.Empty;
+	if (null != where)
+	{
+		string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+		if (!string.IsNullOrEmpty(whereSql))
+		{
+			whereStr = string.Format("where {0}", whereSql);
+		}
+	}
+    string sql = string.Format("select * from {2} {0} {1}", whereStr, order,_tableName);
+    return sql;
+}
+
+protected override string QueryPageBySql(int pageIndex = 1, int pageSize = 20, B_ReceiveCouponRecord where = null, string order = null)
+{
+    string whereStr = string.Empty;
+    if (null != where)
+    {
+        whereStr =this.GetWhereSqlFromModel(where, s => " and ");
+    }
+    string sql =
+        string.Format(
+            @"SELECT  t.*
+			FROM    ( SELECT    * ,
+								ROW_NUMBER() OVER ({0}) AS Rn
+					  FROM {4} {1}
+					) AS t
+			WHERE   t.Rn BETWEEN {2} AND {3}",
+            string.IsNullOrEmpty(order)?"ORDER BY GETDATE()":order,
+            (string.IsNullOrEmpty(whereStr) ? string.Empty : string.Format("where {0}", whereStr)),
+			(pageIndex-1)*pageSize+1,
+			pageSize*pageIndex,_tableName);
+
+    return sql;
+}
+
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QueryCountBySql(B_ReceiveCouponRecord where = null)
+        {
+            //TODO:Where不能为空
+
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select count(1) from {1} {0} ", whereStr,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询指定列的数据之和
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        protected override string QuerySumBySql(string columnName, B_ReceiveCouponRecord where = null)
+        {
+            if (string.IsNullOrEmpty(columnName))
+            {
+                throw new ArgumentNullException(string.Format("查询指定列数据汇总失败，失败详情：指定列名不能为空"));
+
+            }
+            string whereStr = string.Empty;
+            if (null != where)
+            {
+                string whereSql = this.GetWhereSqlFromModel(where, s => " and ");
+                if (!string.IsNullOrEmpty(whereSql))
+                {
+                    whereStr = string.Format("where {0}", whereSql);
+                }
+            }
+            string sql = string.Format("select SUM({1}) from {2} {0} ", whereStr, columnName,_tableName);
+            return sql;
+        }
+
+        /// <summary>
+        /// 查询top条数据
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        protected override string QueryTopBySql(int? top, B_ReceiveCouponRecord where = null, string order = null)
         {
             if (null == top)
             {

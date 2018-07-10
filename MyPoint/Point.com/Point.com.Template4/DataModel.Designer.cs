@@ -800,6 +800,22 @@ namespace Point.com.Template4
             }
         }
         private ObjectSet<B_AdvGoods> _B_AdvGoods;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<B_ReceiveCouponRecord> B_ReceiveCouponRecord
+        {
+            get
+            {
+                if ((_B_ReceiveCouponRecord == null))
+                {
+                    _B_ReceiveCouponRecord = base.CreateObjectSet<B_ReceiveCouponRecord>("B_ReceiveCouponRecord");
+                }
+                return _B_ReceiveCouponRecord;
+            }
+        }
+        private ObjectSet<B_ReceiveCouponRecord> _B_ReceiveCouponRecord;
 
         #endregion
 
@@ -1171,6 +1187,14 @@ namespace Point.com.Template4
         public void AddToB_AdvGoods(B_AdvGoods b_AdvGoods)
         {
             base.AddObject("B_AdvGoods", b_AdvGoods);
+        }
+    
+        /// <summary>
+        /// 用于向 B_ReceiveCouponRecord EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToB_ReceiveCouponRecord(B_ReceiveCouponRecord b_ReceiveCouponRecord)
+        {
+            base.AddObject("B_ReceiveCouponRecord", b_ReceiveCouponRecord);
         }
 
         #endregion
@@ -2744,6 +2768,215 @@ namespace Point.com.Template4
         private Nullable<global::System.Int32> _UserId;
         partial void OnUserIdChanging(Nullable<global::System.Int32> value);
         partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime RowCeateDate
+        {
+            get
+            {
+                return _RowCeateDate;
+            }
+            set
+            {
+                OnRowCeateDateChanging(value);
+                ReportPropertyChanging("RowCeateDate");
+                _RowCeateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RowCeateDate");
+                OnRowCeateDateChanged();
+            }
+        }
+        private global::System.DateTime _RowCeateDate;
+        partial void OnRowCeateDateChanging(global::System.DateTime value);
+        partial void OnRowCeateDateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ModifyTime
+        {
+            get
+            {
+                return _ModifyTime;
+            }
+            set
+            {
+                OnModifyTimeChanging(value);
+                ReportPropertyChanging("ModifyTime");
+                _ModifyTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifyTime");
+                OnModifyTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ModifyTime;
+        partial void OnModifyTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnModifyTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsEnable
+        {
+            get
+            {
+                return _IsEnable;
+            }
+            set
+            {
+                OnIsEnableChanging(value);
+                ReportPropertyChanging("IsEnable");
+                _IsEnable = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsEnable");
+                OnIsEnableChanged();
+            }
+        }
+        private global::System.Boolean _IsEnable;
+        partial void OnIsEnableChanging(global::System.Boolean value);
+        partial void OnIsEnableChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYZJ_MLTModel", Name="B_ReceiveCouponRecord")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class B_ReceiveCouponRecord : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 B_ReceiveCouponRecord 对象。
+        /// </summary>
+        /// <param name="sysNo">SysNo 属性的初始值。</param>
+        /// <param name="userId">UserId 属性的初始值。</param>
+        /// <param name="couponSysNo">CouponSysNo 属性的初始值。</param>
+        /// <param name="rowCeateDate">RowCeateDate 属性的初始值。</param>
+        /// <param name="isEnable">IsEnable 属性的初始值。</param>
+        public static B_ReceiveCouponRecord CreateB_ReceiveCouponRecord(global::System.Int32 sysNo, global::System.Int32 userId, global::System.Int32 couponSysNo, global::System.DateTime rowCeateDate, global::System.Boolean isEnable)
+        {
+            B_ReceiveCouponRecord b_ReceiveCouponRecord = new B_ReceiveCouponRecord();
+            b_ReceiveCouponRecord.SysNo = sysNo;
+            b_ReceiveCouponRecord.UserId = userId;
+            b_ReceiveCouponRecord.CouponSysNo = couponSysNo;
+            b_ReceiveCouponRecord.RowCeateDate = rowCeateDate;
+            b_ReceiveCouponRecord.IsEnable = isEnable;
+            return b_ReceiveCouponRecord;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SysNo
+        {
+            get
+            {
+                return _SysNo;
+            }
+            set
+            {
+                if (_SysNo != value)
+                {
+                    OnSysNoChanging(value);
+                    ReportPropertyChanging("SysNo");
+                    _SysNo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("SysNo");
+                    OnSysNoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SysNo;
+        partial void OnSysNoChanging(global::System.Int32 value);
+        partial void OnSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CouponSysNo
+        {
+            get
+            {
+                return _CouponSysNo;
+            }
+            set
+            {
+                OnCouponSysNoChanging(value);
+                ReportPropertyChanging("CouponSysNo");
+                _CouponSysNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CouponSysNo");
+                OnCouponSysNoChanged();
+            }
+        }
+        private global::System.Int32 _CouponSysNo;
+        partial void OnCouponSysNoChanging(global::System.Int32 value);
+        partial void OnCouponSysNoChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> CashBonus
+        {
+            get
+            {
+                return _CashBonus;
+            }
+            set
+            {
+                OnCashBonusChanging(value);
+                ReportPropertyChanging("CashBonus");
+                _CashBonus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CashBonus");
+                OnCashBonusChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _CashBonus;
+        partial void OnCashBonusChanging(Nullable<global::System.Decimal> value);
+        partial void OnCashBonusChanged();
     
         /// <summary>
         /// 没有元数据文档可用。

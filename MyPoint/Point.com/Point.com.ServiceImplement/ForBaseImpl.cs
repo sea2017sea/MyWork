@@ -520,8 +520,32 @@ namespace Point.com.ServiceImplement
                     tRecord.TranNum = req.TranNum;
                     
                     sendPush.MsgTitle = "参与互动，现金红包增加";
-                    sendPush.MsgAlert = string.Format("恭喜您参与互动，获得 {0} 元现金红包。", req.TranNum);
+                    sendPush.MsgAlert = string.Format("恭喜您参与互动成功，获得 {0} 元现金红包。", req.TranNum);
                     sendPush.MsgContent = "参与互动，现金红包增加";
+
+                    #region 更新账户积分信息
+
+                    //更新账户积分信息
+                    DbSession.MLT.T_MemberRepository.Update(new T_Member()
+                    {
+                        Account = (memberInfo.Account + req.TranNum),
+                        ModifyTime = dtNow
+                    }, new T_Member() { SysNo = req.UserId });
+
+                    #endregion
+
+                    break;
+
+                case (int)Enums.TranType.RecCoupon:
+                    //领取优惠劵
+                    tRecord.PlusReduce = 1;           //交易获取或者使用 1增加 2 使用（减）
+                    tRecord.Company = Enums.Rmb;
+                    tRecord.TranName = "领取优惠劵";
+                    tRecord.TranNum = req.TranNum;
+
+                    sendPush.MsgTitle = "领取优惠劵，现金红包增加";
+                    sendPush.MsgAlert = string.Format("恭喜您领取优惠劵成功，获得 {0} 元现金红包。", req.TranNum);
+                    sendPush.MsgContent = "领取优惠劵，现金红包增加";
 
                     #region 更新账户积分信息
 

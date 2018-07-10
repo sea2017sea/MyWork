@@ -292,6 +292,26 @@ namespace Point.com.RepositoryFactory
 				  }  
                                   public partial class MLT:IMLT
 				  {					
+					private IB_ReceiveCouponRecordRepository _B_ReceiveCouponRecordRepository;
+					public virtual string B_ReceiveCouponRecordTableName{
+						get{
+							return "B_ReceiveCouponRecord";
+						}
+					}
+					public IB_ReceiveCouponRecordRepository B_ReceiveCouponRecordRepository
+					{
+						get
+						{
+							if (null == _B_ReceiveCouponRecordRepository)
+							{
+								_B_ReceiveCouponRecordRepository = new B_ReceiveCouponRecordRepository(this._unitOfWork,B_ReceiveCouponRecordTableName);
+							}
+							return _B_ReceiveCouponRecordRepository;
+						}
+					}
+				  }  
+                                  public partial class MLT:IMLT
+				  {					
 					private IB_RecommendConfigureRepository _B_RecommendConfigureRepository;
 					public virtual string B_RecommendConfigureTableName{
 						get{

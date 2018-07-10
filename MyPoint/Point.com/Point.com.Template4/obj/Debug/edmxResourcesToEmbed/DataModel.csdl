@@ -47,6 +47,7 @@
     <EntitySet Name="B_Category" EntityType="MYZJ_MLTModel.B_Category" />
     <EntitySet Name="B_ShareFriends" EntityType="MYZJ_MLTModel.B_ShareFriends" />
     <EntitySet Name="B_AdvGoods" EntityType="MYZJ_MLTModel.B_AdvGoods" />
+    <EntitySet Name="B_ReceiveCouponRecord" EntityType="MYZJ_MLTModel.B_ReceiveCouponRecord" />
   </EntityContainer>
   <EntityType Name="Base_Deliver">
     <Key>
@@ -813,5 +814,17 @@
     <Property Type="DateTime" Name="RowCeateDate" Nullable="false" Precision="3" />
     <Property Type="DateTime" Name="ModifyTime" Precision="3" />
     <Property Type="Boolean" Name="IsEnable" Nullable="false" />
+  </EntityType>
+  <EntityType Name="B_ReceiveCouponRecord">
+    <Key>
+      <PropertyRef Name="SysNo" />
+    </Key>
+    <Property Name="SysNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CouponSysNo" Type="Int32" Nullable="false" />
+    <Property Name="CashBonus" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="RowCeateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

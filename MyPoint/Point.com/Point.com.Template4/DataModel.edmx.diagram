@@ -51,6 +51,7 @@
         <EntityTypeShape EntityType="MYZJ_MLTModel.B_Category" Width="1.5" PointX="6.75" PointY="12.75" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.B_ShareFriends" Width="1.5" PointX="8.75" PointY="12.75" />
         <EntityTypeShape EntityType="MYZJ_MLTModel.B_AdvGoods" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="MYZJ_MLTModel.B_ReceiveCouponRecord" Width="1.5" PointX="14.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -28,11 +28,13 @@ namespace Point.com.ServiceInterface.VersionTwo
 
         /// <summary>
         /// 根据广告ID获取广告商品信息
+        /// 根据热卖ID获取热卖商品信息
+        ///
+        /// (首页是广告类型、热卖推荐时，点击调用的服务，两种类型用这一个服务)
         /// </summary>
-        /// <param name="userid"></param>
-        /// <param name="advSysNo"></param>
+        /// <param name="req"></param>
         /// <returns></returns>
-        Ptcp<M_QueryAdvGoodsByIdRes> QueryAdvGoodsById(int userid, int advSysNo);
+        Ptcp<M_QueryAdvGoodsByIdRes> QueryAdvGoodsById(M_QueryAdvGoodsByIdReq req);
 
         /// <summary>
         /// 领取红包
@@ -41,5 +43,21 @@ namespace Point.com.ServiceInterface.VersionTwo
         /// <param name="goodsId"></param>
         /// <returns></returns>
         Ptcp<M_ReceiveRedRes> ReceiveRed(int userid, int goodsId);
+
+        /// <summary>
+        /// 查询邀请好友（用于首页点击 DataType = 2 时的明细页面）
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="recSysNo">B_InforConfigure 表 DataType = 2 时的 SysNo</param>
+        /// <returns></returns>
+        Ptcp<M_QueryInvitingFriendsRes> QueryInvitingFriends(int userid, int recSysNo);
+
+        /// <summary>
+        /// 领取优惠劵
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="recSysNo"></param>
+        /// <returns></returns>
+        Ptcp<M_ReceiveCouponRes> ReceiveCoupon(int userid, int recSysNo);
     }
 }

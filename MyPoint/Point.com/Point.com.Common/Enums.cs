@@ -122,6 +122,7 @@ namespace Point.com.Common
             ReadArticle = 64,    //阅读文章，扣减低佣金
             SaveSelfMedia = 128,    //自媒体分享，注册手机号码，获取低佣金
             Share_New = 70,      //新版参与互动  
+            RecCoupon = 71,      //新版领取优惠劵-现金红包  
         }
 
         /// <summary>

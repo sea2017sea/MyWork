@@ -136,6 +136,16 @@ IsEnable BIT NOT NULL                                                         --
 )
 go
 
+SELECT * FROM B_ReceiveConfigure
+
+--INSERT INTO B_ReceiveConfigure VALUES(1,'2222',NULL,GETDATE(),GETDATE(),1)
+--INSERT INTO B_ReceiveConfigure VALUES(1,'3333',NULL,GETDATE(),GETDATE(),1)
+--INSERT INTO B_ReceiveConfigure VALUES(1,'3366633',NULL,GETDATE(),GETDATE(),1)
+
+
+
+
+SELECT TOP 1 * from B_ReceiveConfigure WHERE RecSysNo = 1 AND UserId IS NULL 
 
 --´´½¨ÍÆ¼öÊý¾ÝÅäÖÃ±í
 --ÓÃÓÚAPP ÊÖ»ú×ÀÃæºìµã ÒÔ¼° Ê×Ò³À­È¡µÄÂß¼­
@@ -193,6 +203,19 @@ IsEnable BIT NOT NULL                                                    --ÊÇ·ñÆ
 )
 go
 
+--ÐÂÔöÓÅ»Ý„»ÁìÈ¡¼ÇÂ¼(ºì°üÁìÈ¡¼ÇÂ¼±í)
+CREATE TABLE B_ReceiveCouponRecord
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,                                     --Ö÷¼ü£¬×ÔÔö³¤
+UserId INT NOT NULL,                                                     --»áÔ±ID
+CouponSysNo INT NOT NULL,                                                --ÓÅ»Ý„»»î¶¯ID ¶ÔÓ¦ B_InforConfigure ±íµÄ SysNo Ö÷¼ü
+CashBonus DECIMAL(18,4) NULL,                                            --»ñÈ¡µÄÏÖ½ðºì°ü ¿Í»§²ÎÓëÖ®ºó·¢¸ø¿Í»§µÄºì°ü½ð¶î
+RowCeateDate DATETIME NOT NULL,                                          --´´½¨Ê±¼ä
+ModifyTime DATETIME NULL,                                                --ÐÞ¸ÄÊ±¼ä
+IsEnable BIT NOT NULL                                                    --ÊÇ·ñÆôÓÃ true ÆôÓÃ 0 ½ûÓÃ
+)
+go
+
 
 --´´½¨·ÖÀà±í
 CREATE TABLE B_Category
@@ -237,3 +260,5 @@ SELECT * FROM T_AccountRecord ORDER BY sysno DESC
 SELECT * FROM T_AccountRecord   WHERE userid = 18162
 
 UPDATE B_AdvGoodsRecord SET isenable = 0 WHERE userid = 18162
+
+SELECT * FROM B_AdvGoods

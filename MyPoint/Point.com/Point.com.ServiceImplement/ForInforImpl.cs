@@ -1518,52 +1518,6 @@ namespace Point.com.ServiceImplement
                         if (ansRecordsAll.IsNotNull() && ansRecordsAll.IsHasRow())
                         {
                             //获取答题记录
-                            #region 获取答题记录 2018-05-14 作废
-
-                            //var ansRecords = ansRecordsAll.Take(6).ToList();
-                            //if (ansRecords.IsNotNull() && ansRecords.IsHasRow())
-                            //{
-                            //    List<int> userids = ansRecords.Select(c => c.UserId.GetValueOrDefault()).ToList();
-                            //    string strUserIds = string.Join(",", userids);
-
-                            //    string sql = string.Format(@"SELECT * FROM T_Member WHERE SysNo IN ({0})", strUserIds);
-                            //    ;
-                            //    var memberInfos = DbSession.MLT.ExecuteSql<T_Member>(sql).ToList();
-                            //    if (memberInfos.IsNotNull() && memberInfos.IsHasRow())
-                            //    {
-                            //        List<M_ParticipateRecord> mParticipate = new List<M_ParticipateRecord>();
-                            //        foreach (var mp in memberInfos)
-                            //        {
-                            //            mParticipate.Add(new M_ParticipateRecord()
-                            //            {
-                            //                UserId = mp.SysNo.GetValueOrDefault(),
-                            //                Portrait = mp.Portrait,
-                            //                NickName = mp.NickName
-                            //            });
-                            //        }
-
-                            //        M_SubjectParticipateRes mSubject = new M_SubjectParticipateRes();
-                            //        mSubject.Participates = mParticipate;
-
-                            //        int allCount = ansRecordsAll.Count;
-                            //        string showNum = "0";
-                            //        if (allCount > 1000)
-                            //        {
-                            //            showNum = string.Format("{0}k", Math.Round((float)allCount / 1000, 1));
-                            //        }
-                            //        else
-                            //        {
-                            //            showNum = allCount.ToString();
-                            //        }
-
-                            //        mSubject.ParticipateCount = string.Format("+{0}", showNum);
-
-                            //        return mSubject;
-                            //    }
-                            //}
-
-                            #endregion
-
                             #region 获取答题记录
 
                             List<int> userids = ansRecordsAll.Select(c => c.UserId.GetValueOrDefault()).ToList();

@@ -72,6 +72,9 @@
     <Compile Include="B_ReceiveConfigure.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="B_ReceiveCouponRecord.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="B_RecommendConfigure.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

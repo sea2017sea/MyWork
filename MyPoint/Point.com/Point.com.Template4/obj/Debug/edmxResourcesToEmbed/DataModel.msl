@@ -672,5 +672,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="B_ReceiveCouponRecord">
+      <EntityTypeMapping TypeName="MYZJ_MLTModel.B_ReceiveCouponRecord">
+        <MappingFragment StoreEntitySet="B_ReceiveCouponRecord">
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="RowCeateDate" ColumnName="RowCeateDate" />
+          <ScalarProperty Name="CashBonus" ColumnName="CashBonus" />
+          <ScalarProperty Name="CouponSysNo" ColumnName="CouponSysNo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SysNo" ColumnName="SysNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -44,12 +44,19 @@ namespace Point.com.ServiceModel.VersionTwo
 
     public class QueryAdvGoodsByIdReq
     {
-        public int UserId { get; set; }    //会员ID，必须
-        public int AdvSysNo { get; set; }  //广告信息ID，必须
+        public int UserId { get; set; }          //会员ID 必须
+
+        public int AdvSysNo { get; set; }        //广告ID，热卖类型ID
+
+        public int PageIndex { get; set; }       //第几页 默认 1 必须 
+
+        public int PageSize { get; set; }        //每页大小 默认 10 必须
     }
 
     public class QueryAdvGoodsByIdRes:BaseResponse
     {
+        public int Total { get; set; }                  //总的数据条数
+
         public string Portrait { get; set; }            //头像图片地址
         public string NickName { get; set; }            //昵称
 
@@ -73,6 +80,47 @@ namespace Point.com.ServiceModel.VersionTwo
         public decimal ReceiveAmount { get; set; }   //领取金额，单位：元
     }
 
+
+    #endregion
+
+
+    #region 查询邀请好友（用于首页点击 DataType = 2 时的明细页面）
+
+    public class QueryInvitingFriendsReq
+    {
+        public int UserId { get; set; }       //会员ID
+        public int RecSysNo { get; set; }     //邀请好友标识 对应 B_InforConfigure 表的 SysNo
+    }
+
+    public class QueryInvitingFriendsRes : BaseResponse
+    {
+        public InvitingFriendsModel InvitingFriends { get; set; }    //邀请好友实体
+    }
+
+    #endregion
+
+    #region 领取优惠劵
+
+    public class ReceiveCouponReq
+    {
+        public int UserId { get; set; }       //会员ID
+
+        public int RecSysNo { get; set; }     //邀请好友标识 对应 B_InforConfigure 表的 SysNo
+    }
+
+    public class ReceiveCouponRes: BaseResponse
+    {
+        /// <summary>
+        /// 领取类型（当 DataType = 2 时有效）
+        /// 1 站内补贴现金红包（CouponMoney 此时必须有值）
+        /// 2 站外链接地址,此时会去 T_ReceiveConfigure 表找对应的记录
+        /// </summary>
+        public int ReceiveType { get; set; }
+
+        public decimal CouponMoney { get; set; }        //成功领取的优惠券金额 ReceiveType = 1 并且  IsReceive = true 并且 CouponMoney > 0 可用 
+
+        public string ReceiveUrl { get; set; }          //领取的地址，外部地址 ReceiveType = 2 并且 IsReceive = true 有外链的URL地址
+    }
 
     #endregion
 
@@ -122,5 +170,28 @@ namespace Point.com.ServiceModel.VersionTwo
 
         public decimal CashBonus { get; set; }              //现金红包 客户参与之后发给客户的红包金额 0 不给红包
         public int CashBonusNum { get; set; }               //现金红包的总数量
+    }
+
+    public class InvitingFriendsModel
+    {
+        public string Portrait { get; set; }            //头像图片地址
+
+        public string NickName { get; set; }            //昵称
+
+        public string ShopName { get; set; }            //店铺名称
+
+        public string LogoPicUrl { get; set; }          //店铺logo
+
+        public int SetInvitationNum { get; set; }       //需要邀请的人数
+
+        public bool IsReceive { get; set; }             //是否可以领取  true 可以  false 不可以
+
+        public decimal MarketPrice { get; set; }       //市场价格
+
+        public decimal PromotionPrice { get; set; }    //促销价格
+
+        public decimal CouponMoney { get; set; }        //优惠券金额
+
+        public List<string> InvitationMembers { get; set; }  //邀请的会员头像集合
     }
 }
