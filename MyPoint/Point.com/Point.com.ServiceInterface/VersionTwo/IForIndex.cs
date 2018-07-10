@@ -59,5 +59,12 @@ namespace Point.com.ServiceInterface.VersionTwo
         /// <param name="recSysNo"></param>
         /// <returns></returns>
         Ptcp<M_ReceiveCouponRes> ReceiveCoupon(int userid, int recSysNo);
+
+        /// <summary>
+        /// 根据分类ID查询商品信息
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        Ptcp<M_QueryCateGoodsRes> QueryCateGoods(M_QueryCateGoodsReq req);
     }
 }

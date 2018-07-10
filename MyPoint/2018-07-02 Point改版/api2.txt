@@ -435,3 +435,35 @@ http://139.224.71.72:30000/json/metadata?op=ReceiveCouponReq
 
         public string ReceiveUrl { get; set; }          //领取的地址，外部地址 ReceiveType = 2 并且 IsReceive = true 有外链的URL地址
     }
+
+
+
+
+8、根据分类ID查询分类商品  分页
+http://139.224.71.72:30000/json/metadata?op=QueryCateGoodsReq
+请求参数：
+
+{"CateId":0,"PageIndex":0,"PageSize":0}
+
+
+    public class QueryCateGoodsReq
+    {
+        public int CateId { get; set; }          //分类ID
+        public int PageIndex { get; set; }       //第几页 默认 1 必须 
+        public int PageSize { get; set; }        //每页大小 默认 10 必须
+    }
+
+
+返回参数：
+{"Total":0,"CateName":"String","GoodsModels":[{"SysNo":0,"AdvSysNo":0,"CateId":0,"GoodsName":"String","GoodsPic":"String","GoodsDetailedLink":"String","GoodsExcLink":"String","MarketPrice":0,"PromotionPrice":0,"DeductibleMoney":0,"SalesVolume":0,"CashBonus":0,"CashBonusNum":0}],"ResponseStatus":{"ErrorCode":"String","Message":"String","StackTrace":"String","Errors":[{"ErrorCode":"String","FieldName":"String","Message":"String"}]},"DoFlag":0,"DoResult":"String","SysTime":"String"}
+
+
+   public class QueryCateGoodsRes : BaseResponse
+    {
+        public int Total { get; set; }          //总的数据条数
+        public string CateName { get; set; }    //分类名称
+
+        public List<AdvGoodsModel> GoodsModels { get; set; }   //分类商品集合
+    }
+
+说明：AdvGoodsModel 实体对象在 1 接口里面有描述了

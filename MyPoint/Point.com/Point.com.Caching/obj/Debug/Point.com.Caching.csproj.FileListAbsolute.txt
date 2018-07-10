@@ -45,6 +45,5 @@ D:\mygit\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojR
 E:\mygit\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojResolveAssemblyReference.cache
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.Caching.dll
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Library\Point.com.Caching.pdb
-D:\mygit\MyWork\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.csprojResolveAssemblyReference.cache
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.dll
 D:\mygit\MyWork\MyPoint\Point.com\Point.com.Caching\obj\Debug\Point.com.Caching.pdb

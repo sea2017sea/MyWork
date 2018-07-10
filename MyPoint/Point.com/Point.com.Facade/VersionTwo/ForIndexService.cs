@@ -211,5 +211,42 @@ namespace Point.com.Facade.VersionTwo
 
             return res;
         }
+
+        /// <summary>
+        /// 根据分类ID查询商品信息
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public QueryCateGoodsRes Any(QueryCateGoodsReq req)
+        {
+            var res = new QueryCateGoodsRes();
+
+            try
+            {
+                var m_req = Mapper.Map<QueryCateGoodsReq, M_QueryCateGoodsReq>(req);
+                var ptcp = ServiceImpl.QueryCateGoods(m_req);
+                if (ptcp.DoFlag == PtcpState.Success)
+                {
+                    res.DoFlag = (int)PtcpState.Success;
+                }
+                res.DoResult = ptcp.DoResult;
+
+                if (ptcp.ReturnValue.IsNotNull())
+                {
+                    res.Total = ptcp.ReturnValue.Total;
+                    res.CateName = ptcp.ReturnValue.CateName;
+                    if (ptcp.ReturnValue.GoodsModels.IsHasRow())
+                    {
+                        res.GoodsModels = Mapper.MapperGeneric<M_AdvGoodsModel, AdvGoodsModel>(ptcp.ReturnValue.GoodsModels).ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                res.DoResult = "系统繁忙，请稍后再试";
+            }
+
+            return res;
+        }
     }
 }

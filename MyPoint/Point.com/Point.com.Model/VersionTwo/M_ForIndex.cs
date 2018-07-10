@@ -89,7 +89,22 @@ namespace Point.com.Model.VersionTwo
 
     #endregion
 
-    #region
+    #region 根据分类ID查询商品信息
+
+    public class M_QueryCateGoodsReq
+    {
+        public int CateId { get; set; }          //分类ID
+        public int PageIndex { get; set; }       //第几页 默认 1 必须 
+        public int PageSize { get; set; }        //每页大小 默认 10 必须
+    }
+
+    public class M_QueryCateGoodsRes
+    {
+        public int Total { get; set; }          //总的数据条数
+        public string CateName { get; set; }    //分类名称
+
+        public List<M_AdvGoodsModel> GoodsModels { get; set; }   //分类商品集合
+    }
 
     #endregion
 

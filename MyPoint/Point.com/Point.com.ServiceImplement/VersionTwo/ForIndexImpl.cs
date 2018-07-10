@@ -632,6 +632,84 @@ namespace Point.com.ServiceImplement.VersionTwo
 
             return ptcp;
         }
+        
+        /// <summary>
+        /// 根据分类ID查询商品信息
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        public Ptcp<M_QueryCateGoodsRes> QueryCateGoods(M_QueryCateGoodsReq req)
+        {
+            var ptcp = new Ptcp<M_QueryCateGoodsRes>();
+
+            if (req.IsNull())
+            {
+                ptcp.DoResult = "请求数据非法";
+                return ptcp;
+            }
+
+            if (req.CateId <= 0)
+            {
+                ptcp.DoResult = "分类ID不能为空";
+                return ptcp;
+            }
+
+            if (req.PageIndex <= 0 || req.PageIndex > 10000)
+            {
+                req.PageIndex = 1;
+            }
+
+            if (req.PageSize <= 0 || req.PageSize > 100)
+            {
+                req.PageSize = 10;
+            }
+
+            var cateEntity = DbSession.MLT.B_CategoryRepository.QueryBy(new B_Category()
+                {
+                    CateId = req.CateId,
+                    IsEnable = true
+                }).FirstOrDefault();
+
+            if (cateEntity.IsNull())
+            {
+                ptcp.DoResult = "获取分类信息失败";
+                return ptcp;
+            }
+
+            var cateGoodsCount = DbSession.MLT.B_AdvGoodsRepository.QueryCountBy(new B_AdvGoods()
+                {
+                    CateId = req.CateId,
+                    IsEnable = true
+                });
+
+            if (cateGoodsCount <= 0)
+            {
+                ptcp.DoFlag = PtcpState.Success;
+                ptcp.ReturnValue = new M_QueryCateGoodsRes();
+                ptcp.ReturnValue.Total = (int) cateGoodsCount;
+                ptcp.ReturnValue.CateName = cateEntity.CateName;
+                return ptcp;
+            }
+
+            var cateGoodsList = DbSession.MLT.B_AdvGoodsRepository.QueryPageBy(req.PageIndex, req.PageSize,
+                                                                               new B_AdvGoods()
+                                                                                   {
+                                                                                       CateId = req.CateId,
+                                                                                       IsEnable = true
+                                                                                   }, " ORDER BY IntSort DESC");
+
+            if (cateGoodsList.IsHasRow())
+            {
+                ptcp.ReturnValue = new M_QueryCateGoodsRes();
+                ptcp.ReturnValue.GoodsModels = Mapper.MapperGeneric<B_AdvGoods,M_AdvGoodsModel>(cateGoodsList).ToList();
+                ptcp.ReturnValue.Total = (int) cateGoodsCount;
+                ptcp.ReturnValue.CateName = cateEntity.CateName;
+                ptcp.DoFlag = PtcpState.Success;
+                ptcp.DoResult = "成功";
+            }
+
+            return ptcp;
+        }
     }
 }
 
